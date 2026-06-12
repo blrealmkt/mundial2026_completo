@@ -78,21 +78,26 @@ body {
   color: #fff;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 11px;
-  letter-spacing: .12em;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 3px;
+  padding: 5px 12px 5px 9px;
+  border: 2px solid #fff;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+  transform: rotate(-3deg);
+  flex-shrink: 0;
 }
 .logo-text {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 20px;
+  font-size: 22px;
   color: #fff;
-  letter-spacing: .03em;
+  letter-spacing: 0;
   line-height: 1;
+  text-transform: uppercase;
 }
-.logo-text span { color: var(--fire); }
+.logo-text span { color: var(--fire); font-size: 1.15em; }
 .live-dot {
   display: flex;
   align-items: center;
@@ -258,23 +263,24 @@ body {
 .day-separator {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 14px 0 4px;
+  gap: 14px;
+  margin: 22px 0 8px;
 }
-.day-separator:first-child { margin-top: 0; }
+.day-separator:first-child { margin-top: 4px; }
 .day-separator-label {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 15px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--ink);
   background: var(--fire);
   color: #fff;
-  padding: 4px 14px 4px 10px;
-  border-radius: 0 4px 4px 0;
+  padding: 5px 16px 5px 12px;
   position: relative;
   clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+  border: 2px solid var(--ink);
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 .day-separator::after {
   content: '';
@@ -370,30 +376,42 @@ body {
   color: #fff;
   font-family: var(--font-display);
   font-weight: 900;
+  font-style: italic;
   font-size: 26px;
-  letter-spacing: -.01em;
-  width: 44px;
+  letter-spacing: -.02em;
+  width: 46px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
 }
-.score-box.home { border-radius: 4px 0 0 4px; }
-.score-box.away { border-radius: 0 4px 4px 0; }
+.score-box.home {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%);
+  padding-left: 4px;
+}
+.score-box.away {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
+  padding-right: 4px;
+}
 .score-box.fire { background: var(--fire); }
 .score-sep {
   background: var(--fire);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 16px;
-  width: 10px;
+  font-size: 20px;
+  width: 16px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: skewX(-12deg) scaleY(1.05);
+  margin: 0 -2px;
+  position: relative;
+  z-index: 1;
 }
+.score-sep span { display: inline-block; transform: skewX(12deg); }
 .score-pending {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -885,17 +903,6 @@ body {
 
 .full-width { grid-column: 1 / -1; }
 
-/* ── LOGO ajuste título largo ── */
-.logo-text {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 15px;
-  color: #fff;
-  letter-spacing: .02em;
-  line-height: 1;
-}
-.logo-text span { color: var(--fire); }
-
 /* ── FOOTER DECO SVG ── */
 .footer-deco {
   position: relative;
@@ -915,7 +922,7 @@ body {
   <div class="header-inner">
     <div class="logo">
       <span class="logo-badge">Mundial FIFA 2026</span>
-      <span class="logo-text">¿QUIÉN JUEGA HOY?</span>
+      <span class="logo-text"><span>¿</span>QUIÉN JUEGA HOY<span>?</span></span>
     </div>
     <div class="live-dot">En vivo</div>
   </div>
@@ -925,7 +932,7 @@ body {
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados')">Resultados</button>
     <button class="nav-btn" onclick="showView('posiciones')">Posiciones</button>
-    <button class="nav-btn" onclick="showView('estadisticas')">Estadísticas</button>
+    <button class="nav-btn" onclick="showView('estadisticas')">Estadística Mundialista</button>
     <button class="nav-btn" onclick="showView('noticias')">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl')">Guadalajara</button>
   </div>
@@ -979,7 +986,7 @@ body {
 <div id="view-estadisticas" class="view">
   <div class="section-head">
     <div>
-      <div class="section-title">Stats <span>Del</span> Torneo</div>
+      <div class="section-title">Estadística <span>Mundialista</span></div>
       <div class="section-sub">Goleadores · Tarjetas · Números que importan</div>
     </div>
   </div>
@@ -1662,7 +1669,7 @@ function renderMatches() {
     const scoreHTML = hasScore
       ? `<div class="score-block">
            <div class="score-box home ${isLive ? 'fire' : ''}">${m.homeScore}</div>
-           <div class="score-sep">-</div>
+           <div class="score-sep"><span>-</span></div>
            <div class="score-box away ${isLive ? 'fire' : ''}">${m.awayScore}</div>
          </div>`
       : `<div class="score-pending">${m.time} hrs</div>`;
@@ -1864,7 +1871,7 @@ function renderGDL() {
     const scoreHTML = hasScore
       ? `<div class="score-block">
            <div class="score-box home">${m.homeScore}</div>
-           <div class="score-sep">-</div>
+           <div class="score-sep"><span>-</span></div>
            <div class="score-box away">${m.awayScore}</div>
          </div>`
       : `<div class="score-pending">${m.time}</div>`;
