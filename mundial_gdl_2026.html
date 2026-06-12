@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -255,6 +254,33 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+.day-separator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 4px;
+}
+.day-separator:first-child { margin-top: 0; }
+.day-separator-label {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--fire);
+  color: #fff;
+  padding: 4px 14px 4px 10px;
+  border-radius: 0 4px 4px 0;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+}
+.day-separator::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--border2) 0, var(--border2) 6px, transparent 6px, transparent 12px);
 }
 .match-card {
   background: var(--white);
@@ -912,7 +938,7 @@ body {
   <div class="section-head">
     <div>
       <div class="section-title">Resultados y <span>Próximos Juegos</span></div>
-      <div class="section-sub">72 partidos fase de grupos · 48 selecciones · 3 países sede</div>
+      <div class="section-sub" id="results-subtitle">72 partidos fase de grupos · 48 selecciones · 3 países sede</div>
     </div>
   </div>
 
@@ -1178,8 +1204,31 @@ body {
 // Sedes en México (para resaltado especial)
 const MEXICO_VENUES = ['Estadio Guadalajara', 'Estadio Ciudad de México', 'Estadio Monterrey'];
 
+// Helper: convierte "11 Jun" + "13:00" en un valor numérico ordenable
+const MONTH_MAP = { Jun:6, Jul:7 };
+function matchSortKey(m) {
+  const parts = m.date.split(' ');
+  const day = parseInt(parts[0], 10) || 0;
+  const month = MONTH_MAP[parts[1]] || 6;
+  const timeStr = (m.time || '00:00').replace(' hrs','').split(':');
+  const hh = parseInt(timeStr[0], 10) || 0;
+  const mm = parseInt(timeStr[1], 10) || 0;
+  return month * 100000 + day * 1000 + hh * 10 + (mm >= 30 ? 5 : 0);
+}
+// Helper: solo la parte de fecha (sin hora), para comparar contra rangos de semana
+function dateOnlyKey(dateStr) {
+  const parts = dateStr.split(' ');
+  const day = parseInt(parts[0], 10) || 0;
+  const month = MONTH_MAP[parts[1]] || 6;
+  return month * 100 + day;
+}
+
 const DATA = {
+  // Rango de la semana activa (lunes a domingo). Actualizar cada semana.
+  currentWeek: { startDate: '11 Jun', endDate: '15 Jun', label: 'Semana del 11 al 15 de junio' },
+
   phases: [
+    { id: 'semana', label: 'Esta Semana' },
     { id: 'grupos', label: 'Fase de Grupos' },
     { id: 'dieciseisavos', label: 'Dieciseisavos' },
     { id: 'cuartos', label: 'Cuartos de Final' },
@@ -1191,14 +1240,14 @@ const DATA = {
 
   matches: [
     // ── GRUPO A: México · Sudáfrica · Rep. de Corea · Rep. Checa
-    { id:1,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:null, awayScore:null, date:'11 Jun', time:'13:00', venue:'Estadio Ciudad de México', status:'scheduled' },
-    { id:2,  phase:'grupos', group:'A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',    awayFlag:'🇨🇿', homeScore:null, awayScore:null, date:'11 Jun', time:'20:00', venue:'Estadio Guadalajara',      status:'scheduled' },
+    { id:1,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:2, awayScore:0, date:'11 Jun', time:'13:00', venue:'Estadio Ciudad de México', status:'done' },
+    { id:2,  phase:'grupos', group:'A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',    awayFlag:'🇨🇿', homeScore:2, awayScore:1, date:'11 Jun', time:'20:00', venue:'Estadio Guadalajara',      status:'done' },
     { id:3,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:null, awayScore:null, date:'18 Jun', time:'10:00', venue:'Estadio Atlanta',          status:'scheduled' },
     { id:4,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'18 Jun', time:'19:00', venue:'Estadio Guadalajara',      status:'scheduled' },
     { id:5,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'México',        awayFlag:'🇲🇽', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:6,  phase:'grupos', group:'A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Monterrey',        status:'scheduled' },
     // ── GRUPO B: Canadá · Bosnia y Herzegovina · Catar · Suiza
-    { id:7,  phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:null, awayScore:null, date:'12 Jun', time:'13:00', venue:'Estadio Toronto',               status:'scheduled' },
+    { id:7,  phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:1, awayScore:1, date:'12 Jun', time:'13:00', venue:'Estadio Toronto',               status:'done' },
     { id:8,  phase:'grupos', group:'B', home:'Catar',                homeFlag:'🇶🇦', away:'Suiza',                awayFlag:'🇨🇭', homeScore:null, awayScore:null, date:'13 Jun', time:'13:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
     { id:9,  phase:'grupos', group:'B', home:'Suiza',                homeFlag:'🇨🇭', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:null, awayScore:null, date:'18 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
     { id:10, phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Catar',                awayFlag:'🇶🇦', homeScore:null, awayScore:null, date:'18 Jun', time:'16:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
@@ -1316,14 +1365,14 @@ const DATA = {
 
   standings: {
     A: [
-      { team:'México',        flag:'🇲🇽', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Sudáfrica',     flag:'🇿🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Rep. de Corea', flag:'🇰🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Rep. Checa',    flag:'🇨🇿', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'México',        flag:'🇲🇽', pj:1, pg:1, pe:0, pp:0, gf:2, gc:0, pts:3 },
+      { team:'Rep. de Corea', flag:'🇰🇷', pj:1, pg:1, pe:0, pp:0, gf:2, gc:1, pts:3 },
+      { team:'Rep. Checa',    flag:'🇨🇿', pj:1, pg:0, pe:0, pp:1, gf:1, gc:2, pts:0 },
+      { team:'Sudáfrica',     flag:'🇿🇦', pj:1, pg:0, pe:0, pp:1, gf:0, gc:2, pts:0 },
     ],
     B: [
-      { team:'Canadá',               flag:'🇨🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Bosnia y Herzegovina', flag:'🇧🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Canadá',               flag:'🇨🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
+      { team:'Bosnia y Herzegovina', flag:'🇧🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
       { team:'Catar',                flag:'🇶🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
       { team:'Suiza',                flag:'🇨🇭', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
@@ -1390,36 +1439,35 @@ const DATA = {
   },
 
   scorers: [
-    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:4 },
-    { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:3 },
-    { name:'Vinícius Jr.', team:'Brasil', flag:'🇧🇷', goals:3 },
-    { name:'Cristiano Ronaldo', team:'Portugal', flag:'🇵🇹', goals:3 },
-    { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:3 },
-    { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:2 },
-    { name:'Lamine Yamal', team:'España', flag:'🇪🇸', goals:2 },
-    { name:'Rodrygo', team:'Brasil', flag:'🇧🇷', goals:2 },
+    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:1, highlight:true },
+    { name:'Raúl Jiménez', team:'México', flag:'🇲🇽', goals:1 },
+    { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
+    { name:'Oh Hyeon-gyu', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
+    { name:'Ladislav Krejčí', team:'Chequia', flag:'🇨🇿', goals:1 },
+    { name:'Cyle Larin', team:'Canadá', flag:'🇨🇦', goals:1 },
+    { name:'Jovo Lukić', team:'Bosnia y Herzegovina', flag:'🇧🇦', goals:1 },
   ],
 
   yellowCards: [
-    { player:'V. van Dijk', team:'Países Bajos', flag:'🇳🇱', qty:2, min:'34\'' },
-    { player:'Bruno Fernandes', team:'Portugal', flag:'🇵🇹', qty:2, min:'67\'' },
-    { player:'Tijjani Reijnders', team:'Países Bajos', flag:'🇳🇱', qty:1, min:'45+2\'' },
-    { player:'Adrien Rabiot', team:'Francia', flag:'🇫🇷', qty:1, min:'78\'' },
-    { player:'Luis Díaz', team:'Colombia', flag:'🇨🇴', qty:1, min:'55\'' },
-    { player:'Nicolás Otamendi', team:'Argentina', flag:'🇦🇷', qty:1, min:'88\'' },
+    { player:'Teboho Mokoena', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
+    { player:'Nkosinathi Sibisi', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
+    { player:'Ermedin Demirović', team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'—' },
+    { player:'Alistair Johnston', team:'Canadá', flag:'🇨🇦', qty:1, min:'—' },
   ],
 
   redCards: [
-    { player:'Amrabat S.', team:'Marruecos', flag:'🇲🇦', min:'90+3\'' },
-    { player:'Kalvin Phillips', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', min:'72\'' },
+    { player:'Yaya Sithole', team:'Sudáfrica', flag:'🇿🇦', min:'Doble amarilla', desc:'Expulsado por doble amonestación tras faltas consecutivas.' },
+    { player:'Themba Zwane', team:'Sudáfrica', flag:'🇿🇦', min:'Roja directa', desc:'Tarjeta roja tras un altercado y manotazo a un rival.' },
+    { player:'César Montes', team:'México', flag:'🇲🇽', min:'Roja directa', desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
   ],
 
   crazyNumbers: [
-    { num:'8', label:'Goles en el primer tiempo del Elche 11-4', sub:'Récord histórico en Mundiales modernos' },
-    { num:'17', label:'Años de Lamine Yamal', sub:'El jugador activo más joven en disputar un Mundial' },
-    { num:'104', label:'Partidos totales en 2026', sub:'Vs 64 del Mundial Qatar 2022 — el más grande de la historia' },
-    { num:'1B.', label:'Espectadores esperados globalmente', sub:'El evento más visto de la historia de la televisión' },
+    { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026' },
+    { num:'3', label:'Tarjetas rojas en la jornada inaugural', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
+    { num:'72', label:'Partidos en la fase de grupos', sub:'Parte del formato histórico de 48 selecciones' },
+    { num:'2-0', label:'México arrancó con triunfo en el Azteca', sub:'Ante Sudáfrica, en el partido inaugural' },
   ],
+
 
   noticias: [
     {
@@ -1450,16 +1498,16 @@ const DATA = {
     },
     {
       accentColor: 'lime',
-      kicker: '😤 Drama Total · Grupo D',
+      kicker: '🚑 Parte Médico · Las Bajas del Torneo',
       kickerClass: 'lime',
-      title: 'Alemania empata con Japón y el Azteca explota: déjà vu de Qatar 2022',
-      text: 'Si fueras fanático alemán, la escena te iba a resultar familiar. La Mannschaft llegó al Estadio Azteca como favorita, dominó el balón, generó ocasiones y aun así se fue con un empate que sabe a derrota moral. Japón —ya sin sorprender a nadie— aplicó su bloque bajo con una disciplina casi robótica, esperó su momento y conectó en el contraataque con una velocidad que dejó a los centrales alemanes corriendo el aire. El gol de Kamada al 73\' desató el delirio de los pocos miles de japoneses presentes y el silencio absoluto del resto de las tribunas. Alemania reaccionó y empató en el 85\' por Havertz, pero el daño ya estaba hecho: la sombra de Qatar 2022 volvió a sobrevolar una selección que siempre rinde más en papel que en cancha. El técnico Nagelsmann salió con cara de piedra. Twitter alemán colapsó.',
-      jugadorFlag: '🇯🇵',
-      jugadorName: 'Daichi Kamada',
-      jugadorLabel: 'Gol del empate · Min. 73',
-      tags: ['#IkuzéJapón', '#AlemaniaEnCrisis', '#Azteca2026'],
-      momento: 'Min. 73 — Contraataque japonés en 4 segundos: 3 pases, 1 gol, 1 estadio en silencio.',
-      impacto: 'Alemania suma 1pt y necesita ganarle a Portugal. El Grupo D se incendia.',
+      title: 'El Mundial de las lesiones: las estrellas que se quedaron fuera antes de empezar',
+      text: 'Si algo nos enseñó esta previa es que el cuerpo humano tiene límites, aunque la agenda FIFA no quiera saberlo. El parte médico previo al arranque ha sido durísimo y supera con creces el índice de lesionados de torneos anteriores, todo por la carga brutal de la temporada europea de clubes. Brasil es, sin duda, el más golpeado: perdió a Rodrygo Goes, a Éder Militão y a la joven promesa Estevão justo antes de viajar, mientras su lateral Noussair Mazraoui quedó descartado para el arranque de grupos por una luxación de hombro. Japón sufrió un golpe devastador con la baja de su capitán Wataru Endo, quien además anunció su retiro de la selección, sumándose a las ausencias previas de Kaoru Mitoma y Takumi Minamino. Países Bajos perdió por completo su columna vertebral creativa tras las roturas de ligamentos de Xavi Simons y Jerdy Schouten. Los vigentes campeones de España sufrieron la baja de Fermín López, y del lado inglés las alarmas se encendieron al perder a Jack Grealish por fractura por estrés y a Ben White. Canadá, como anfitrión, también paga el precio: se quedó sin su atacante Marcelo Flores por una rotura de ligamento cruzado. México tampoco se salvó: su portero titular, Luis Malagón, quedó fuera de la convocatoria por una lesión de último momento, abriendo la portería para el debut. La lista sigue creciendo y todavía no se ha jugado ni una semana completa.',
+      jugadorFlag: '🇧🇷',
+      jugadorName: 'Rodrygo, Militão, Estevão',
+      jugadorLabel: 'Bajas confirmadas · Brasil',
+      tags: ['#PartesMedicos', '#Mundial2026', '#FuerzaCampeones'],
+      momento: 'Brasil llega al torneo sin tres piezas clave de su ofensiva y su defensa.',
+      impacto: 'Cada selección golpeada deberá reconfigurar su plan de juego desde la jornada 1. El nivel competitivo del grupo puede cambiar drásticamente.',
     },
     {
       accentColor: 'blue',
@@ -1478,13 +1526,13 @@ const DATA = {
 
   gdlMatches: [
     // ── Estadio Ciudad de México
-    { id:1,  phase:'Grupos A · CDMX',    home:'México',      homeFlag:'🇲🇽', away:'Sudáfrica',   awayFlag:'🇿🇦', homeScore:null, awayScore:null, date:'11 Jun', time:'13:00', status:'scheduled' },
+    { id:1,  phase:'Grupos A · CDMX',    home:'México',      homeFlag:'🇲🇽', away:'Sudáfrica',   awayFlag:'🇿🇦', homeScore:2, awayScore:0, date:'11 Jun', time:'13:00', status:'done' },
     { id:62, phase:'Grupos K · CDMX',    home:'Uzbekistán',  homeFlag:'🇺🇿', away:'Colombia',    awayFlag:'🇨🇴', homeScore:null, awayScore:null, date:'17 Jun', time:'20:00', status:'scheduled' },
     { id:5,  phase:'Grupos A · CDMX',    home:'Rep. Checa',  homeFlag:'🇨🇿', away:'México',      awayFlag:'🇲🇽', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', status:'scheduled' },
     { id:79, phase:'Dieciseisavos · CDMX',home:'1° Grupo A', homeFlag:'🏆',  away:'3° C/E/F/H/I',awayFlag:'⭐',  homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', status:'scheduled' },
     { id:92, phase:'Cuartos · CDMX',     home:'Ganador 79',  homeFlag:'⚽',  away:'Ganador 80',  awayFlag:'⚽',  homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Estadio Guadalajara
-    { id:2,  phase:'Grupos A · GDL',     home:'Rep. de Corea',homeFlag:'🇰🇷', away:'Rep. Checa', awayFlag:'🇨🇿', homeScore:null, awayScore:null, date:'11 Jun', time:'20:00', status:'scheduled' },
+    { id:2,  phase:'Grupos A · GDL',     home:'Rep. de Corea',homeFlag:'🇰🇷', away:'Rep. Checa', awayFlag:'🇨🇿', homeScore:2, awayScore:1, date:'11 Jun', time:'20:00', status:'done' },
     { id:4,  phase:'Grupos A · GDL',     home:'México',      homeFlag:'🇲🇽', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'18 Jun', time:'19:00', status:'scheduled' },
     { id:64, phase:'Grupos K · GDL',     home:'Colombia',    homeFlag:'🇨🇴', away:'RD Congo',    awayFlag:'🇨🇩', homeScore:null, awayScore:null, date:'23 Jun', time:'20:00', status:'scheduled' },
     { id:47, phase:'Grupos H · GDL',     home:'Uruguay',     homeFlag:'🇺🇾', away:'España',      awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', status:'scheduled' },
@@ -1508,7 +1556,7 @@ const DATA = {
 // ══════════════════════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════════════════════
-let currentPhase = 'grupos';
+let currentPhase = 'semana';
 let currentGroup = 'A';
 
 // ══════════════════════════════════════════════════════════
@@ -1538,7 +1586,17 @@ function selectPhase(id) {
   renderPhasePills();
   const isGroups = id === 'grupos';
   document.getElementById('group-selector-wrap').style.display = isGroups ? 'block' : 'none';
+  updateResultsSubtitle();
   renderMatches();
+}
+
+function updateResultsSubtitle() {
+  const el = document.getElementById('results-subtitle');
+  if (currentPhase === 'semana') {
+    el.textContent = `${DATA.currentWeek.label} · Hora CDMX · Resaltado: partidos en México`;
+  } else {
+    el.textContent = '72 partidos fase de grupos · 48 selecciones · 3 países sede';
+  }
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1564,19 +1622,42 @@ function selectGroup(g) {
 // ══════════════════════════════════════════════════════════
 function renderMatches() {
   const container = document.getElementById('matches-container');
-  let filtered = DATA.matches.filter(m => m.phase === currentPhase);
-  if (currentPhase === 'grupos') filtered = filtered.filter(m => m.group === currentGroup);
+  let filtered;
+
+  if (currentPhase === 'semana') {
+    const startKey = dateOnlyKey(DATA.currentWeek.startDate);
+    const endKey = dateOnlyKey(DATA.currentWeek.endDate);
+    filtered = DATA.matches.filter(m => {
+      const k = dateOnlyKey(m.date);
+      return k >= startKey && k <= endKey;
+    });
+  } else {
+    filtered = DATA.matches.filter(m => m.phase === currentPhase);
+    if (currentPhase === 'grupos') filtered = filtered.filter(m => m.group === currentGroup);
+  }
+
+  // Orden cronológico
+  filtered = [...filtered].sort((a, b) => matchSortKey(a) - matchSortKey(b));
 
   if (!filtered.length) {
     container.innerHTML = `<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;">Partidos por confirmar</div>`;
     return;
   }
 
-  container.innerHTML = filtered.map(m => {
+  let html = '';
+  let lastDate = null;
+
+  filtered.forEach(m => {
     const isDone = m.status === 'done';
     const isLive = m.status === 'live';
     const hasScore = m.homeScore !== null && m.awayScore !== null;
     const isMexico = MEXICO_VENUES.some(v => m.venue.includes(v));
+
+    // Separador de día (solo en vista "Esta semana")
+    if (currentPhase === 'semana' && m.date !== lastDate) {
+      html += `<div class="day-separator"><span class="day-separator-label">${m.date}</span></div>`;
+      lastDate = m.date;
+    }
 
     const scoreHTML = hasScore
       ? `<div class="score-block">
@@ -1596,7 +1677,7 @@ function renderMatches() {
       ? `<span class="mexico-badge">🇲🇽 México</span>`
       : '';
 
-    return `
+    html += `
       <div class="match-card ${isLive ? 'live' : ''} ${isMexico ? 'mexico-venue' : ''}">
         <div class="match-label-bar">
           <span class="match-label">${m.venue}${mexicoBadge}</span>
@@ -1621,7 +1702,9 @@ function renderMatches() {
         </div>
       </div>
     `;
-  }).join('');
+  });
+
+  container.innerHTML = html;
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1686,8 +1769,8 @@ function renderStandings() {
 function renderStats() {
   // Scorers
   document.getElementById('scorers-list').innerHTML = DATA.scorers.map((s,i) => `
-    <div class="scorer-row">
-      <span class="scorer-rank ${i < 3 ? 'top' : ''}">${i+1}</span>
+    <div class="scorer-row" style="${s.highlight ? 'background:var(--fire-light);' : ''}">
+      <span class="scorer-rank ${i < 3 || s.highlight ? 'top' : ''}">${i+1}</span>
       <div class="scorer-info">
         <div class="scorer-name">${s.flag} ${s.name}</div>
         <div class="scorer-team">${s.team}</div>
@@ -1707,20 +1790,20 @@ function renderStats() {
         <div class="card-player">${c.flag} ${c.player}</div>
         <div class="card-team">${c.team}</div>
       </div>
-      <span class="card-min">Min. ${c.min}</span>
     </div>
   `).join('');
 
   // Red cards
   document.getElementById('red-list').innerHTML = DATA.redCards.length
     ? DATA.redCards.map(c => `
-        <div class="card-row">
-          <span class="tarjeta tarjeta-roja"></span>
+        <div class="card-row" style="align-items:flex-start;">
+          <span class="tarjeta tarjeta-roja" style="margin-top:2px;"></span>
           <div class="card-info">
             <div class="card-player">${c.flag} ${c.player}</div>
             <div class="card-team">${c.team}</div>
+            <div style="font-family:var(--font-body);font-size:11px;color:var(--ink2);margin-top:3px;line-height:1.4;">${c.desc || ''}</div>
           </div>
-          <span class="card-min">Min. ${c.min}</span>
+          <span class="card-min" style="flex-shrink:0;">${c.min}</span>
         </div>
       `).join('')
     : `<div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;">Sin expulsados aún</div>`;
@@ -1830,6 +1913,8 @@ function renderGDL() {
 function init() {
   renderPhasePills();
   renderGroupSelector();
+  document.getElementById('group-selector-wrap').style.display = currentPhase === 'grupos' ? 'block' : 'none';
+  updateResultsSubtitle();
   renderMatches();
   renderStandings();
   renderStats();
