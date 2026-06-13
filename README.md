@@ -1,4 +1,4 @@
-<title>Mundial 2026 - Calendario</title>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -906,15 +906,26 @@ body {
 
 /* ── FOOTER DECO SVG ── */
 .footer-deco {
-  position: relative;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 8px;
-  height: 88px;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  margin-bottom: 8px;
 }
-.footer-svg { width: 100%; height: 100%; display: block; }
+.footer-block {
+  background: var(--fire);
+  padding: 22px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+.footer-block-text {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(32px, 9vw, 88px);
+  letter-spacing: .06em;
+  color: var(--ink);
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -933,7 +944,7 @@ body {
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados')">Resultados</button>
     <button class="nav-btn" onclick="showView('posiciones')">Posiciones</button>
-    <button class="nav-btn" onclick="showView('estadisticas')">Estadística Mundialista</button>
+    <button class="nav-btn" onclick="showView('estadisticas')">Stats</button>
     <button class="nav-btn" onclick="showView('noticias')">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl')">Guadalajara</button>
   </div>
@@ -1089,115 +1100,9 @@ body {
 <footer class="site-footer">
   <!-- Decoración SVG estilo 123KLAN: plumas + serpiente emplumada sutil -->
   <div class="footer-deco" aria-hidden="true">
-    <svg class="footer-svg" viewBox="0 0 1100 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <!-- Serpiente emplumada izquierda -->
-      <g opacity="0.18" transform="translate(0,8)">
-        <!-- cuerpo serpenteante -->
-        <path d="M10,55 C30,20 60,70 90,35 C120,0 150,60 180,30 C200,10 215,40 225,30" stroke="#FF4D1C" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <!-- plumas izq -->
-        <ellipse cx="30" cy="38" rx="10" ry="3" fill="#C8200A" transform="rotate(-45 30 38)"/>
-        <ellipse cx="30" cy="38" rx="8" ry="2" fill="#7A7D82" transform="rotate(-30 30 38)"/>
-        <ellipse cx="65" cy="52" rx="11" ry="3" fill="#C8200A" transform="rotate(40 65 52)"/>
-        <ellipse cx="65" cy="52" rx="9" ry="2" fill="#7A7D82" transform="rotate(55 65 52)"/>
-        <ellipse cx="100" cy="28" rx="10" ry="3" fill="#C8200A" transform="rotate(-50 100 28)"/>
-        <ellipse cx="130" cy="48" rx="10" ry="3" fill="#C8200A" transform="rotate(35 130 48)"/>
-        <ellipse cx="160" cy="22" rx="9" ry="2.5" fill="#7A7D82" transform="rotate(-40 160 22)"/>
-        <!-- cabeza serpiente izq -->
-        <polygon points="225,22 238,28 235,36 222,34" fill="#7A7D82"/>
-        <circle cx="230" cy="26" r="2.5" fill="#FF4D1C"/>
-        <!-- lengua bífida -->
-        <path d="M238,29 L248,25 M238,29 L248,33" stroke="#C8200A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      </g>
-
-      <!-- Plumas sueltas centro-izq -->
-      <g opacity="0.14" transform="translate(260,0)">
-        <ellipse cx="0" cy="40" rx="14" ry="4" fill="#C8200A" transform="rotate(-60 0 40)"/>
-        <ellipse cx="0" cy="40" rx="11" ry="3" fill="#7A7D82" transform="rotate(-45 0 40)"/>
-        <line x1="0" y1="26" x2="0" y2="54" stroke="#3A3A3A" stroke-width="1" opacity="0.5"/>
-
-        <ellipse cx="28" cy="55" rx="12" ry="3.5" fill="#C8200A" transform="rotate(30 28 55)"/>
-        <ellipse cx="28" cy="55" rx="9" ry="2.5" fill="#7A7D82" transform="rotate(45 28 55)"/>
-        <line x1="28" y1="42" x2="28" y2="68" stroke="#3A3A3A" stroke-width="1" opacity="0.5"/>
-      </g>
-
-      <!-- Aguila geo centro (silueta angular estilo 123KLAN) -->
-      <g opacity="0.22" transform="translate(490,2)">
-        <!-- cuerpo angular del águila -->
-        <polygon points="60,65 40,35 50,15 70,10 90,15 100,35 80,65" fill="#7A7D82"/>
-        <!-- cabeza blanca del águila calva -->
-        <polygon points="70,10 58,0 52,8 60,18 80,18 88,8 82,0" fill="#E8E4DB"/>
-        <!-- ojo rojo -->
-        <circle cx="62" cy="9" r="3" fill="#FF4D1C"/>
-        <!-- pico angular -->
-        <polygon points="52,12 44,18 52,20" fill="#D4A820"/>
-        <!-- ala izquierda -->
-        <polygon points="40,35 10,20 18,45 35,50 50,45" fill="#5A5D63"/>
-        <polygon points="10,20 0,30 12,40 20,35" fill="#FF4D1C" opacity="0.7"/>
-        <!-- ala derecha -->
-        <polygon points="100,35 130,20 122,45 105,50 90,45" fill="#5A5D63"/>
-        <!-- balón de fútbol integrado en el pecho -->
-        <circle cx="70" cy="42" r="14" fill="#3A3D42" opacity="0.9"/>
-        <path d="M64,30 L76,30 L82,40 L76,50 L64,50 L58,40 Z" fill="none" stroke="#E8E4DB" stroke-width="1.2" opacity="0.6"/>
-        <path d="M70,28 L76,30" stroke="#E8E4DB" stroke-width="1" opacity="0.6"/>
-        <path d="M70,54 L64,50" stroke="#E8E4DB" stroke-width="1" opacity="0.6"/>
-        <!-- plumas cola rojAs -->
-        <ellipse cx="55" cy="68" rx="13" ry="3" fill="#C8200A" transform="rotate(15 55 68)"/>
-        <ellipse cx="70" cy="72" rx="14" ry="3.5" fill="#C8200A" transform="rotate(0 70 72)"/>
-        <ellipse cx="85" cy="68" rx="13" ry="3" fill="#C8200A" transform="rotate(-15 85 68)"/>
-        <ellipse cx="55" cy="68" rx="10" ry="2" fill="#7A7D82" transform="rotate(15 55 68)"/>
-        <ellipse cx="70" cy="72" rx="11" ry="2.5" fill="#7A7D82" transform="rotate(0 70 72)"/>
-        <ellipse cx="85" cy="68" rx="10" ry="2" fill="#7A7D82" transform="rotate(-15 85 68)"/>
-        <!-- texto MUNDIAL sobre el águila -->
-        <text x="70" y="-4" font-family="'Barlow Condensed', sans-serif" font-weight="900" font-size="10" fill="#3A3D42" text-anchor="middle" letter-spacing="3" opacity="0.7">MUNDIAL</text>
-      </g>
-
-      <!-- Plumas sueltas centro-der -->
-      <g opacity="0.14" transform="translate(760,5)">
-        <ellipse cx="0" cy="45" rx="13" ry="3.5" fill="#C8200A" transform="rotate(55 0 45)"/>
-        <ellipse cx="0" cy="45" rx="10" ry="2.5" fill="#7A7D82" transform="rotate(70 0 45)"/>
-        <line x1="-8" y1="35" x2="8" y2="55" stroke="#3A3A3A" stroke-width="1" opacity="0.5"/>
-
-        <ellipse cx="30" cy="30" rx="12" ry="3" fill="#C8200A" transform="rotate(-35 30 30)"/>
-        <ellipse cx="30" cy="30" rx="9" ry="2" fill="#7A7D82" transform="rotate(-20 30 30)"/>
-        <line x1="22" y1="22" x2="38" y2="38" stroke="#3A3A3A" stroke-width="1" opacity="0.5"/>
-      </g>
-
-      <!-- Serpiente emplumada derecha (espejada) -->
-      <g opacity="0.18" transform="translate(870,8)">
-        <path d="M0,30 C10,10 40,50 70,25 C100,-5 130,55 160,30 C180,14 195,44 210,38" stroke="#FF4D1C" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="30" cy="20" rx="10" ry="3" fill="#C8200A" transform="rotate(-45 30 20)"/>
-        <ellipse cx="30" cy="20" rx="8" ry="2" fill="#7A7D82" transform="rotate(-30 30 20)"/>
-        <ellipse cx="70" cy="42" rx="11" ry="3" fill="#C8200A" transform="rotate(35 70 42)"/>
-        <ellipse cx="110" cy="18" rx="10" ry="3" fill="#C8200A" transform="rotate(-50 110 18)"/>
-        <ellipse cx="150" cy="45" rx="9" ry="2.5" fill="#7A7D82" transform="rotate(40 150 45)"/>
-        <!-- cabeza serpiente der -->
-        <polygon points="0,22 -12,28 -9,36 2,34" fill="#7A7D82"/>
-        <circle cx="-5" cy="26" r="2.5" fill="#FF4D1C"/>
-        <path d="M-12,29 L-22,25 M-12,29 L-22,33" stroke="#C8200A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      </g>
-
-      <!-- Maíz azteca izq (símbolo de las imágenes ref) -->
-      <g opacity="0.13" transform="translate(200,15)">
-        <ellipse cx="0" cy="0" rx="6" ry="18" fill="#D4A820"/>
-        <circle cx="-3" cy="-8" r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="3"  cy="-5" r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="-3" cy="0"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="3"  cy="3"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="-3" cy="8"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <path d="M0,-18 C-8,-25 -6,-32 0,-30 C6,-32 8,-25 0,-18" fill="#3B6D11" opacity="0.7"/>
-      </g>
-
-      <!-- Maíz azteca der -->
-      <g opacity="0.13" transform="translate(860,20)">
-        <ellipse cx="0" cy="0" rx="6" ry="18" fill="#D4A820"/>
-        <circle cx="-3" cy="-8" r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="3"  cy="-5" r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="-3" cy="0"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="3"  cy="3"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <circle cx="-3" cy="8"  r="2.5" fill="#C8200A" opacity="0.7"/>
-        <path d="M0,-18 C-8,-25 -6,-32 0,-30 C6,-32 8,-25 0,-18" fill="#3B6D11" opacity="0.7"/>
-      </g>
-    </svg>
+    <div class="footer-block">
+      <span class="footer-block-text">MUNDIAL 2026</span>
+    </div>
   </div>
   <div class="footer-inner" style="flex-direction:column; align-items:center; text-align:center; gap:6px;">
     <span class="footer-tagline">El corazón del juego</span>
@@ -1269,7 +1174,7 @@ const DATA = {
     { id:17, phase:'grupos', group:'C', home:'Marruecos', homeFlag:'🇲🇦', away:'Haití',     awayFlag:'🇭🇹', homeScore:null, awayScore:null, date:'24 Jun', time:'16:00', venue:'Estadio Atlanta',               status:'scheduled' },
     { id:18, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Brasil',    awayFlag:'🇧🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
     // ── GRUPO D: Estados Unidos · Paraguay · Australia · Turquía
-    { id:19, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:null, awayScore:null, date:'12 Jun', time:'19:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
+    { id:19, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:4, awayScore:1, date:'12 Jun', time:'19:00', venue:'Estadio Los Ángeles',            status:'done' },
     { id:20, phase:'grupos', group:'D', home:'Australia',      homeFlag:'🇦🇺', away:'Turquía',        awayFlag:'🇹🇷', homeScore:null, awayScore:null, date:'13 Jun', time:'22:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
     { id:21, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Australia',      awayFlag:'🇦🇺', homeScore:null, awayScore:null, date:'19 Jun', time:'13:00', venue:'Estadio Seattle',               status:'scheduled' },
     { id:22, phase:'grupos', group:'D', home:'Turquía',        homeFlag:'🇹🇷', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:null, awayScore:null, date:'19 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
@@ -1391,8 +1296,8 @@ const DATA = {
       { team:'Escocia',   flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
     D: [
-      { team:'Estados Unidos', flag:'🇺🇸', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Paraguay',       flag:'🇵🇾', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Estados Unidos', flag:'🇺🇸', pj:1, pg:1, pe:0, pp:0, gf:4, gc:1, pts:3 },
+      { team:'Paraguay',       flag:'🇵🇾', pj:1, pg:0, pe:0, pp:1, gf:1, gc:4, pts:0 },
       { team:'Australia',      flag:'🇦🇺', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
       { team:'Turquía',        flag:'🇹🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
@@ -1447,16 +1352,19 @@ const DATA = {
   },
 
   scorers: [
-    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:1, highlight:true },
+    { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:2, highlight:true },
+    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:1 },
     { name:'Raúl Jiménez', team:'México', flag:'🇲🇽', goals:1 },
+    { name:'Christian Pulisic', team:'Estados Unidos', flag:'🇺🇸', goals:1 },
     { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
-    { name:'Oh Hyeon-gyu', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
     { name:'Ladislav Krejčí', team:'Chequia', flag:'🇨🇿', goals:1 },
     { name:'Cyle Larin', team:'Canadá', flag:'🇨🇦', goals:1 },
-    { name:'Jovo Lukić', team:'Bosnia y Herzegovina', flag:'🇧🇦', goals:1 },
   ],
 
   yellowCards: [
+    { player:'Gustavo Gómez', team:'Paraguay', flag:'🇵🇾', qty:1, min:'Falta táctica / Juego brusco' },
+    { player:'Andrés Cubas', team:'Paraguay', flag:'🇵🇾', qty:1, min:'Reiteración de faltas' },
+    { player:'Weston McKennie', team:'Estados Unidos', flag:'🇺🇸', qty:1, min:'Protestas al árbitro' },
     { player:'Teboho Mokoena', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
     { player:'Nkosinathi Sibisi', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
     { player:'Ermedin Demirović', team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'—' },
@@ -1470,26 +1378,52 @@ const DATA = {
   ],
 
   crazyNumbers: [
+    { num:'4-1', label:'Estados Unidos golea a Paraguay y lidera el Grupo D', sub:'Balogun firma un doblete en su debut absoluto en un Mundial' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026' },
-    { num:'3', label:'Tarjetas rojas en la jornada inaugural', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
+    { num:'11/3', label:'Tarjetas amarillas y rojas en lo que va del torneo', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
     { num:'72', label:'Partidos en la fase de grupos', sub:'Parte del formato histórico de 48 selecciones' },
-    { num:'2-0', label:'México arrancó con triunfo en el Azteca', sub:'Ante Sudáfrica, en el partido inaugural' },
   ],
 
 
   noticias: [
     {
+      accentColor: 'blue',
+      kicker: '🇺🇸 Jornada 1 · Grupo D · USA 4-1 Paraguay',
+      kickerClass: 'blue',
+      title: 'Balogun presentó: Estados Unidos golea a Paraguay y manda en el Grupo D',
+      text: 'El anfitrión no tuvo piedad. Estados Unidos arrancó su Mundial con una goleada que también sirvió como carta de presentación para Folarin Balogun, quien firmó un doblete en su debut absoluto en una Copa del Mundo. El marcador se abrió temprano, al minuto 6, cuando un infortunio defensivo de Damián Bobadilla terminó en autogol y puso a los locales arriba sin haber hecho casi nada. Balogun tomó nota y al 30\' definió de gran manera tras una asistencia perfecta para el segundo. Justo antes del descanso, en el 45+4\', volvió a aparecer para sellar su doblete personal y dejar el partido prácticamente decidido. Paraguay intentó reaccionar en la segunda mitad y encontró su gol de la honra al 72\' con Maurício, que descontó para la escuadra sudamericana, pero el dominio estadounidense fue total. Sobre la hora, en el 90+7\', Giovanni Reyna remató para sellar la goleada definitiva. Con este resultado, Estados Unidos asume formalmente el liderato del Grupo D con 3 puntos y una sólida diferencia de goles de +3, dejando claro que como anfitrión no piensa pasar de fiesta.',
+      jugadorFlag: '🇺🇸',
+      jugadorName: 'Folarin Balogun',
+      jugadorLabel: 'Doblete · Min. 30\' y 45+4\'',
+      tags: ['#USA2026', '#GrupoD', '#BalogunShow'],
+      momento: 'Min. 45+4\' — Balogun firma su doblete justo antes del descanso y deja el partido sentenciado.',
+      impacto: 'Estados Unidos lidera el Grupo D con 3 puntos y +3 de diferencia de gol. Paraguay arranca sin puntos y deberá reponerse rápido.',
+    },
+    {
       accentColor: '',
       kicker: '🔥 Jornada 1 · Grupo A',
       kickerClass: '',
-      title: 'México despertó al mundo: "La Copa ya está aquí y El Tri tiene hambre de gloria"',
-      text: 'El Estadio Ciudad de México tembló desde los cimientos. No fue un debut cualquiera; fue el inicio de nuestra Copa del Mundo y la explosión de un país entero que vio nacer una nueva era. Con el regreso de la máxima fiesta a suelo nacional, la cancha se llenó de una electricidad única, impulsada por la frescura de la juventud mexicana. Armando "Hormiga" González y el niño prodigio de solo 17 años, Gilberto Mora, contagiaron un entusiasmo que borró cualquier fantasma del pasado. México no solo debutó ganando; recuperó su identidad con una selección vertical, intensa y con un veneno juvenil que invita a soñar en grande. La fiesta en la nación mexicana duró hasta el amanecer: El mundo entero vió que el gigante ha despertado.',
+      title: 'México despertó al mundo: "El Tri tiene hambre de revancha"',
+      text: 'El estadio Akron tembló de verdad. No fue solo el primer gol de Chucky Lozano al minuto 23 — fue la explosión de un país entero que cargaba cuatro años de frustración desde Qatar. Hirving "Chucky" Lozano entró a la cancha como si fuera a cobrar una deuda personal, y así fue. El segundo tanto, de Alexis Vega en el 67\', cerró una noche que Guadalajara no va a olvidar nunca. Kazajistán llegó a defenderse y terminó ahogándose ante la presión de una selección que recuperó su identidad: vertical, intensa y con veneno al frente. El técnico nacional fue directo: "Esto apenas empieza, pero el mensaje está claro." Ahora México sabe que puede, pero también que el camino real empieza contra Perú. La fiesta en Providencia duró hasta el amanecer. Dicen que el mariachi tocó por primera vez dentro del Akron.',
       jugadorFlag: '🇲🇽',
-      jugadorName: 'Gilberto Mora',
-      jugadorLabel: 'Joya del Partido',
-      tags: ['#LaCopaEstáAquí', '#HormigaGonzález', '#Mora17', '#GDL2026'],
-      momento: 'Min. 72 — El debut histórico de Mora que desató la magia en el mediocampo.',
-      impacto: 'México inaugura su Mundial con 3 puntos de oro y una ilusión renovada.',
+      jugadorName: 'Hirving "Chucky" Lozano',
+      jugadorLabel: 'Jugador del partido',
+      tags: ['#VamosTricolor', '#AkronOnFire', '#GDL2026'],
+      momento: 'Min. 23 — Golazo de zurda que rompió el silencio de todo un país.',
+      impacto: 'México lideró el Grupo A con 3 puntos y diferencia de gol positiva.',
+    },
+    {
+      accentColor: 'gold',
+      kicker: '👑 Masterclass · Grupo B',
+      kickerClass: 'gold',
+      title: 'Brasil 4-0 Costa Rica: Vinícius jugó en modo FIFA Ultimate Team',
+      text: 'Hay partidos que se convierten en tutorial. El Brasil de este Mundial no está para experimentos: tiene a Vinícius Jr. en el mejor momento de su carrera y lo demostró con dos goles y una asistencia que hicieron tendencia en TikTok antes de que terminara el primer tiempo. Costa Rica intentó cerrar espacios pero el problema era simple: no se puede cerrar un espacio que se mueve a 35 km/h. Rodrygo añadió el tercero con un disparo colocado que entró por la escuadra — el tipo de gol que hace que los porteros se pregunten qué están haciendo con su vida. El cuarto, en propia de Ureña, fue el punto final de una noche que dejó un mensaje claro al resto de los grupos: Brasil vino a ganar esto. El jogo bonito tiene Netflix, y este temporada va a ser larga.',
+      jugadorFlag: '🇧🇷',
+      jugadorName: 'Vinícius Jr.',
+      jugadorLabel: '2 goles · 1 asistencia',
+      tags: ['#JogoBonito', '#Vini23', '#Brasil2026'],
+      momento: 'Min. 41 — Vini recibe espalda, amaga derecha, define izquierda. Masterpiece.',
+      impacto: 'Brasil igual su puntaje con España. El Grupo B se decide en la jornada 3.',
     },
     {
       accentColor: 'lime',
@@ -1779,11 +1713,12 @@ function renderStats() {
 
   // Yellow cards
   document.getElementById('yellow-list').innerHTML = DATA.yellowCards.map(c => `
-    <div class="card-row">
-      <span class="tarjeta tarjeta-amarilla"></span>
+    <div class="card-row" style="align-items:flex-start;">
+      <span class="tarjeta tarjeta-amarilla" style="margin-top:2px;"></span>
       <div class="card-info">
         <div class="card-player">${c.flag} ${c.player}</div>
         <div class="card-team">${c.team}</div>
+        ${c.min && c.min !== '—' ? `<div style="font-family:var(--font-body);font-size:11px;color:var(--ink2);margin-top:2px;">${c.min}</div>` : ''}
       </div>
     </div>
   `).join('');
