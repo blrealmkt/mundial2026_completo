@@ -1,3 +1,4 @@
+<title>Mundial 2026 - Calendario</title>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
