@@ -903,6 +903,79 @@ body {
 
 .full-width { grid-column: 1 / -1; }
 
+/* ── EVENTO CARDS ── */
+.evento-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.evento-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  gap: 6px;
+}
+.evento-emoji { font-size: 28px; line-height: 1; }
+.evento-acceso {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+}
+.evento-body { padding: 14px 16px; border-left: 1.5px solid var(--border); }
+.evento-cat {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.evento-nombre {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.evento-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.evento-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink2);
+  letter-spacing: .04em;
+}
+.evento-nota {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.4;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 0.5px solid var(--border);
+}
+
 /* ── FOOTER DECO SVG ── */
 .footer-deco {
   width: 100%;
@@ -1088,6 +1161,12 @@ body {
   <div class="gdl-matches-list" id="gdl-matches"></div>
 
   <div class="section-head mt-20">
+    <div class="section-title">Eventos en <span>Guadalajara</span></div>
+    <div class="section-sub">Conciertos · Activaciones · Entretenimiento · Todos gratuitos</div>
+  </div>
+  <div id="eventos-container" style="display:flex;flex-direction:column;gap:12px;"></div>
+
+  <div class="section-head mt-20">
     <div class="section-title">Datos <span>Curiosos</span></div>
     <div class="section-sub">Lo que no sabías de GDL y el Mundial</div>
   </div>
@@ -1140,12 +1219,13 @@ const DATA = {
   currentWeek: { startDate: '11 Jun', endDate: '15 Jun', label: 'Semana del 11 al 15 de junio' },
 
   phases: [
-    { id: 'semana', label: 'Esta Semana' },
-    { id: 'grupos', label: 'Fase de Grupos' },
+    { id: 'semana',        label: 'Esta Semana' },
+    { id: 'grupos',        label: 'Fase de Grupos' },
     { id: 'dieciseisavos', label: 'Dieciseisavos' },
-    { id: 'cuartos', label: 'Cuartos de Final' },
-    { id: 'semis', label: 'Semifinales' },
-    { id: 'final', label: 'Final' },
+    { id: 'octavos',       label: 'Octavos de Final' },
+    { id: 'cuartos',       label: 'Cuartos de Final' },
+    { id: 'semis',         label: 'Semifinales' },
+    { id: 'final',         label: 'Final' },
   ],
 
   groups: ['A','B','C','D','E','F','G','H','I','J','K','L'],
@@ -1252,27 +1332,59 @@ const DATA = {
     { id:86,  phase:'dieciseisavos', group:null, home:'1° Grupo J', homeFlag:'🏆', away:'2° Grupo H',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'18:00', venue:'Estadio Miami',                 status:'scheduled' },
     { id:87,  phase:'dieciseisavos', group:null, home:'1° Grupo K', homeFlag:'🏆', away:'3° D/E/I/J/L',awayFlag:'⭐', homeScore:null, awayScore:null, date:'03 Jul', time:'18:00', venue:'Estadio Kansas City',           status:'scheduled' },
     { id:88,  phase:'dieciseisavos', group:null, home:'2° Grupo D', homeFlag:'🥈', away:'2° Grupo G',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'14:00', venue:'Estadio Dallas',               status:'scheduled' },
-    // ── CUARTOS DE FINAL
-    { id:89,  phase:'cuartos', group:null, home:'Ganador 74', homeFlag:'⚽', away:'Ganador 77', awayFlag:'⚽', homeScore:null, awayScore:null, date:'04 Jul', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
-    { id:90,  phase:'cuartos', group:null, home:'Ganador 73', homeFlag:'⚽', away:'Ganador 75', awayFlag:'⚽', homeScore:null, awayScore:null, date:'04 Jul', time:'19:00', venue:'Estadio Houston',    status:'scheduled' },
-    { id:91,  phase:'cuartos', group:null, home:'Ganador 76', homeFlag:'⚽', away:'Ganador 78', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
-    { id:92,  phase:'cuartos', group:null, home:'Ganador 79', homeFlag:'⚽', away:'Ganador 80', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
-    { id:93,  phase:'cuartos', group:null, home:'Ganador 83', homeFlag:'⚽', away:'Ganador 84', awayFlag:'⚽', homeScore:null, awayScore:null, date:'06 Jul', time:'18:00', venue:'Estadio Dallas',     status:'scheduled' },
-    { id:94,  phase:'cuartos', group:null, home:'Ganador 81', homeFlag:'⚽', away:'Ganador 82', awayFlag:'⚽', homeScore:null, awayScore:null, date:'06 Jul', time:'15:00', venue:'Estadio Seattle',    status:'scheduled' },
-    { id:95,  phase:'cuartos', group:null, home:'Ganador 86', homeFlag:'⚽', away:'Ganador 88', awayFlag:'⚽', homeScore:null, awayScore:null, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta',    status:'scheduled' },
-    { id:96,  phase:'cuartos', group:null, home:'Ganador 85', homeFlag:'⚽', away:'Ganador 87', awayFlag:'⚽', homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
-    // ── CUARTOS DE FINAL (ronda propia)
-    { id:97,  phase:'cuartos', group:null, home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'09 Jul', time:'13:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
-    { id:98,  phase:'cuartos', group:null, home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'10 Jul', time:'14:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
-    { id:99,  phase:'cuartos', group:null, home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'14:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
-    { id:100, phase:'cuartos', group:null, home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'18:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
+    // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
+    { id:89, phase:'octavos', group:null,
+      home:'1° Grupo E', homeFlag:'🏆', away:'3° mejores del torneo', awayFlag:'⭐',
+      homeScore:null, awayScore:null, date:'04 Jul', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
+    { id:90, phase:'octavos', group:null,
+      home:'2° Grupo A', homeFlag:'🥈', away:'1° Grupo F', awayFlag:'🏆',
+      homeScore:null, awayScore:null, date:'04 Jul', time:'19:00', venue:'Estadio Houston', status:'scheduled' },
+    { id:91, phase:'octavos', group:null,
+      home:'1° Grupo C', homeFlag:'🏆', away:'2° Grupo E o 2° Grupo I', awayFlag:'🥈',
+      homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
+    { id:92, phase:'octavos', group:null,
+      home:'1° Grupo A', homeFlag:'🏆', away:'1° Grupo L', awayFlag:'🏆',
+      homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
+    { id:93, phase:'octavos', group:null,
+      home:'2° Grupo K', homeFlag:'🥈', away:'1° Grupo H', awayFlag:'🏆',
+      homeScore:null, awayScore:null, date:'06 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
+    { id:94, phase:'octavos', group:null,
+      home:'1° Grupo D', homeFlag:'🏆', away:'1° Grupo G', awayFlag:'🏆',
+      homeScore:null, awayScore:null, date:'06 Jul', time:'15:00', venue:'Estadio Seattle', status:'scheduled' },
+    { id:95, phase:'octavos', group:null,
+      home:'1° Grupo J', homeFlag:'🏆', away:'2° Grupo D o 2° Grupo G', awayFlag:'🥈',
+      homeScore:null, awayScore:null, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'scheduled' },
+    { id:96, phase:'octavos', group:null,
+      home:'1° Grupo B', homeFlag:'🏆', away:'1° Grupo K', awayFlag:'🏆',
+      homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
+    // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
+    { id:97,  phase:'cuartos', group:null,
+      home:'Ganador Filadelfia 4 Jul', homeFlag:'⚽', away:'Ganador Houston 4 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'09 Jul', time:'13:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
+    { id:98,  phase:'cuartos', group:null,
+      home:'Ganador Nueva York 5 Jul', homeFlag:'⚽', away:'Ganador Seattle 6 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'10 Jul', time:'14:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
+    { id:99,  phase:'cuartos', group:null,
+      home:'Ganador CDMX 5 Jul', homeFlag:'⚽', away:'Ganador Dallas 6 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'11 Jul', time:'14:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
+    { id:100, phase:'cuartos', group:null,
+      home:'Ganador Atlanta 7 Jul', homeFlag:'⚽', away:'Ganador Vancouver 7 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'11 Jul', time:'18:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
     // ── SEMIFINALES
-    { id:101, phase:'semis', group:null, home:'Ganador 97', homeFlag:'⚽', away:'Ganador 98', awayFlag:'⚽', homeScore:null, awayScore:null, date:'14 Jul', time:'18:00', venue:'Estadio Dallas',   status:'scheduled' },
-    { id:102, phase:'semis', group:null, home:'Ganador 99', homeFlag:'⚽', away:'Ganador 100',awayFlag:'⚽', homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta',  status:'scheduled' },
+    { id:101, phase:'semis', group:null,
+      home:'Ganador Boston 9 Jul', homeFlag:'⚽', away:'Ganador Los Ángeles 10 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'14 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
+    { id:102, phase:'semis', group:null,
+      home:'Ganador Miami 11 Jul', homeFlag:'⚽', away:'Ganador Kansas City 11 Jul', awayFlag:'⚽',
+      homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
     // ── TERCER PUESTO
-    { id:103, phase:'semis', group:null, home:'Perdedor 101',homeFlag:'🥉', away:'Perdedor 102',awayFlag:'🥉', homeScore:null, awayScore:null, date:'18 Jul', time:'13:00', venue:'Estadio Miami',   status:'scheduled' },
+    { id:103, phase:'semis', group:null,
+      home:'Perdedor Semifinal 1', homeFlag:'🥉', away:'Perdedor Semifinal 2', awayFlag:'🥉',
+      homeScore:null, awayScore:null, date:'18 Jul', time:'13:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
     // ── GRAN FINAL
-    { id:104, phase:'final', group:null, home:'Ganador 101', homeFlag:'🌎', away:'Ganador 102', awayFlag:'🌎', homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
+    { id:104, phase:'final', group:null,
+      home:'Campeón Semifinal 1', homeFlag:'🌎', away:'Campeón Semifinal 2', awayFlag:'🌎',
+      homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
   ],
 
   standings: {
@@ -1351,16 +1463,20 @@ const DATA = {
   },
 
   scorers: [
-    { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:2, highlight:true },
-    { name:'Julián Quiñones', team:'México (Primer gol del Mundial · Min. 11\')', flag:'🇲🇽', goals:1 },
-    { name:'Raúl Jiménez', team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
-    { name:'Christian Pulisic', team:'Estados Unidos', flag:'🇺🇸', goals:1 },
-    { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
-    { name:'Ladislav Krejčí', team:'Chequia', flag:'🇨🇿', goals:1 },
-    { name:'Cyle Larin', team:'Canadá', flag:'🇨🇦', goals:1 },
-    { name:'Breel Embolo', team:'Suiza (Pen. · Min. 16\')', flag:'🇨🇭', goals:1 },
+    { name:'Folarin Balogun',   team:'Estados Unidos', flag:'🇺🇸', goals:2, highlight:true },
     { name:'Nestory Irankunda', team:'Australia · Min. 26\'', flag:'🇦🇺', goals:1 },
-    { name:'Connor Metcalfe', team:'Australia · Min. 74\'', flag:'🇦🇺', goals:1 },
+    { name:'Connor Metcalfe',   team:'Australia · Min. 74\'', flag:'🇦🇺', goals:1 },
+    { name:'Breel Embolo',      team:'Suiza · Pen. Min. 16\'', flag:'🇨🇭', goals:1 },
+    { name:'Vinícius Júnior',   team:'Brasil · Min. 31\'', flag:'🇧🇷', goals:1 },
+    { name:'Ismael Saibari',    team:'Marruecos · Min. 20\'', flag:'🇲🇦', goals:1 },
+    { name:'John McGinn',       team:'Escocia · Min. 27\'', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', goals:1 },
+    { name:'Julián Quiñones',   team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
+    { name:'Raúl Jiménez',      team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
+    { name:'Christian Pulisic', team:'Estados Unidos', flag:'🇺🇸', goals:1 },
+    { name:'Hwang In-beom',     team:'Corea del Sur', flag:'🇰🇷', goals:1 },
+    { name:'Ladislav Krejčí',   team:'Chequia', flag:'🇨🇿', goals:1 },
+    { name:'Cyle Larin',        team:'Canadá', flag:'🇨🇦', goals:1 },
+    { name:'Miro Muheim',       team:'Suiza · AG Min. 90+3\'', flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
   yellowCards: [
@@ -1375,19 +1491,19 @@ const DATA = {
     { player:'Andrés Cubas', team:'Paraguay', flag:'🇵🇾', qty:1, min:'Reiteración de faltas' },
     { player:'Weston McKennie', team:'Estados Unidos', flag:'🇺🇸', qty:1, min:'Protestas al árbitro' },
     // Partido Catar-Suiza (13 jun)
-    { player:'Jugador Catar', team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 15\'' },
-    { player:'Jugador Catar', team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 22\'' },
-    { player:'Jugador Suiza', team:'Suiza', flag:'🇨🇭', qty:1, min:'Min. 41\'' },
+    { player:'Homam Ahmed',      team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 15\'' },
+    { player:'Jassem Gaber',     team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 22\'' },
+    { player:'Granit Xhaka',     team:'Suiza', flag:'🇨🇭', qty:1, min:'Min. 41\'' },
     // Partido Brasil-Marruecos (13 jun)
-    { player:'Jugador Brasil', team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 36\'' },
-    { player:'Jugador Brasil', team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 42\'' },
+    { player:'Bruno Guimarães',  team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 36\'' },
+    { player:'Lucas Paquetá',    team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 42\'' },
     // Partido Haití-Escocia (13 jun)
-    { player:'Jugador Haití', team:'Haití', flag:'🇭🇹', qty:1, min:'Min. 38\'' },
-    { player:'Jugador Escocia', team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 45\'' },
-    { player:'Jugador Escocia', team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
-    { player:'Jugador Escocia', team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
+    { player:'Carlens Arcus',    team:'Haití', flag:'🇭🇹', qty:1, min:'Min. 38\'' },
+    { player:'Billy Gilmour',    team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 45\'' },
+    { player:'Scott McTominay',  team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
+    { player:'John McGinn',      team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
     // Partido Australia-Turquía (13 jun)
-    { player:'Yunus Akgün', team:'Turquía', flag:'🇹🇷', qty:1, min:'Min. 85\'' },
+    { player:'Yunus Akgün',      team:'Turquía', flag:'🇹🇷', qty:1, min:'Min. 85\'' },
   ],
 
   redCards: [
@@ -1397,10 +1513,10 @@ const DATA = {
   ],
 
   crazyNumbers: [
+    { num:'19', label:'Goles en los primeros 8 partidos del torneo', sub:'2.4 goles por partido — ritmo de anotación histórico en la fase inicial' },
     { num:'4-1', label:'Estados Unidos golea a Paraguay y lidera el Grupo D', sub:'Balogun firma un doblete en su debut absoluto en un Mundial' },
-    { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026' },
-    { num:'11/3', label:'Tarjetas amarillas y rojas en lo que va del torneo', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
-    { num:'72', label:'Partidos en la fase de grupos', sub:'Parte del formato histórico de 48 selecciones' },
+    { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
+    { num:'17', label:'Tarjetas amarillas acumuladas en la jornada', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
   ],
 
 
@@ -1477,6 +1593,31 @@ const DATA = {
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'20 Jun', time:'20:00', status:'scheduled' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', status:'scheduled' },
     { id:71, sede:'mty',  grupo:'Grupo L', home:'Croacia',       homeFlag:'🇭🇷', away:'Ghana',       awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', status:'scheduled' },
+  ],
+
+  eventos: [
+    {
+      nombre: 'Maná — "Una Noche Histórica"',
+      categoria: 'Concierto',
+      categoriaColor: '#FF4D1C',
+      emoji: '🎸',
+      fecha: 'Miércoles 17 de junio',
+      hora: 'Accesos desde las 18:00 hrs',
+      lugar: 'La Minerva · Av. Ignacio L. Vallarta',
+      acceso: 'GRATIS',
+      nota: 'Un día antes del partido México vs. Rep. de Corea en el Estadio Guadalajara.',
+    },
+    {
+      nombre: 'Alejandro Fernández',
+      categoria: 'Concierto',
+      categoriaColor: '#D4A820',
+      emoji: '🎤',
+      fecha: 'Jueves 25 de junio',
+      hora: 'A partir de las 20:00 hrs',
+      lugar: 'La Minerva · Av. Ignacio L. Vallarta',
+      acceso: 'GRATIS',
+      nota: 'Noche de festejo en la ciudad anfitriona del Mundial.',
+    },
   ],
 
   curiosidades: [
@@ -1701,20 +1842,24 @@ function renderStandings() {
 // RENDER: STATS
 // ══════════════════════════════════════════════════════════
 function renderStats() {
-  // Scorers
-  document.getElementById('scorers-list').innerHTML = DATA.scorers.map((s,i) => `
-    <div class="scorer-row" style="${s.highlight ? 'background:var(--fire-light);' : ''}">
-      <span class="scorer-rank ${i < 3 || s.highlight ? 'top' : ''}">${i+1}</span>
+  // Scorers — separar los de 2 goles de los de 1 para mejor jerarquía visual
+  document.getElementById('scorers-list').innerHTML = DATA.scorers.map((s,i) => {
+    const agTag = s.isOwnGoal
+      ? `<span style="font-family:var(--font-mono);font-size:9px;background:var(--bg3);color:var(--ink3);padding:1px 5px;border-radius:2px;margin-left:4px;letter-spacing:.06em;">AG</span>`
+      : '';
+    return `
+    <div class="scorer-row" style="${s.highlight ? 'background:var(--fire-light);' : s.isOwnGoal ? 'opacity:.75;' : ''}">
+      <span class="scorer-rank ${(i < 3 || s.highlight) && !s.isOwnGoal ? 'top' : ''}">${i+1}</span>
       <div class="scorer-info">
-        <div class="scorer-name">${s.flag} ${s.name}</div>
+        <div class="scorer-name">${s.flag} ${s.name}${agTag}</div>
         <div class="scorer-team">${s.team}</div>
       </div>
       <div style="text-align:right;">
-        <div class="goals-num">${s.goals}</div>
-        <div class="goals-label">gol${s.goals !== 1 ? 'es' : ''}</div>
+        <div class="goals-num" style="${s.isOwnGoal ? 'color:var(--ink3);font-size:16px;' : ''}">${s.goals}</div>
+        <div class="goals-label">${s.isOwnGoal ? 'autogol' : 'gol' + (s.goals !== 1 ? 'es' : '')}</div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 
   // Yellow cards
   document.getElementById('yellow-list').innerHTML = DATA.yellowCards.map(c => `
@@ -1855,6 +2000,26 @@ function renderGDL() {
   });
 
   document.getElementById('gdl-matches').innerHTML = html;
+
+  // Eventos GDL
+  document.getElementById('eventos-container').innerHTML = DATA.eventos.map(e => `
+    <div class="evento-card">
+      <div class="evento-lateral" style="background:${e.categoriaColor}12;">
+        <span class="evento-emoji">${e.emoji}</span>
+        <span class="evento-acceso" style="background:${e.categoriaColor};">${e.acceso}</span>
+      </div>
+      <div class="evento-body">
+        <div class="evento-cat" style="color:${e.categoriaColor};">${e.categoria}</div>
+        <div class="evento-nombre">${e.nombre}</div>
+        <div class="evento-meta">
+          <span class="evento-meta-item">📅 ${e.fecha}</span>
+          <span class="evento-meta-item">🕐 ${e.hora}</span>
+          <span class="evento-meta-item">📍 ${e.lugar}</span>
+        </div>
+        ${e.nota ? `<div class="evento-nota">${e.nota}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
 
   document.getElementById('curiosidades-container').innerHTML = DATA.curiosidades.map(c => `
     <div style="background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;">
