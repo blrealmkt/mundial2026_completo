@@ -903,6 +903,25 @@ body {
 
 .full-width { grid-column: 1 / -1; }
 
+/* ── SEDES GRID ── */
+.sedes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 4px;
+}
+@media (max-width: 760px) {
+  .sedes-grid { grid-template-columns: 1fr; }
+}
+
+/* acento izquierdo por ciudad */
+.sede-hero-gdl { border-left: 4px solid var(--fire); }
+.sede-hero-cdmx { border-left: 4px solid #006847; }
+.sede-hero-mty  { border-left: 4px solid var(--gold); }
+
+.sede-hero-cdmx .gdl-hero-title span { color: #4CAF50; }
+.sede-hero-mty  .gdl-hero-title span { color: var(--gold); }
+
 /* ── EVENTO CARDS ── */
 .evento-card {
   background: var(--white);
@@ -1143,16 +1162,50 @@ body {
 
 <!-- ══════════════════════════════════════ VIEW: GDL -->
 <div id="view-gdl" class="view">
-  <div class="gdl-hero">
-    <div class="gdl-hero-kicker">Ciudad sede · 3 veces mundialista</div>
-    <div class="gdl-hero-title">Guadalajara <span>2026</span></div>
-    <div class="gdl-hero-text">La ciudad que vio nacer al mariachi, al tequila y a la chingonería mexicana vuelve a ser el centro del mundo. 1970, 1986 y ahora 2026: el Estadio Akron escribe el tercer capítulo de la historia.</div>
-    <div class="gdl-stats-row">
-      <div class="gdl-stat"><span class="gdl-stat-num">6</span><span class="gdl-stat-label">Partidos sede</span></div>
-      <div class="gdl-stat"><span class="gdl-stat-num">3</span><span class="gdl-stat-label">Veces mundialista</span></div>
-      <div class="gdl-stat"><span class="gdl-stat-num">49k</span><span class="gdl-stat-label">Capacidad Akron</span></div>
-      <div class="gdl-stat"><span class="gdl-stat-num">39</span><span class="gdl-stat-label">Días de fiesta</span></div>
+
+  <div class="section-head">
+    <div>
+      <div class="section-title">México <span>2026</span></div>
+      <div class="section-sub">3 ciudades sede · 3 estadios · El Mundial en casa</div>
     </div>
+  </div>
+
+  <!-- Heroes de las 3 ciudades -->
+  <div class="sedes-grid">
+
+    <div class="gdl-hero sede-hero-gdl">
+      <div class="gdl-hero-kicker">Estadio Guadalajara · 3 veces mundialista</div>
+      <div class="gdl-hero-title">Guadalajara <span>2026</span></div>
+      <div class="gdl-hero-text">La ciudad del mariachi, el tequila y el fútbol tapatío. 1970, 1986 y ahora 2026: el Estadio Guadalajara escribe el tercer capítulo de la historia.</div>
+      <div class="gdl-stats-row">
+        <div class="gdl-stat"><span class="gdl-stat-num">5</span><span class="gdl-stat-label">Partidos</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">3×</span><span class="gdl-stat-label">Mundialista</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">49k</span><span class="gdl-stat-label">Capacidad</span></div>
+      </div>
+    </div>
+
+    <div class="gdl-hero sede-hero-cdmx">
+      <div class="gdl-hero-kicker">Estadio Ciudad de México · Leyenda viva</div>
+      <div class="gdl-hero-title">Ciudad de <span>México</span></div>
+      <div class="gdl-hero-text">El Estadio Azteca. La casa del Gol del Siglo. El recinto más icónico del fútbol mundial vuelve a ser el escenario más grande del torneo.</div>
+      <div class="gdl-stats-row">
+        <div class="gdl-stat"><span class="gdl-stat-num">5</span><span class="gdl-stat-label">Partidos</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">3×</span><span class="gdl-stat-label">Mundialista</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">87k</span><span class="gdl-stat-label">Capacidad</span></div>
+      </div>
+    </div>
+
+    <div class="gdl-hero sede-hero-mty">
+      <div class="gdl-hero-kicker">Estadio Monterrey · La sultana del norte</div>
+      <div class="gdl-hero-title">Monterrey <span>2026</span></div>
+      <div class="gdl-hero-text">La ciudad más industrial y cosmopolita del norte de México entra al mapa mundial con el Estadio BBVA como escenario de lujo para el torneo.</div>
+      <div class="gdl-stats-row">
+        <div class="gdl-stat"><span class="gdl-stat-num">4</span><span class="gdl-stat-label">Partidos</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">1×</span><span class="gdl-stat-label">Mundialista</span></div>
+        <div class="gdl-stat"><span class="gdl-stat-num">53k</span><span class="gdl-stat-label">Capacidad</span></div>
+      </div>
+    </div>
+
   </div>
 
   <div class="section-head mt-20">
@@ -1267,7 +1320,7 @@ const DATA = {
     { id:29, phase:'grupos', group:'E', home:'Curazao',         homeFlag:'🇨🇼', away:'Costa de Marfil',awayFlag:'🇨🇮', homeScore:null, awayScore:null, date:'25 Jun', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
     { id:30, phase:'grupos', group:'E', home:'Ecuador',         homeFlag:'🇪🇨', away:'Alemania',       awayFlag:'🇩🇪', homeScore:null, awayScore:null, date:'25 Jun', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
     // ── GRUPO F: Países Bajos · Japón · Suecia · Túnez
-    { id:31, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Japón',  awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'14 Jun', time:'14:00', venue:'Estadio Dallas',    status:'scheduled' },
+    { id:31, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Japón',  awayFlag:'🇯🇵', homeScore:2, awayScore:1, date:'14 Jun', time:'14:00', venue:'Estadio Dallas',    status:'done' },
     { id:32, phase:'grupos', group:'F', home:'Suecia',       homeFlag:'🇸🇪', away:'Túnez',  awayFlag:'🇹🇳', homeScore:null, awayScore:null, date:'14 Jun', time:'20:00', venue:'Estadio Monterrey',  status:'scheduled' },
     { id:33, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, date:'20 Jun', time:'11:00', venue:'Estadio Houston',    status:'scheduled' },
     { id:34, phase:'grupos', group:'F', home:'Túnez',        homeFlag:'🇹🇳', away:'Japón',  awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'20 Jun', time:'20:00', venue:'Estadio Monterrey',  status:'scheduled' },
@@ -1419,8 +1472,8 @@ const DATA = {
       { team:'Ecuador',         flag:'🇪🇨', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
     F: [
-      { team:'Países Bajos', flag:'🇳🇱', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Japón',        flag:'🇯🇵', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Países Bajos', flag:'🇳🇱', pj:1, pg:1, pe:0, pp:0, gf:2, gc:1, pts:3 },
+      { team:'Japón',        flag:'🇯🇵', pj:1, pg:0, pe:0, pp:1, gf:1, gc:2, pts:0 },
       { team:'Suecia',       flag:'🇸🇪', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
       { team:'Túnez',        flag:'🇹🇳', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
@@ -1483,7 +1536,10 @@ const DATA = {
     { name:'Ladislav Krejčí',    team:'Chequia', flag:'🇨🇿', goals:1 },
     { name:'Cyle Larin',         team:'Canadá', flag:'🇨🇦', goals:1 },
     { name:'Livano Comenencia',  team:'Curazao · Min. 21\'', flag:'🇨🇼', goals:1 },
-    { name:'Miro Muheim',        team:'Suiza · AG Min. 90+3\'', flag:'🇨🇭', goals:1, isOwnGoal:true },
+    { name:'Virgil van Dijk',      team:'Países Bajos · Min. 50\'', flag:'🇳🇱', goals:1 },
+    { name:'Keito Nakamura',       team:'Japón · Min. 56\'', flag:'🇯🇵', goals:1 },
+    { name:'Crysencio Summerville',team:'Países Bajos · Min. 63\'', flag:'🇳🇱', goals:1 },
+    { name:'Miro Muheim',          team:'Suiza · AG Min. 90+3\'', flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
   yellowCards: [
@@ -1510,7 +1566,9 @@ const DATA = {
     { player:'Scott McTominay',  team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
     { player:'John McGinn',      team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
     // Partido Australia-Turquía (13 jun)
-    { player:'Yunus Akgün',      team:'Turquía', flag:'🇹🇷', qty:1, min:'Min. 85\'' },
+    { player:'Yunus Akgün',           team:'Turquía',       flag:'🇹🇷',        qty:1, min:'Min. 85\'' },
+    // Partido Países Bajos-Japón (14 jun)
+    { player:'Crysencio Summerville', team:'Países Bajos',  flag:'🇳🇱',        qty:1, min:'Min. 60\'' },
   ],
 
   redCards: [
@@ -1520,7 +1578,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'25', label:'Goles en los primeros 9 partidos del torneo', sub:'2.8 goles por partido — Alemania mete 5 y dispara la media' },
+    { num:'28', label:'Goles en los primeros 10 partidos del torneo', sub:'2.8 goles por partido — el Mundial 2026 arranca con ritmo de goleada' },
     { num:'4-1', label:'Estados Unidos golea a Paraguay y lidera el Grupo D', sub:'Balogun firma un doblete en su debut absoluto en un Mundial' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'17', label:'Tarjetas amarillas acumuladas en la jornada', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
@@ -1629,8 +1687,8 @@ const DATA = {
 
   curiosidades: [
     { emoji:'⚡', titulo:'El Chucky puede ser el héroe que necesitamos', texto:'Si México llega a octavos y Lozano repite su nivel, estaría disputando su tercer Mundial consecutivo siendo el máximo goleador de la Selección. A sus 30 años, este es su último tren para ser leyenda.' },
-    { emoji:'🏟️', titulo:'El Akron tiene historia propia', texto:'El estadio de Chivas ha sido sede de Mundiales solo en la mente de sus aficionados... hasta 2026. Antes del Akron, el Jalisco fue escenario del "Gol del Siglo" de Maradona en 1986. GDL lleva la historia en el ADN.' },
-    { emoji:'📍', titulo:'Zapopan, no Guadalajara', texto:'Técnicamente el Estadio Akron está en Zapopan, no en Guadalajara. Pero no le digan eso a los tapatíos o se arma. El área metropolitana de Guadalajara es la segunda más grande de México con 5.3 millones de personas.' },
+    { emoji:'🏟️', titulo:'El Estadio Guadalajara tiene historia propia', texto:'El recinto de Chivas —renombrado como Estadio Guadalajara para este torneo— ha sido sede de Mundiales solo en la mente de sus aficionados... hasta 2026. Antes de él, el Jalisco fue escenario del "Gol del Siglo" de Maradona en 1986. GDL lleva la historia en el ADN.' },
+    { emoji:'📍', titulo:'Zapopan, no Guadalajara', texto:'Técnicamente el Estadio Guadalajara está en Zapopan, no en Guadalajara. Pero no le digan eso a los tapatíos o se arma. El área metropolitana de Guadalajara es la segunda más grande de México con 5.3 millones de personas.' },
     { emoji:'🌵', titulo:'1970, 1986, 2026: trinidad mundialista', texto:'Solo una docena de ciudades en el mundo han sido sede del Mundial tres veces. GDL se une al club con Ciudad de México, Roma y París. Para una ciudad que también produjo a Cardenal, Rulfo y al mariachi, el fútbol es el menor de sus logros.' },
   ],
 };
