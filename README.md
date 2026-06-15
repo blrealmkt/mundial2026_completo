@@ -1318,6 +1318,16 @@ const MEXICO_VENUES = ['Estadio Guadalajara', 'Estadio Ciudad de México', 'Esta
 
 // Helper: convierte "11 Jun" + "13:00" en un valor numérico ordenable
 const MONTH_MAP = { Jun:6, Jul:7 };
+const DAY_NAMES = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+function getDayName(dateStr) {
+  // dateStr = "15 Jun" → devuelve "LUN"
+  const parts = dateStr.split(' ');
+  const day = parseInt(parts[0], 10);
+  const month = (MONTH_MAP[parts[1]] || 6) - 1; // 0-indexed
+  const year = 2026;
+  const d = new Date(year, month, day);
+  return DAY_NAMES[d.getDay()];
+}
 function matchSortKey(m) {
   const parts = m.date.split(' ');
   const day = parseInt(parts[0], 10) || 0;
@@ -1901,7 +1911,7 @@ function renderMatches() {
       if (pastVisible) {
         let lastDate = null;
         pastMatches.forEach(m => {
-          if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label" style="background:var(--ink3);">${m.date}</span></div>`; lastDate = m.date; }
+          if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label" style="background:var(--ink3);">${m.date} <strong style="font-weight:900;letter-spacing:.14em;">${getDayName(m.date)}</strong></span></div>`; lastDate = m.date; }
           html += buildMatchCard(m, 'past-match-card');
         });
         html += `<div style="height:8px;"></div>`;
@@ -1913,7 +1923,7 @@ function renderMatches() {
     } else {
       let lastDate = null;
       weekMatches.forEach(m => {
-        if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label">${m.date}</span></div>`; lastDate = m.date; }
+        if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label">${m.date} <strong style="font-weight:900;letter-spacing:.14em;">${getDayName(m.date)}</strong></span></div>`; lastDate = m.date; }
         html += buildMatchCard(m);
       });
     }
