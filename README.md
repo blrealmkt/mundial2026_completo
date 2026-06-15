@@ -1,3 +1,4 @@
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -1313,15 +1314,15 @@ const DATA = {
     { id:23, phase:'grupos', group:'D', home:'Turquía',        homeFlag:'🇹🇷', away:'Estados Unidos', awayFlag:'🇺🇸', homeScore:null, awayScore:null, date:'25 Jun', time:'20:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
     { id:24, phase:'grupos', group:'D', home:'Paraguay',       homeFlag:'🇵🇾', away:'Australia',      awayFlag:'🇦🇺', homeScore:null, awayScore:null, date:'25 Jun', time:'20:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
     // ── GRUPO E: Alemania · Curazao · Costa de Marfil · Ecuador
-    { id:25, phase:'grupos', group:'E', home:'Alemania',        homeFlag:'🇩🇪', away:'Curazao',        awayFlag:'🇨🇼', homeScore:5, awayScore:1, date:'14 Jun', time:'11:00', venue:'Estadio Houston',    status:'done' },
-    { id:26, phase:'grupos', group:'E', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Ecuador',        awayFlag:'🇪🇨', homeScore:null, awayScore:null, date:'14 Jun', time:'17:00', venue:'Estadio Filadelfia', status:'scheduled' },
+    { id:25, phase:'grupos', group:'E', home:'Alemania',        homeFlag:'🇩🇪', away:'Curazao',        awayFlag:'🇨🇼', homeScore:7, awayScore:1, date:'14 Jun', time:'11:00', venue:'Estadio Houston',    status:'done' },
+    { id:26, phase:'grupos', group:'E', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Ecuador',        awayFlag:'🇪🇨', homeScore:1, awayScore:0, date:'14 Jun', time:'17:00', venue:'Estadio Filadelfia', status:'done' },
     { id:27, phase:'grupos', group:'E', home:'Alemania',        homeFlag:'🇩🇪', away:'Costa de Marfil',awayFlag:'🇨🇮', homeScore:null, awayScore:null, date:'20 Jun', time:'14:00', venue:'Estadio Toronto',    status:'scheduled' },
     { id:28, phase:'grupos', group:'E', home:'Ecuador',         homeFlag:'🇪🇨', away:'Curazao',        awayFlag:'🇨🇼', homeScore:null, awayScore:null, date:'20 Jun', time:'17:00', venue:'Estadio Kansas City', status:'scheduled' },
     { id:29, phase:'grupos', group:'E', home:'Curazao',         homeFlag:'🇨🇼', away:'Costa de Marfil',awayFlag:'🇨🇮', homeScore:null, awayScore:null, date:'25 Jun', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
     { id:30, phase:'grupos', group:'E', home:'Ecuador',         homeFlag:'🇪🇨', away:'Alemania',       awayFlag:'🇩🇪', homeScore:null, awayScore:null, date:'25 Jun', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
     // ── GRUPO F: Países Bajos · Japón · Suecia · Túnez
-    { id:31, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Japón',  awayFlag:'🇯🇵', homeScore:2, awayScore:1, date:'14 Jun', time:'14:00', venue:'Estadio Dallas',    status:'done' },
-    { id:32, phase:'grupos', group:'F', home:'Suecia',       homeFlag:'🇸🇪', away:'Túnez',  awayFlag:'🇹🇳', homeScore:null, awayScore:null, date:'14 Jun', time:'20:00', venue:'Estadio Monterrey',  status:'scheduled' },
+    { id:31, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Japón',  awayFlag:'🇯🇵', homeScore:2, awayScore:2, date:'14 Jun', time:'14:00', venue:'Estadio Dallas',    status:'done' },
+    { id:32, phase:'grupos', group:'F', home:'Suecia',       homeFlag:'🇸🇪', away:'Túnez',  awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', venue:'Estadio Monterrey',  status:'done' },
     { id:33, phase:'grupos', group:'F', home:'Países Bajos', homeFlag:'🇳🇱', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, date:'20 Jun', time:'11:00', venue:'Estadio Houston',    status:'scheduled' },
     { id:34, phase:'grupos', group:'F', home:'Túnez',        homeFlag:'🇹🇳', away:'Japón',  awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'20 Jun', time:'20:00', venue:'Estadio Monterrey',  status:'scheduled' },
     { id:35, phase:'grupos', group:'F', home:'Túnez',        homeFlag:'🇹🇳', away:'Países Bajos', awayFlag:'🇳🇱', homeScore:null, awayScore:null, date:'25 Jun', time:'17:00', venue:'Estadio Kansas City', status:'scheduled' },
@@ -1466,16 +1467,16 @@ const DATA = {
       { team:'Turquía',        flag:'🇹🇷', pj:1, pg:0, pe:0, pp:1, gf:0, gc:2, pts:0 },
     ],
     E: [
-      { team:'Alemania',        flag:'🇩🇪', pj:1, pg:1, pe:0, pp:0, gf:5, gc:1, pts:3 },
-      { team:'Curazao',         flag:'🇨🇼', pj:1, pg:0, pe:0, pp:1, gf:1, gc:5, pts:0 },
-      { team:'Costa de Marfil', flag:'🇨🇮', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Ecuador',         flag:'🇪🇨', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Alemania',        flag:'🇩🇪', pj:1, pg:1, pe:0, pp:0, gf:7, gc:1, pts:3 },
+      { team:'Costa de Marfil', flag:'🇨🇮', pj:1, pg:1, pe:0, pp:0, gf:1, gc:0, pts:3 },
+      { team:'Curazao',         flag:'🇨🇼', pj:1, pg:0, pe:0, pp:1, gf:1, gc:7, pts:0 },
+      { team:'Ecuador',         flag:'🇪🇨', pj:1, pg:0, pe:0, pp:1, gf:0, gc:1, pts:0 },
     ],
     F: [
-      { team:'Países Bajos', flag:'🇳🇱', pj:1, pg:1, pe:0, pp:0, gf:2, gc:1, pts:3 },
-      { team:'Japón',        flag:'🇯🇵', pj:1, pg:0, pe:0, pp:1, gf:1, gc:2, pts:0 },
-      { team:'Suecia',       flag:'🇸🇪', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Túnez',        flag:'🇹🇳', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Suecia',       flag:'🇸🇪', pj:1, pg:1, pe:0, pp:0, gf:5, gc:1, pts:3 },
+      { team:'Países Bajos', flag:'🇳🇱', pj:1, pg:0, pe:1, pp:0, gf:2, gc:2, pts:1 },
+      { team:'Japón',        flag:'🇯🇵', pj:1, pg:0, pe:1, pp:0, gf:2, gc:2, pts:1 },
+      { team:'Túnez',        flag:'🇹🇳', pj:1, pg:0, pe:0, pp:1, gf:1, gc:5, pts:0 },
     ],
     G: [
       { team:'Bélgica',      flag:'🇧🇪', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
@@ -1516,30 +1517,37 @@ const DATA = {
   },
 
   scorers: [
-    { name:'Folarin Balogun',    team:'Estados Unidos', flag:'🇺🇸', goals:2, highlight:true },
-    { name:'Kai Havertz',        team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2 },
-    { name:'Nestory Irankunda',  team:'Australia · Min. 26\'', flag:'🇦🇺', goals:1 },
-    { name:'Connor Metcalfe',    team:'Australia · Min. 74\'', flag:'🇦🇺', goals:1 },
-    { name:'Breel Embolo',       team:'Suiza · Pen. Min. 16\'', flag:'🇨🇭', goals:1 },
-    { name:'Vinícius Júnior',    team:'Brasil · Min. 31\'', flag:'🇧🇷', goals:1 },
-    { name:'Ismael Saibari',     team:'Marruecos · Min. 20\'', flag:'🇲🇦', goals:1 },
-    { name:'John McGinn',        team:'Escocia · Min. 27\'', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', goals:1 },
-    { name:'Julián Quiñones',    team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
-    { name:'Raúl Jiménez',       team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
-    { name:'Felix Nmecha',       team:'Alemania · Min. 6\'', flag:'🇩🇪', goals:1 },
-    { name:'Nico Schlotterbeck', team:'Alemania · Min. 38\'', flag:'🇩🇪', goals:1 },
-    { name:'Jamal Musiala',      team:'Alemania · Min. 47\'', flag:'🇩🇪', goals:1 },
-    { name:'Nathaniel Brown',    team:'Alemania · Min. 68\'', flag:'🇩🇪', goals:1 },
-    { name:'Deniz Undav',        team:'Alemania · Min. 78\'', flag:'🇩🇪', goals:1 },
-    { name:'Christian Pulisic',  team:'Estados Unidos', flag:'🇺🇸', goals:1 },
-    { name:'Hwang In-beom',      team:'Corea del Sur', flag:'🇰🇷', goals:1 },
-    { name:'Ladislav Krejčí',    team:'Chequia', flag:'🇨🇿', goals:1 },
-    { name:'Cyle Larin',         team:'Canadá', flag:'🇨🇦', goals:1 },
-    { name:'Livano Comenencia',  team:'Curazao · Min. 21\'', flag:'🇨🇼', goals:1 },
-    { name:'Virgil van Dijk',      team:'Países Bajos · Min. 50\'', flag:'🇳🇱', goals:1 },
-    { name:'Keito Nakamura',       team:'Japón · Min. 56\'', flag:'🇯🇵', goals:1 },
-    { name:'Crysencio Summerville',team:'Países Bajos · Min. 63\'', flag:'🇳🇱', goals:1 },
-    { name:'Miro Muheim',          team:'Suiza · AG Min. 90+3\'', flag:'🇨🇭', goals:1, isOwnGoal:true },
+    { name:'Kai Havertz',          team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2, highlight:true },
+    { name:'Yasin Ayari',          team:'Suecia · Min. 7\' y 90+3\'',           flag:'🇸🇪', goals:2 },
+    { name:'Folarin Balogun',      team:'Estados Unidos',                        flag:'🇺🇸', goals:2 },
+    { name:'Nestory Irankunda',    team:'Australia · Min. 26\'',                 flag:'🇦🇺', goals:1 },
+    { name:'Connor Metcalfe',      team:'Australia · Min. 74\'',                 flag:'🇦🇺', goals:1 },
+    { name:'Breel Embolo',         team:'Suiza · Pen. Min. 16\'',                flag:'🇨🇭', goals:1 },
+    { name:'Vinícius Júnior',      team:'Brasil · Min. 31\'',                    flag:'🇧🇷', goals:1 },
+    { name:'Ismael Saibari',       team:'Marruecos · Min. 20\'',                 flag:'🇲🇦', goals:1 },
+    { name:'John McGinn',          team:'Escocia · Min. 27\'',                   flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', goals:1 },
+    { name:'Julián Quiñones',      team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
+    { name:'Raúl Jiménez',         team:'México · Min. 67\'',                    flag:'🇲🇽', goals:1 },
+    { name:'Felix Nmecha',         team:'Alemania · Min. 6\'',                   flag:'🇩🇪', goals:1 },
+    { name:'Nico Schlotterbeck',   team:'Alemania · Min. 38\'',                  flag:'🇩🇪', goals:1 },
+    { name:'Jamal Musiala',        team:'Alemania · Min. 47\'',                  flag:'🇩🇪', goals:1 },
+    { name:'Nathaniel Brown',      team:'Alemania · Min. 68\'',                  flag:'🇩🇪', goals:1 },
+    { name:'Deniz Undav',          team:'Alemania · Min. 78\'',                  flag:'🇩🇪', goals:1 },
+    { name:'Amad Diallo',          team:'Costa de Marfil · Min. 90\'',           flag:'🇨🇮', goals:1 },
+    { name:'Virgil van Dijk',      team:'Países Bajos · Min. 52\'',              flag:'🇳🇱', goals:1 },
+    { name:'Crysencio Summerville',team:'Países Bajos · Min. 73\'',              flag:'🇳🇱', goals:1 },
+    { name:'Keito Nakamura',       team:'Japón · Min. 58\'',                     flag:'🇯🇵', goals:1 },
+    { name:'Daichi Kamada',        team:'Japón · Min. 89\'',                     flag:'🇯🇵', goals:1 },
+    { name:'Alexander Isak',       team:'Suecia · Min. 30\'',                    flag:'🇸🇪', goals:1 },
+    { name:'Viktor Gyökeres',      team:'Suecia · Min. 59\'',                    flag:'🇸🇪', goals:1 },
+    { name:'Mattias Svanberg',     team:'Suecia · Min. 84\'',                    flag:'🇸🇪', goals:1 },
+    { name:'Christian Pulisic',    team:'Estados Unidos',                        flag:'🇺🇸', goals:1 },
+    { name:'Hwang In-beom',        team:'Corea del Sur',                         flag:'🇰🇷', goals:1 },
+    { name:'Ladislav Krejčí',      team:'Chequia',                               flag:'🇨🇿', goals:1 },
+    { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
+    { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
+    { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
+    { name:'Miro Muheim',          team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
   yellowCards: [
@@ -1566,9 +1574,16 @@ const DATA = {
     { player:'Scott McTominay',  team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
     { player:'John McGinn',      team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
     // Partido Australia-Turquía (13 jun)
-    { player:'Yunus Akgün',           team:'Turquía',       flag:'🇹🇷',        qty:1, min:'Min. 85\'' },
+    { player:'Yunus Akgün',           team:'Turquía',              flag:'🇹🇷',        qty:1, min:'Min. 85\'' },
     // Partido Países Bajos-Japón (14 jun)
-    { player:'Crysencio Summerville', team:'Países Bajos',  flag:'🇳🇱',        qty:1, min:'Min. 60\'' },
+    { player:'Crysencio Summerville', team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 61\'' },
+    { player:'Memphis Depay',         team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 83\'' },
+    { player:'Micky van de Ven',      team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 90+1\'' },
+    // Partido Costa de Marfil-Ecuador (14 jun)
+    { player:'Seko Fofana',           team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 28\'' },
+    { player:'Franck Kessié',         team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 38\'' },
+    { player:'Georges Doué',          team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 40\'' },
+    { player:'Jackson Porozo',        team:'Ecuador',               flag:'🇪🇨',        qty:1, min:'Min. 73\'' },
   ],
 
   redCards: [
@@ -1578,10 +1593,10 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'28', label:'Goles en los primeros 10 partidos del torneo', sub:'2.8 goles por partido — el Mundial 2026 arranca con ritmo de goleada' },
-    { num:'4-1', label:'Estados Unidos golea a Paraguay y lidera el Grupo D', sub:'Balogun firma un doblete en su debut absoluto en un Mundial' },
+    { num:'38', label:'Goles en los primeros 12 partidos del torneo', sub:'3.2 por partido — Alemania 7-1 y Suecia 5-1 disparan la media' },
+    { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
-    { num:'17', label:'Tarjetas amarillas acumuladas en la jornada', sub:'Un arbitraje extremadamente estricto desde el silbatazo' },
+    { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
   ],
 
 
@@ -1654,7 +1669,7 @@ const DATA = {
     { id:47, sede:'gdl',  grupo:'Grupo H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',      awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', status:'scheduled' },
     { id:75, sede:'gdl',  grupo:'Dieciseisavos', home:'1° Grupo F', homeFlag:'🏆', away:'2° Grupo C', awayFlag:'🥈', homeScore:null, awayScore:null, date:'29 Jun', time:'18:00', status:'scheduled' },
     // ── Monterrey
-    { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:null, awayScore:null, date:'14 Jun', time:'20:00', status:'scheduled' },
+    { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'20 Jun', time:'20:00', status:'scheduled' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', status:'scheduled' },
     { id:71, sede:'mty',  grupo:'Grupo L', home:'Croacia',       homeFlag:'🇭🇷', away:'Ghana',       awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', status:'scheduled' },
