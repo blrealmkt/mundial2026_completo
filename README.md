@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -267,6 +266,60 @@ body {
   gap: 14px;
   margin: 22px 0 8px;
 }
+/* ── JUEGOS PASADOS ── */
+.past-section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.past-section-label {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  background: var(--bg3);
+  padding: 4px 12px 4px 10px;
+  border: 1.5px solid var(--border2);
+  clip-path: polygon(0 0, 100% 0, 93% 100%, 0% 100%);
+}
+.past-section-toggle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border2);
+}
+.past-toggle-btn {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  padding: 3px 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.past-match-card {
+  opacity: .55;
+  filter: grayscale(30%);
+  border-color: var(--border) !important;
+}
+.past-match-card .match-label-bar {
+  background: var(--bg3) !important;
+}
+.past-match-card .score-box {
+  background: var(--ink3) !important;
+}
+.past-match-card .score-sep {
+  background: var(--ink3) !important;
+}
 .day-separator:first-child { margin-top: 4px; }
 .day-separator-label {
   font-family: var(--font-display);
@@ -479,20 +532,34 @@ body {
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--ink3);
-  padding: 6px 8px;
+  padding: 6px 6px;
   text-align: center;
   font-weight: 400;
   border-bottom: 1px solid var(--border);
 }
 .standings-table th:first-child { text-align: left; padding-left: 12px; }
 .standings-table td {
-  padding: 8px 8px;
+  padding: 8px 6px;
   text-align: center;
   border-bottom: 1px solid var(--border);
   color: var(--ink2);
+  font-size: 12px;
 }
 .standings-table td:first-child { text-align: left; padding-left: 12px; }
 .standings-table tr:last-child td { border-bottom: none; }
+/* Columnas secundarias (PJ PG PE PP) */
+.th-secondary, .td-secondary {
+  color: var(--ink3) !important;
+  font-size: 11px !important;
+}
+/* Columnas menores (GF GC DG) — visibles pero discretas */
+.th-minor, .td-minor {
+  color: var(--border2) !important;
+  font-size: 10px !important;
+}
+@media (max-width: 520px) {
+  .th-minor, .td-minor { display: none; }
+}
 
 .team-cell {
   display: flex;
@@ -1270,7 +1337,7 @@ function dateOnlyKey(dateStr) {
 
 const DATA = {
   // Rango de la semana activa (lunes a domingo). Actualizar cada semana.
-  currentWeek: { startDate: '11 Jun', endDate: '15 Jun', label: 'Semana del 11 al 15 de junio' },
+  currentWeek: { startDate: '15 Jun', endDate: '21 Jun', label: 'Semana del 15 al 21 de junio' },
 
   phases: [
     { id: 'semana',        label: 'Esta Semana' },
@@ -1328,14 +1395,14 @@ const DATA = {
     { id:35, phase:'grupos', group:'F', home:'Túnez',        homeFlag:'🇹🇳', away:'Países Bajos', awayFlag:'🇳🇱', homeScore:null, awayScore:null, date:'25 Jun', time:'17:00', venue:'Estadio Kansas City', status:'scheduled' },
     { id:36, phase:'grupos', group:'F', home:'Japón',        homeFlag:'🇯🇵', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, date:'25 Jun', time:'17:00', venue:'Estadio Dallas',    status:'scheduled' },
     // ── GRUPO G: Bélgica · Egipto · RI de Irán · Nueva Zelanda
-    { id:37, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'Egipto',       awayFlag:'🇪🇬', homeScore:null, awayScore:null, date:'15 Jun', time:'13:00', venue:'Estadio Seattle',            status:'scheduled' },
+    { id:37, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'Egipto',       awayFlag:'🇪🇬', homeScore:1, awayScore:1, date:'15 Jun', time:'13:00', venue:'Estadio Seattle',            status:'done' },
     { id:38, phase:'grupos', group:'G', home:'RI de Irán',   homeFlag:'🇮🇷', away:'Nueva Zelanda', awayFlag:'🇳🇿', homeScore:null, awayScore:null, date:'15 Jun', time:'19:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     { id:39, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'21 Jun', time:'13:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     { id:40, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Egipto',       awayFlag:'🇪🇬', homeScore:null, awayScore:null, date:'21 Jun', time:'19:00', venue:'Estadio BC Place Vancouver',  status:'scheduled' },
     { id:41, phase:'grupos', group:'G', home:'Egipto',       homeFlag:'🇪🇬', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Seattle',            status:'scheduled' },
     { id:42, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Bélgica',      awayFlag:'🇧🇪', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     // ── GRUPO H: España · Cabo Verde · Arabia Saudita · Uruguay
-    { id:43, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'15 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'scheduled' },
+    { id:43, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:0, awayScore:0, date:'15 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'done' },
     { id:44, phase:'grupos', group:'H', home:'Arabia Saudita',homeFlag:'🇸🇦', away:'Uruguay',        awayFlag:'🇺🇾', homeScore:null, awayScore:null, date:'15 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
     { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'scheduled' },
     { id:46, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'21 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
@@ -1479,14 +1546,14 @@ const DATA = {
       { team:'Túnez',        flag:'🇹🇳', pj:1, pg:0, pe:0, pp:1, gf:1, gc:5, pts:0 },
     ],
     G: [
-      { team:'Bélgica',      flag:'🇧🇪', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Egipto',       flag:'🇪🇬', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Bélgica',      flag:'🇧🇪', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
+      { team:'Egipto',       flag:'🇪🇬', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
       { team:'RI de Irán',   flag:'🇮🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
       { team:'Nueva Zelanda',flag:'🇳🇿', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
     H: [
-      { team:'España',        flag:'🇪🇸', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Cabo Verde',    flag:'🇨🇻', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'España',        flag:'🇪🇸', pj:1, pg:0, pe:1, pp:0, gf:0, gc:0, pts:1 },
+      { team:'Cabo Verde',    flag:'🇨🇻', pj:1, pg:0, pe:1, pp:0, gf:0, gc:0, pts:1 },
       { team:'Arabia Saudita',flag:'🇸🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
       { team:'Uruguay',       flag:'🇺🇾', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
     ],
@@ -1547,7 +1614,9 @@ const DATA = {
     { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
     { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
     { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
-    { name:'Miro Muheim',          team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
+    { name:'Emam Ashour',       team:'Egipto · Min. 20\'',                    flag:'🇪🇬', goals:1 },
+    { name:'Mohamed Hany',      team:'Bélgica · AG Min. 66\'',                flag:'🇧🇪', goals:1, isOwnGoal:true },
+    { name:'Miro Muheim',       team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
   yellowCards: [
@@ -1580,10 +1649,18 @@ const DATA = {
     { player:'Memphis Depay',         team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 83\'' },
     { player:'Micky van de Ven',      team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 90+1\'' },
     // Partido Costa de Marfil-Ecuador (14 jun)
-    { player:'Seko Fofana',           team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 28\'' },
-    { player:'Franck Kessié',         team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 38\'' },
-    { player:'Georges Doué',          team:'Costa de Marfil',      flag:'🇨🇮',        qty:1, min:'Min. 40\'' },
-    { player:'Jackson Porozo',        team:'Ecuador',               flag:'🇪🇨',        qty:1, min:'Min. 73\'' },
+    { player:'Seko Fofana',            team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 28\'' },
+    { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
+    { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
+    { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
+    // Partido España-Cabo Verde (15 jun)
+    { player:'Sidny Lopes Cabral',     team:'Cabo Verde',   flag:'🇨🇻', qty:1, min:'Min. 16\'' },
+    { player:'Pedri',                  team:'España',       flag:'🇪🇸', qty:1, min:'Min. 90+2\'' },
+    // Partido Bélgica-Egipto (15 jun)
+    { player:'Marwan Attia',           team:'Egipto',       flag:'🇪🇬', qty:1, min:'Min. 13\'' },
+    { player:'Timothy Castagne',       team:'Bélgica',      flag:'🇧🇪', qty:1, min:'Min. 14\'' },
+    { player:'Ahmed Abou El Fotouh',   team:'Egipto',       flag:'🇪🇬', qty:1, min:'Min. 34\'' },
+    { player:'Maxim De Cuyper',        team:'Bélgica',      flag:'🇧🇪', qty:1, min:'Min. 75\'' },
   ],
 
   redCards: [
@@ -1593,7 +1670,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'38', label:'Goles en los primeros 12 partidos del torneo', sub:'3.2 por partido — Alemania 7-1 y Suecia 5-1 disparan la media' },
+    { num:'40', label:'Goles en los primeros 14 partidos del torneo', sub:'2.9 por partido — ritmo sostenido desde la jornada 1' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
@@ -1701,9 +1778,9 @@ const DATA = {
   ],
 
   curiosidades: [
-    { emoji:'⚡', titulo:'El Chucky puede ser el héroe que necesitamos', texto:'Si México llega a octavos y Lozano repite su nivel, estaría disputando su tercer Mundial consecutivo siendo el máximo goleador de la Selección. A sus 30 años, este es su último tren para ser leyenda.' },
+    { emoji:'⚡', titulo:'La Hormiga González y la generación que ilusiona', texto:'Cuando Gilberto Mora entró al campo ante Sudáfrica con 17 años, el estadio Ciudad de México quedó en silencio por un segundo —y luego estalló. La Hormiga González ya es símbolo de la nueva cara del Tri: rápido, desequilibrante y sin miedo. Esta selección no carga solo con la experiencia de Jiménez o Quiñones; lleva también la energía cruda de una generación que no sabe lo que es el quinto partido y por eso quizás lo llegue a romper.' },
     { emoji:'🏟️', titulo:'El Estadio Guadalajara tiene historia propia', texto:'El recinto de Chivas —renombrado como Estadio Guadalajara para este torneo— ha sido sede de Mundiales solo en la mente de sus aficionados... hasta 2026. Antes de él, el Jalisco fue escenario del "Gol del Siglo" de Maradona en 1986. GDL lleva la historia en el ADN.' },
-    { emoji:'📍', titulo:'Zapopan, no Guadalajara', texto:'Técnicamente el Estadio Guadalajara está en Zapopan, no en Guadalajara. Pero no le digan eso a los tapatíos o se arma. El área metropolitana de Guadalajara es la segunda más grande de México con 5.3 millones de personas.' },
+    { emoji:'🌆', titulo:'GDL no es ciudad anfitriona. Es ciudad protagonista.', texto:'Desde la Plaza de los Mariachis hasta la Catedral, desde Chapultepec hasta la explanada de la Minerva, Guadalajara vive el Mundial como ninguna otra ciudad en Norte América. No hay turno de descanso. Los 5.3 millones del área metropolitana convirtieron cada partido —incluso los que no son en Guadalajara— en un evento colectivo. Los bares de La Paz, los cafés de Providencia y las banquetas de Zapopan son hoy el estadio más grande del mundo.' },
     { emoji:'🌵', titulo:'1970, 1986, 2026: trinidad mundialista', texto:'Solo una docena de ciudades en el mundo han sido sede del Mundial tres veces. GDL se une al club con Ciudad de México, Roma y París. Para una ciudad que también produjo a Cardenal, Rulfo y al mariachi, el fútbol es el menor de sus logros.' },
   ],
 };
@@ -1775,91 +1852,83 @@ function selectGroup(g) {
 // ══════════════════════════════════════════════════════════
 // RENDER: MATCHES
 // ══════════════════════════════════════════════════════════
+let pastVisible = false;
+function togglePast() { pastVisible = !pastVisible; renderMatches(); }
+
+function buildMatchCard(m, extraClass) {
+  extraClass = extraClass || '';
+  const isDone = m.status === 'done';
+  const isLive = m.status === 'live';
+  const hasScore = m.homeScore !== null && m.awayScore !== null;
+  const isMexico = MEXICO_VENUES.some(v => m.venue && m.venue.includes(v));
+  const scoreHTML = hasScore
+    ? `<div class="score-block"><div class="score-box home ${isLive?'fire':''}">${m.homeScore}</div><div class="score-sep"><span>-</span></div><div class="score-box away ${isLive?'fire':''}">${m.awayScore}</div></div>`
+    : `<div class="score-pending">${m.time} hrs</div>`;
+  const statusLabel = isLive
+    ? `<span class="match-status live-status">● En vivo</span>`
+    : isDone ? `<span class="match-status done">✓ Finalizado</span>`
+    : `<span class="match-status">${m.date}</span>`;
+  const mexicoBadge = isMexico ? `<span class="mexico-badge">🇲🇽 México</span>` : '';
+  return `<div class="match-card ${isLive?'live':''} ${isMexico?'mexico-venue':''} ${extraClass}">
+    <div class="match-label-bar"><span class="match-label">${m.venue||''}${mexicoBadge}</span>${statusLabel}</div>
+    <div class="match-inner">
+      <div class="team-home"><span class="team-flag">${m.homeFlag}</span><div><div class="team-name">${m.home}</div><div class="team-abbr">${m.home.substring(0,3).toUpperCase()}</div></div></div>
+      ${scoreHTML}
+      <div class="team-away"><span class="team-flag">${m.awayFlag}</span><div><div class="team-name">${m.away}</div><div class="team-abbr">${m.away.substring(0,3).toUpperCase()}</div></div></div>
+    </div></div>`;
+}
+
 function renderMatches() {
   const container = document.getElementById('matches-container');
-  let filtered;
 
   if (currentPhase === 'semana') {
-    const startKey = dateOnlyKey(DATA.currentWeek.startDate);
-    const endKey = dateOnlyKey(DATA.currentWeek.endDate);
-    filtered = DATA.matches.filter(m => {
-      const k = dateOnlyKey(m.date);
-      return k >= startKey && k <= endKey;
-    });
-  } else {
-    filtered = DATA.matches.filter(m => m.phase === currentPhase);
-    if (currentPhase === 'grupos') filtered = filtered.filter(m => m.group === currentGroup);
+    const weekStart = dateOnlyKey(DATA.currentWeek.startDate);
+    const weekEnd   = dateOnlyKey(DATA.currentWeek.endDate);
+
+    const pastMatches = DATA.matches
+      .filter(m => m.status === 'done' && dateOnlyKey(m.date) < weekStart)
+      .sort((a,b) => matchSortKey(b) - matchSortKey(a));
+
+    const weekMatches = DATA.matches
+      .filter(m => { const k = dateOnlyKey(m.date); return k >= weekStart && k <= weekEnd; })
+      .sort((a,b) => matchSortKey(a) - matchSortKey(b));
+
+    let html = '';
+
+    if (pastMatches.length) {
+      const btnLabel = pastVisible ? 'Ocultar ↑' : `Ver ${pastMatches.length} partidos anteriores ↓`;
+      html += `<div class="past-section-toggle" onclick="togglePast()"><span class="past-section-label">Juegos Pasados</span><button class="past-toggle-btn">${btnLabel}</button></div>`;
+      if (pastVisible) {
+        let lastDate = null;
+        pastMatches.forEach(m => {
+          if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label" style="background:var(--ink3);">${m.date}</span></div>`; lastDate = m.date; }
+          html += buildMatchCard(m, 'past-match-card');
+        });
+        html += `<div style="height:8px;"></div>`;
+      }
+    }
+
+    if (!weekMatches.length) {
+      html += `<div style="padding:30px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;">Sin partidos esta semana</div>`;
+    } else {
+      let lastDate = null;
+      weekMatches.forEach(m => {
+        if (m.date !== lastDate) { html += `<div class="day-separator"><span class="day-separator-label">${m.date}</span></div>`; lastDate = m.date; }
+        html += buildMatchCard(m);
+      });
+    }
+    container.innerHTML = html;
+    return;
   }
 
-  // Orden cronológico
-  filtered = [...filtered].sort((a, b) => matchSortKey(a) - matchSortKey(b));
-
+  let filtered = DATA.matches.filter(m => m.phase === currentPhase);
+  if (currentPhase === 'grupos') filtered = filtered.filter(m => m.group === currentGroup);
+  filtered = [...filtered].sort((a,b) => matchSortKey(a) - matchSortKey(b));
   if (!filtered.length) {
     container.innerHTML = `<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;">Partidos por confirmar</div>`;
     return;
   }
-
-  let html = '';
-  let lastDate = null;
-
-  filtered.forEach(m => {
-    const isDone = m.status === 'done';
-    const isLive = m.status === 'live';
-    const hasScore = m.homeScore !== null && m.awayScore !== null;
-    const isMexico = MEXICO_VENUES.some(v => m.venue.includes(v));
-
-    // Separador de día (solo en vista "Esta semana")
-    if (currentPhase === 'semana' && m.date !== lastDate) {
-      html += `<div class="day-separator"><span class="day-separator-label">${m.date}</span></div>`;
-      lastDate = m.date;
-    }
-
-    const scoreHTML = hasScore
-      ? `<div class="score-block">
-           <div class="score-box home ${isLive ? 'fire' : ''}">${m.homeScore}</div>
-           <div class="score-sep"><span>-</span></div>
-           <div class="score-box away ${isLive ? 'fire' : ''}">${m.awayScore}</div>
-         </div>`
-      : `<div class="score-pending">${m.time} hrs</div>`;
-
-    const statusLabel = isLive
-      ? `<span class="match-status live-status">● En vivo</span>`
-      : isDone
-        ? `<span class="match-status done">✓ Finalizado</span>`
-        : `<span class="match-status">${m.date}</span>`;
-
-    const mexicoBadge = isMexico
-      ? `<span class="mexico-badge">🇲🇽 México</span>`
-      : '';
-
-    html += `
-      <div class="match-card ${isLive ? 'live' : ''} ${isMexico ? 'mexico-venue' : ''}">
-        <div class="match-label-bar">
-          <span class="match-label">${m.venue}${mexicoBadge}</span>
-          ${statusLabel}
-        </div>
-        <div class="match-inner">
-          <div class="team-home">
-            <span class="team-flag">${m.homeFlag}</span>
-            <div>
-              <div class="team-name">${m.home}</div>
-              <div class="team-abbr">${m.home.substring(0,3).toUpperCase()}</div>
-            </div>
-          </div>
-          ${scoreHTML}
-          <div class="team-away">
-            <span class="team-flag">${m.awayFlag}</span>
-            <div>
-              <div class="team-name">${m.away}</div>
-              <div class="team-abbr">${m.away.substring(0,3).toUpperCase()}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = html;
+  container.innerHTML = filtered.map(m => buildMatchCard(m)).join('');
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1873,8 +1942,8 @@ function renderStandings() {
     const teams = [...DATA.standings[g]].sort((a,b) => b.pts - a.pts || (b.gf - b.gc) - (a.gf - a.gc));
     const rows = teams.map((t, i) => {
       const dg = t.gf - t.gc;
-      const dgStr = dg > 0 ? '+' + dg : String(dg);
-      let posClass = i === 0 ? 'pos-q2' : i === 1 ? 'pos-q2' : i === 2 ? 'pos-q3' : 'pos-out';
+      const dgStr = (dg > 0 ? '+' : '') + dg;
+      let posClass = i < 2 ? 'pos-q2' : i === 2 ? 'pos-q3' : 'pos-out';
       return `
         <tr>
           <td>
@@ -1887,13 +1956,13 @@ function renderStandings() {
               </div>
             </div>
           </td>
-          <td>${t.pj}</td>
-          <td>${t.pg}</td>
-          <td>${t.pe}</td>
-          <td>${t.pp}</td>
-          <td>${t.gf}</td>
-          <td>${t.gc}</td>
-          <td>${dgStr}</td>
+          <td class="td-secondary">${t.pj}</td>
+          <td class="td-secondary">${t.pg}</td>
+          <td class="td-secondary">${t.pe}</td>
+          <td class="td-secondary">${t.pp}</td>
+          <td class="td-minor">${t.gf}</td>
+          <td class="td-minor">${t.gc}</td>
+          <td class="td-minor">${dgStr}</td>
           <td><span class="pts-cell">${t.pts}</span></td>
         </tr>
       `;
@@ -1907,9 +1976,15 @@ function renderStandings() {
         </div>
         <table class="standings-table">
           <thead><tr>
-            <th style="width:50%">Selección</th>
-            <th>PJ</th><th>PG</th><th>PE</th><th>PP</th>
-            <th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
+            <th style="width:42%">Selección</th>
+            <th class="th-secondary">PJ</th>
+            <th class="th-secondary">PG</th>
+            <th class="th-secondary">PE</th>
+            <th class="th-secondary">PP</th>
+            <th class="th-minor">GF</th>
+            <th class="th-minor">GC</th>
+            <th class="th-minor">DG</th>
+            <th style="color:var(--ink);font-weight:700;">PTS</th>
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
@@ -1921,14 +1996,33 @@ function renderStandings() {
 // ══════════════════════════════════════════════════════════
 // RENDER: STATS
 // ══════════════════════════════════════════════════════════
+const STATS_LIMIT = 10;
+const statsExpanded = { scorers: false, yellow: false, red: false };
+
+function renderStatsSection(listId, items, renderFn, expanded) {
+  const limit = expanded ? items.length : Math.min(STATS_LIMIT, items.length);
+  const visible = items.slice(0, limit);
+  const hasMore = items.length > STATS_LIMIT;
+  const btnLabel = expanded ? 'Mostrar menos ↑' : `Mostrar más + (${items.length - STATS_LIMIT} más)`;
+  return visible.map(renderFn).join('') +
+    (hasMore ? `<div style="padding:10px 14px;border-top:1px solid var(--border);">
+      <button onclick="toggleStats('${listId}')" style="font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:none;border:1.5px solid var(--border2);color:var(--ink2);padding:6px 14px;border-radius:3px;cursor:pointer;width:100%;">${btnLabel}</button>
+    </div>` : '');
+}
+
+function toggleStats(listId) {
+  const key = listId === 'scorers-list' ? 'scorers' : listId === 'yellow-list' ? 'yellow' : 'red';
+  statsExpanded[key] = !statsExpanded[key];
+  renderStats();
+}
+
 function renderStats() {
-  // Scorers — separar los de 2 goles de los de 1 para mejor jerarquía visual
-  document.getElementById('scorers-list').innerHTML = DATA.scorers.map((s,i) => {
+  // Scorers
+  const scorerFn = (s, i) => {
     const agTag = s.isOwnGoal
       ? `<span style="font-family:var(--font-mono);font-size:9px;background:var(--bg3);color:var(--ink3);padding:1px 5px;border-radius:2px;margin-left:4px;letter-spacing:.06em;">AG</span>`
       : '';
-    return `
-    <div class="scorer-row" style="${s.highlight ? 'background:var(--fire-light);' : s.isOwnGoal ? 'opacity:.75;' : ''}">
+    return `<div class="scorer-row" style="${s.highlight ? 'background:var(--fire-light);' : s.isOwnGoal ? 'opacity:.75;' : ''}">
       <span class="scorer-rank ${(i < 3 || s.highlight) && !s.isOwnGoal ? 'top' : ''}">${i+1}</span>
       <div class="scorer-info">
         <div class="scorer-name">${s.flag} ${s.name}${agTag}</div>
@@ -1939,10 +2033,12 @@ function renderStats() {
         <div class="goals-label">${s.isOwnGoal ? 'autogol' : 'gol' + (s.goals !== 1 ? 'es' : '')}</div>
       </div>
     </div>`;
-  }).join('');
+  };
+  document.getElementById('scorers-list').innerHTML =
+    renderStatsSection('scorers-list', DATA.scorers, scorerFn, statsExpanded.scorers);
 
   // Yellow cards
-  document.getElementById('yellow-list').innerHTML = DATA.yellowCards.map(c => `
+  const yellowFn = c => `
     <div class="card-row" style="align-items:flex-start;">
       <span class="tarjeta tarjeta-amarilla" style="margin-top:2px;"></span>
       <div class="card-info">
@@ -1950,23 +2046,28 @@ function renderStats() {
         <div class="card-team">${c.team}</div>
         ${c.min && c.min !== '—' ? `<div style="font-family:var(--font-body);font-size:11px;color:var(--ink2);margin-top:2px;">${c.min}</div>` : ''}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  document.getElementById('yellow-list').innerHTML =
+    renderStatsSection('yellow-list', DATA.yellowCards, yellowFn, statsExpanded.yellow);
 
   // Red cards
-  document.getElementById('red-list').innerHTML = DATA.redCards.length
-    ? DATA.redCards.map(c => `
-        <div class="card-row" style="align-items:flex-start;">
-          <span class="tarjeta tarjeta-roja" style="margin-top:2px;"></span>
-          <div class="card-info">
-            <div class="card-player">${c.flag} ${c.player}</div>
-            <div class="card-team">${c.team}</div>
-            <div style="font-family:var(--font-body);font-size:11px;color:var(--ink2);margin-top:3px;line-height:1.4;">${c.desc || ''}</div>
-          </div>
-          <span class="card-min" style="flex-shrink:0;">${c.min}</span>
+  if (!DATA.redCards.length) {
+    document.getElementById('red-list').innerHTML =
+      `<div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;">Sin expulsados aún</div>`;
+  } else {
+    const redFn = c => `
+      <div class="card-row" style="align-items:flex-start;">
+        <span class="tarjeta tarjeta-roja" style="margin-top:2px;"></span>
+        <div class="card-info">
+          <div class="card-player">${c.flag} ${c.player}</div>
+          <div class="card-team">${c.team}</div>
+          <div style="font-family:var(--font-body);font-size:11px;color:var(--ink2);margin-top:3px;line-height:1.4;">${c.desc || ''}</div>
         </div>
-      `).join('')
-    : `<div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;">Sin expulsados aún</div>`;
+        <span class="card-min" style="flex-shrink:0;">${c.min}</span>
+      </div>`;
+    document.getElementById('red-list').innerHTML =
+      renderStatsSection('red-list', DATA.redCards, redFn, statsExpanded.red);
+  }
 
   // Crazy numbers
   document.getElementById('crazy-numbers').innerHTML = DATA.crazyNumbers.map(n => `
