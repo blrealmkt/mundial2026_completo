@@ -1406,14 +1406,14 @@ const DATA = {
     { id:36, phase:'grupos', group:'F', home:'Japón',        homeFlag:'🇯🇵', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, date:'25 Jun', time:'17:00', venue:'Estadio Dallas',    status:'scheduled' },
     // ── GRUPO G: Bélgica · Egipto · RI de Irán · Nueva Zelanda
     { id:37, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'Egipto',       awayFlag:'🇪🇬', homeScore:1, awayScore:1, date:'15 Jun', time:'13:00', venue:'Estadio Seattle',            status:'done' },
-    { id:38, phase:'grupos', group:'G', home:'RI de Irán',   homeFlag:'🇮🇷', away:'Nueva Zelanda', awayFlag:'🇳🇿', homeScore:null, awayScore:null, date:'15 Jun', time:'19:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
+    { id:38, phase:'grupos', group:'G', home:'RI de Irán',   homeFlag:'🇮🇷', away:'Nueva Zelanda', awayFlag:'🇳🇿', homeScore:2, awayScore:2, date:'15 Jun', time:'19:00', venue:'Estadio Los Ángeles',        status:'done' },
     { id:39, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'21 Jun', time:'13:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     { id:40, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Egipto',       awayFlag:'🇪🇬', homeScore:null, awayScore:null, date:'21 Jun', time:'19:00', venue:'Estadio BC Place Vancouver',  status:'scheduled' },
     { id:41, phase:'grupos', group:'G', home:'Egipto',       homeFlag:'🇪🇬', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Seattle',            status:'scheduled' },
     { id:42, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Bélgica',      awayFlag:'🇧🇪', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     // ── GRUPO H: España · Cabo Verde · Arabia Saudita · Uruguay
     { id:43, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:0, awayScore:0, date:'15 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'done' },
-    { id:44, phase:'grupos', group:'H', home:'Arabia Saudita',homeFlag:'🇸🇦', away:'Uruguay',        awayFlag:'🇺🇾', homeScore:null, awayScore:null, date:'15 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
+    { id:44, phase:'grupos', group:'H', home:'Arabia Saudita',homeFlag:'🇸🇦', away:'Uruguay',        awayFlag:'🇺🇾', homeScore:1, awayScore:1, date:'15 Jun', time:'16:00', venue:'Estadio Miami',    status:'done' },
     { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'scheduled' },
     { id:46, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'21 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
     { id:47, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',         awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Guadalajara', status:'scheduled' },
@@ -1558,14 +1558,14 @@ const DATA = {
     G: [
       { team:'Bélgica',      flag:'🇧🇪', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
       { team:'Egipto',       flag:'🇪🇬', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'RI de Irán',   flag:'🇮🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Nueva Zelanda',flag:'🇳🇿', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'RI de Irán',   flag:'🇮🇷', pj:1, pg:0, pe:1, pp:0, gf:2, gc:2, pts:1 },
+      { team:'Nueva Zelanda',flag:'🇳🇿', pj:1, pg:0, pe:1, pp:0, gf:2, gc:2, pts:1 },
     ],
     H: [
       { team:'España',        flag:'🇪🇸', pj:1, pg:0, pe:1, pp:0, gf:0, gc:0, pts:1 },
       { team:'Cabo Verde',    flag:'🇨🇻', pj:1, pg:0, pe:1, pp:0, gf:0, gc:0, pts:1 },
-      { team:'Arabia Saudita',flag:'🇸🇦', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Uruguay',       flag:'🇺🇾', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Arabia Saudita',flag:'🇸🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
+      { team:'Uruguay',       flag:'🇺🇾', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
     ],
     I: [
       { team:'Francia',  flag:'🇫🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
@@ -1624,7 +1624,12 @@ const DATA = {
     { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
     { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
     { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
-    { name:'Emam Ashour',       team:'Egipto · Min. 20\'',                    flag:'🇪🇬', goals:1 },
+    { name:'Elijah Just',          team:'Nueva Zelanda · Min. 7\' y 55\'', flag:'🇳🇿', goals:2 },
+    { name:'Ramin Rezaeian',       team:'RI de Irán · Min. 32\'',         flag:'🇮🇷', goals:1 },
+    { name:'Mohammad Mohebi',      team:'RI de Irán · Min. 64\'',         flag:'🇮🇷', goals:1 },
+    { name:'Abdulelah Al Amri',    team:'Arabia Saudita · Min. 41\'',     flag:'🇸🇦', goals:1 },
+    { name:'Maximiliano Araújo',   team:'Uruguay · Min. 80\'',            flag:'🇺🇾', goals:1 },
+    { name:'Emam Ashour',          team:'Egipto · Min. 20\'',             flag:'🇪🇬', goals:1 },
     { name:'Mohamed Hany',      team:'Bélgica · AG Min. 66\'',                flag:'🇧🇪', goals:1, isOwnGoal:true },
     { name:'Miro Muheim',       team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
@@ -1663,8 +1668,12 @@ const DATA = {
     { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
     { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
     { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
+    // Partido RI de Irán-Nueva Zelanda (15 jun)
+    { player:'Ehsan Hajsafi',          team:'RI de Irán',      flag:'🇮🇷', qty:1, min:'Min. 89\'' },
+    // Partido Arabia Saudita-Uruguay (15 jun)
+    { player:'Abdulelah Al Amri',      team:'Arabia Saudita',  flag:'🇸🇦', qty:1, min:'Min. 44\'' },
     // Partido España-Cabo Verde (15 jun)
-    { player:'Sidny Lopes Cabral',     team:'Cabo Verde',   flag:'🇨🇻', qty:1, min:'Min. 16\'' },
+    { player:'Sidny Lopes Cabral',     team:'Cabo Verde',      flag:'🇨🇻', qty:1, min:'Min. 16\'' },
     { player:'Pedri',                  team:'España',       flag:'🇪🇸', qty:1, min:'Min. 90+2\'' },
     // Partido Bélgica-Egipto (15 jun)
     { player:'Marwan Attia',           team:'Egipto',       flag:'🇪🇬', qty:1, min:'Min. 13\'' },
@@ -1680,7 +1689,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'40', label:'Goles en los primeros 14 partidos del torneo', sub:'2.9 por partido — ritmo sostenido desde la jornada 1' },
+    { num:'46', label:'Goles en los primeros 16 partidos del torneo', sub:'2.9 por partido — los grupos arrancan con empates dramáticos' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
