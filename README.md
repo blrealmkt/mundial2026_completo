@@ -1426,8 +1426,8 @@ const DATA = {
     { id:53, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Boston',                status:'scheduled' },
     { id:54, phase:'grupos', group:'I', home:'Senegal',  homeFlag:'🇸🇳', away:'Irak',    awayFlag:'🇮🇶', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Toronto',               status:'scheduled' },
     // ── GRUPO J: Argentina · Argelia · Austria · Jordania
-    { id:55, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Argelia',  awayFlag:'🇩🇿', homeScore:null, awayScore:null, date:'16 Jun', time:'19:00', venue:'Estadio Kansas City',           status:'scheduled' },
-    { id:56, phase:'grupos', group:'J', home:'Austria',   homeFlag:'🇦🇹', away:'Jordania', awayFlag:'🇯🇴', homeScore:null, awayScore:null, date:'16 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
+    { id:55, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Argelia',  awayFlag:'🇩🇿', homeScore:3, awayScore:0, date:'16 Jun', time:'19:00', venue:'Estadio Kansas City',           status:'done' },
+    { id:56, phase:'grupos', group:'J', home:'Austria',   homeFlag:'🇦🇹', away:'Jordania', awayFlag:'🇯🇴', homeScore:3, awayScore:1, date:'17 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:57, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Austria',  awayFlag:'🇦🇹', homeScore:null, awayScore:null, date:'22 Jun', time:'11:00', venue:'Estadio Dallas',                status:'scheduled' },
     { id:58, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argelia',  awayFlag:'🇩🇿', homeScore:null, awayScore:null, date:'22 Jun', time:'21:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
     { id:59, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argentina',awayFlag:'🇦🇷', homeScore:null, awayScore:null, date:'27 Jun', time:'20:00', venue:'Estadio Kansas City',           status:'scheduled' },
@@ -1574,10 +1574,10 @@ const DATA = {
       { team:'Irak',     flag:'🇮🇶', pj:1, pg:0, pe:0, pp:1, gf:1, gc:4, pts:0 },
     ],
     J: [
-      { team:'Argentina', flag:'🇦🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Argelia',   flag:'🇩🇿', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Austria',   flag:'🇦🇹', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Jordania',  flag:'🇯🇴', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Argentina', flag:'🇦🇷', pj:1, pg:1, pe:0, pp:0, gf:3, gc:0, pts:3 },
+      { team:'Austria',   flag:'🇦🇹', pj:1, pg:1, pe:0, pp:0, gf:3, gc:1, pts:3 },
+      { team:'Jordania',  flag:'🇯🇴', pj:1, pg:0, pe:0, pp:1, gf:1, gc:3, pts:0 },
+      { team:'Argelia',   flag:'🇩🇿', pj:1, pg:0, pe:0, pp:1, gf:0, gc:3, pts:0 },
     ],
     K: [
       { team:'Portugal',   flag:'🇵🇹', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
@@ -1594,6 +1594,7 @@ const DATA = {
   },
 
   scorers: [
+    { name:'Lionel Messi',         team:'Argentina · Min. 17\', 60\' y 76\' (Primer hat-trick de Messi en un Mundial)', flag:'🇦🇷', goals:3, highlight:true },
     { name:'Kylian Mbappé',        team:'Francia · Min. 66\' y 90+6\' (Máximo goleador histórico de Francia)', flag:'🇫🇷', goals:2, highlight:true },
     { name:'Erling Haaland',       team:'Noruega · Min. 29\' y 42\' (Doblete en debut mundialista)', flag:'🇳🇴', goals:2, highlight:true },
     { name:'Kai Havertz',          team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2 },
@@ -1626,6 +1627,9 @@ const DATA = {
     { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
     { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
     { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
+    { name:'Romano Schmid',        team:'Austria · Min. 21\'',             flag:'🇦🇹', goals:1 },
+    { name:'Ali Iyad Olwan',       team:'Jordania · Min. 50\'',            flag:'🇯🇴', goals:1 },
+    { name:'Marko Arnautović',     team:'Austria · Pen. Min. 90+12\' (gol más tardío del torneo)', flag:'🇦🇹', goals:1 },
     { name:'Bradley Barcola',      team:'Francia · Min. 82\'',             flag:'🇫🇷', goals:1 },
     { name:'Ibrahim Mbaye',        team:'Senegal · Min. 90+5\'',           flag:'🇸🇳', goals:1 },
     { name:'Aymen Hussein',        team:'Irak · Min. 38\'',                flag:'🇮🇶', goals:1 },
@@ -1638,6 +1642,7 @@ const DATA = {
     { name:'Emam Ashour',          team:'Egipto · Min. 20\'',             flag:'🇪🇬', goals:1 },
     { name:'Mohamed Hany',      team:'Bélgica · AG Min. 66\'',                flag:'🇧🇪', goals:1, isOwnGoal:true },
     { name:'Aymen Hussein',     team:'Irak · AG Min. 90+3\' (a favor de Noruega)', flag:'🇮🇶', goals:1, isOwnGoal:true },
+    { name:'Yazan Al-Arab',     team:'Jordania · AG Min. 76\' (a favor de Austria)', flag:'🇯🇴', goals:1, isOwnGoal:true },
     { name:'Miro Muheim',       team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
@@ -1675,6 +1680,8 @@ const DATA = {
     { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
     { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
     { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
+    // Partido Austria-Jordania (17 jun)
+    { player:'Marcel Sabitzer',        team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 77\'' },
     // Partido Noruega-Irak (16 jun)
     { player:'Zaid Tahseen',           team:'Irak',             flag:'🇮🇶', qty:1, min:'Min. 86\'' },
     // Partido RI de Irán-Nueva Zelanda (15 jun)
@@ -1698,7 +1705,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'55', label:'Goles en los primeros 18 partidos del torneo', sub:'3.1 por partido — Mbappé y Haaland ya hicieron historia' },
+    { num:'62', label:'Goles en los primeros 20 partidos del torneo', sub:'3.1 por partido — Messi entra a la historia con su primer hat-trick mundialista' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
