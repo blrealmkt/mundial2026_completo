@@ -1419,8 +1419,8 @@ const DATA = {
     { id:47, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',         awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Guadalajara', status:'scheduled' },
     { id:48, phase:'grupos', group:'H', home:'Cabo Verde',    homeFlag:'🇨🇻', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Houston',  status:'scheduled' },
     // ── GRUPO I: Francia · Senegal · Irak · Noruega
-    { id:49, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, date:'16 Jun', time:'13:00', venue:'Estadio Nueva York',            status:'scheduled' },
-    { id:50, phase:'grupos', group:'I', home:'Irak',     homeFlag:'🇮🇶', away:'Noruega', awayFlag:'🇳🇴', homeScore:null, awayScore:null, date:'16 Jun', time:'16:00', venue:'Estadio Boston',                status:'scheduled' },
+    { id:49, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:1, date:'16 Jun', time:'13:00', venue:'Estadio Nueva York',            status:'done' },
+    { id:50, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Irak',     awayFlag:'🇮🇶', homeScore:4, awayScore:1, date:'16 Jun', time:'16:00', venue:'Estadio Boston',                status:'done' },
     { id:51, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Irak',    awayFlag:'🇮🇶', homeScore:null, awayScore:null, date:'22 Jun', time:'15:00', venue:'Estadio Filadelfia',            status:'scheduled' },
     { id:52, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, date:'22 Jun', time:'18:00', venue:'Estadio Nueva York',            status:'scheduled' },
     { id:53, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Boston',                status:'scheduled' },
@@ -1568,10 +1568,10 @@ const DATA = {
       { team:'Uruguay',       flag:'🇺🇾', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
     ],
     I: [
-      { team:'Francia',  flag:'🇫🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Senegal',  flag:'🇸🇳', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Irak',     flag:'🇮🇶', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
-      { team:'Noruega',  flag:'🇳🇴', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
+      { team:'Francia',  flag:'🇫🇷', pj:1, pg:1, pe:0, pp:0, gf:3, gc:1, pts:3 },
+      { team:'Noruega',  flag:'🇳🇴', pj:1, pg:1, pe:0, pp:0, gf:4, gc:1, pts:3 },
+      { team:'Senegal',  flag:'🇸🇳', pj:1, pg:0, pe:0, pp:1, gf:1, gc:3, pts:0 },
+      { team:'Irak',     flag:'🇮🇶', pj:1, pg:0, pe:0, pp:1, gf:1, gc:4, pts:0 },
     ],
     J: [
       { team:'Argentina', flag:'🇦🇷', pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, pts:0 },
@@ -1594,7 +1594,9 @@ const DATA = {
   },
 
   scorers: [
-    { name:'Kai Havertz',          team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2, highlight:true },
+    { name:'Kylian Mbappé',        team:'Francia · Min. 66\' y 90+6\' (Máximo goleador histórico de Francia)', flag:'🇫🇷', goals:2, highlight:true },
+    { name:'Erling Haaland',       team:'Noruega · Min. 29\' y 42\' (Doblete en debut mundialista)', flag:'🇳🇴', goals:2, highlight:true },
+    { name:'Kai Havertz',          team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2 },
     { name:'Yasin Ayari',          team:'Suecia · Min. 7\' y 90+3\'',           flag:'🇸🇪', goals:2 },
     { name:'Folarin Balogun',      team:'Estados Unidos',                        flag:'🇺🇸', goals:2 },
     { name:'Nestory Irankunda',    team:'Australia · Min. 26\'',                 flag:'🇦🇺', goals:1 },
@@ -1624,6 +1626,10 @@ const DATA = {
     { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
     { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
     { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
+    { name:'Bradley Barcola',      team:'Francia · Min. 82\'',             flag:'🇫🇷', goals:1 },
+    { name:'Ibrahim Mbaye',        team:'Senegal · Min. 90+5\'',           flag:'🇸🇳', goals:1 },
+    { name:'Aymen Hussein',        team:'Irak · Min. 38\'',                flag:'🇮🇶', goals:1 },
+    { name:'Leo Østigård',         team:'Noruega · Min. 75\'',             flag:'🇳🇴', goals:1 },
     { name:'Elijah Just',          team:'Nueva Zelanda · Min. 7\' y 55\'', flag:'🇳🇿', goals:2 },
     { name:'Ramin Rezaeian',       team:'RI de Irán · Min. 32\'',         flag:'🇮🇷', goals:1 },
     { name:'Mohammad Mohebi',      team:'RI de Irán · Min. 64\'',         flag:'🇮🇷', goals:1 },
@@ -1631,6 +1637,7 @@ const DATA = {
     { name:'Maximiliano Araújo',   team:'Uruguay · Min. 80\'',            flag:'🇺🇾', goals:1 },
     { name:'Emam Ashour',          team:'Egipto · Min. 20\'',             flag:'🇪🇬', goals:1 },
     { name:'Mohamed Hany',      team:'Bélgica · AG Min. 66\'',                flag:'🇧🇪', goals:1, isOwnGoal:true },
+    { name:'Aymen Hussein',     team:'Irak · AG Min. 90+3\' (a favor de Noruega)', flag:'🇮🇶', goals:1, isOwnGoal:true },
     { name:'Miro Muheim',       team:'Suiza · AG Min. 90+3\'',                flag:'🇨🇭', goals:1, isOwnGoal:true },
   ],
 
@@ -1668,6 +1675,8 @@ const DATA = {
     { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
     { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
     { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
+    // Partido Noruega-Irak (16 jun)
+    { player:'Zaid Tahseen',           team:'Irak',             flag:'🇮🇶', qty:1, min:'Min. 86\'' },
     // Partido RI de Irán-Nueva Zelanda (15 jun)
     { player:'Ehsan Hajsafi',          team:'RI de Irán',      flag:'🇮🇷', qty:1, min:'Min. 89\'' },
     // Partido Arabia Saudita-Uruguay (15 jun)
@@ -1689,7 +1698,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'46', label:'Goles en los primeros 16 partidos del torneo', sub:'2.9 por partido — los grupos arrancan con empates dramáticos' },
+    { num:'55', label:'Goles en los primeros 18 partidos del torneo', sub:'3.1 por partido — Mbappé y Haaland ya hicieron historia' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
@@ -1697,6 +1706,45 @@ const DATA = {
 
 
   noticias: [
+    {
+      accentColor: 'gold',
+      kicker: '🇲🇽 Impacto Cultural · Fan Festivals',
+      kickerClass: 'gold',
+      title: 'El alma del Mundial es latina: los datos demuestran que México opacó a EE. UU. y Canadá en el arranque del Mundial',
+      text: 'Hay torneos que se ganan en la cancha y otros que se ganan en la calle. Las principales consultoras de turismo y los reportes de ocupación de las Fan Zones de la FIFA revelan datos contundentes: México está liderando por completo la experiencia e impacto cultural del Mundial 2026, superando drásticamente a Estados Unidos y Canadá en las métricas de hospitalidad y asistencia. Mientras las sedes de Los Ángeles y Toronto registraron una asistencia promedio del 65% de su capacidad en las primeras jornadas —golpeadas por los altos costos de transporte y accesos—, el FIFA Fan Festival del Centro Histórico de Guadalajara y el de la Ciudad de México reportaron un lleno absoluto del 100% desde el día uno, promediando más de 45,000 personas diarias. No es solo una cifra de turismo: es la confirmación de algo que cualquier aficionado latinoamericano ya sabía. El fútbol en México no se consume, se vive. Y por ahora, ningún anfitrión norteamericano le ha podido seguir el paso.',
+      jugadorFlag: '🇲🇽',
+      jugadorName: 'Fan Festival GDL y CDMX',
+      jugadorLabel: '100% de ocupación · +45,000 personas diarias',
+      tags: ['#MéxicoEsFiesta', '#FanFest2026', '#LatinPower'],
+      momento: 'Mientras LA y Toronto rondan el 65% de ocupación, las Fan Zones mexicanas no han tenido un solo boleto disponible.',
+      impacto: 'México se consolida como el verdadero corazón cultural del torneo, más allá de los resultados deportivos.',
+    },
+    {
+      accentColor: '',
+      kicker: '🇫🇷 Jornada 1 · Grupo I · Francia 3-1 Senegal',
+      kickerClass: '',
+      title: 'El tablero está completo: Mbappé y la temible Francia cierran la primera jornada del Mundial',
+      text: 'Si el Mundial necesitaba un cierre de jornada con sello de estrella, lo tuvo. Francia llegó a Nueva York con la urgencia de los favoritos y se fue con algo más que tres puntos: Kylian Mbappé se convirtió en el máximo goleador histórico de su selección, en un partido que tardó en abrirse pero que terminó siendo una exhibición. El primer gol llegó hasta el minuto 66, cuando Mbappé conectó de manera letal para romper un Senegal que había resistido con orden y disciplina durante una hora completa. Bradley Barcola amplió la ventaja al 82\' con un remate que dejó claro que esta Francia tiene variantes para hacer daño desde cualquier posición. Senegal no se rindió y descontó al 90+5\' por medio de Ibrahim Mbaye, generando un breve momento de tensión, pero la respuesta francesa fue inmediata: un minuto después, en el 90+6\', Mbappé volvió a aparecer para sellar el resultado y, de paso, escribir su nombre en la historia. Francia llega con todo a este Mundial, y el resto del Grupo I ya tomó nota.',
+      jugadorFlag: '🇫🇷',
+      jugadorName: 'Kylian Mbappé',
+      jugadorLabel: 'Doblete · Máximo goleador histórico de Francia',
+      tags: ['#Mbappé', '#Francia2026', '#GrupoI'],
+      momento: 'Min. 90+6\' — Mbappé sella el 3-1 y entra a los libros de historia de su selección en el mismo partido.',
+      impacto: 'Francia lidera el Grupo I con 3 puntos y +2 de diferencia de gol. Senegal arranca sin puntos.',
+    },
+    {
+      accentColor: 'lime',
+      kicker: '🇪🇸 Jornada 1 · Grupo H · España 0-0 Cabo Verde',
+      kickerClass: 'lime',
+      title: '¡Tragedia en la Madre Patria! La impotencia de España deja dudas tras amargo empate ante Cabo Verde',
+      text: 'Nadie en Atlanta esperaba este guion. España, una de las candidatas más firmes al título, se topó con una muralla azul celeste que no estaba dispuesta a moverse ni un centímetro. Cabo Verde, en su Mundial debut, plantó un bloque bajo casi perfecto y dejó a la Roja sin ideas claras durante los noventa minutos. Pedri, Yamal y compañía generaron volumen de juego pero nunca encontraron el último pase: tiros bloqueados, centros que no encontraron remate y una desesperación creciente que terminó con la amarilla de Pedri en el tiempo de compensación, casi como un reflejo de la frustración colectiva. El 0-0 deja a España con apenas un punto en un grupo que parecía un trámite y que ahora se complica más de lo previsto. La pregunta que ya circula entre la prensa española no es si España puede ganar el Mundial, sino si esta versión del equipo tiene el repertorio para resolver partidos cuando el rival decide no jugar.',
+      jugadorFlag: '🇨🇻',
+      jugadorName: 'Defensa de Cabo Verde',
+      jugadorLabel: 'Cero goles concedidos ante España',
+      tags: ['#LaRoja', '#SorpresaMundial', '#CaboVerde2026'],
+      momento: 'Min. 90+2\' — Pedri recibe amarilla en la última jugada, símbolo de una noche sin soluciones para España.',
+      impacto: 'España suma solo 1 punto y deberá reaccionar rápido en su siguiente partido del Grupo H.',
+    },
     {
       accentColor: 'blue',
       kicker: '🇺🇸 Jornada 1 · Grupo D · USA 4-1 Paraguay',
@@ -1906,7 +1954,7 @@ function renderMatches() {
 
     const pastMatches = DATA.matches
       .filter(m => m.status === 'done' && dateOnlyKey(m.date) < weekStart)
-      .sort((a,b) => matchSortKey(b) - matchSortKey(a));
+      .sort((a,b) => matchSortKey(a) - matchSortKey(b));
 
     const weekMatches = DATA.matches
       .filter(m => { const k = dateOnlyKey(m.date); return k >= weekStart && k <= weekEnd; })
