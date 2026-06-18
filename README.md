@@ -1412,7 +1412,7 @@ const DATA = {
     // ── GRUPO A: México · Sudáfrica · Rep. de Corea · Rep. Checa
     { id:1,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:2, awayScore:0, date:'11 Jun', time:'13:00', venue:'Estadio Ciudad de México', status:'done' },
     { id:2,  phase:'grupos', group:'A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',    awayFlag:'🇨🇿', homeScore:2, awayScore:1, date:'11 Jun', time:'20:00', venue:'Estadio Guadalajara',      status:'done' },
-    { id:3,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:null, awayScore:null, date:'18 Jun', time:'10:00', venue:'Estadio Atlanta',          status:'scheduled' },
+    { id:3,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:1, awayScore:1, date:'18 Jun', time:'10:00', venue:'Estadio Atlanta',          status:'done' },
     { id:4,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'18 Jun', time:'19:00', venue:'Estadio Guadalajara',      status:'scheduled' },
     { id:5,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'México',        awayFlag:'🇲🇽', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:6,  phase:'grupos', group:'A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Monterrey',        status:'scheduled' },
@@ -1569,8 +1569,8 @@ const DATA = {
     A: [
       { team:'México',        flag:'🇲🇽', pj:1, pg:1, pe:0, pp:0, gf:2, gc:0, pts:3 },
       { team:'Rep. de Corea', flag:'🇰🇷', pj:1, pg:1, pe:0, pp:0, gf:2, gc:1, pts:3 },
-      { team:'Rep. Checa',    flag:'🇨🇿', pj:1, pg:0, pe:0, pp:1, gf:1, gc:2, pts:0 },
-      { team:'Sudáfrica',     flag:'🇿🇦', pj:1, pg:0, pe:0, pp:1, gf:0, gc:2, pts:0 },
+      { team:'Rep. Checa',    flag:'🇨🇿', pj:2, pg:0, pe:1, pp:1, gf:2, gc:3, pts:1 },
+      { team:'Sudáfrica',     flag:'🇿🇦', pj:2, pg:0, pe:1, pp:1, gf:1, gc:3, pts:1 },
     ],
     B: [
       { team:'Canadá',               flag:'🇨🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
@@ -1687,6 +1687,8 @@ const DATA = {
     { name:'Martin Baturina',      team:'Croacia · Min. 36\'',             flag:'🇭🇷', goals:1 },
     { name:'Petar Musa',           team:'Croacia · Min. 55+5\'',           flag:'🇭🇷', goals:1 },
     { name:'Yirenkyi',             team:'Ghana · Min. 90+5\' (gol más tardío de la victoria)', flag:'🇬🇭', goals:1 },
+    { name:'Michal Sadílek',       team:'Rep. Checa · Min. 6\'',           flag:'🇨🇿', goals:1 },
+    { name:'Teboho Mokoena',       team:'Sudáfrica · Pen. Min. 83\'',      flag:'🇿🇦', goals:1 },
     { name:'João Neves',           team:'Portugal · Min. 6\'',             flag:'🇵🇹', goals:1 },
     { name:'Yoane Wissa',          team:'RD Congo · Min. 45+5\'',          flag:'🇨🇩', goals:1 },
     { name:'Bradley Barcola',      team:'Francia · Min. 82\'',             flag:'🇫🇷', goals:1 },
@@ -1739,6 +1741,10 @@ const DATA = {
     { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
     { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
     { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
+    // Partido Rep. Checa-Sudáfrica (18 jun)
+    { player:'Ladislav Krejčí',        team:'Rep. Checa',       flag:'🇨🇿', qty:1, min:'Min. 75\'' },
+    { player:'Thalente Mbatha',        team:'Sudáfrica',         flag:'🇿🇦', qty:1, min:'Min. 40\'' },
+    { player:'Teboho Mokoena',         team:'Sudáfrica · ⚠️ 2ª amarilla del torneo (condicionado)', flag:'🇿🇦', qty:1, min:'Min. 33\'' },
     // Partido Colombia-Uzbekistán (17 jun)
     { player:'Johan Mojica',           team:'Colombia',         flag:'🇨🇴', qty:1, min:'Min. 7\'' },
     { player:'Abdukodir Khusanov',     team:'Uzbekistán',       flag:'🇺🇿', qty:1, min:'Min. 34\'' },
@@ -1776,7 +1782,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'75', label:'Goles en los primeros 24 partidos del torneo', sub:'3.1 por partido — Harry Kane llega a 10 goles históricos en Mundiales' },
+    { num:'77', label:'Goles en los primeros 25 partidos del torneo', sub:'3.1 por partido — la jornada 2 mantiene el ritmo goleador' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
