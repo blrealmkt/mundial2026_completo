@@ -1413,14 +1413,14 @@ const DATA = {
     { id:1,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:2, awayScore:0, date:'11 Jun', time:'13:00', venue:'Estadio Ciudad de México', status:'done' },
     { id:2,  phase:'grupos', group:'A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',    awayFlag:'🇨🇿', homeScore:2, awayScore:1, date:'11 Jun', time:'20:00', venue:'Estadio Guadalajara',      status:'done' },
     { id:3,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'Sudáfrica',     awayFlag:'🇿🇦', homeScore:1, awayScore:1, date:'18 Jun', time:'10:00', venue:'Estadio Atlanta',          status:'done' },
-    { id:4,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'18 Jun', time:'19:00', venue:'Estadio Guadalajara',      status:'scheduled' },
+    { id:4,  phase:'grupos', group:'A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'18 Jun', time:'19:00', venue:'Estadio Guadalajara',      status:'done' },
     { id:5,  phase:'grupos', group:'A', home:'Rep. Checa',    homeFlag:'🇨🇿', away:'México',        awayFlag:'🇲🇽', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:6,  phase:'grupos', group:'A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea', awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'19:00', venue:'Estadio Monterrey',        status:'scheduled' },
     // ── GRUPO B: Canadá · Bosnia y Herzegovina · Catar · Suiza
     { id:7,  phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:1, awayScore:1, date:'12 Jun', time:'13:00', venue:'Estadio Toronto',               status:'done' },
     { id:8,  phase:'grupos', group:'B', home:'Catar',                homeFlag:'🇶🇦', away:'Suiza',                awayFlag:'🇨🇭', homeScore:1, awayScore:1, date:'13 Jun', time:'13:00', venue:'Estadio Bahía de San Francisco', status:'done' },
-    { id:9,  phase:'grupos', group:'B', home:'Suiza',                homeFlag:'🇨🇭', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:4, awayScore:1, date:'18 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
-    { id:10, phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Catar',                awayFlag:'🇶🇦', homeScore:3, awayScore:0, date:'18 Jun', time:'16:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
+    { id:9,  phase:'grupos', group:'B', home:'Suiza',                homeFlag:'🇨🇭', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:4, awayScore:1, date:'18 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'done' },
+    { id:10, phase:'grupos', group:'B', home:'Canadá',               homeFlag:'🇨🇦', away:'Catar',                awayFlag:'🇶🇦', homeScore:6, awayScore:0, date:'18 Jun', time:'16:00', venue:'Estadio BC Place Vancouver',    status:'done' },
     { id:11, phase:'grupos', group:'B', home:'Suiza',                homeFlag:'🇨🇭', away:'Canadá',               awayFlag:'🇨🇦', homeScore:null, awayScore:null, date:'24 Jun', time:'13:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
     { id:12, phase:'grupos', group:'B', home:'Bosnia y Herzegovina', homeFlag:'🇧🇦', away:'Catar',                awayFlag:'🇶🇦', homeScore:null, awayScore:null, date:'24 Jun', time:'13:00', venue:'Estadio Seattle',               status:'scheduled' },
     // ── GRUPO C: Brasil · Marruecos · Haití · Escocia
@@ -1567,16 +1567,16 @@ const DATA = {
 
   standings: {
     A: [
-      { team:'México',        flag:'🇲🇽', pj:1, pg:1, pe:0, pp:0, gf:2, gc:0, pts:3 },
-      { team:'Rep. de Corea', flag:'🇰🇷', pj:1, pg:1, pe:0, pp:0, gf:2, gc:1, pts:3 },
+      { team:'México',        flag:'🇲🇽', pj:2, pg:2, pe:0, pp:0, gf:3, gc:0, pts:6 },
+      { team:'Rep. de Corea', flag:'🇰🇷', pj:2, pg:1, pe:0, pp:1, gf:2, gc:2, pts:3 },
       { team:'Rep. Checa',    flag:'🇨🇿', pj:2, pg:0, pe:1, pp:1, gf:2, gc:3, pts:1 },
       { team:'Sudáfrica',     flag:'🇿🇦', pj:2, pg:0, pe:1, pp:1, gf:1, gc:3, pts:1 },
     ],
     B: [
-      { team:'Canadá',               flag:'🇨🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Bosnia y Herzegovina', flag:'🇧🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Catar',                flag:'🇶🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Suiza',                flag:'🇨🇭', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
+      { team:'Suiza',                flag:'🇨🇭', pj:2, pg:1, pe:1, pp:0, gf:5, gc:2, pts:4 },
+      { team:'Canadá',               flag:'🇨🇦', pj:2, pg:1, pe:1, pp:0, gf:7, gc:1, pts:4 },
+      { team:'Catar',                flag:'🇶🇦', pj:2, pg:0, pe:1, pp:1, gf:1, gc:7, pts:1 },
+      { team:'Bosnia y Herzegovina', flag:'🇧🇦', pj:2, pg:0, pe:1, pp:1, gf:2, gc:5, pts:1 },
     ],
     C: [
       { team:'Escocia',   flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pj:1, pg:1, pe:0, pp:0, gf:1, gc:0, pts:3 },
@@ -1671,7 +1671,7 @@ const DATA = {
     { name:'Christian Pulisic',    team:'Estados Unidos',                        flag:'🇺🇸', goals:1 },
     { name:'Hwang In-beom',        team:'Corea del Sur',                         flag:'🇰🇷', goals:1 },
     { name:'Ladislav Krejčí',      team:'Chequia',                               flag:'🇨🇿', goals:1 },
-    { name:'Cyle Larin',           team:'Canadá',                                flag:'🇨🇦', goals:1 },
+    { name:'Cyle Larin',           team:'Canadá · Min. 55\' (J1) y 16\' (J2)', flag:'🇨🇦', goals:2 },
     { name:'Livano Comenencia',    team:'Curazao · Min. 21\'',                   flag:'🇨🇼', goals:1 },
     { name:'Omar Rekik',           team:'Túnez · Min. 42\'',                     flag:'🇹🇳', goals:1 },
     { name:'Harry Kane',           team:'Inglaterra · Min. 12\' y 42\' (10 goles en Copas del Mundo)', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2, highlight:true },
@@ -1687,6 +1687,14 @@ const DATA = {
     { name:'Martin Baturina',      team:'Croacia · Min. 36\'',             flag:'🇭🇷', goals:1 },
     { name:'Petar Musa',           team:'Croacia · Min. 55+5\'',           flag:'🇭🇷', goals:1 },
     { name:'Yirenkyi',             team:'Ghana · Min. 90+5\' (gol más tardío de la victoria)', flag:'🇬🇭', goals:1 },
+    { name:'Jonathan David',       team:'Canadá · Min. 29\', 45+3\' y 90+2\' (Hat-trick)', flag:'🇨🇦', goals:3 },
+    { name:'Johan Manzambi',       team:'Suiza · Min. 74\' y 90\'',        flag:'🇨🇭', goals:2 },
+    { name:'Ruben Vargas',         team:'Suiza · Min. 84\'',               flag:'🇨🇭', goals:1 },
+    { name:'Granit Xhaka',         team:'Suiza · Pen. Min. 90+7\'',        flag:'🇨🇭', goals:1 },
+    { name:'Nathan Saliba',        team:'Canadá · Min. 64\'',              flag:'🇨🇦', goals:1 },
+    { name:'Luis Romo',            team:'México · Min. 58\' (Primer clasificado del torneo)', flag:'🇲🇽', goals:1 },
+    { name:'Mohamed Al Mannai',    team:'Catar · AG Min. 75\' (a favor de Canadá)', flag:'🇶🇦', goals:1, isOwnGoal:true },
+    { name:'Ermin Mahmic',         team:'Bosnia y Herzegovina · Min. 90+3\'', flag:'🇧🇦', goals:1 },
     { name:'Michal Sadílek',       team:'Rep. Checa · Min. 6\'',           flag:'🇨🇿', goals:1 },
     { name:'Teboho Mokoena',       team:'Sudáfrica · Pen. Min. 83\'',      flag:'🇿🇦', goals:1 },
     { name:'João Neves',           team:'Portugal · Min. 6\'',             flag:'🇵🇹', goals:1 },
@@ -1745,6 +1753,16 @@ const DATA = {
     { player:'Ladislav Krejčí',        team:'Rep. Checa',       flag:'🇨🇿', qty:1, min:'Min. 75\'' },
     { player:'Thalente Mbatha',        team:'Sudáfrica',         flag:'🇿🇦', qty:1, min:'Min. 40\'' },
     { player:'Teboho Mokoena',         team:'Sudáfrica · ⚠️ 2ª amarilla del torneo (condicionado)', flag:'🇿🇦', qty:1, min:'Min. 33\'' },
+    // Partido Suiza-Bosnia (18 jun)
+    { player:'Amar Dedić',             team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'Min. 59\'' },
+    { player:'Edin Džeko',             team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'Min. 61\'' },
+    { player:'Nico Elvedi',            team:'Suiza',                flag:'🇨🇭', qty:1, min:'Min. 65\'' },
+    // Partido Canadá-Catar (18 jun)
+    { player:'Derek Cornelius',        team:'Canadá',               flag:'🇨🇦', qty:1, min:'Min. 9\'' },
+    { player:'Ahmed Fathi',            team:'Catar',                flag:'🇶🇦', qty:1, min:'Min. 62\'' },
+    // Partido México-Corea del Sur (18 jun)
+    { player:'K. Lee',                 team:'Rep. de Corea',        flag:'🇰🇷', qty:1, min:'Min. 4\'' },
+    { player:'Paik Seung-Ho',          team:'Rep. de Corea',        flag:'🇰🇷', qty:1, min:'Min. 58\'' },
     // Partido Colombia-Uzbekistán (17 jun)
     { player:'Johan Mojica',           team:'Colombia',         flag:'🇨🇴', qty:1, min:'Min. 7\'' },
     { player:'Abdukodir Khusanov',     team:'Uzbekistán',       flag:'🇺🇿', qty:1, min:'Min. 34\'' },
@@ -1776,13 +1794,16 @@ const DATA = {
   ],
 
   redCards: [
-    { player:'Yaya Sithole', team:'Sudáfrica', flag:'🇿🇦', min:'Doble amarilla', desc:'Expulsado por doble amonestación tras faltas consecutivas.' },
-    { player:'Themba Zwane', team:'Sudáfrica', flag:'🇿🇦', min:'Roja directa', desc:'Tarjeta roja tras un altercado y manotazo a un rival.' },
-    { player:'César Montes', team:'México', flag:'🇲🇽', min:'Roja directa', desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
+    { player:'Yaya Sithole',         team:'Sudáfrica',            flag:'🇿🇦', min:'Doble amarilla', desc:'Expulsado por doble amonestación tras faltas consecutivas.' },
+    { player:'Themba Zwane',         team:'Sudáfrica',            flag:'🇿🇦', min:'Roja directa',   desc:'Tarjeta roja tras un altercado y manotazo a un rival.' },
+    { player:'César Montes',         team:'México',               flag:'🇲🇽', min:'Roja directa',   desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
+    { player:'Tarik Muharemović',    team:'Bosnia y Herzegovina', flag:'🇧🇦', min:'Min. 80\'',       desc:'Roja directa que condena a Bosnia a jugar con 10 los últimos minutos ante Suiza.' },
+    { player:'Homam Ahmed',          team:'Catar',                flag:'🇶🇦', min:'Min. 33\'',       desc:'Roja directa que reduce a Catar a 10 hombres ante Canadá desde el primer tiempo.' },
+    { player:'Assim Madibo',         team:'Catar',                flag:'🇶🇦', min:'Min. 53\'',       desc:'Segunda roja para Catar: el equipo acaba el partido con 9 hombres.' },
   ],
 
   crazyNumbers: [
-    { num:'77', label:'Goles en los primeros 25 partidos del torneo', sub:'3.1 por partido — la jornada 2 mantiene el ritmo goleador' },
+    { num:'89', label:'Goles en los primeros 28 partidos del torneo', sub:'3.2 por partido — Canadá 6-0 y México ya clasificó a la siguiente ronda' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
@@ -1892,7 +1913,7 @@ const DATA = {
     { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
-    { id:4,  sede:'gdl',  grupo:'Grupo A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:null, awayScore:null, date:'18 Jun', time:'19:00', status:'scheduled' },
+    { id:4,  sede:'gdl',  grupo:'Grupo A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'18 Jun', time:'19:00', status:'done' },
     { id:64, sede:'gdl',  grupo:'Grupo K', home:'Colombia',      homeFlag:'🇨🇴', away:'RD Congo',    awayFlag:'🇨🇩', homeScore:null, awayScore:null, date:'23 Jun', time:'20:00', status:'scheduled' },
     { id:47, sede:'gdl',  grupo:'Grupo H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',      awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', status:'scheduled' },
     { id:75, sede:'gdl',  grupo:'Dieciseisavos', home:'1° Grupo F', homeFlag:'🏆', away:'2° Grupo C', awayFlag:'🥈', homeScore:null, awayScore:null, date:'29 Jun', time:'18:00', status:'scheduled' },
