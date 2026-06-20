@@ -566,7 +566,7 @@ body {
   align-items: center;
   gap: 8px;
 }
-.team-cell-flag { font-size: ; line-height: 1; }
+.team-cell-flag { font-size: 18px; line-height: 1; }
 .team-cell-name {
   font-family: var(--font-display);
   font-weight: 700;
@@ -1426,15 +1426,15 @@ const DATA = {
     // ── GRUPO C: Brasil · Marruecos · Haití · Escocia
     { id:13, phase:'grupos', group:'C', home:'Brasil',    homeFlag:'🇧🇷', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, date:'13 Jun', time:'16:00', venue:'Estadio Nueva York',            status:'done' },
     { id:14, phase:'grupos', group:'C', home:'Haití',     homeFlag:'🇭🇹', away:'Escocia',   awayFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', homeScore:0, awayScore:1, date:'13 Jun', time:'19:00', venue:'Estadio Boston',                status:'done' },
-    { id:15, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, date:'19 Jun', time:'16:00', venue:'Estadio Boston',                status:'scheduled' },
-    { id:16, phase:'grupos', group:'C', home:'Brasil',    homeFlag:'🇧🇷', away:'Haití',     awayFlag:'🇭🇹', homeScore:3, awayScore:0, date:'19 Jun', time:'18:30', venue:'Estadio Filadelfia',            status:'scheduled' },
+    { id:15, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, date:'19 Jun', time:'16:00', venue:'Estadio Boston',                status:'done' },
+    { id:16, phase:'grupos', group:'C', home:'Brasil',    homeFlag:'🇧🇷', away:'Haití',     awayFlag:'🇭🇹', homeScore:3, awayScore:0, date:'19 Jun', time:'18:30', venue:'Estadio Filadelfia',            status:'done' },
     { id:17, phase:'grupos', group:'C', home:'Marruecos', homeFlag:'🇲🇦', away:'Haití',     awayFlag:'🇭🇹', homeScore:null, awayScore:null, date:'24 Jun', time:'16:00', venue:'Estadio Atlanta',               status:'scheduled' },
     { id:18, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Brasil',    awayFlag:'🇧🇷', homeScore:null, awayScore:null, date:'24 Jun', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
     // ── GRUPO D: Estados Unidos · Paraguay · Australia · Turquía
     { id:19, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:4, awayScore:1, date:'12 Jun', time:'19:00', venue:'Estadio Los Ángeles',            status:'done' },
     { id:20, phase:'grupos', group:'D', home:'Australia',      homeFlag:'🇦🇺', away:'Turquía',        awayFlag:'🇹🇷', homeScore:2, awayScore:0, date:'13 Jun', time:'22:00', venue:'Estadio BC Place Vancouver',    status:'done' },
-    { id:21, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Australia',      awayFlag:'🇦🇺', homeScore:2, awayScore:0, date:'19 Jun', time:'13:00', venue:'Estadio Seattle',               status:'scheduled' },
-    { id:22, phase:'grupos', group:'D', home:'Turquía',        homeFlag:'🇹🇷', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:null, awayScore:null, date:'19 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
+    { id:21, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Australia',      awayFlag:'🇦🇺', homeScore:2, awayScore:0, date:'19 Jun', time:'13:00', venue:'Estadio Seattle',               status:'done' },
+    { id:22, phase:'grupos', group:'D', home:'Turquía',        homeFlag:'🇹🇷', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:0, awayScore:1, date:'19 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:23, phase:'grupos', group:'D', home:'Turquía',        homeFlag:'🇹🇷', away:'Estados Unidos', awayFlag:'🇺🇸', homeScore:null, awayScore:null, date:'25 Jun', time:'20:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
     { id:24, phase:'grupos', group:'D', home:'Paraguay',       homeFlag:'🇵🇾', away:'Australia',      awayFlag:'🇦🇺', homeScore:null, awayScore:null, date:'25 Jun', time:'20:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
     // ── GRUPO E: Alemania · Curazao · Costa de Marfil · Ecuador
@@ -1579,16 +1579,16 @@ const DATA = {
       { team:'Bosnia y Herzegovina', flag:'🇧🇦', pj:2, pg:0, pe:1, pp:1, gf:2, gc:5, pts:1 },
     ],
     C: [
-      { team:'Escocia',   flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pj:1, pg:1, pe:0, pp:0, gf:1, gc:0, pts:3 },
-      { team:'Brasil',    flag:'🇧🇷', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Marruecos', flag:'🇲🇦', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Haití',     flag:'🇭🇹', pj:1, pg:0, pe:0, pp:1, gf:0, gc:1, pts:0 },
+      { team:'Marruecos', flag:'🇲🇦', pj:2, pg:1, pe:1, pp:0, gf:2, gc:1, pts:4 },
+      { team:'Brasil',    flag:'🇧🇷', pj:2, pg:1, pe:1, pp:0, gf:4, gc:1, pts:4 },
+      { team:'Escocia',   flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pj:2, pg:1, pe:0, pp:1, gf:1, gc:1, pts:3 },
+      { team:'Haití',     flag:'🇭🇹', pj:2, pg:0, pe:0, pp:2, gf:0, gc:4, pts:0 },
     ],
     D: [
-      { team:'Estados Unidos', flag:'🇺🇸', pj:1, pg:1, pe:0, pp:0, gf:4, gc:1, pts:3 },
-      { team:'Australia',      flag:'🇦🇺', pj:1, pg:1, pe:0, pp:0, gf:2, gc:0, pts:3 },
-      { team:'Paraguay',       flag:'🇵🇾', pj:1, pg:0, pe:0, pp:1, gf:1, gc:4, pts:0 },
-      { team:'Turquía',        flag:'🇹🇷', pj:1, pg:0, pe:0, pp:1, gf:0, gc:2, pts:0 },
+      { team:'Estados Unidos', flag:'🇺🇸', pj:2, pg:2, pe:0, pp:0, gf:6, gc:1, pts:6 },
+      { team:'Australia',      flag:'🇦🇺', pj:2, pg:1, pe:0, pp:1, gf:2, gc:2, pts:3 },
+      { team:'Paraguay',       flag:'🇵🇾', pj:2, pg:1, pe:0, pp:1, gf:2, gc:4, pts:3 },
+      { team:'Turquía',        flag:'🇹🇷', pj:2, pg:0, pe:0, pp:2, gf:0, gc:3, pts:0 },
     ],
     E: [
       { team:'Alemania',        flag:'🇩🇪', pj:1, pg:1, pe:0, pp:0, gf:7, gc:1, pts:3 },
@@ -1644,6 +1644,7 @@ const DATA = {
     // ── 3 goles
     { name:'Lionel Messi',         team:'Argentina · Min. 17\', 60\' y 76\' (Primer hat-trick en un Mundial)', flag:'🇦🇷', goals:3, highlight:true },
     { name:'Jonathan David',       team:'Canadá · Min. 29\', 45+3\' y 90+2\' (Hat-trick)', flag:'🇨🇦', goals:3, highlight:true },
+    { name:'Matheus Cunha',        team:'Brasil · Min. 23\' y 36\' + asistencia', flag:'🇧🇷', goals:2 },
     // ── 2 goles
     { name:'Kylian Mbappé',        team:'Francia · Min. 66\' y 90+6\' (Máximo goleador histórico de Francia)', flag:'🇫🇷', goals:2 },
     { name:'Erling Haaland',       team:'Noruega · Min. 29\' y 42\' (Doblete en debut mundialista)', flag:'🇳🇴', goals:2 },
@@ -1654,6 +1655,8 @@ const DATA = {
     { name:'Johan Manzambi',       team:'Suiza · Min. 74\' y 90\'', flag:'🇨🇭', goals:2 },
     { name:'Elijah Just',          team:'Nueva Zelanda · Min. 7\' y 55\'', flag:'🇳🇿', goals:2 },
     { name:'Cyle Larin',           team:'Canadá · Min. 55\' (J1) y 16\' (J2)', flag:'🇨🇦', goals:2 },
+    { name:'Vinícius Júnior',      team:'Brasil · Min. 31\' y 45+3\'', flag:'🇧🇷', goals:2 },
+    { name:'Ismael Saibari',       team:'Marruecos · Min. 20\' (J1) y 2\' (J2)', flag:'🇲🇦', goals:2 },
     // ── 1 gol (orden cronológico)
     { name:'Julián Quiñones',      team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
     { name:'Raúl Jiménez',         team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
@@ -1662,8 +1665,6 @@ const DATA = {
     { name:'Breel Embolo',         team:'Suiza · Pen. Min. 16\'', flag:'🇨🇭', goals:1 },
     { name:'Nestory Irankunda',    team:'Australia · Min. 26\'', flag:'🇦🇺', goals:1 },
     { name:'Connor Metcalfe',      team:'Australia · Min. 74\'', flag:'🇦🇺', goals:1 },
-    { name:'Vinícius Júnior',      team:'Brasil · Min. 31\'', flag:'🇧🇷', goals:1 },
-    { name:'Ismael Saibari',       team:'Marruecos · Min. 20\'', flag:'🇲🇦', goals:1 },
     { name:'John McGinn',          team:'Escocia · Min. 27\'', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', goals:1 },
     { name:'Felix Nmecha',         team:'Alemania · Min. 6\'', flag:'🇩🇪', goals:1 },
     { name:'Nico Schlotterbeck',   team:'Alemania · Min. 38\'', flag:'🇩🇪', goals:1 },
@@ -1711,14 +1712,36 @@ const DATA = {
     { name:'Ermin Mahmic',         team:'Bosnia y Herzegovina · Min. 90+3\'', flag:'🇧🇦', goals:1 },
     { name:'Nathan Saliba',        team:'Canadá · Min. 64\'', flag:'🇨🇦', goals:1 },
     { name:'Luis Romo',            team:'México · Min. 58\' (Primer clasificado del torneo)', flag:'🇲🇽', goals:1 },
+    { name:'Alex Freeman',         team:'Estados Unidos · Min. 43\'', flag:'🇺🇸', goals:1 },
+    { name:'Matías Galarza',       team:'Paraguay · Min. 2\'', flag:'🇵🇾', goals:1 },
     // ── Autogoles
     { name:'Aymen Hussein',        team:'Irak · AG Min. 90+3\' (a favor de Noruega)', flag:'🇮🇶', goals:1, isOwnGoal:true },
     { name:'Yazan Al-Arab',        team:'Jordania · AG Min. 76\' (a favor de Austria)', flag:'🇯🇴', goals:1, isOwnGoal:true },
     { name:'Mohamed Hany',         team:'Egipto · AG Min. 66\' (a favor de Bélgica)', flag:'🇪🇬', goals:1, isOwnGoal:true },
     { name:'Mohamed Al Mannai',    team:'Catar · AG Min. 75\' (a favor de Canadá)', flag:'🇶🇦', goals:1, isOwnGoal:true },
     { name:'Miro Muheim',          team:'Suiza · AG Min. 90+3\' (a favor de Catar)', flag:'🇨🇭', goals:1, isOwnGoal:true },
+    { name:'Cameron Burgess',      team:'Australia · AG Min. 11\' (a favor de Estados Unidos)', flag:'🇦🇺', goals:1, isOwnGoal:true },
   ],
     yellowCards: [
+    // Partido Estados Unidos-Australia (19 jun)
+    { player:'Jordan Bos',             team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 16\'' },
+    { player:'Alessandro Circati',     team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 32\'' },
+    { player:'Antonee Robinson',       team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 56\'' },
+    { player:'J. Italiano',            team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 89\'' },
+    { player:'Harry Souttar',          team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 89\'' },
+    { player:'Folarin Balogun',        team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 89\'' },
+    { player:'Chris Richards',         team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 90+2\'' },
+    // Partido Turquía-Paraguay (19 jun)
+    { player:'Matías Galarza',         team:'Paraguay',         flag:'🇵🇾', qty:1, min:'Min. 4\'' },
+    { player:'Eren Elmali',            team:'Turquía',          flag:'🇹🇷', qty:1, min:'Min. 71\'' },
+    // Partido Brasil-Haití (19 jun)
+    { player:'Arcus Carlens',          team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 4\'' },
+    { player:'Frantzdy Pierrot',       team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 45+3\'' },
+    { player:'D. Santos',              team:'Brasil',           flag:'🇧🇷', qty:1, min:'Min. 65\'' },
+    { player:'Danley Jean Jacques',    team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 72\'' },
+    // Partido Escocia-Marruecos (19 jun)
+    { player:'Issa Diop',              team:'Marruecos',        flag:'🇲🇦', qty:1, min:'Min. 23\'' },
+    { player:'Andrew Robertson',       team:'Escocia',          flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 65\'' },
     // Partido México-Sudáfrica (11 jun)
     { player:'Teboho Mokoena', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
     { player:'Nkosinathi Sibisi', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
@@ -1797,6 +1820,7 @@ const DATA = {
   ],
 
   redCards: [
+    { player:'Miguel Almirón',       team:'Paraguay',             flag:'🇵🇾', min:'Min. 45+3\'',     desc:'Roja directa que deja a Paraguay con 10 hombres antes del descanso ante Turquía.' },
     { player:'Yaya Sithole',         team:'Sudáfrica',            flag:'🇿🇦', min:'Doble amarilla', desc:'Expulsado por doble amonestación tras faltas consecutivas.' },
     { player:'Themba Zwane',         team:'Sudáfrica',            flag:'🇿🇦', min:'Roja directa',   desc:'Tarjeta roja tras un altercado y manotazo a un rival.' },
     { player:'César Montes',         team:'México',               flag:'🇲🇽', min:'Roja directa',   desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
@@ -1806,7 +1830,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'89', label:'Goles en los primeros 28 partidos del torneo', sub:'3.2 por partido — Canadá 6-0 y México ya clasificó a la siguiente ronda' },
+    { num:'96', label:'Goles en los primeros 32 partidos del torneo', sub:'3.0 por partido — Brasil y USA arrancan con paso perfecto' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
