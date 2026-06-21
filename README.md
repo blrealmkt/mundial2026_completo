@@ -1454,14 +1454,14 @@ const DATA = {
     // ── GRUPO G: Bélgica · Egipto · RI de Irán · Nueva Zelanda
     { id:37, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'Egipto',       awayFlag:'🇪🇬', homeScore:1, awayScore:1, date:'15 Jun', time:'13:00', venue:'Estadio Seattle',            status:'done' },
     { id:38, phase:'grupos', group:'G', home:'RI de Irán',   homeFlag:'🇮🇷', away:'Nueva Zelanda', awayFlag:'🇳🇿', homeScore:2, awayScore:2, date:'15 Jun', time:'19:00', venue:'Estadio Los Ángeles',        status:'done' },
-    { id:39, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'21 Jun', time:'13:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
+    { id:39, phase:'grupos', group:'G', home:'Bélgica',      homeFlag:'🇧🇪', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:0, awayScore:0, date:'21 Jun', time:'13:00', venue:'Estadio Los Ángeles',        status:'live' },
     { id:40, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Egipto',       awayFlag:'🇪🇬', homeScore:null, awayScore:null, date:'21 Jun', time:'19:00', venue:'Estadio BC Place Vancouver',  status:'scheduled' },
     { id:41, phase:'grupos', group:'G', home:'Egipto',       homeFlag:'🇪🇬', away:'RI de Irán',   awayFlag:'🇮🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Seattle',            status:'scheduled' },
     { id:42, phase:'grupos', group:'G', home:'Nueva Zelanda',homeFlag:'🇳🇿', away:'Bélgica',      awayFlag:'🇧🇪', homeScore:null, awayScore:null, date:'26 Jun', time:'21:00', venue:'Estadio Los Ángeles',        status:'scheduled' },
     // ── GRUPO H: España · Cabo Verde · Arabia Saudita · Uruguay
     { id:43, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:0, awayScore:0, date:'15 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'done' },
     { id:44, phase:'grupos', group:'H', home:'Arabia Saudita',homeFlag:'🇸🇦', away:'Uruguay',        awayFlag:'🇺🇾', homeScore:1, awayScore:1, date:'15 Jun', time:'16:00', venue:'Estadio Miami',    status:'done' },
-    { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:4, awayScore:0, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'live' },
+    { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:4, awayScore:0, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'done' },
     { id:46, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'21 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
     { id:47, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',         awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Guadalajara', status:'scheduled' },
     { id:48, phase:'grupos', group:'H', home:'Cabo Verde',    homeFlag:'🇨🇻', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Houston',  status:'scheduled' },
