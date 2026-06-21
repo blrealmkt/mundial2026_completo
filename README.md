@@ -1461,7 +1461,7 @@ const DATA = {
     // ── GRUPO H: España · Cabo Verde · Arabia Saudita · Uruguay
     { id:43, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:0, awayScore:0, date:'15 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'done' },
     { id:44, phase:'grupos', group:'H', home:'Arabia Saudita',homeFlag:'🇸🇦', away:'Uruguay',        awayFlag:'🇺🇾', homeScore:1, awayScore:1, date:'15 Jun', time:'16:00', venue:'Estadio Miami',    status:'done' },
-    { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'scheduled' },
+    { id:45, phase:'grupos', group:'H', home:'España',        homeFlag:'🇪🇸', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:4, awayScore:0, date:'21 Jun', time:'10:00', venue:'Estadio Atlanta',  status:'live' },
     { id:46, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'Cabo Verde',     awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'21 Jun', time:'16:00', venue:'Estadio Miami',    status:'scheduled' },
     { id:47, phase:'grupos', group:'H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',         awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Guadalajara', status:'scheduled' },
     { id:48, phase:'grupos', group:'H', home:'Cabo Verde',    homeFlag:'🇨🇻', away:'Arabia Saudita', awayFlag:'🇸🇦', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', venue:'Estadio Houston',  status:'scheduled' },
