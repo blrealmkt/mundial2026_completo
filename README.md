@@ -1468,8 +1468,8 @@ const DATA = {
     // ── GRUPO I: Francia · Senegal · Irak · Noruega
     { id:49, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:1, date:'16 Jun', time:'13:00', venue:'Estadio Nueva York',            status:'done' },
     { id:50, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Irak',     awayFlag:'🇮🇶', homeScore:4, awayScore:1, date:'16 Jun', time:'16:00', venue:'Estadio Boston',                status:'done' },
-    { id:51, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Irak',    awayFlag:'🇮🇶', homeScore:1, awayScore:0, date:'22 Jun', time:'15:00', venue:'Estadio Filadelfia',            status:'live' },
-    { id:52, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, date:'22 Jun', time:'18:00', venue:'Estadio Nueva York',            status:'scheduled' },
+    { id:51, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Irak',    awayFlag:'🇮🇶', homeScore:1, awayScore:0, date:'22 Jun', time:'15:00', venue:'Estadio Filadelfia',            status:'done' },
+    { id:52, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:2, date:'22 Jun', time:'18:00', venue:'Estadio Nueva York',            status:'done' },
     { id:53, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Boston',                status:'scheduled' },
     { id:54, phase:'grupos', group:'I', home:'Senegal',  homeFlag:'🇸🇳', away:'Irak',    awayFlag:'🇮🇶', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Toronto',               status:'scheduled' },
     // ── GRUPO J: Argentina · Argelia · Austria · Jordania
@@ -1482,7 +1482,7 @@ const DATA = {
     // ── GRUPO K: Portugal · RD Congo · Uzbekistán · Colombia
     { id:61, phase:'grupos', group:'K', home:'Portugal',   homeFlag:'🇵🇹', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:1, awayScore:1, date:'17 Jun', time:'11:00', venue:'Estadio Houston',         status:'done' },
     { id:62, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', venue:'Estadio Ciudad de México', status:'done' },
-    { id:63, phase:'grupos', group:'K', home:'Portugal',   homeFlag:'🇵🇹', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:null, awayScore:null, date:'23 Jun', time:'11:00', venue:'Estadio Houston',         status:'scheduled' },
+    { id:63, phase:'grupos', group:'K', home:'Portugal',   homeFlag:'🇵🇹', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:0, awayScore:0, date:'23 Jun', time:'11:00', venue:'Estadio Houston',         status:'live' },
     { id:64, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:null, awayScore:null, date:'23 Jun', time:'20:00', venue:'Estadio Guadalajara',     status:'scheduled' },
     { id:65, phase:'grupos', group:'K', home:'RD Congo',   homeFlag:'🇨🇩', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:null, awayScore:null, date:'27 Jun', time:'17:30', venue:'Estadio Atlanta',         status:'scheduled' },
     { id:66, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'Portugal',   awayFlag:'🇵🇹', homeScore:null, awayScore:null, date:'27 Jun', time:'17:30', venue:'Estadio Miami',           status:'scheduled' },
