@@ -1394,7 +1394,7 @@ function dateOnlyKey(dateStr) {
 
 const DATA = {
   // Rango de la semana activa (lunes a domingo). Actualizar cada semana.
-  currentWeek: { startDate: '17 Jun', endDate: '24 Jun', label: 'Semana del 17 al 24 de junio' },
+  currentWeek: { startDate: '22 Jun', endDate: '28 Jun', label: 'Semana del 22 al 28 de junio' },
 
   phases: [
     { id: 'semana',        label: 'Esta Semana' },
@@ -1476,7 +1476,7 @@ const DATA = {
     { id:55, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Argelia',  awayFlag:'🇩🇿', homeScore:3, awayScore:0, date:'16 Jun', time:'19:00', venue:'Estadio Kansas City',           status:'done' },
     { id:56, phase:'grupos', group:'J', home:'Austria',   homeFlag:'🇦🇹', away:'Jordania', awayFlag:'🇯🇴', homeScore:3, awayScore:1, date:'16 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:57, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Austria',  awayFlag:'🇦🇹', homeScore:2, awayScore:0, date:'22 Jun', time:'11:00', venue:'Estadio Dallas',                status:'done' },
-    { id:58, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argelia',  awayFlag:'🇩🇿', homeScore:1, awayScore:0, date:'22 Jun', time:'21:00', venue:'Estadio Bahía de San Francisco', status:'live' },
+    { id:58, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argelia',  awayFlag:'🇩🇿', homeScore:1, awayScore:0, date:'22 Jun', time:'21:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:59, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argentina',awayFlag:'🇦🇷', homeScore:null, awayScore:null, date:'27 Jun', time:'20:00', venue:'Estadio Kansas City',           status:'scheduled' },
     { id:60, phase:'grupos', group:'J', home:'Argelia',   homeFlag:'🇩🇿', away:'Austria',  awayFlag:'🇦🇹', homeScore:null, awayScore:null, date:'27 Jun', time:'20:00', venue:'Estadio Dallas',                status:'scheduled' },
     // ── GRUPO K: Portugal · RD Congo · Uzbekistán · Colombia
@@ -1615,16 +1615,16 @@ const DATA = {
       { team:'Arabia Saudita',flag:'🇸🇦', pj:2, pg:0, pe:1, pp:1, gf:1, gc:5, pts:1 },
     ],
     I: [
-      { team:'Francia',  flag:'🇫🇷', pj:1, pg:1, pe:0, pp:0, gf:3, gc:1, pts:3 },
-      { team:'Noruega',  flag:'🇳🇴', pj:1, pg:1, pe:0, pp:0, gf:4, gc:1, pts:3 },
-      { team:'Senegal',  flag:'🇸🇳', pj:1, pg:0, pe:0, pp:1, gf:1, gc:3, pts:0 },
-      { team:'Irak',     flag:'🇮🇶', pj:1, pg:0, pe:0, pp:1, gf:1, gc:4, pts:0 },
+      { team:'Francia',  flag:'🇫🇷', pj:2, pg:2, pe:0, pp:0, gf:6, gc:1, pts:6 },
+      { team:'Noruega',  flag:'🇳🇴', pj:2, pg:2, pe:0, pp:0, gf:7, gc:3, pts:6 },
+      { team:'Senegal',  flag:'🇸🇳', pj:2, pg:0, pe:0, pp:2, gf:3, gc:6, pts:0 },
+      { team:'Irak',     flag:'🇮🇶', pj:2, pg:0, pe:0, pp:2, gf:1, gc:7, pts:0 },
     ],
     J: [
       { team:'Argentina', flag:'🇦🇷', pj:2, pg:2, pe:0, pp:0, gf:5, gc:0, pts:6 },
       { team:'Austria',   flag:'🇦🇹', pj:2, pg:1, pe:0, pp:1, gf:3, gc:3, pts:3 },
-      { team:'Jordania',  flag:'🇯🇴', pj:1, pg:0, pe:0, pp:1, gf:1, gc:3, pts:0 },
-      { team:'Argelia',   flag:'🇩🇿', pj:1, pg:0, pe:0, pp:1, gf:0, gc:3, pts:0 },
+      { team:'Jordania',  flag:'🇯🇴', pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, pts:3 },
+      { team:'Argelia',   flag:'🇩🇿', pj:2, pg:0, pe:0, pp:2, gf:0, gc:4, pts:0 },
     ],
     K: [
       { team:'Colombia',   flag:'🇨🇴', pj:1, pg:1, pe:0, pp:0, gf:3, gc:1, pts:3 },
@@ -1643,13 +1643,14 @@ const DATA = {
   scorers: [
     // ── 5 goles
     { name:'Lionel Messi', team:'Argentina · Min. 17\', 60\' y 76\' (J1) · Min. 38\' y 90+5\' (J2)', flag:'🇦🇷', goals:5, highlight:true },
+    { name:'Kylian Mbappé', team:'Francia · Min. 66\' y 90+6\' (J1) · Min. 14\', 53\' (J2)', flag:'🇫🇷', goals:5, highlight:true },
+    // ── 4 goles
+    { name:'Erling Haaland', team:'Noruega · Min. 29\' y 42\' (J1) · Min. 48\' y 58\' (J2)', flag:'🇳🇴', goals:4, highlight:true },
     // ── 3 goles
     { name:'Jonathan David', team:'Canadá · Min. 29\', 45+3\' y 90+2\' (Hat-trick)', flag:'🇨🇦', goals:3, highlight:true },
     { name:'Deniz Undav', team:'Alemania · Min. 78\' (J1), 68\' y 90+4\' (J2)', flag:'🇩🇪', goals:3, highlight:true },
-    { name:'Kylian Mbappé', team:'Francia · Min. 66\' y 90+6\' (J1) · Min. 14\' (J2 ⚡ vivo)', flag:'🇫🇷', goals:3, highlight:true },
     // ── 2 goles
     { name:'Matheus Cunha', team:'Brasil · Min. 23\' y 36\' + asistencia', flag:'🇧🇷', goals:2 },
-    { name:'Erling Haaland', team:'Noruega · Min. 29\' y 42\' (Doblete en debut mundialista)', flag:'🇳🇴', goals:2 },
     { name:'Kai Havertz', team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2 },
     { name:'Yasin Ayari', team:'Suecia · Min. 7\' y 90+3\'', flag:'🇸🇪', goals:2 },
     { name:'Folarin Balogun', team:'Estados Unidos · Min. 30\' y 45+4\'', flag:'🇺🇸', goals:2 },
@@ -1665,6 +1666,7 @@ const DATA = {
     { name:'Crysencio Summerville', team:'Países Bajos · Min. 73\' (J1) y 89\' (J2)', flag:'🇳🇱', goals:2 },
     { name:'Maximiliano Araújo', team:'Uruguay · Min. 80\' (J1) y 45\' (J2)', flag:'🇺🇾', goals:2 },
     { name:'Mikel Oyarzabal', team:'España · Min. 21\' y 24\'', flag:'🇪🇸', goals:2 },
+    { name:'Ismaïla Sarr', team:'Senegal · Min. 84\' y 90+3\'', flag:'🇸🇳', goals:2 },
     // ── 1 gol
     { name:'Julián Quiñones', team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
     { name:'Raúl Jiménez', team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
@@ -1729,6 +1731,9 @@ const DATA = {
     { name:'Anthony Elanga', team:'Suecia · Min. 59\'', flag:'🇸🇪', goals:1 },
     { name:'Franck Kessié', team:'Costa de Marfil · Min. 39\'', flag:'🇨🇮', goals:1 },
     { name:'A. Ueda', team:'Japón · Min. 31\' ⚡ EN VIVO', flag:'🇯🇵', goals:1 },
+    { name:'Ousmane Dembélé', team:'Francia · Min. 66\'', flag:'🇫🇷', goals:1 },
+    { name:'Marcus Pedersen', team:'Noruega · Min. 43\'', flag:'🇳🇴', goals:1 },
+    { name:'Nizar Al-Rashdan', team:'Jordania · Min. 36\'', flag:'🇯🇴', goals:1 },
     // ── Autogoles
     { name:'Hassan Altambakti', team:'Arabia Saudita · AG Min. 55\' (a favor de España)', flag:'🇸🇦', goals:1, isOwnGoal:true },
     { name:'Aymen Hussein', team:'Irak · AG Min. 90+3\' (a favor de Noruega)', flag:'🇮🇶', goals:1, isOwnGoal:true },
@@ -1746,6 +1751,8 @@ const DATA = {
     { player:'Leandro Paredes',        team:'Argentina',        flag:'🇦🇷', qty:1, min:'Min. 90+2\'' },
     // Partido Francia-Irak (22 jun ⚡ en vivo)
     { player:'Amir Al-Ammari',         team:'Irak',             flag:'🇮🇶', qty:1, min:'Min. 6\'' },
+    // Partido Jordania-Argelia (22 jun)
+    { player:'Ramiz Zerrouki',         team:'Argelia',           flag:'🇩🇿', qty:1, min:'Min. 44\'' },
     // Partido España-Arabia Saudita (21 jun)
     { player:'S. Aldawsari',           team:'Arabia Saudita',   flag:'🇸🇦', qty:1, min:'Min. 30\'' },
     { player:'Mohamed Kanno',          team:'Arabia Saudita',   flag:'🇸🇦', qty:1, min:'Min. 60\'' },
@@ -1880,7 +1887,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'125', label:'Goles en el torneo (incluye Francia 1-0 Irak ⚡ en vivo)', sub:'Messi líder absoluto con 5 goles — Argentina y México ya clasificados' },
+    { num:'132', label:'Goles en los primeros 44 partidos del torneo', sub:'3.0 por partido — Messi y Mbappé empatan en lo alto con 5 goles cada uno' },
     { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
