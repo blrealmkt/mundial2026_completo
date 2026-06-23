@@ -1489,7 +1489,7 @@ const DATA = {
     // ── GRUPO L: Inglaterra · Croacia · Ghana · Panamá
     { id:67, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Croacia', awayFlag:'🇭🇷', homeScore:4, awayScore:2, date:'17 Jun', time:'14:00', venue:'Estadio Dallas',     status:'done' },
     { id:68, phase:'grupos', group:'L', home:'Ghana',      homeFlag:'🇬🇭', away:'Panamá',  awayFlag:'🇵🇦', homeScore:1, awayScore:0, date:'17 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
-    { id:69, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Ghana',  awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'23 Jun', time:'14:00', venue:'Estadio Boston',     status:'scheduled' },
+    { id:69, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Ghana',  awayFlag:'🇬🇭', homeScore:0, awayScore:0, date:'23 Jun', time:'14:00', venue:'Estadio Boston',     status:'live' },
     { id:70, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, date:'23 Jun', time:'17:00', venue:'Estadio Toronto',    status:'scheduled' },
     { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Monterrey',  status:'scheduled' },
     { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia', status:'scheduled' },
