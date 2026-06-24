@@ -2,7 +2,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mundial FIFA 2026 — GDL × 123KLAN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1476,7 +1475,7 @@ const DATA = {
     { id:55, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Argelia',  awayFlag:'🇩🇿', homeScore:3, awayScore:0, date:'16 Jun', time:'19:00', venue:'Estadio Kansas City',           status:'done' },
     { id:56, phase:'grupos', group:'J', home:'Austria',   homeFlag:'🇦🇹', away:'Jordania', awayFlag:'🇯🇴', homeScore:3, awayScore:1, date:'16 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:57, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Austria',  awayFlag:'🇦🇹', homeScore:2, awayScore:0, date:'22 Jun', time:'11:00', venue:'Estadio Dallas',                status:'done' },
-    { id:58, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argelia',  awayFlag:'🇩🇿', homeScore:1, awayScore:2, date:'22 Jun', time:'21:00', venue:'Estadio Bahía de San Francisco', status:'done' },
+    { id:58, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argelia',  awayFlag:'🇩🇿', homeScore:1, awayScore:0, date:'22 Jun', time:'21:00', venue:'Estadio Bahía de San Francisco', status:'done' },
     { id:59, phase:'grupos', group:'J', home:'Jordania',  homeFlag:'🇯🇴', away:'Argentina',awayFlag:'🇦🇷', homeScore:null, awayScore:null, date:'27 Jun', time:'20:00', venue:'Estadio Kansas City',           status:'scheduled' },
     { id:60, phase:'grupos', group:'J', home:'Argelia',   homeFlag:'🇩🇿', away:'Austria',  awayFlag:'🇦🇹', homeScore:null, awayScore:null, date:'27 Jun', time:'20:00', venue:'Estadio Dallas',                status:'scheduled' },
     // ── GRUPO K: Portugal · RD Congo · Uzbekistán · Colombia
@@ -1490,7 +1489,7 @@ const DATA = {
     { id:67, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Croacia', awayFlag:'🇭🇷', homeScore:4, awayScore:2, date:'17 Jun', time:'14:00', venue:'Estadio Dallas',     status:'done' },
     { id:68, phase:'grupos', group:'L', home:'Ghana',      homeFlag:'🇬🇭', away:'Panamá',  awayFlag:'🇵🇦', homeScore:1, awayScore:0, date:'17 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
     { id:69, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Ghana',  awayFlag:'🇬🇭', homeScore:0, awayScore:0, date:'23 Jun', time:'14:00', venue:'Estadio Boston',     status:'done' },
-    { id:70, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Croacia', awayFlag:'🇭🇷', homeScore:0, awayScore:0, date:'23 Jun', time:'17:00', venue:'Estadio Toronto',    status:'live' },
+    { id:70, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, date:'23 Jun', time:'17:00', venue:'Estadio Toronto',    status:'scheduled' },
     { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Monterrey',  status:'scheduled' },
     { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia', status:'scheduled' },
     // ── DIECISEISAVOS DE FINAL
@@ -1627,14 +1626,14 @@ const DATA = {
       { team:'Argelia',   flag:'🇩🇿', pj:2, pg:0, pe:0, pp:2, gf:0, gc:4, pts:0 },
     ],
     K: [
+      { team:'Portugal',   flag:'🇵🇹', pj:2, pg:1, pe:1, pp:0, gf:6, gc:1, pts:4 },
       { team:'Colombia',   flag:'🇨🇴', pj:1, pg:1, pe:0, pp:0, gf:3, gc:1, pts:3 },
-      { team:'Portugal',   flag:'🇵🇹', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
       { team:'RD Congo',   flag:'🇨🇩', pj:1, pg:0, pe:1, pp:0, gf:1, gc:1, pts:1 },
-      { team:'Uzbekistán', flag:'🇺🇿', pj:1, pg:0, pe:0, pp:1, gf:1, gc:3, pts:0 },
+      { team:'Uzbekistán', flag:'🇺🇿', pj:2, pg:0, pe:0, pp:2, gf:1, gc:8, pts:0 },
     ],
     L: [
-      { team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', pj:1, pg:1, pe:0, pp:0, gf:4, gc:2, pts:3 },
-      { team:'Ghana',      flag:'🇬🇭',        pj:1, pg:1, pe:0, pp:0, gf:1, gc:0, pts:3 },
+      { team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', pj:2, pg:1, pe:1, pp:0, gf:4, gc:2, pts:4 },
+      { team:'Ghana',      flag:'🇬🇭',        pj:2, pg:1, pe:1, pp:0, gf:1, gc:0, pts:4 },
       { team:'Croacia',    flag:'🇭🇷',        pj:1, pg:0, pe:0, pp:1, gf:2, gc:4, pts:0 },
       { team:'Panamá',     flag:'🇵🇦',        pj:1, pg:0, pe:0, pp:1, gf:0, gc:1, pts:0 },
     ],
@@ -1643,8 +1642,8 @@ const DATA = {
   scorers: [
     // ── 5 goles
     { name:'Lionel Messi', team:'Argentina · Min. 17\', 60\' y 76\' (J1) · Min. 38\' y 90+5\' (J2)', flag:'🇦🇷', goals:5, highlight:true },
-    { name:'Kylian Mbappé', team:'Francia · Min. 66\' y 90+6\' (J1) · Min. 14\', 53\' (J2)', flag:'🇫🇷', goals:5, highlight:true },
     // ── 4 goles
+    { name:'Kylian Mbappé', team:'Francia · Min. 66\' y 90+6\' (J1) · Min. 14\' y 53\' (J2)', flag:'🇫🇷', goals:4, highlight:true },
     { name:'Erling Haaland', team:'Noruega · Min. 29\' y 42\' (J1) · Min. 48\' y 58\' (J2)', flag:'🇳🇴', goals:4, highlight:true },
     // ── 3 goles
     { name:'Jonathan David', team:'Canadá · Min. 29\', 45+3\' y 90+2\' (Hat-trick)', flag:'🇨🇦', goals:3, highlight:true },
@@ -1667,6 +1666,7 @@ const DATA = {
     { name:'Maximiliano Araújo', team:'Uruguay · Min. 80\' (J1) y 45\' (J2)', flag:'🇺🇾', goals:2 },
     { name:'Mikel Oyarzabal', team:'España · Min. 21\' y 24\'', flag:'🇪🇸', goals:2 },
     { name:'Ismaïla Sarr', team:'Senegal · Min. 84\' y 90+3\'', flag:'🇸🇳', goals:2 },
+    { name:'Cristiano Ronaldo', team:'Portugal · Min. 6\' y 39\' (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
     // ── 1 gol
     { name:'Julián Quiñones', team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
     { name:'Raúl Jiménez', team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
@@ -1734,7 +1734,10 @@ const DATA = {
     { name:'Ousmane Dembélé', team:'Francia · Min. 66\'', flag:'🇫🇷', goals:1 },
     { name:'Marcus Pedersen', team:'Noruega · Min. 43\'', flag:'🇳🇴', goals:1 },
     { name:'Nizar Al-Rashdan', team:'Jordania · Min. 36\'', flag:'🇯🇴', goals:1 },
+    { name:'Nuno Mendes', team:'Portugal · Min. 17\'', flag:'🇵🇹', goals:1 },
+    { name:'Rafael Leão', team:'Portugal · Min. 87\'', flag:'🇵🇹', goals:1 },
     // ── Autogoles
+    { name:'Khusanov', team:'Uzbekistán · AG Min. 60\' (a favor de Portugal)', flag:'🇺🇿', goals:1, isOwnGoal:true },
     { name:'Hassan Altambakti', team:'Arabia Saudita · AG Min. 55\' (a favor de España)', flag:'🇸🇦', goals:1, isOwnGoal:true },
     { name:'Aymen Hussein', team:'Irak · AG Min. 90+3\' (a favor de Noruega)', flag:'🇮🇶', goals:1, isOwnGoal:true },
     { name:'Yazan Al-Arab', team:'Jordania · AG Min. 76\' (a favor de Austria)', flag:'🇯🇴', goals:1, isOwnGoal:true },
@@ -1744,6 +1747,12 @@ const DATA = {
     { name:'Cameron Burgess', team:'Australia · AG Min. 11\' (a favor de Estados Unidos)', flag:'🇦🇺', goals:1, isOwnGoal:true },
   ],
     yellowCards: [
+    // Partido Portugal-Uzbekistán (23 jun)
+    { player:'Odiljon Hamrobekov',     team:'Uzbekistán',       flag:'🇺🇿', qty:1, min:'Min. 14\'' },
+    { player:'Renato Veiga',           team:'Portugal',         flag:'🇵🇹', qty:1, min:'Min. 68\'' },
+    // Partido Inglaterra-Ghana (23 jun)
+    { player:'Declan Rice',            team:'Inglaterra',       flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', qty:1, min:'Min. 41\'' },
+    { player:'Iñaki Williams',         team:'Ghana',            flag:'🇬🇭', qty:1, min:'Min. 60\'' },
     // Partido Argentina-Austria (22 jun)
     { player:'Stefan Posch',           team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 40\'' },
     { player:'Konrad Laimer',          team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 76\'' },
@@ -1887,8 +1896,8 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'132', label:'Goles en los primeros 44 partidos del torneo', sub:'3.0 por partido — Messi y Mbappé empatan en lo alto con 5 goles cada uno' },
-    { num:'7-1', label:'Alemania golea a Curazao en el arranque del Grupo E', sub:'Kai Havertz anota dos y la Mannschaft envía un mensaje al torneo' },
+    { num:'137', label:'Goles en los primeros 46 partidos del torneo', sub:'3.0 por partido — Ronaldo ya marcó en 6 Mundiales distintos' },
+    { num:'40%', label:'De los partidos han tenido gol antes del minuto 15', sub:'El torneo arranca caliente — casi 1 de cada 2 juegos tiene gol tempranero' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
   ],
