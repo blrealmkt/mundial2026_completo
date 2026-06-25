@@ -1651,10 +1651,11 @@ const DATA = {
     { name:'Deniz Undav', team:'Alemania · Min. 78\' (J1), 68\' y 90+4\' (J2)', flag:'🇩🇪', goals:3, highlight:true },
     // ── 2 goles
     { name:'Matheus Cunha', team:'Brasil · Min. 23\' y 36\' + asistencia', flag:'🇧🇷', goals:2 },
+    { name:'Harry Kane', team:'Inglaterra · Min. 12\' y 42\' (10 goles en Copas del Mundo)', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2 },
     { name:'Kai Havertz', team:'Alemania · Min. 45+5\' (Pen.) y 88\'', flag:'🇩🇪', goals:2 },
+    { name:'Julián Quiñones', team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:2 },
     { name:'Yasin Ayari', team:'Suecia · Min. 7\' y 90+3\'', flag:'🇸🇪', goals:2 },
     { name:'Folarin Balogun', team:'Estados Unidos · Min. 30\' y 45+4\'', flag:'🇺🇸', goals:2 },
-    { name:'Harry Kane', team:'Inglaterra · Min. 12\' y 42\' (10 goles en Copas del Mundo)', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2 },
     { name:'Johan Manzambi', team:'Suiza · Min. 74\' y 90\' (J1) · Min. 57\' (J2)', flag:'🇨🇭', goals:3, highlight:true },
     { name:'Elijah Just', team:'Nueva Zelanda · Min. 7\' y 55\'', flag:'🇳🇿', goals:2 },
     { name:'Cyle Larin', team:'Canadá · Min. 55\' (J1) y 16\' (J2)', flag:'🇨🇦', goals:2 },
@@ -1669,7 +1670,6 @@ const DATA = {
     { name:'Ismaïla Sarr', team:'Senegal · Min. 84\' y 90+3\'', flag:'🇸🇳', goals:2 },
     { name:'Cristiano Ronaldo', team:'Portugal · Min. 6\' y 39\' (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
     // ── 1 gol
-    { name:'Julián Quiñones', team:'México · Primer gol del Mundial Min. 11\'', flag:'🇲🇽', goals:1 },
     { name:'Raúl Jiménez', team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
     { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
     { name:'Ladislav Krejčí', team:'Chequia · Min. 32\'', flag:'🇨🇿', goals:1 },
