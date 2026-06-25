@@ -1428,8 +1428,8 @@ const DATA = {
     { id:14, phase:'grupos', group:'C', home:'Haití',     homeFlag:'🇭🇹', away:'Escocia',   awayFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', homeScore:0, awayScore:1, date:'13 Jun', time:'19:00', venue:'Estadio Boston',                status:'done' },
     { id:15, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, date:'19 Jun', time:'16:00', venue:'Estadio Boston',                status:'done' },
     { id:16, phase:'grupos', group:'C', home:'Brasil',    homeFlag:'🇧🇷', away:'Haití',     awayFlag:'🇭🇹', homeScore:3, awayScore:0, date:'19 Jun', time:'18:30', venue:'Estadio Filadelfia',            status:'done' },
-    { id:17, phase:'grupos', group:'C', home:'Marruecos', homeFlag:'🇲🇦', away:'Haití',     awayFlag:'🇭🇹', homeScore:2, awayScore:2, date:'24 Jun', time:'16:00', venue:'Estadio Atlanta',               status:'scheduled' },
-    { id:18, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Brasil',    awayFlag:'🇧🇷', homeScore:0, awayScore:2, date:'24 Jun', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
+    { id:17, phase:'grupos', group:'C', home:'Marruecos', homeFlag:'🇲🇦', away:'Haití',     awayFlag:'🇭🇹', homeScore:4, awayScore:2, date:'24 Jun', time:'16:00', venue:'Estadio Atlanta',               status:'scheduled' },
+    { id:18, phase:'grupos', group:'C', home:'Escocia',   homeFlag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', away:'Brasil',    awayFlag:'🇧🇷', homeScore:0, awayScore:3, date:'24 Jun', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
     // ── GRUPO D: Estados Unidos · Paraguay · Australia · Turquía
     { id:19, phase:'grupos', group:'D', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Paraguay',       awayFlag:'🇵🇾', homeScore:4, awayScore:1, date:'12 Jun', time:'19:00', venue:'Estadio Los Ángeles',            status:'done' },
     { id:20, phase:'grupos', group:'D', home:'Australia',      homeFlag:'🇦🇺', away:'Turquía',        awayFlag:'🇹🇷', homeScore:2, awayScore:0, date:'13 Jun', time:'22:00', venue:'Estadio BC Place Vancouver',    status:'done' },
