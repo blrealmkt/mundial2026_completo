@@ -1509,7 +1509,7 @@ const DATA = {
     { id:85,  phase:'dieciseisavos', group:null, home:'Suiza', homeFlag:'🇨🇭', away:'3° E/F/G/I/J',awayFlag:'⭐', homeScore:null, awayScore:null, date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
     { id:86,  phase:'dieciseisavos', group:null, home:'Argentina', homeFlag:'🇦🇷', away:'2° Grupo H',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
     { id:87,  phase:'dieciseisavos', group:null, home:'1° Grupo K', homeFlag:'🏆', away:'3° D/E/I/J/L',awayFlag:'⭐', homeScore:null, awayScore:null, date:'03 Jul', time:'18:00', venue:'Estadio Kansas City',           status:'scheduled' },
-    { id:88,  phase:'dieciseisavos', group:null, home:'2° Grupo D', homeFlag:'🥈', away:'2° Grupo G',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'14:00', venue:'Estadio Dallas',               status:'scheduled' }00,
+    { id:88,  phase:'dieciseisavos', group:null, home:'2° Grupo D', homeFlag:'🥈', away:'2° Grupo G',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'14:00', venue:'Estadio Dallas',               status:'scheduled' },
     // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
     { id:89, phase:'octavos', group:null,
       home:'1° Grupo E', homeFlag:'🏆', away:'3° mejores del torneo', awayFlag:'⭐',
