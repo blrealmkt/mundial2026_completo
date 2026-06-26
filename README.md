@@ -1491,12 +1491,12 @@ const DATA = {
     { id:68, phase:'grupos', group:'L', home:'Ghana',      homeFlag:'🇬🇭', away:'Panamá',  awayFlag:'🇵🇦', homeScore:1, awayScore:0, date:'17 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
     { id:69, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Ghana',  awayFlag:'🇬🇭', homeScore:0, awayScore:0, date:'23 Jun', time:'14:00', venue:'Estadio Boston',     status:'done' },
     { id:70, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Croacia', awayFlag:'🇭🇷', homeScore:0, awayScore:1, date:'23 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
-    { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Monterrey',  status:'scheduled' },
-    { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia', status:'scheduled' },
+    { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia',  status:'scheduled' },
+    { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', venue:'Estadio Nueva York', status:'scheduled' },
     // ── DIECISEISAVOS DE FINAL
     { id:73,  phase:'dieciseisavos', group:null, home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:null, awayScore:null, date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
     { id:74,  phase:'dieciseisavos', group:null, home:'Alemania', homeFlag:'🇩🇪', away:'3° A/B/C/D/F',awayFlag:'⭐', homeScore:null, awayScore:null, date:'29 Jun', time:'14:30', venue:'Estadio Boston',                status:'scheduled' },
-    { id:75,  phase:'dieciseisavos', group:null, home:'1° Grupo F', homeFlag:'🏆', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', venue:'Estadio Monterrey',              status:'scheduled' },
+    { id:75,  phase:'dieciseisavos', group:null, home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', venue:'Estadio Monterrey',              status:'scheduled' },
     { id:76,  phase:'dieciseisavos', group:null, home:'Brasil', homeFlag:'🇧🇷', away:'2° Grupo F',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'29 Jun', time:'11:00', venue:'Estadio Houston',               status:'scheduled' },
     { id:77,  phase:'dieciseisavos', group:null, home:'1° Grupo I', homeFlag:'🏆', away:'3° C/D/F/G/H',awayFlag:'⭐', homeScore:null, awayScore:null, date:'30 Jun', time:'15:00', venue:'Estadio Nueva York',            status:'scheduled' },
     { id:78,  phase:'dieciseisavos', group:null, home:'2° Grupo E', homeFlag:'🥈', away:'2° Grupo I',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'30 Jun', time:'12:00', venue:'Estadio Dallas',               status:'scheduled' },
@@ -2025,7 +2025,7 @@ const DATA = {
     { id:1,  sede:'cdmx', grupo:'Grupo A', home:'México',       homeFlag:'🇲🇽', away:'Sudáfrica',    awayFlag:'🇿🇦', homeScore:2,    awayScore:0,    date:'11 Jun', time:'13:00', status:'done' },
     { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',     homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
     { id:5,  sede:'cdmx', grupo:'Grupo A', home:'Rep. Checa',   homeFlag:'🇨🇿', away:'México',       awayFlag:'🇲🇽', homeScore:0, awayScore:3, date:'24 Jun', time:'19:00', status:'done' },
-    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'1° Grupo A', homeFlag:'🏆', away:'3° C/E/F/H/I', awayFlag:'⭐', homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', status:'scheduled' },
+    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México', homeFlag:'🇲🇽', away:'3° C/E/F/H/I', awayFlag:'⭐', homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', status:'scheduled' },
     { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
@@ -2036,7 +2036,7 @@ const DATA = {
     { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'24 Jun', time:'19:00', status:'done' },
-    { id:71, sede:'mty',  grupo:'Grupo L', home:'Croacia',       homeFlag:'🇭🇷', away:'Ghana',       awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'27 Jun', time:'15:00', status:'scheduled' },
+    { id:75, sede:'mty',  grupo:'Dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', status:'scheduled' },
   ],
 
   eventos: [
