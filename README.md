@@ -1653,7 +1653,7 @@ const DATA = {
     { name:'Deniz Undav', team:'Alemania · Min. 78\' (J1), 68\' y 90+4\' (J2)', flag:'🇩🇪', goals:3, highlight:true },
     { name:'Matheus Cunha', team:'Brasil · Min. 23\' y 36\' (J1) · Min. 60\' (J2)', flag:'🇧🇷', goals:3, highlight:true },
     { name:'Johan Manzambi', team:'Suiza · Min. 74\' y 90\' (J1) · Min. 57\' (J2)', flag:'🇨🇭', goals:3, highlight:true },
-    { name:'Ismael Saibari', team:'Marruecos ·, flag:'🇲🇦', goals:3, highlight:true },
+    { name:'Ismael Saibari', team:'Marruecos ·', flag:'🇲🇦', goals:3, highlight:true },
     // ── 2 goles
     { name:'Cristiano Ronaldo', team:'Portugal · Min. 6\' y 39\' (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
     { name:'Harry Kane', team:'Inglaterra · Min. 12\' y 42\' (10 goles en Copas del Mundo)', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2 },
