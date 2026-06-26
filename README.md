@@ -1470,8 +1470,8 @@ const DATA = {
     { id:50, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Irak',     awayFlag:'🇮🇶', homeScore:4, awayScore:1, date:'16 Jun', time:'16:00', venue:'Estadio Boston',                status:'done' },
     { id:51, phase:'grupos', group:'I', home:'Francia',  homeFlag:'🇫🇷', away:'Irak',    awayFlag:'🇮🇶', homeScore:3, awayScore:0, date:'22 Jun', time:'15:00', venue:'Estadio Filadelfia',            status:'done' },
     { id:52, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:2, date:'22 Jun', time:'18:00', venue:'Estadio Nueva York',            status:'done' },
-    { id:53, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Boston',                status:'scheduled' },
-    { id:54, phase:'grupos', group:'I', home:'Senegal',  homeFlag:'🇸🇳', away:'Irak',    awayFlag:'🇮🇶', homeScore:null, awayScore:null, date:'26 Jun', time:'13:00', venue:'Estadio Toronto',               status:'scheduled' },
+    { id:53, phase:'grupos', group:'I', home:'Noruega',  homeFlag:'🇳🇴', away:'Francia', awayFlag:'🇫🇷', homeScore:4, awayScore:1, date:'26 Jun', time:'13:00', venue:'Estadio Boston',                status:'done' },
+    { id:54, phase:'grupos', group:'I', home:'Senegal',  homeFlag:'🇸🇳', away:'Irak',    awayFlag:'🇮🇶', homeScore:5, awayScore:0, date:'26 Jun', time:'13:00', venue:'Estadio Toronto',               status:'done' },
     // ── GRUPO J: Argentina · Argelia · Austria · Jordania
     { id:55, phase:'grupos', group:'J', home:'Argentina', homeFlag:'🇦🇷', away:'Argelia',  awayFlag:'🇩🇿', homeScore:3, awayScore:0, date:'16 Jun', time:'19:00', venue:'Estadio Kansas City',           status:'done' },
     { id:56, phase:'grupos', group:'J', home:'Austria',   homeFlag:'🇦🇹', away:'Jordania', awayFlag:'🇯🇴', homeScore:3, awayScore:1, date:'16 Jun', time:'22:00', venue:'Estadio Bahía de San Francisco', status:'done' },
@@ -1615,10 +1615,10 @@ const DATA = {
       { team:'Arabia Saudita',flag:'🇸🇦', pj:2, pg:0, pe:1, pp:1, gf:1, gc:5, pts:1 },
     ],
     I: [
-      { team:'Francia',  flag:'🇫🇷', pj:2, pg:2, pe:0, pp:0, gf:6, gc:1, pts:6 },
-      { team:'Noruega',  flag:'🇳🇴', pj:2, pg:2, pe:0, pp:0, gf:7, gc:3, pts:6 },
-      { team:'Senegal',  flag:'🇸🇳', pj:2, pg:0, pe:0, pp:2, gf:3, gc:6, pts:0 },
-      { team:'Irak',     flag:'🇮🇶', pj:2, pg:0, pe:0, pp:2, gf:1, gc:7, pts:0 },
+      { team:'Francia',  flag:'🇫🇷', pj:3, pg:3, pe:0, pp:0, gf:10, gc:2, pts:9 },
+      { team:'Noruega',  flag:'🇳🇴', pj:3, pg:2, pe:0, pp:1, gf:8,  gc:7, pts:6 },
+      { team:'Senegal',  flag:'🇸🇳', pj:3, pg:1, pe:0, pp:2, gf:8,  gc:6, pts:3 },
+      { team:'Irak',     flag:'🇮🇶', pj:3, pg:0, pe:0, pp:3, gf:1,  gc:12, pts:0 },
     ],
     J: [
       { team:'Argentina', flag:'🇦🇷', pj:2, pg:2, pe:0, pp:0, gf:5, gc:0, pts:6 },
