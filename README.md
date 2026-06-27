@@ -1132,6 +1132,139 @@ body {
   display: inline-block;
   white-space: nowrap;
 }
+
+/* ── 123KLAN KNOCKOUT BRACKET STYLES ── */
+.bracket-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0 30px;
+  scrollbar-width: thin;
+}
+.bracket-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.bracket-wrapper::-webkit-scrollbar-thumb {
+  background: var(--ink3);
+  border-radius: 3px;
+}
+.bracket-container {
+  display: grid;
+  grid-template-columns: repeat(5, 250px);
+  gap: 24px;
+  min-width: 1350px;
+  padding: 10px;
+}
+.bracket-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+.bracket-column-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--bg2);
+  padding: 6px 12px;
+  border: 1.5px solid var(--ink);
+  margin-bottom: 16px;
+  text-align: center;
+  box-shadow: 2px 2px 0 var(--ink);
+  transform: rotate(-1.5deg);
+}
+.bracket-match-node {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 8px 10px;
+  position: relative;
+  box-shadow: 3px 3px 0 var(--ink);
+  margin: 14px 0;
+  transition: all .2s ease-out;
+}
+.bracket-match-node:hover {
+  transform: scale(1.02) rotate(0.5deg);
+  border-color: var(--fire);
+  box-shadow: 4px 4px 0 var(--fire);
+}
+.bracket-node-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border2);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+.bracket-node-id {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  background: var(--ink);
+  color: #fff;
+  padding: 1px 5px;
+  font-weight: 700;
+  border-radius: 1px;
+}
+.bracket-node-meta {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--ink3);
+  text-transform: uppercase;
+}
+.bracket-node-team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink2);
+  padding: 2px 0;
+  text-transform: uppercase;
+}
+.bracket-node-team.winner {
+  color: var(--ink);
+  font-weight: 900;
+}
+.bracket-node-score {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  background: var(--bg2);
+  padding: 1px 6px;
+  border-radius: 2px;
+  min-width: 22px;
+  text-align: center;
+}
+.bracket-node-team.winner .bracket-node-score {
+  background: var(--fire);
+  color: #fff;
+}
+.bracket-match-node.unresolved {
+  background: rgba(26,25,21,0.03);
+  border-style: dashed;
+  box-shadow: none;
+}
+.bracket-match-node.unresolved .bracket-node-team {
+  color: var(--ink3);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ── ANIMACIÓN TRANSICIÓN BRACKET (ESTILO FIFA) ── */
+@keyframes bracketFadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.bracket-match-node {
+  animation: bracketFadeSlide 0.35s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.bracket-column:nth-child(1) .bracket-match-node { animation-delay: 0.05s; }
+.bracket-column:nth-child(2) .bracket-match-node { animation-delay: 0.12s; }
+.bracket-column:nth-child(3) .bracket-match-node { animation-delay: 0.18s; }
+.bracket-column:nth-child(4) .bracket-match-node { animation-delay: 0.22s; }
+.bracket-column:nth-child(5) .bracket-match-node { animation-delay: 0.26s; }
 </style>
 </head>
 <body>
@@ -1148,17 +1281,17 @@ body {
 
 <nav class="main-nav">
   <div class="nav-inner">
-    <button class="nav-btn active" onclick="showView('resultados')">Resultados</button>
-    <button class="nav-btn" onclick="showView('posiciones')">Posiciones</button>
-    <button class="nav-btn" onclick="showView('estadisticas')">Stats</button>
-    <button class="nav-btn" onclick="showView('noticias')">Noticias</button>
-    <button class="nav-btn" onclick="showView('gdl')">Guadalajara</button>
+    <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
+    <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
+    <button class="nav-btn" onclick="showView('bracket', event)">Fase Final</button>
+    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
+    <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
+    <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
   </div>
 </nav>
 
 <main class="page">
 
-<!-- ══════════════════════════════════════ VIEW: RESULTADOS -->
 <div id="view-resultados" class="view active">
   <div class="section-head">
     <div>
@@ -1174,7 +1307,6 @@ body {
   <div class="matches-list" id="matches-container"></div>
 </div>
 
-<!-- ══════════════════════════════════════ VIEW: POSICIONES -->
 <div id="view-posiciones" class="view">
   <div class="section-head">
     <div>
@@ -1200,7 +1332,19 @@ body {
   </div>
 </div>
 
-<!-- ══════════════════════════════════════ VIEW: ESTADÍSTICAS -->
+<div id="view-bracket" class="view">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Cuadro <span>Eliminatorio</span></div>
+      <div class="section-sub">Fase final knockout · Datos conectados en tiempo real</div>
+    </div>
+  </div>
+  <div class="bracket-wrapper">
+    <div class="bracket-container" id="bracket-render-container">
+      </div>
+  </div>
+</div>
+
 <div id="view-estadisticas" class="view">
   <div class="section-head">
     <div>
@@ -1210,7 +1354,6 @@ body {
   </div>
 
   <div class="stats-grid">
-    <!-- Goleadores -->
     <div class="stats-card">
       <div class="stats-card-header">
         <div class="stats-card-icon icon-fire">⚽</div>
@@ -1222,7 +1365,6 @@ body {
       <div class="stats-card-body" id="scorers-list"></div>
     </div>
 
-    <!-- Tarjetas Amarillas -->
     <div class="stats-card">
       <div class="stats-card-header">
         <div class="stats-card-icon icon-yellow">
@@ -1236,7 +1378,6 @@ body {
       <div class="stats-card-body" id="yellow-list"></div>
     </div>
 
-    <!-- Tarjetas Rojas -->
     <div class="stats-card">
       <div class="stats-card-header">
         <div class="stats-card-icon icon-red">
@@ -1250,7 +1391,6 @@ body {
       <div class="stats-card-body" id="red-list"></div>
     </div>
 
-    <!-- Dato curioso estadístico -->
     <div class="stats-card">
       <div class="stats-card-header">
         <div class="stats-card-icon" style="background:var(--blue-light);font-size:16px;">📊</div>
@@ -1264,7 +1404,6 @@ body {
   </div>
 </div>
 
-<!-- ══════════════════════════════════════ VIEW: NOTICIAS -->
 <div id="view-noticias" class="view">
   <div class="section-head">
     <div>
@@ -1275,7 +1414,6 @@ body {
   <div class="noticias-list" id="noticias-container"></div>
 </div>
 
-<!-- ══════════════════════════════════════ VIEW: GDL -->
 <div id="view-gdl" class="view">
 
   <div class="section-head">
@@ -1285,7 +1423,6 @@ body {
     </div>
   </div>
 
-  <!-- Heroes de las 3 ciudades -->
   <div class="sedes-grid">
 
     <div class="gdl-hero sede-hero-gdl">
@@ -1344,7 +1481,6 @@ body {
 </main>
 
 <footer class="site-footer">
-  <!-- Decoración SVG estilo 123KLAN: plumas + serpiente emplumada sutil -->
   <div class="footer-deco" aria-hidden="true">
     <div class="footer-block">
       <span class="footer-block-text">PASIÓN MUNDIAL</span>
@@ -1360,17 +1496,14 @@ body {
 // ══════════════════════════════════════════════════════════
 // DATA LAYER — edita aquí para actualizar resultados
 // ══════════════════════════════════════════════════════════
-// Sedes en México (para resaltado especial)
 const MEXICO_VENUES = ['Estadio Guadalajara', 'Estadio Ciudad de México', 'Estadio Monterrey'];
 
-// Helper: convierte "11 Jun" + "13:00" en un valor numérico ordenable
 const MONTH_MAP = { Jun:6, Jul:7 };
 const DAY_NAMES = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
 function getDayName(dateStr) {
-  // dateStr = "15 Jun" → devuelve "LUN"
   const parts = dateStr.split(' ');
   const day = parseInt(parts[0], 10);
-  const month = (MONTH_MAP[parts[1]] || 6) - 1; // 0-indexed
+  const month = (MONTH_MAP[parts[1]] || 6) - 1;
   const year = 2026;
   const d = new Date(year, month, day);
   return DAY_NAMES[d.getDay()];
@@ -1384,7 +1517,6 @@ function matchSortKey(m) {
   const mm = parseInt(timeStr[1], 10) || 0;
   return month * 100000 + day * 1000 + hh * 10 + (mm >= 30 ? 5 : 0);
 }
-// Helper: solo la parte de fecha (sin hora), para comparar contra rangos de semana
 function dateOnlyKey(dateStr) {
   const parts = dateStr.split(' ');
   const day = parseInt(parts[0], 10) || 0;
@@ -1393,7 +1525,6 @@ function dateOnlyKey(dateStr) {
 }
 
 const DATA = {
-  // Rango de la semana activa (lunes a domingo). Actualizar cada semana.
   currentWeek: { startDate: '22 Jun', endDate: '28 Jun', label: 'Semana del 22 al 28 de junio' },
 
   phases: [
@@ -1483,9 +1614,9 @@ const DATA = {
     { id:61, phase:'grupos', group:'K', home:'Portugal',   homeFlag:'🇵🇹', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:1, awayScore:1, date:'17 Jun', time:'11:00', venue:'Estadio Houston',         status:'done' },
     { id:62, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', venue:'Estadio Ciudad de México', status:'done' },
     { id:63, phase:'grupos', group:'K', home:'Portugal',   homeFlag:'🇵🇹', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:5, awayScore:0, date:'23 Jun', time:'11:00', venue:'Estadio Houston',         status:'done' },
-    { id:64, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:1, awayScore:0, date:'23 Jun', time:'20:00', venue:'Estadio Guadalajara',     status:'done' },
+    { id:64, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:1, awayScore:0, date:'23 Jun', time:'20:00', venue:'Estadio Guadalajara',      status:'done' },
     { id:65, phase:'grupos', group:'K', home:'RD Congo',   homeFlag:'🇨🇩', away:'Uzbekistán', awayFlag:'🇺🇿', homeScore:null, awayScore:null, date:'27 Jun', time:'17:30', venue:'Estadio Atlanta',         status:'scheduled' },
-    { id:66, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'Portugal',   awayFlag:'🇵🇹', homeScore:null, awayScore:null, date:'27 Jun', time:'17:30', venue:'Estadio Miami',           status:'scheduled' },
+    { id:66, phase:'grupos', group:'K', home:'Colombia',   homeFlag:'🇨🇴', away:'Portugal',   awayFlag:'🇵🇹', homeScore:null, awayScore:null, date:'27 Jun', time:'17:30', venue:'Estadio Miami',            status:'scheduled' },
     // ── GRUPO L: Inglaterra · Croacia · Ghana · Panamá
     { id:67, phase:'grupos', group:'L', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Croacia', awayFlag:'🇭🇷', homeScore:4, awayScore:2, date:'17 Jun', time:'14:00', venue:'Estadio Dallas',     status:'done' },
     { id:68, phase:'grupos', group:'L', home:'Ghana',      homeFlag:'🇬🇭', away:'Panamá',  awayFlag:'🇵🇦', homeScore:1, awayScore:0, date:'17 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
@@ -1511,58 +1642,26 @@ const DATA = {
     { id:87,  phase:'dieciseisavos', group:null, home:'1° Grupo K', homeFlag:'🏆', away:'3° D/E/I/J/L',awayFlag:'⭐', homeScore:null, awayScore:null, date:'03 Jul', time:'18:00', venue:'Estadio Kansas City',           status:'scheduled' },
     { id:88,  phase:'dieciseisavos', group:null, home:'Australia',  homeFlag:'🇦🇺', away:'2° Grupo G',  awayFlag:'🥈', homeScore:null, awayScore:null, date:'03 Jul', time:'12:00', venue:'Estadio Dallas',                status:'scheduled' },
     // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
-    { id:89, phase:'octavos', group:null,
-      home:'1° Grupo E', homeFlag:'🏆', away:'3° mejores del torneo', awayFlag:'⭐',
-      homeScore:null, awayScore:null, date:'04 Jul', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
-    { id:90, phase:'octavos', group:null,
-      home:'2° Grupo A', homeFlag:'🥈', away:'1° Grupo F', awayFlag:'🏆',
-      homeScore:null, awayScore:null, date:'04 Jul', time:'19:00', venue:'Estadio Houston', status:'scheduled' },
-    { id:91, phase:'octavos', group:null,
-      home:'1° Grupo C', homeFlag:'🏆', away:'2° Grupo E o 2° Grupo I', awayFlag:'🥈',
-      homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
-    { id:92, phase:'octavos', group:null,
-      home:'1° Grupo A', homeFlag:'🏆', away:'1° Grupo L', awayFlag:'🏆',
-      homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
-    { id:93, phase:'octavos', group:null,
-      home:'2° Grupo K', homeFlag:'🥈', away:'1° Grupo H', awayFlag:'🏆',
-      homeScore:null, awayScore:null, date:'06 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
-    { id:94, phase:'octavos', group:null,
-      home:'1° Grupo D', homeFlag:'🏆', away:'1° Grupo G', awayFlag:'🏆',
-      homeScore:null, awayScore:null, date:'06 Jul', time:'15:00', venue:'Estadio Seattle', status:'scheduled' },
-    { id:95, phase:'octavos', group:null,
-      home:'1° Grupo J', homeFlag:'🏆', away:'2° Grupo D o 2° Grupo G', awayFlag:'🥈',
-      homeScore:null, awayScore:null, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'scheduled' },
-    { id:96, phase:'octavos', group:null,
-      home:'1° Grupo B', homeFlag:'🏆', away:'1° Grupo K', awayFlag:'🏆',
-      homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
+    { id:89, phase:'octavos', group:null, home:'1° Grupo E', homeFlag:'🏆', away:'3° mejores del torneo', awayFlag:'⭐', homeScore:null, awayScore:null, date:'04 Jul', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
+    { id:90, phase:'octavos', group:null, home:'2° Grupo A', homeFlag:'🥈', away:'1° Grupo F', awayFlag:'🏆', homeScore:null, awayScore:null, date:'04 Jul', time:'19:00', venue:'Estadio Houston', status:'scheduled' },
+    { id:91, phase:'octavos', group:null, home:'1° Grupo C', homeFlag:'🏆', away:'2° Grupo E o 2° Grupo I', awayFlag:'🥈', homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
+    { id:92, phase:'octavos', group:null, home:'1° Grupo A', homeFlag:'🏆', away:'1° Grupo L', awayFlag:'🏆', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
+    { id:93, phase:'octavos', group:null, home:'2° Grupo K', homeFlag:'🥈', away:'1° Grupo H', awayFlag:'🏆', homeScore:null, awayScore:null, date:'06 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
+    { id:94, phase:'octavos', group:null, home:'1° Grupo D', homeFlag:'🏆', away:'1° Grupo G', awayFlag:'🏆', homeScore:null, awayScore:null, date:'06 Jul', time:'15:00', venue:'Estadio Seattle', status:'scheduled' },
+    { id:95, phase:'octavos', group:null, home:'1° Grupo J', homeFlag:'🏆', away:'2° Grupo D o 2° Grupo G', awayFlag:'🥈', homeScore:null, awayScore:null, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'scheduled' },
+    { id:96, phase:'octavos', group:null, home:'1° Grupo B', homeFlag:'🏆', away:'1° Grupo K', awayFlag:'🏆', homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
     // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
-    { id:97,  phase:'cuartos', group:null,
-      home:'Ganador Filadelfia 4 Jul', homeFlag:'⚽', away:'Ganador Houston 4 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'09 Jul', time:'13:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
-    { id:98,  phase:'cuartos', group:null,
-      home:'Ganador Nueva York 5 Jul', homeFlag:'⚽', away:'Ganador Seattle 6 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'10 Jul', time:'14:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
-    { id:99,  phase:'cuartos', group:null,
-      home:'Ganador CDMX 5 Jul', homeFlag:'⚽', away:'Ganador Dallas 6 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'11 Jul', time:'14:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
-    { id:100, phase:'cuartos', group:null,
-      home:'Ganador Atlanta 7 Jul', homeFlag:'⚽', away:'Ganador Vancouver 7 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'11 Jul', time:'18:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
+    { id:97,  phase:'cuartos', group:null, home:'Ganador Filadelfia 4 Jul', homeFlag:'⚽', away:'Ganador Houston 4 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'09 Jul', time:'13:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
+    { id:98,  phase:'cuartos', group:null, home:'Ganador Nueva York 5 Jul', homeFlag:'⚽', away:'Ganador Seattle 6 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'10 Jul', time:'14:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
+    { id:99,  phase:'cuartos', group:null, home:'Ganador CDMX 5 Jul', homeFlag:'⚽', away:'Ganador Dallas 6 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'14:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
+    { id:100, phase:'cuartos', group:null, home:'Ganador Atlanta 7 Jul', homeFlag:'⚽', away:'Ganador Vancouver 7 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'18:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
     // ── SEMIFINALES
-    { id:101, phase:'semis', group:null,
-      home:'Ganador Boston 9 Jul', homeFlag:'⚽', away:'Ganador Los Ángeles 10 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'14 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
-    { id:102, phase:'semis', group:null,
-      home:'Ganador Miami 11 Jul', homeFlag:'⚽', away:'Ganador Kansas City 11 Jul', awayFlag:'⚽',
-      homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
+    { id:101, phase:'semis', group:null, home:'Ganador Boston 9 Jul', homeFlag:'⚽', away:'Ganador Los Ángeles 10 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'14 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
+    { id:102, phase:'semis', group:null, home:'Ganador Miami 11 Jul', homeFlag:'⚽', away:'Ganador Kansas City 11 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
     // ── TERCER PUESTO
-    { id:103, phase:'semis', group:null,
-      home:'Perdedor Semifinal 1', homeFlag:'🥉', away:'Perdedor Semifinal 2', awayFlag:'🥉',
-      homeScore:null, awayScore:null, date:'18 Jul', time:'13:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
+    { id:103, phase:'semis', group:null, home:'Perdedor Semifinal 1', homeFlag:'🥉', away:'Perdedor Semifinal 2', awayFlag:'🥉', homeScore:null, awayScore:null, date:'18 Jul', time:'13:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
     // ── GRAN FINAL
-    { id:104, phase:'final', group:null,
-      home:'Campeón Semifinal 1', homeFlag:'🌎', away:'Campeón Semifinal 2', awayFlag:'🌎',
-      homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
+    { id:104, phase:'final', group:null, home:'Campeon Semifinal 1', homeFlag:'🌎', away:'Campeon Semifinal 2', awayFlag:'🌎', homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
   ],
 
   standings: {
@@ -1592,15 +1691,15 @@ const DATA = {
     ],
     E: [
       { team:'Alemania',        flag:'🇩🇪', pj:3, pg:2, pe:0, pp:1, gf:10, gc:4, pts:6 },
-      { team:'Costa de Marfil', flag:'🇨🇮', pj:3, pg:2, pe:0, pp:1, gf:4, gc:2, pts:6 },
-      { team:'Ecuador',         flag:'🇪🇨', pj:3, pg:1, pe:1, pp:1, gf:2, gc:2, pts:4 },
-      { team:'Curazao',         flag:'🇨🇼', pj:3, pg:0, pe:1, pp:2, gf:1, gc:9, pts:1 },
+      { team:'Costa de Marfil', flag:'🇨🇮', pj:3, pg:2, pe:0, pp:1, gf:4,  gc:2, pts:6 },
+      { team:'Ecuador',         flag:'🇪🇨', pj:3, pg:1, pe:1, pp:1, gf:2,  gc:2, pts:4 },
+      { team:'Curazao',         flag:'🇨🇼', pj:3, pg:0, pe:1, pp:2, gf:1,  gc:9, pts:1 },
     ],
     F: [
       { team:'Países Bajos', flag:'🇳🇱', pj:3, pg:2, pe:1, pp:0, gf:10, gc:4, pts:7 },
-      { team:'Japón',        flag:'🇯🇵', pj:3, pg:1, pe:2, pp:0, gf:7, gc:3, pts:5 },
-      { team:'Suecia',       flag:'🇸🇪', pj:3, pg:1, pe:1, pp:1, gf:7, gc:7, pts:4 },
-      { team:'Túnez',        flag:'🇹🇳', pj:3, pg:0, pe:0, pp:3, gf:2, gc:12, pts:0 },
+      { team:'Japón',        flag:'🇯🇵', pj:3, pg:1, pe:2, pp:0, gf:7,  gc:3, pts:5 },
+      { team:'Suecia',       flag:'🇸🇪', pj:3, pg:1, pe:1, pp:1, gf:7,  gc:7, pts:4 },
+      { team:'Túnez',        flag:'🇹🇳', pj:3, pg:0, pe:0, pp:3, gf:2,  gc:12, pts:0 },
     ],
     G: [
       { team:'Egipto',       flag:'🇪🇬', pj:2, pg:1, pe:1, pp:0, gf:4, gc:2, pts:4 },
@@ -1641,21 +1740,16 @@ const DATA = {
   },
 
   scorers: [
-    // ── 5 goles
     { name:'Lionel Messi', team:'Argentina · Min. 17\', 60\' y 76\' (J1) · Min. 38\' y 90+5\' (J2)', flag:'🇦🇷', goals:5, highlight:true },
-    // ── 4 goles
     { name:'Kylian Mbappé', team:'Francia · Min. 66\' y 90+6\' (J1) · Min. 14\' y 53\' (J2)', flag:'🇫🇷', goals:4, highlight:true },
     { name:'Erling Haaland', team:'Noruega · Min. 29\' y 42\' (J1) · Min. 48\' y 58\' (J2)', flag:'🇳🇴', goals:4, highlight:true },
     { name:'Vinícius Júnior', team:'Brasil · Min. 31\' y 45+3\' (J1) · Min. 7\' y 45+3\' (J2)', flag:'🇧🇷', goals:4, highlight:true },
     { name:'Ousmane Dembélé', team:'Francia · Min. 66\'', flag:'🇫🇷', goals:4, highlight:true },
-
-    // ── 3 goles
     { name:'Jonathan David', team:'Canadá · Min. 29\', 45+3\' y 90+2\' (Hat-trick)', flag:'🇨🇦', goals:3, highlight:true },
     { name:'Deniz Undav', team:'Alemania · Min. 78\' (J1), 68\' y 90+4\' (J2)', flag:'🇩🇪', goals:3, highlight:true },
     { name:'Matheus Cunha', team:'Brasil · Min. 23\' y 36\' (J1) · Min. 60\' (J2)', flag:'🇧🇷', goals:3, highlight:true },
     { name:'Johan Manzambi', team:'Suiza · Min. 74\' y 90\' (J1) · Min. 57\' (J2)', flag:'🇨🇭', goals:3, highlight:true },
     { name:'Ismael Saibari', team:'Marruecos ·', flag:'🇲🇦', goals:3, highlight:true },
-    // ── 2 goles
     { name:'Cristiano Ronaldo', team:'Portugal · Min. 6\' y 39\' (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
     { name:'Harry Kane', team:'Inglaterra · Min. 12\' y 42\' (10 goles en Copas del Mundo)', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2 },
     { name:'Julián Quiñones', team:'México · Min. 11\' (Primer gol del Mundial) · Min. 61\' (J3)', flag:'🇲🇽', goals:2 },
@@ -1671,7 +1765,6 @@ const DATA = {
     { name:'Maximiliano Araújo', team:'Uruguay · Min. 80\' (J1) y 45\' (J2)', flag:'🇺🇾', goals:2 },
     { name:'Mikel Oyarzabal', team:'España · Min. 21\' y 24\'', flag:'🇪🇸', goals:2 },
     { name:'Ismaïla Sarr', team:'Senegal · Min. 84\' y 90+3\'', flag:'🇸🇳', goals:2 },
-    // ── 1 gol
     { name:'Raúl Jiménez', team:'México · Min. 67\'', flag:'🇲🇽', goals:1 },
     { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
     { name:'Ladislav Krejčí', team:'Chequia · Min. 32\'', flag:'🇨🇿', goals:1 },
@@ -1759,59 +1852,44 @@ const DATA = {
     { name:'Miro Muheim', team:'Suiza · AG Min. 90+3\' (a favor de Catar)', flag:'🇨🇭', goals:1, isOwnGoal:true },
     { name:'Cameron Burgess', team:'Australia · AG Min. 11\' (a favor de Estados Unidos)', flag:'🇦🇺', goals:1, isOwnGoal:true },
   ],
-    yellowCards: [
-    // Partido Panamá-Croacia (23 jun)
+  yellowCards: [
     { player:'Yoel Bárcenas',          team:'Panamá',           flag:'🇵🇦', qty:1, min:'Min. 61\'' },
     { player:'Petar Sučić',            team:'Croacia',          flag:'🇭🇷', qty:1, min:'Min. 90+2\'' },
-    // Partido Colombia-RD Congo (23 jun)
     { player:'Jhon Lucumí',            team:'Colombia',         flag:'🇨🇴', qty:1, min:'Min. 56\'' },
     { player:'Jefferson Lerma',        team:'Colombia',         flag:'🇨🇴', qty:1, min:'Min. 90+4\'' },
     { player:'Charles Pickel',         team:'RD Congo',         flag:'🇨🇩', qty:1, min:'Min. 90+4\'' },
-    // Partido Suiza-Canadá (24 jun)
     { player:'Granit Xhaka',           team:'Suiza',            flag:'🇨🇭', qty:1, min:'Min. 32\'' },
     { player:'Cyle Larin',             team:'Canadá',           flag:'🇨🇦', qty:1, min:'Min. 32\'' },
-    // Partido Portugal-Uzbekistán (23 jun)
     { player:'Odiljon Hamrobekov',     team:'Uzbekistán',       flag:'🇺🇿', qty:1, min:'Min. 14\'' },
     { player:'Renato Veiga',           team:'Portugal',         flag:'🇵🇹', qty:1, min:'Min. 68\'' },
-    // Partido Inglaterra-Ghana (23 jun)
     { player:'Declan Rice',            team:'Inglaterra',       flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', qty:1, min:'Min. 41\'' },
     { player:'Iñaki Williams',         team:'Ghana',            flag:'🇬🇭', qty:1, min:'Min. 60\'' },
-    // Partido Argentina-Austria (22 jun)
     { player:'Stefan Posch',           team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 40\'' },
     { player:'Konrad Laimer',          team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 76\'' },
     { player:'Facundo Medina',         team:'Argentina',        flag:'🇦🇷', qty:1, min:'Min. 76\'' },
     { player:'Leandro Paredes',        team:'Argentina',        flag:'🇦🇷', qty:1, min:'Min. 90+2\'' },
-    // Partido Francia-Irak (22 jun ⚡ en vivo)
     { player:'Amir Al-Ammari',         team:'Irak',             flag:'🇮🇶', qty:1, min:'Min. 6\'' },
-    // Partido Jordania-Argelia (22 jun)
-    { player:'Ramiz Zerrouki',         team:'Argelia',           flag:'🇩🇿', qty:1, min:'Min. 44\'' },
-    // Partido España-Arabia Saudita (21 jun)
+    { player:'Ramiz Zerrouki',         team:'Argelia',          flag:'🇩🇿', qty:1, min:'Min. 44\'' },
     { player:'S. Aldawsari',           team:'Arabia Saudita',   flag:'🇸🇦', qty:1, min:'Min. 30\'' },
     { player:'Mohamed Kanno',          team:'Arabia Saudita',   flag:'🇸🇦', qty:1, min:'Min. 60\'' },
-    // Partido Bélgica-RI de Irán (21 jun)
     { player:'R. Lukaku',              team:'Bélgica',          flag:'🇧🇪', qty:1, min:'Min. 3\'' },
     { player:'Saeid Ezatolahi',        team:'RI de Irán',       flag:'🇮🇷', qty:1, min:'Min. 33\'' },
-    // Partido Uruguay-Cabo Verde (21 jun)
     { player:'R. Bentancur',           team:'Uruguay',          flag:'🇺🇾', qty:1, min:'Min. 20\'' },
     { player:'Sidny Lopes Cabral',     team:'Cabo Verde',       flag:'🇨🇻', qty:1, min:'Min. 5\'' },
     { player:'Mathias Olivera',        team:'Uruguay',          flag:'🇺🇾', qty:1, min:'Min. 58\'' },
     { player:'Diney Borges',           team:'Cabo Verde',       flag:'🇨🇻', qty:1, min:'Min. 90+2\'' },
-    // Partido Nueva Zelanda-Egipto (21 jun)
     { player:'Mohanad Lasheen',        team:'Egipto',           flag:'🇪🇬', qty:1, min:'Min. 17\'' },
     { player:'Sarpreet Singh',         team:'Nueva Zelanda',    flag:'🇳🇿', qty:1, min:'Min. 20\'' },
     { player:'Callum McCowatt',        team:'Nueva Zelanda',    flag:'🇳🇿', qty:1, min:'Min. 33\'' },
-    // Partido Países Bajos-Suecia (20 jun)
     { player:'Gabriel Gudmundsson',    team:'Suecia',           flag:'🇸🇪', qty:1, min:'Min. 53\'' },
     { player:'Yasin Ayari',            team:'Suecia',           flag:'🇸🇪', qty:1, min:'Min. 75\'' },
     { player:'Lucas Bergvall',         team:'Suecia',           flag:'🇸🇪', qty:1, min:'Min. 80\'' },
-    // Partido Ecuador-Curazao (20 jun)
     { player:'Jordy Alcivar',          team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 38\'' },
     { player:'L. Bacuna',              team:'Curazao',          flag:'🇨🇼', qty:1, min:'Min. 39\'' },
     { player:'Juninho Bacuna',         team:'Curazao',          flag:'🇨🇼', qty:1, min:'Min. 53\'' },
     { player:'Livano Comenencia',      team:'Curazao',          flag:'🇨🇼', qty:1, min:'Min. 56\'' },
     { player:'Jurien Gaari',           team:'Curazao',          flag:'🇨🇼', qty:1, min:'Min. 75\'' },
     { player:'Gervane Kastaneer',      team:'Curazao',          flag:'🇨🇼', qty:1, min:'Min. 90\'' },
-    // Partido Estados Unidos-Australia (19 jun)
     { player:'Jordan Bos',             team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 16\'' },
     { player:'Alessandro Circati',     team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 32\'' },
     { player:'Antonee Robinson',       team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 56\'' },
@@ -1819,100 +1897,75 @@ const DATA = {
     { player:'Harry Souttar',          team:'Australia',        flag:'🇦🇺', qty:1, min:'Min. 89\'' },
     { player:'Folarin Balogun',        team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 89\'' },
     { player:'Chris Richards',         team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Min. 90+2\'' },
-    // Partido Turquía-Paraguay (19 jun)
     { player:'Matías Galarza',         team:'Paraguay',         flag:'🇵🇾', qty:1, min:'Min. 4\'' },
     { player:'Eren Elmali',            team:'Turquía',          flag:'🇹🇷', qty:1, min:'Min. 71\'' },
-    // Partido Brasil-Haití (19 jun)
     { player:'Arcus Carlens',          team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 4\'' },
     { player:'Frantzdy Pierrot',       team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 45+3\'' },
     { player:'D. Santos',              team:'Brasil',           flag:'🇧🇷', qty:1, min:'Min. 65\'' },
     { player:'Danley Jean Jacques',    team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 72\'' },
-    // Partido Escocia-Marruecos (19 jun)
     { player:'Issa Diop',              team:'Marruecos',        flag:'🇲🇦', qty:1, min:'Min. 23\'' },
     { player:'Andrew Robertson',       team:'Escocia',          flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 65\'' },
-    // Partido México-Sudáfrica (11 jun)
-    { player:'Teboho Mokoena', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
-    { player:'Nkosinathi Sibisi', team:'Sudáfrica', flag:'🇿🇦', qty:1, min:'—' },
-    // Partido Canadá-Bosnia (12 jun)
-    { player:'Ermedin Demirović', team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'—' },
-    { player:'Alistair Johnston', team:'Canadá', flag:'🇨🇦', qty:1, min:'—' },
-    // Partido USA-Paraguay (12 jun)
-    { player:'Gustavo Gómez', team:'Paraguay', flag:'🇵🇾', qty:1, min:'Falta táctica / Juego brusco' },
-    { player:'Andrés Cubas', team:'Paraguay', flag:'🇵🇾', qty:1, min:'Reiteración de faltas' },
-    { player:'Weston McKennie', team:'Estados Unidos', flag:'🇺🇸', qty:1, min:'Protestas al árbitro' },
-    // Partido Catar-Suiza (13 jun)
-    { player:'Homam Ahmed',      team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 15\'' },
-    { player:'Jassem Gaber',     team:'Catar', flag:'🇶🇦', qty:1, min:'Min. 22\'' },
-    { player:'Granit Xhaka',     team:'Suiza', flag:'🇨🇭', qty:1, min:'Min. 41\'' },
-    // Partido Brasil-Marruecos (13 jun)
-    { player:'Bruno Guimarães',  team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 36\'' },
-    { player:'Lucas Paquetá',    team:'Brasil', flag:'🇧🇷', qty:1, min:'Min. 42\'' },
-    // Partido Haití-Escocia (13 jun)
-    { player:'Carlens Arcus',    team:'Haití', flag:'🇭🇹', qty:1, min:'Min. 38\'' },
-    { player:'Billy Gilmour',    team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 45\'' },
-    { player:'Scott McTominay',  team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
-    { player:'John McGinn',      team:'Escocia', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
-    // Partido Australia-Turquía (13 jun)
-    { player:'Yunus Akgün',           team:'Turquía',              flag:'🇹🇷',        qty:1, min:'Min. 85\'' },
-    // Partido Países Bajos-Japón (14 jun)
-    { player:'Crysencio Summerville', team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 61\'' },
-    { player:'Memphis Depay',         team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 83\'' },
-    { player:'Micky van de Ven',      team:'Países Bajos',         flag:'🇳🇱',        qty:1, min:'Min. 90+1\'' },
-    // Partido Costa de Marfil-Ecuador (14 jun)
-    { player:'Seko Fofana',            team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 28\'' },
-    { player:'Franck Kessié',          team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 38\'' },
-    { player:'Georges Doué',           team:'Costa de Marfil', flag:'🇨🇮', qty:1, min:'Min. 40\'' },
-    { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨', qty:1, min:'Min. 73\'' },
-    // Partido Rep. Checa-Sudáfrica (18 jun)
-    { player:'Ladislav Krejčí',        team:'Rep. Checa',       flag:'🇨🇿', qty:1, min:'Min. 75\'' },
-    { player:'Thalente Mbatha',        team:'Sudáfrica',         flag:'🇿🇦', qty:1, min:'Min. 40\'' },
-    { player:'Teboho Mokoena',         team:'Sudáfrica · ⚠️ 2ª amarilla del torneo (condicionado)', flag:'🇿🇦', qty:1, min:'Min. 33\'' },
-    // Partido Suiza-Bosnia (18 jun)
+    { player:'Teboho Mokoena',         team:'Sudáfrica',        flag:'🇿🇦', qty:1, min:'—' },
+    { player:'Nkosinathi Sibisi',      team:'Sudáfrica',        flag:'🇿🇦', qty:1, min:'—' },
+    { player:'Ermedin Demirović',      team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'—' },
+    { player:'Alistair Johnston',      team:'Canadá',           flag:'🇨🇦', qty:1, min:'—' },
+    { player:'Gustavo Gómez',          team:'Paraguay',         flag:'🇵🇾', qty:1, min:'Falta táctica / Juego brusco' },
+    { player:'Andrés Cubas',           team:'Paraguay',         flag:'🇵🇾', qty:1, min:'Reiteración de faltas' },
+    { player:'Weston McKennie',        team:'Estados Unidos',   flag:'🇺🇸', qty:1, min:'Protestas al árbitro' },
+    { player:'Homam Ahmed',            team:'Catar',            flag:'🇶🇦', qty:1, min:'Min. 15\'' },
+    { player:'Jassem Gaber',           team:'Catar',            flag:'🇶🇦', qty:1, min:'Min. 22\'' },
+    { player:'Granit Xhaka',           team:'Suiza',            flag:'🇨🇭', qty:1, min:'Min. 41\'' },
+    { player:'Bruno Guimarães',        team:'Brasil',           flag:'🇧🇷', qty:1, min:'Min. 36\'' },
+    { player:'Lucas Paquetá',          team:'Brasil',           flag:'🇧🇷', qty:1, min:'Min. 42\'' },
+    { player:'Carlens Arcus',          team:'Haití',            flag:'🇭🇹', qty:1, min:'Min. 38\'' },
+    { player:'Billy Gilmour',          team:'Escocia',          flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 45\'' },
+    { player:'Scott McTominay',        team:'Escocia',          flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90\'' },
+    { player:'John McGinn',            team:'Escocia',          flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', qty:1, min:'Min. 90+4\'' },
+    { player:'Yunus Akgün',            team:'Turquía',          flag:'🇹🇷',    qty:1, min:'Min. 85\'' },
+    { player:'Crysencio Summerville',  team:'Países Bajos',     flag:'🇳🇱',    qty:1, min:'Min. 61\'' },
+    { player:'Memphis Depay',          team:'Países Bajos',     flag:'🇳🇱',    qty:1, min:'Min. 83\'' },
+    { player:'Micky van de Ven',       team:'Países Bajos',     flag:'🇳🇱',    qty:1, min:'Min. 90+1\'' },
+    { player:'Seko Fofana',            team:'Costa de Marfil',  flag:'🇨🇮',    qty:1, min:'Min. 28\'' },
+    { player:'Franck Kessié',          team:'Costa de Marfil',  flag:'🇨🇮',    qty:1, min:'Min. 38\'' },
+    { player:'Georges Doué',           team:'Costa de Marfil',  flag:'🇨🇮',    qty:1, min:'Min. 40\'' },
+    { player:'Jackson Porozo',         team:'Ecuador',          flag:'🇪🇨',    qty:1, min:'Min. 73\'' },
+    { player:'Ladislav Krejčí',        team:'Rep. Checa',       flag:'🇨🇿',    qty:1, min:'Min. 75\'' },
+    { player:'Thalente Mbatha',        team:'Sudáfrica',        flag:'🇿🇦',    qty:1, min:'Min. 40\'' },
+    { player:'Teboho Mokoena',         team:'Sudáfrica · ⚠️ 2ª', flag:'🇿🇦',    qty:1, min:'Min. 33\'' },
     { player:'Amar Dedić',             team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'Min. 59\'' },
     { player:'Edin Džeko',             team:'Bosnia y Herzegovina', flag:'🇧🇦', qty:1, min:'Min. 61\'' },
-    { player:'Nico Elvedi',            team:'Suiza',                flag:'🇨🇭', qty:1, min:'Min. 65\'' },
-    // Partido Canadá-Catar (18 jun)
-    { player:'Derek Cornelius',        team:'Canadá',               flag:'🇨🇦', qty:1, min:'Min. 9\'' },
-    { player:'Ahmed Fathi',            team:'Catar',                flag:'🇶🇦', qty:1, min:'Min. 62\'' },
-    // Partido México-Corea del Sur (18 jun)
-    { player:'K. Lee',                 team:'Rep. de Corea',        flag:'🇰🇷', qty:1, min:'Min. 4\'' },
-    { player:'Paik Seung-Ho',          team:'Rep. de Corea',        flag:'🇰🇷', qty:1, min:'Min. 58\'' },
-    // Partido Colombia-Uzbekistán (17 jun)
-    { player:'Johan Mojica',           team:'Colombia',         flag:'🇨🇴', qty:1, min:'Min. 7\'' },
-    { player:'Abdukodir Khusanov',     team:'Uzbekistán',       flag:'🇺🇿', qty:1, min:'Min. 34\'' },
-    // Partido Ghana-Panamá (17 jun)
-    { player:'Yirenkyi',               team:'Ghana',            flag:'🇬🇭', qty:1, min:'Min. 16\'' },
-    { player:'César Blackman',         team:'Panamá',           flag:'🇵🇦', qty:1, min:'Min. 72\'' },
-    { player:'Carlos Harvey',          team:'Panamá',           flag:'🇵🇦', qty:1, min:'Min. 90+8\'' },
-    // Partido Portugal-RD Congo (17 jun)
-    { player:'Bernardo Silva',         team:'Portugal',         flag:'🇵🇹', qty:1, min:'Min. 13\'' },
-    { player:'Chancel Mbemba',         team:'RD Congo',         flag:'🇨🇩', qty:1, min:'Min. 32\'' },
-    { player:'Nelson Semedo',          team:'Portugal',         flag:'🇵🇹', qty:1, min:'Min. 88\'' },
-    { player:'Tomás Araújo',           team:'Portugal',         flag:'🇵🇹', qty:1, min:'Min. 90+1\'' },
-    // Partido Austria-Jordania (17 jun)
-    { player:'Marcel Sabitzer',        team:'Austria',          flag:'🇦🇹', qty:1, min:'Min. 77\'' },
-    // Partido Noruega-Irak (16 jun)
-    { player:'Zaid Tahseen',           team:'Irak',             flag:'🇮🇶', qty:1, min:'Min. 86\'' },
-    // Partido RI de Irán-Nueva Zelanda (15 jun)
-    { player:'Ehsan Hajsafi',          team:'RI de Irán',      flag:'🇮🇷', qty:1, min:'Min. 89\'' },
-    // Partido Arabia Saudita-Uruguay (15 jun)
-    { player:'Abdulelah Al Amri',      team:'Arabia Saudita',  flag:'🇸🇦', qty:1, min:'Min. 44\'' },
-    // Partido España-Cabo Verde (15 jun)
-    { player:'Sidny Lopes Cabral',     team:'Cabo Verde',      flag:'🇨🇻', qty:1, min:'Min. 16\'' },
-    { player:'Pedri',                  team:'España',       flag:'🇪🇸', qty:1, min:'Min. 90+2\'' },
-    // Partido Bélgica-Egipto (15 jun)
-    { player:'Marwan Attia',           team:'Egipto',       flag:'🇪🇬', qty:1, min:'Min. 13\'' },
-    { player:'Timothy Castagne',       team:'Bélgica',      flag:'🇧🇪', qty:1, min:'Min. 14\'' },
-    { player:'Ahmed Abou El Fotouh',   team:'Egipto',       flag:'🇪🇬', qty:1, min:'Min. 34\'' },
-    { player:'Maxim De Cuyper',        team:'Bélgica',      flag:'🇧🇪', qty:1, min:'Min. 75\'' },
+    { player:'Nico Elvedi',            team:'Suiza',            flag:'🇨🇭',    qty:1, min:'Min. 65\'' },
+    { player:'Derek Cornelius',        team:'Canadá',           flag:'🇨🇦',    qty:1, min:'Min. 9\'' },
+    { player:'Ahmed Fathi',            team:'Catar',            flag:'🇶🇦',    qty:1, min:'Min. 62\'' },
+    { player:'K. Lee',                 team:'Rep. de Corea',    flag:'🇰🇷',    qty:1, min:'Min. 4\'' },
+    { player:'Paik Seung-Ho',          team:'Rep. de Corea',    flag:'🇰🇷',    qty:1, min:'Min. 58\'' },
+    { player:'Johan Mojica',           team:'Colombia',         flag:'🇨🇴',    qty:1, min:'Min. 7\'' },
+    { player:'Abdukodir Khusanov',     team:'Uzbekistán',       flag:'🇺🇿',    qty:1, min:'Min. 34\'' },
+    { player:'Yirenkyi',               team:'Ghana',            flag:'🇬🇭',    qty:1, min:'Min. 16\'' },
+    { player:'César Blackman',         team:'Panamá',           flag:'🇵🇦',    qty:1, min:'Min. 72\'' },
+    { player:'Carlos Harvey',          team:'Panamá',           flag:'🇵🇦',    qty:1, min:'Min. 90+8\'' },
+    { player:'Bernardo Silva',         team:'Portugal',         flag:'🇵🇹',    qty:1, min:'Min. 13\'' },
+    { player:'Chancel Mbemba',         team:'RD Congo',         flag:'🇨🇩',    qty:1, min:'Min. 32\'' },
+    { player:'Nelson Semedo',          team:'Portugal',         flag:'🇵🇹',    qty:1, min:'Min. 88\'' },
+    { player:'Tomás Araújo',           team:'Portugal',         flag:'🇵🇹',    qty:1, min:'Min. 90+1\'' },
+    { player:'Marcel Sabitzer',        team:'Austria',          flag:'🇦🇹',    qty:1, min:'Min. 77\'' },
+    { player:'Zaid Tahseen',           team:'Irak',             flag:'🇮🇶',    qty:1, min:'Min. 86\'' },
+    { player:'Ehsan Hajsafi',          team:'RI de Irán',       flag:'🇮🇷',    qty:1, min:'Min. 89\'' },
+    { player:'Abdulelah Al Amri',      team:'Arabia Saudita',   flag:'🇸🇦',    qty:1, min:'Min. 44\'' },
+    { player:'Sidny Lopes Cabral',     team:'Cabo Verde',       flag:'🇨🇻',    qty:1, min:'Min. 16\'' },
+    { player:'Pedri',                  team:'España',           flag:'🇪🇸',    qty:1, min:'Min. 90+2\'' },
+    { player:'Marwan Attia',           team:'Egipto',           flag:'🇪🇬',    qty:1, min:'Min. 13\'' },
+    { player:'Timothy Castagne',       team:'Bélgica',          flag:'🇧🇪',    qty:1, min:'Min. 14\'' },
+    { player:'Ahmed Abou El Fotouh',   team:'Egipto',           flag:'🇪🇬',    qty:1, min:'Min. 34\'' },
+    { player:'Maxim De Cuyper',        team:'Bélgica',          flag:'🇧🇪',    qty:1, min:'Min. 75\'' },
   ],
 
   redCards: [
     { player:'Nathan Ngoy',          team:'Bélgica',              flag:'🇧🇪', min:'Min. 67\'',       desc:'Roja directa que deja a Bélgica con 10 hombres en un partido sin goles ante Irán.' },
-    { player:'Miguel Almirón',       team:'Paraguay',             flag:'🇵🇾', min:'Min. 45+3\'',     desc:'Roja directa que deja a Paraguay con 10 hombres antes del descanso ante Turquía.' },
+    { player:'Miguel Almirón',       team:'Paraguay',              flag:'🇵🇾', min:'Min. 45+3\'',     desc:'Roja directa que deja a Paraguay con 10 hombres antes del descanso ante Turquía.' },
     { player:'Yaya Sithole',         team:'Sudáfrica',            flag:'🇿🇦', min:'Doble amarilla', desc:'Expulsado por doble amonestación tras faltas consecutivas.' },
     { player:'Themba Zwane',         team:'Sudáfrica',            flag:'🇿🇦', min:'Roja directa',   desc:'Tarjeta roja tras un altercado y manotazo a un rival.' },
-    { player:'César Montes',         team:'México',               flag:'🇲🇽', min:'Roja directa',   desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
+    { player:'César Montes',         team:'México',                flag:'🇲🇽', min:'Roja directa',   desc:'Expulsado sobre la hora por una fuerte entrada tardía.' },
     { player:'Tarik Muharemović',    team:'Bosnia y Herzegovina', flag:'🇧🇦', min:'Min. 80\'',       desc:'Roja directa que condena a Bosnia a jugar con 10 los últimos minutos ante Suiza.' },
     { player:'Homam Ahmed',          team:'Catar',                flag:'🇶🇦', min:'Min. 33\'',       desc:'Roja directa que reduce a Catar a 10 hombres ante Canadá desde el primer tiempo.' },
     { player:'Assim Madibo',         team:'Catar',                flag:'🇶🇦', min:'Min. 53\'',       desc:'Segunda roja para Catar: el equipo acaba el partido con 9 hombres.' },
@@ -1925,8 +1978,7 @@ const DATA = {
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
   ],
 
-
-   noticias: [
+  noticias: [
     {
       accentColor: 'gold',
       kicker: '🏆 Camino a Dieciseisavos · Análisis',
@@ -1958,7 +2010,7 @@ const DATA = {
       kicker: '🇲🇽 Jornada 1 · Grupo A · México 2-0 Sudáfrica',
       kickerClass: '',
       title: 'El tercer Mundial llegó y México no falló: Quiñones, Jiménez y la ilusión de una nueva generación',
-      text: 'Hay países que cargan el fútbol como una religión. México es uno de ellos, y el 11 de junio de 2026 lo volvió a demostrar. Para el Tri, este no es cualquier Mundial: es el tercero en el que México figura entre los países sede, después de 1970 y 1986, y el primero en casa en cuatro décadas. La deuda histórica del quinto partido —ese maldito techo que siempre se aparece en los dieciseisavos— pesaba en el ambiente, pero dentro del estadio Ciudad de México nadie quería escuchar de maldiciones. Quiñones abrió el marcador al minuto 11 con un disparo que entró por el ángulo bajo y encendió una mezcla de alivio y euforia que nadie en las tribunas sabía cómo procesar. Era el primer gol de este Mundial. Su gol. El de México. Raúl Jiménez cerró la cuenta al 67\'. Pero el momento que nadie va a olvidar llegó cuando ingresó la Hormiga González y, con él, Gilberto Mora — 17 años recién cumplidos.',
+      text: 'Hay países que cargan el fútbol como una religión. México es uno de ellos, y el 11 de junio de 2026 lo volvió a demostrar. Para el Tri, este no es cualquier Mundial: es el tercero en el que México figura entre los países sede, después de 1970 y 1986, y el primero en casa en cuatro décadas. La deuda histórica del quinto partido —ese maldito techo que siempre se aparece en los dieciseisavos— pesaba en el ambiente, pero dentro del estadio Ciudad de México nadie quieras escuchar de maldiciones. Quiñones abrió el marcador al minuto 11 con un disparo que entró por el ángulo bajo y encendió una mezcla de alivio y euforia que nadie en las tribunas sabía cómo procesar. Era el primer gol de este Mundial. Su gol. El de México. Raúl Jiménez cerró la cuenta al 67\'. Pero el momento que nadie va a olvidar llegó cuando ingresó la Hormiga González y, con él, Gilberto Mora — 17 años recién cumplidos.',
       jugadorFlag: '🇲🇽',
       jugadorName: 'Julián Quiñones',
       jugadorLabel: 'Primer gol del Mundial 2026 · Min. 11\'',
@@ -1967,22 +2019,9 @@ const DATA = {
       impacto: 'México lidera el Grupo A con 3 pts. La ilusión del quinto partido está viva.',
     },
     {
-          accentColor: 'lime',
-      kicker: 'El mundial más mexicano',
-      kickerClass: '',
-      title: 'El alma del Mundial es latina: los datos demuestran que México opacó a EE. UU. y Canadá en el arranque del Mundial',
-      text: 'Hay torneos que se ganan en la cancha y otros que se ganan en la calle. Las principales consultoras de turismo y los reportes de ocupación de las Fan Zones de la FIFA revelan datos contundentes: México está liderando por completo la experiencia e impacto cultural del Mundial 2026, superando drásticamente a Estados Unidos y Canadá en las métricas de hospitalidad y asistencia. Mientras las sedes de Los Ángeles y Toronto registraron una asistencia promedio del 65% de su capacidad en las primeras jornadas —golpeadas por los altos costos de transporte y accesos—, el FIFA Fan Festival del Centro Histórico de Guadalajara y el de la Ciudad de México reportaron un lleno absoluto del 100% desde el día uno, promediando más de 45,000 personas diarias. No es solo una cifra de turismo: es la confirmación de algo que cualquier aficionado latinoamericano ya sabía. El fútbol en México no se consume, se vive. Y por ahora, ningún anfitrión norteamericano le ha podido seguir el paso.',
-      jugadorFlag: '🇲🇽',
-      jugadorName: 'Fan Festival GDL y CDMX',
-      jugadorLabel: '100% de ocupación · +45,000 personas diarias',
-      tags: ['#MéxicoEsFiesta', '#FanFest2026', '#LatinPower'],
-      momento: 'Mientras LA y Toronto rondan el 65% de ocupación, las Fan Zones mexicanas no han tenido un solo boleto disponible.',
-      impacto: 'México se consolida como el verdadero corazón cultural del torneo, más allá de los resultados deportivos.',      
-    },
-  ],
-      accentColor: '',
+      accentColor: 'lime',
       kicker: '🚑 Parte Médico · Las Bajas del Torneo',
-      kickerClass: '',
+      kickerClass: 'lime',
       title: 'El Mundial de las lesiones: las estrellas que se quedaron fuera antes de empezar',
       text: 'Si algo nos enseñó esta previa es que el cuerpo humano tiene límites, aunque la agenda FIFA no quiera saberlo. El parte médico previo al arranque ha sido durísimo y supera con creces el índice de lesionados de torneos anteriores, todo por la carga brutal de la temporada europea de clubes. Brasil es, sin duda, el más golpeado: perdió a Rodrygo Goes, a Éder Militão y a la joven promesa Estevão justo antes de viajar, mientras su lateral Noussair Mazraoui quedó descartado para el arranque de grupos por una luxación de hombro. Japón sufrió un golpe devastador con la baja de su capitán Wataru Endo, quien además anunció su retiro de la selección. Países Bajos perdió por completo su columna vertebral creativa tras las roturas de ligamentos de Xavi Simons y Jerdy Schouten. México tampoco se salvó: su portero titular, Luis Malagón, quedó fuera de la convocatoria por una lesión de último momento. La lista sigue creciendo.',
       jugadorFlag: '🇧🇷',
@@ -1992,101 +2031,20 @@ const DATA = {
       momento: 'Brasil llega al torneo sin tres piezas clave de su ofensiva y su defensa.',
       impacto: 'Cada selección golpeada deberá reconfigurar su plan de juego. El nivel competitivo del grupo puede cambiar drásticamente.',
     },
-    {
-      accentColor: '',
-      kicker: '🇫🇷 Jornada 1 · Grupo I · Francia 3-1 Senegal',
-      kickerClass: '',
-      title: 'El tablero está completo: Mbappé y la temible Francia cierran la primera jornada del Mundial',
-      text: 'Si el Mundial necesitaba un cierre de jornada con sello de estrella, lo tuvo. Francia llegó a Nueva York con la urgencia de los favoritos y se fue con algo más que tres puntos: Kylian Mbappé se convirtió en el máximo goleador histórico de su selección, en un partido que tardó en abrirse pero que terminó siendo una exhibición. El primer gol llegó hasta el minuto 66, cuando Mbappé conectó de manera letal para romper un Senegal que había resistido con orden y disciplina durante una hora completa. Bradley Barcola amplió la ventaja al 82\' con un remate que dejó claro que esta Francia tiene variantes para hacer daño desde cualquier posición. Senegal no se rindió y descontó al 90+5\' por medio de Ibrahim Mbaye, generando un breve momento de tensión, pero la respuesta francesa fue inmediata: un minuto después, en el 90+6\', Mbappé volvió a aparecer para sellar el resultado y, de paso, escribir su nombre en la historia. Francia llega con todo a este Mundial, y el resto del Grupo I ya tomó nota.',
-      jugadorFlag: '🇫🇷',
-      jugadorName: 'Kylian Mbappé',
-      jugadorLabel: 'Doblete · Máximo goleador histórico de Francia',
-      tags: ['#Mbappé', '#Francia2026', '#GrupoI'],
-      momento: 'Min. 90+6\' — Mbappé sella el 3-1 y entra a los libros de historia de su selección en el mismo partido.',
-      impacto: 'Francia lidera el Grupo I con 3 puntos y +2 de diferencia de gol. Senegal arranca sin puntos.',
-    },
-    {
-      accentColor: 'lime',
-      kicker: '🇪🇸 Jornada 1 · Grupo H · España 0-0 Cabo Verde',
-      kickerClass: 'lime',
-      title: '¡Tragedia en la Madre Patria! La impotencia de España deja dudas tras amargo empate ante Cabo Verde',
-      text: 'Nadie en Atlanta esperaba este guion. España, una de las candidatas más firmes al título, se topó con una muralla azul celeste que no estaba dispuesta a moverse ni un centímetro. Cabo Verde, en su Mundial debut, plantó un bloque bajo casi perfecto y dejó a la Roja sin ideas claras durante los noventa minutos. Pedri, Yamal y compañía generaron volumen de juego pero nunca encontraron el último pase: tiros bloqueados, centros que no encontraron remate y una desesperación creciente que terminó con la amarilla de Pedri en el tiempo de compensación, casi como un reflejo de la frustración colectiva. El 0-0 deja a España con apenas un punto en un grupo que parecía un trámite y que ahora se complica más de lo previsto. La pregunta que ya circula entre la prensa española no es si España puede ganar el Mundial, sino si esta versión del equipo tiene el repertorio para resolver partidos cuando el rival decide no jugar.',
-      jugadorFlag: '🇨🇻',
-      jugadorName: 'Defensa de Cabo Verde',
-      jugadorLabel: 'Cero goles concedidos ante España',
-      tags: ['#LaRoja', '#SorpresaMundial', '#CaboVerde2026'],
-      momento: 'Min. 90+2\' — Pedri recibe amarilla en la última jugada, símbolo de una noche sin soluciones para España.',
-      impacto: 'España suma solo 1 punto y deberá reaccionar rápido en su siguiente partido del Grupo H.',
-    },
-    {
-      accentColor: 'blue',
-      kicker: '🇺🇸 Jornada 1 · Grupo D · USA 4-1 Paraguay',
-      kickerClass: 'blue',
-      title: 'Balogun presentó: Estados Unidos golea a Paraguay y manda en el Grupo D',
-      text: 'El anfitrión no tuvo piedad. Estados Unidos arrancó su Mundial con una goleada que también sirvió como carta de presentación para Folarin Balogun, quien firmó un doblete en su debut absoluto en una Copa del Mundo. El marcador se abrió temprano, al minuto 6, cuando un infortunio defensivo de Damián Bobadilla terminó en autogol y puso a los locales arriba sin haber hecho casi nada. Balogun tomó nota y al 30\' definió de gran manera tras una asistencia perfecta para el segundo. Justo antes del descanso, en el 45+4\', volvió a aparecer para sellar su doblete personal y dejar el partido prácticamente decidido. Paraguay intentó reaccionar en la segunda mitad y encontró su gol de la honra al 72\' con Maurício, que descontó para la escuadra sudamericana, pero el dominio estadounidense fue total. Sobre la hora, en el 90+7\', Giovanni Reyna remató para sellar la goleada definitiva. Con este resultado, Estados Unidos asume formalmente el liderato del Grupo D con 3 puntos y una sólida diferencia de goles de +3, dejando claro que como anfitrión no piensa pasar de fiesta.',
-      jugadorFlag: '🇺🇸',
-      jugadorName: 'Folarin Balogun',
-      jugadorLabel: 'Doblete · Min. 30\' y 45+4\'',
-      tags: ['#USA2026', '#GrupoD', '#BalogunShow'],
-      momento: 'Min. 45+4\' — Balogun firma su doblete justo antes del descanso y deja el partido sentenciado.',
-      impacto: 'Estados Unidos lidera el Grupo D con 3 puntos y +3 de diferencia de gol. Paraguay arranca sin puntos y deberá reponerse rápido.',
-    },
-    {
-      accentColor: '',
-      kicker: '🇲🇽 Jornada 1 · Grupo A · México 2-0 Sudáfrica',
-      kickerClass: '',
-      title: 'El tercer Mundial llegó y México no falló: Quiñones, Jiménez y la ilusión de una nueva generación',
-      text: 'Hay países que cargan el fútbol como una religión. México es uno de ellos, y el 11 de junio de 2026 lo volvió a demostrar. Para el Tri, este no es cualquier Mundial: es el tercero en el que México figura entre los países sede, después de 1970 y 1986, y el primero en casa en cuatro décadas. La deuda histórica del quinto partido —ese maldito techo que siempre se aparece en los dieciseisavos— pesaba en el ambiente, pero dentro del estadio Ciudad de México nadie quería escuchar de maldiciones. Quiñones abrió el marcador al minuto 11 con un disparo que entró por el ángulo bajo y encendió una mezcla de alivio y euforia que nadie en las tribunas sabía cómo procesar. Era el primer gol de este Mundial. Su gol. El de México. Raúl Jiménez cerró la cuenta al 67\' con la experiencia y el frío de quien ya sabe lo que cuesta llegar hasta acá. Pero el momento que nadie va a olvidar llegó cuando el técnico hizo los cambios: ingresó la Hormiga González y, con él, entró también Gilberto Mora — 17 años recién cumplidos, el jugador más joven en debutar en un Mundial en la historia del Tri. El estadio lo recibió de pie. Dos generaciones en la cancha al mismo tiempo: la de los que ya saben lo que duele perder, y la de los que todavía creen que todo es posible. Esa imagen vale más que cualquier estadística.',
-      jugadorFlag: '🇲🇽',
-      jugadorName: 'Julián Quiñones',
-      jugadorLabel: 'Primer gol del Mundial 2026 · Min. 11\'',
-      tags: ['#VamosTricolor', '#GDL2026', '#HormigaGonzalez', '#GilbertoMora17'],
-      momento: 'Min. 11\' — Quiñones dispara cruzado y convierte el primer gol oficial del Mundial 2026. El Azteca explota.',
-      impacto: 'México lidera el Grupo A con 3 pts y diferencia de gol positiva. La ilusión del quinto partido está viva.',
-    },
-    {
-      accentColor: 'lime',
-      kicker: '🚑 Parte Médico · Las Bajas del Torneo',
-      kickerClass: 'lime',
-      title: 'El Mundial de las lesiones: las estrellas que se quedaron fuera antes de empezar',
-      text: 'Si algo nos enseñó esta previa es que el cuerpo humano tiene límites, aunque la agenda FIFA no quiera saberlo. El parte médico previo al arranque ha sido durísimo y supera con creces el índice de lesionados de torneos anteriores, todo por la carga brutal de la temporada europea de clubes. Brasil es, sin duda, el más golpeado: perdió a Rodrygo Goes, a Éder Militão y a la joven promesa Estevão justo antes de viajar, mientras su lateral Noussair Mazraoui quedó descartado para el arranque de grupos por una luxación de hombro. Japón sufrió un golpe devastador con la baja de su capitán Wataru Endo, quien además anunció su retiro de la selección, sumándose a las ausencias previas de Kaoru Mitoma y Takumi Minamino. Países Bajos perdió por completo su columna vertebral creativa tras las roturas de ligamentos de Xavi Simons y Jerdy Schouten. Los vigentes campeones de España sufrieron la baja de Fermín López, y del lado inglés las alarmas se encendieron al perder a Jack Grealish por fractura por estrés y a Ben White. Canadá, como anfitrión, también paga el precio: se quedó sin su atacante Marcelo Flores por una rotura de ligamento cruzado. México tampoco se salvó: su portero titular, Luis Malagón, quedó fuera de la convocatoria por una lesión de último momento, abriendo la portería para el debut. La lista sigue creciendo y todavía no se ha jugado ni una semana completa.',
-      jugadorFlag: '🇧🇷',
-      jugadorName: 'Rodrygo, Militão, Estevão',
-      jugadorLabel: 'Bajas confirmadas · Brasil',
-      tags: ['#PartesMedicos', '#Mundial2026', '#FuerzaCampeones'],
-      momento: 'Brasil llega al torneo sin tres piezas clave de su ofensiva y su defensa.',
-      impacto: 'Cada selección golpeada deberá reconfigurar su plan de juego desde la jornada 1. El nivel competitivo del grupo puede cambiar drásticamente.',
-    },
-    {
-      accentColor: 'blue',
-      kicker: '🏆 Dato de cultura general',
-      kickerClass: 'blue',
-      title: 'El Mundial más grande de la historia tiene 48 equipos. ¿Cómo funciona el formato?',
-      text: 'Por primera vez, el Mundial tiene 48 selecciones divididas en 12 grupos de 4. Los primeros dos de cada grupo avanzan directo a los octavos de final. Los ocho mejores terceros lugares también clasifican. Eso significa 32 equipos en octavos — exactamente el formato que conocías como la ronda completa de 1998-2022, pero ahora es solo el punto de partida. El total de partidos pasa de 64 a 104, lo que significa más drama, más sorpresas y más posibilidades de que selecciones como México, Colombia o Ecuador lleguen lejos. La sede triple (México, Estados Unidos, Canadá) garantiza que cada zona horaria latinoamericana tenga partidos a buena hora. Y sí: Guadalajara tiene sus 6 partidos, incluyendo uno de octavos.',
-      jugadorFlag: '🌎',
-      jugadorName: 'El formato 2026',
-      jugadorLabel: '104 partidos · 48 selecciones',
-      tags: ['#Mundial2026', '#FormatoNuevo', '#48Teams'],
-      momento: 'El Mundial más largo de la historia: 39 días de fútbol continuo.',
-      impacto: '16 selecciones adicionales vs. Qatar 2022. CONCACAF tiene 6 cupos (vs. 3.5 antes).',
-    },
   ],
 
   gdlMatches: [
-    // ── Ciudad de México
-    { id:1,  sede:'cdmx', grupo:'Grupo A', home:'México',       homeFlag:'🇲🇽', away:'Sudáfrica',    awayFlag:'🇿🇦', homeScore:2,    awayScore:0,    date:'11 Jun', time:'13:00', status:'done' },
-    { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',     homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
+    { id:1,  sede:'cdmx', grupo:'Grupo A', home:'México',        homeFlag:'🇲🇽', away:'Sudáfrica',    awayFlag:'🇿🇦', homeScore:2,    awayScore:0,    date:'11 Jun', time:'13:00', status:'done' },
+    { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',      homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
     { id:5,  sede:'cdmx', grupo:'Grupo A', home:'Rep. Checa',   homeFlag:'🇨🇿', away:'México',       awayFlag:'🇲🇽', homeScore:0, awayScore:3, date:'24 Jun', time:'19:00', status:'done' },
     { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México', homeFlag:'🇲🇽', away:'3° C/E/F/H/I', awayFlag:'⭐', homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', status:'scheduled' },
     { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
-    // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
     { id:4,  sede:'gdl',  grupo:'Grupo A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'18 Jun', time:'19:00', status:'done' },
     { id:64, sede:'gdl',  grupo:'Grupo K', home:'Colombia',      homeFlag:'🇨🇴', away:'RD Congo',    awayFlag:'🇨🇩', homeScore:1, awayScore:0, date:'23 Jun', time:'20:00', status:'done' },
     { id:47, sede:'gdl',  grupo:'Grupo H', home:'Uruguay',       homeFlag:'🇺🇾', away:'España',      awayFlag:'🇪🇸', homeScore:null, awayScore:null, date:'26 Jun', time:'18:00', status:'scheduled' },
-    // ── Monterrey
     { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
-    { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
+    { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',        awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'24 Jun', time:'19:00', status:'done' },
     { id:75, sede:'mty',  grupo:'Dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', status:'scheduled' },
   ],
@@ -2117,10 +2075,10 @@ const DATA = {
   ],
 
   curiosidades: [
-    { emoji:'⚡', titulo:'La Hormiga González y la generación que ilusiona', texto:'Cuando Gilberto Mora entró al campo ante Sudáfrica con 17 años, el estadio Ciudad de México quedó en silencio por un segundo —y luego estalló. La Hormiga González ya es símbolo de la nueva cara del Tri: rápido, desequilibrante y sin miedo. Esta selección no carga solo con la experiencia de Jiménez o Quiñones; lleva también la energía cruda de una generación que no sabe lo que es el quinto partido y por eso quizás lo llegue a romper.' },
+    { emoji:'🌵', titulo:'La Hormiga González y la generación que ilusiona', texto:'Cuando Gilberto Mora entró al campo ante Sudáfrica con 17 años, el estadio Ciudad de México quedó en silencio por un segundo —y luego estalló. La Hormiga González ya es símbolo de la nueva cara del Tri: rápido, desequilibrante y sin miedo. Esta selección no carga solo con la experiencia de Jiménez o Quiñones; lleva también la energía cruda de una generación que no sabe lo que es el quinto partido y por eso quizás lo llegue a romper.' },
     { emoji:'🏟️', titulo:'El Estadio Guadalajara tiene historia propia', texto:'El recinto de Chivas —renombrado como Estadio Guadalajara para este torneo— ha sido sede de Mundiales solo en la mente de sus aficionados... hasta 2026. Antes de él, el Jalisco fue escenario del "Gol del Siglo" de Maradona en 1986. GDL lleva la historia en el ADN.' },
-    { emoji:'🌆', titulo:'GDL no es ciudad anfitriona. Es ciudad protagonista.', texto:'Desde la Plaza de los Mariachis hasta la Catedral, desde Chapultepec hasta la explanada de la Minerva, Guadalajara vive el Mundial como ninguna otra ciudad en Norte América. No hay turno de descanso. Los 5.3 millones del área metropolitana convirtieron cada partido —incluso los que no son en Guadalajara— en un evento colectivo. Los bares de La Paz, los cafés de Providencia y las banquetas de Zapopan son hoy el estadio más grande del mundo.' },
-    { emoji:'🌵', titulo:'1970, 1986, 2026: trinidad mundialista', texto:'Solo una docena de ciudades en el mundo han sido sede del Mundial tres veces. GDL se une al club con Ciudad de México, Roma y París. Para una ciudad que también produjo a Cardenal, Rulfo y al mariachi, el fútbol es el menor de sus logros.' },
+    { emoji:'🌆', titulo:'GDL no es ciudad anfitriona. Es ciudad protagonista.', texto:'Desde la Plaza de los Mariachis hasta la Catedral, desde Chapultepec hasta la explanada de la Minerva, Guadalajara vive el Mundial como ninguna otra ciudad en Norte América. No hay turno de descanso. Los 5.3 millones del área metropolitana convirtieron cada partido —incluso los que no son en Guadalajara— en un evento colectivo.' },
+    { emoji:'⚽', titulo:'1970, 1986, 2026: trinidad mundialista', texto:'Solo una docena de ciudades en el mundo han sido sede del Mundial tres veces. GDL se une al club con Ciudad de México, Roma y París. Para una ciudad que también produjo a Cardenal, Rulfo y al mariachi, el fútbol es el menor de sus logros.' },
   ],
 };
 
@@ -2133,11 +2091,16 @@ let currentGroup = 'A';
 // ══════════════════════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════════════════════
-function showView(id) {
+function showView(id, e) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('view-' + id).classList.add('active');
-  event.target.classList.add('active');
+  
+  if (e && e.target) {
+    e.target.classList.add('active');
+  } else if (window.event && window.event.target) {
+    window.event.target.classList.add('active');
+  }
 }
 
 // ══════════════════════════════════════════════════════════
@@ -2333,6 +2296,57 @@ function renderStandings() {
 }
 
 // ══════════════════════════════════════════════════════════
+// RENDER: DYNAMIC KNOCKOUT BRACKET (123KLAN ESTILO)
+// ══════════════════════════════════════════════════════════
+function renderBracket() {
+  const targetContainer = document.getElementById('bracket-render-container');
+  const bracketPhases = [
+    { id: 'dieciseisavos', label: 'Dieciseisavos' },
+    { id: 'octavos',       label: 'Octavos' },
+    { id: 'cuartos',       label: 'Cuartos' },
+    { id: 'semis',         label: 'Semifinales' },
+    { id: 'final',         label: 'Gran Final' }
+  ];
+
+  let bracketHTML = '';
+
+  bracketPhases.forEach(phase => {
+    let phaseMatches = DATA.matches.filter(m => m.phase === phase.id);
+    
+    bracketHTML += `<div class="bracket-column">`;
+    bracketHTML += `<div class="bracket-column-title">${phase.label}</div>`;
+
+    phaseMatches.forEach(m => {
+      const isDone = m.status === 'done';
+      const hasHomeWinner = isDone && (m.homeScore > m.awayScore);
+      const hasAwayWinner = isDone && (m.awayScore > m.homeScore);
+      const isScheduled = m.status === 'scheduled';
+
+      bracketHTML += `
+        <div class="bracket-match-node ${isScheduled ? 'unresolved' : ''}">
+          <div class="bracket-node-header">
+            <span class="bracket-node-id">M${m.id}</span>
+            <span class="bracket-node-meta">${m.date} · ${m.time}</span>
+          </div>
+          <div class="bracket-node-team ${hasHomeWinner ? 'winner' : ''}">
+            <span>${m.homeFlag || '⭐'} ${m.home}</span>
+            <span class="bracket-node-score">${m.homeScore !== null ? m.homeScore : '—'}</span>
+          </div>
+          <div class="bracket-node-team ${hasAwayWinner ? 'winner' : ''}">
+            <span>${m.awayFlag || '⭐'} ${m.away}</span>
+            <span class="bracket-node-score">${m.awayScore !== null ? m.awayScore : '—'}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    bracketHTML += `</div>`;
+  });
+
+  targetContainer.innerHTML = bracketHTML;
+}
+
+// ══════════════════════════════════════════════════════════
 // RENDER: STATS
 // ══════════════════════════════════════════════════════════
 const STATS_LIMIT = 10;
@@ -2368,7 +2382,6 @@ function toggleStats(listId) {
 }
 
 function renderStats() {
-  // Scorers
   const scorerFn = (s, i) => {
     const agTag = s.isOwnGoal
       ? `<span style="font-family:var(--font-mono);font-size:9px;background:var(--bg3);color:var(--ink3);padding:1px 5px;border-radius:2px;margin-left:4px;letter-spacing:.06em;">AG</span>`
@@ -2388,7 +2401,6 @@ function renderStats() {
   document.getElementById('scorers-list').innerHTML =
     renderStatsSection('scorers-list', DATA.scorers, scorerFn, statsExpanded.scorers);
 
-  // Yellow cards
   const yellowFn = c => `
     <div class="card-row" style="align-items:flex-start;">
       <span class="tarjeta tarjeta-amarilla" style="margin-top:2px;"></span>
@@ -2401,7 +2413,6 @@ function renderStats() {
   document.getElementById('yellow-list').innerHTML =
     renderStatsSection('yellow-list', DATA.yellowCards, yellowFn, statsExpanded.yellow);
 
-  // Red cards
   if (!DATA.redCards.length) {
     document.getElementById('red-list').innerHTML =
       `<div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;">Sin expulsados aún</div>`;
@@ -2420,7 +2431,6 @@ function renderStats() {
       renderStatsSection('red-list', DATA.redCards, redFn, statsExpanded.red);
   }
 
-  // Crazy numbers
   document.getElementById('crazy-numbers').innerHTML = DATA.crazyNumbers.map(n => `
     <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;">
       <div style="font-family:var(--font-display);font-weight:900;font-size:28px;color:var(--fire);line-height:1;flex-shrink:0;min-width:48px;text-align:center;">${n.num}</div>
@@ -2533,7 +2543,6 @@ function renderGDL() {
 
   document.getElementById('gdl-matches').innerHTML = html;
 
-  // Eventos GDL
   document.getElementById('eventos-container').innerHTML = DATA.eventos.map(e => `
     <div class="evento-card">
       <div class="evento-lateral" style="background:${e.categoriaColor}12;">
@@ -2574,6 +2583,7 @@ function init() {
   updateResultsSubtitle();
   renderMatches();
   renderStandings();
+  renderBracket();
   renderStats();
   renderNoticias();
   renderGDL();
