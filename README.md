@@ -1625,7 +1625,7 @@ const DATA = {
     { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:2, awayScore:1, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia',  status:'done' },
     { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:0, awayScore:2, date:'27 Jun', time:'15:00', venue:'Estadio Nueva York', status:'done' },
     // ── DIECISEISAVOS DE FINAL
-    { id:73,  phase:'dieciseisavos', group:null, home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:null, awayScore:null, date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'scheduled' },
+    { id:73,  phase:'dieciseisavos', group:null, home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'done' },
     { id:74,  phase:'dieciseisavos', group:null, home:'Alemania', homeFlag:'🇩🇪', away:'Paraguay', awayFlag:'🇵🇾', homeScore:null, awayScore:null, date:'29 Jun', time:'14:30', venue:'Estadio Boston',                status:'scheduled' },
     { id:75,  phase:'dieciseisavos', group:null, home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', venue:'Estadio Monterrey',              status:'scheduled' },
     { id:76,  phase:'dieciseisavos', group:null, home:'Brasil', homeFlag:'🇧🇷', away:'Japón',  awayFlag:'🇯🇵', homeScore:null, awayScore:null, date:'29 Jun', time:'11:00', venue:'Estadio Houston',               status:'scheduled' },
