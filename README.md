@@ -1404,7 +1404,7 @@ body {
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
     <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
-    <button class="nav-btn" onclick="showView('bracket', event)">Quiniela</button> <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
+    <button class="nav-btn" onclick="showView('bracket', event)">Quiniela</button>
     <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
     <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
@@ -2714,7 +2714,6 @@ function renderGDL() {
 // ═════════════════════════════════════════════════════════
 function renderBracket() {
   const container = document.getElementById('bracket-render-container');
-  // ... (resto del código de renderBracket)
 }
 
 function advanceTeam(matchId, side) {
@@ -2744,7 +2743,8 @@ function init() {
   updateResultsSubtitle();
   renderMatches();
   renderStandings();
-  renderBracket(); //  renderStats();
+  renderBracket(); //  
+  renderStats();
   renderNoticias();
   renderGDL();
 }
