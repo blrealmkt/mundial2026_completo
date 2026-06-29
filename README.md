@@ -1252,7 +1252,7 @@ body {
   font-style: italic;
 }
 
-/* ── ANIMACIÓN TRANSICIÓN BRACKET (ESTILO FIFA) ── */
+/* ── ANIMACIÓN TRANSICIÓN BRACKET (ESTILO FIFAis) ── */
 @keyframes bracketFadeSlide {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1265,6 +1265,127 @@ body {
 .bracket-column:nth-child(3) .bracket-match-node { animation-delay: 0.18s; }
 .bracket-column:nth-child(4) .bracket-match-node { animation-delay: 0.22s; }
 .bracket-column:nth-child(5) .bracket-match-node { animation-delay: 0.26s; }
+/* ── INTERACTIVE CANVAS BRACKET (123KLAN GESTURES) ── */
+.canvas-frame-container {
+  width: 100%;
+  height: 72vh;
+  overflow: auto;
+  border: 4px solid var(--ink);
+  background: var(--bg2);
+  box-shadow: 6px 6px 0 var(--ink);
+  position: relative;
+  cursor: grab;
+  border-radius: 4px;
+  touch-action: none;
+}
+.canvas-frame-container:active { cursor: grabbing; }
+
+.viewport-scaler-area {
+  padding: 40px;
+  transform-origin: top left;
+  display: grid;
+  grid-template-columns: repeat(6, 265px);
+  gap: 35px;
+  width: max-content;
+  min-height: 100%;
+}
+.bracket-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+}
+.bracket-column-title {
+  font-weight: 900;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ink);
+  padding: 8px;
+  border: 2px solid var(--fire);
+  text-align: center;
+  transform: rotate(-1.5deg);
+  box-shadow: 3px 3px 0 var(--fire);
+  margin-bottom: 20px;
+}
+.bracket-match-node {
+  background: var(--white);
+  border: 2.5px solid var(--ink);
+  border-radius: 4px;
+  padding: 8px 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  margin: 14px 0;
+}
+.node-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--ink2);
+  border-bottom: 1px dashed var(--bg3);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.node-match-id { background: var(--ink); color: #fff; padding: 1px 5px; }
+
+.team-selectable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 7px 8px;
+  margin: 4px 0;
+  border: 1.5px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+.team-selectable-row:hover { background: var(--fire-light); border-color: var(--fire); }
+.team-selectable-row.selected-winner { background: var(--ink); color: #fff; border-color: var(--ink); }
+.score-box-display {
+  font-family: var(--font-mono);
+  background: var(--bg3);
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 2px;
+  color: var(--ink);
+  font-weight: 900;
+}
+.team-selectable-row.selected-winner .score-box-display { background: var(--fire); color: #fff; }
+.fav-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--fire);
+  font-weight: bold;
+  background: var(--fire-light);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+.team-selectable-row.selected-winner .fav-badge { color: var(--white); background: rgba(255,255,255,0.2); }
+.unresolved-node { opacity: 0.55; border-style: dashed; box-shadow: none; }
+.unresolved-node .team-selectable-row { color: var(--ink3); font-weight: 500; }
+
+/* PANEL CONTROLES SLIDER */
+.bracket-controls-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 15px;
+  align-items: center;
+  background: var(--bg3);
+  padding: 12px;
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  margin-bottom: 15px;
+}
+.zoom-slider-container { display: flex; align-items: center; gap: 10px; }
+.zoom-slider-container label { font-weight: 900; text-transform: uppercase; font-size: 13px; }
+.123klan-slider { -webkit-appearance: none; width: 100%; height: 10px; background: var(--white); border: 2px solid var(--ink); outline: none; }
+.123klan-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--fire); border: 2px solid var(--ink); cursor: pointer; }
+.bracket-ctrl-btn { font-family: var(--font-display); font-weight: 900; font-size: 13px; text-transform: uppercase; background: var(--fire-dark); color: #fff; border: 2px solid var(--ink); padding: 8px 16px; cursor: pointer; box-shadow: 2px 2px 0 var(--ink); }
 </style>
 </head>
 <body>
@@ -1283,7 +1404,7 @@ body {
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
     <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
-    <button class="nav-btn" onclick="showView('bracket', event)">Fase Final</button>
+    <button class="nav-btn" onclick="showView('bracket', event)">Quiniela</button> <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
     <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
     <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
@@ -1335,12 +1456,21 @@ body {
 <div id="view-bracket" class="view">
   <div class="section-head">
     <div>
-      <div class="section-title">Cuadro <span>Eliminatorio</span></div>
-      <div class="section-sub">Fase final knockout · Datos conectados en tiempo real</div>
+      <div class="section-title">¡Arma tu <span>quiniela!</span></div>
+      <div class="section-sub">El mundial es ahora · Desplaza y controla el zoom con el deslizador</div>
     </div>
   </div>
-  <div class="bracket-wrapper">
-    <div class="bracket-container" id="bracket-render-container">
+
+  <div class="bracket-controls-panel">
+    <div class="zoom-slider-container">
+      <label>Zoom:</label>
+      <input type="range" class="123klan-slider" id="scale-slider" min="0.35" max="1.1" step="0.05" value="0.65" oninput="manualZoomAdjust(this.value)">
+    </div>
+    <button class="bracket-ctrl-btn" onclick="resetUserQuiniela()">Reiniciar 🔄</button>
+  </div>
+
+  <div class="canvas-frame-container" id="canvas-container-scroll">
+    <div class="viewport-scaler-area" id="bracket-render-container">
       </div>
   </div>
 </div>
@@ -1624,44 +1754,47 @@ const DATA = {
     { id:70, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Croacia', awayFlag:'🇭🇷', homeScore:0, awayScore:1, date:'23 Jun', time:'17:00', venue:'Estadio Toronto',    status:'done' },
     { id:71, phase:'grupos', group:'L', home:'Croacia',    homeFlag:'🇭🇷', away:'Ghana',   awayFlag:'🇬🇭', homeScore:2, awayScore:1, date:'27 Jun', time:'15:00', venue:'Estadio Filadelfia',  status:'done' },
     { id:72, phase:'grupos', group:'L', home:'Panamá',     homeFlag:'🇵🇦', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:0, awayScore:2, date:'27 Jun', time:'15:00', venue:'Estadio Nueva York', status:'done' },
-    // ── DIECISEISAVOS DE FINAL
-    { id:73,  phase:'dieciseisavos', group:null, home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles',            status:'done' },
-    { id:74,  phase:'dieciseisavos', group:null, home:'Alemania', homeFlag:'🇩🇪', away:'Paraguay', awayFlag:'🇵🇾', homeScore:null, awayScore:null, date:'29 Jun', time:'14:30', venue:'Estadio Boston',                status:'scheduled' },
-    { id:75,  phase:'dieciseisavos', group:null, home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos',  awayFlag:'🇲🇦', homeScore:null, awayScore:null, date:'29 Jun', time:'19:00', venue:'Estadio Monterrey',              status:'scheduled' },
-    { id:76,  phase:'dieciseisavos', group:null, home:'Brasil', homeFlag:'🇧🇷', away:'Japón',  awayFlag:'🇯🇵', homeScore:2, awayScore:1, date:'29 Jun', time:'11:00', venue:'Estadio Houston',               status:'done' },
-    { id:77,  phase:'dieciseisavos', group:null, home:'Francia',  homeFlag:'🇫🇷', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, date:'30 Jun', time:'15:00', venue:'Estadio Nueva York',            status:'scheduled' },
-    { id:78,  phase:'dieciseisavos', group:null, home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega',  awayFlag:'🇳🇴', homeScore:null, awayScore:null, date:'30 Jun', time:'11:00', venue:'Estadio Dallas',               status:'scheduled' },
-    { id:79,  phase:'dieciseisavos', group:null, home:'México', homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', venue:'Estadio Ciudad de México',      status:'scheduled' },
-    { id:80,  phase:'dieciseisavos', group:null, home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'RD Congo',   awayFlag:'🇨🇩', homeScore:null, awayScore:null, date:'01 Jul', time:'10:00', venue:'Estadio Atlanta',               status:'scheduled' },
-    { id:81,  phase:'dieciseisavos', group:null, home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bosnia y Herzegovina', awayFlag:'🇧🇦', homeScore:null, awayScore:null, date:'01 Jul', time:'18:00', venue:'Estadio Bahía de San Francisco', status:'scheduled' },
-    { id:82,  phase:'dieciseisavos', group:null, home:'Bélgica', homeFlag:'🇧🇪', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, date:'01 Jul', time:'14:00', venue:'Estadio Seattle',               status:'scheduled' },
-    { id:83,  phase:'dieciseisavos', group:null, home:'Portugal',   homeFlag:'🇵🇹', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, date:'02 Jul', time:'17:00', venue:'Estadio Toronto',               status:'scheduled' },
-    { id:84,  phase:'dieciseisavos', group:null, home:'España', homeFlag:'🇪🇸', away:'Austria',  awayFlag:'🇦🇹', homeScore:null, awayScore:null, date:'02 Jul', time:'13:00', venue:'Estadio Los Ángeles',           status:'scheduled' },
-    { id:85,  phase:'dieciseisavos', group:null, home:'Suiza', homeFlag:'🇨🇭', away:'Argelia',  awayFlag:'🇩🇿', homeScore:null, awayScore:null, date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver',    status:'scheduled' },
-    { id:86,  phase:'dieciseisavos', group:null, home:'Argentina', homeFlag:'🇦🇷', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, date:'03 Jul', time:'16:00', venue:'Estadio Miami',                 status:'scheduled' },
-    { id:87,  phase:'dieciseisavos', group:null, home:'Colombia',   homeFlag:'🇨🇴', away:'Ghana',  awayFlag:'🇬🇭', homeScore:null, awayScore:null, date:'03 Jul', time:'19:30', venue:'Estadio Kansas City',           status:'scheduled' },
-    { id:88,  phase:'dieciseisavos', group:null, home:'Australia',  homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', homeScore:null, awayScore:null, date:'03 Jul', time:'12:00', venue:'Estadio Dallas',                status:'scheduled' },
-    // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
-    { id:89, phase:'octavos', group:null, home:'1° Grupo E', homeFlag:'🏆', away:'3° mejores del torneo', awayFlag:'⭐', homeScore:null, awayScore:null, date:'04 Jul', time:'14:00', venue:'Estadio Filadelfia', status:'scheduled' },
-    { id:90, phase:'octavos', group:null, home:'2° Grupo A', homeFlag:'🥈', away:'1° Grupo F', awayFlag:'🏆', homeScore:null, awayScore:null, date:'04 Jul', time:'19:00', venue:'Estadio Houston', status:'scheduled' },
-    { id:91, phase:'octavos', group:null, home:'1° Grupo C', homeFlag:'🏆', away:'2° Grupo E o 2° Grupo I', awayFlag:'🥈', homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
-    { id:92, phase:'octavos', group:null, home:'1° Grupo A', homeFlag:'🏆', away:'1° Grupo L', awayFlag:'🏆', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
-    { id:93, phase:'octavos', group:null, home:'2° Grupo K', homeFlag:'🥈', away:'1° Grupo H', awayFlag:'🏆', homeScore:null, awayScore:null, date:'06 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
-    { id:94, phase:'octavos', group:null, home:'1° Grupo D', homeFlag:'🏆', away:'1° Grupo G', awayFlag:'🏆', homeScore:null, awayScore:null, date:'06 Jul', time:'15:00', venue:'Estadio Seattle', status:'scheduled' },
-    { id:95, phase:'octavos', group:null, home:'1° Grupo J', homeFlag:'🏆', away:'2° Grupo D o 2° Grupo G', awayFlag:'🥈', homeScore:null, awayScore:null, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'scheduled' },
-    { id:96, phase:'octavos', group:null, home:'1° Grupo B', homeFlag:'🏆', away:'1° Grupo K', awayFlag:'🏆', homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
-    // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
-    { id:97,  phase:'cuartos', group:null, home:'Ganador Filadelfia 4 Jul', homeFlag:'⚽', away:'Ganador Houston 4 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'09 Jul', time:'13:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
-    { id:98,  phase:'cuartos', group:null, home:'Ganador Nueva York 5 Jul', homeFlag:'⚽', away:'Ganador Seattle 6 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'10 Jul', time:'14:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
-    { id:99,  phase:'cuartos', group:null, home:'Ganador CDMX 5 Jul', homeFlag:'⚽', away:'Ganador Dallas 6 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'14:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
-    { id:100, phase:'cuartos', group:null, home:'Ganador Atlanta 7 Jul', homeFlag:'⚽', away:'Ganador Vancouver 7 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'11 Jul', time:'18:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
+// ── DIECISEISAVOS DE FINAL (Mapeados con Favoritos)
+    { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', date:'28 Jun' },
+    { id:74, phase:'dieciseisavos', nextId:89, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun' },
+    { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    { id:87, phase:'dieciseisavos', nextId:96, slot:'home', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    { id:88, phase:'dieciseisavos', nextId:96, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    
+    // ── OCTAVOS DE FINAL
+    { id:89, phase:'octavos', nextId:97, slot:'home', home:'Canadá', homeFlag:'🇨🇦', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:90, phase:'octavos', nextId:97, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:91, phase:'octavos', nextId:98, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
+    { id:92, phase:'octavos', nextId:98, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
+    { id:93, phase:'octavos', nextId:99, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:94, phase:'octavos', nextId:99, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:95, phase:'octavos', nextId:100, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    { id:96, phase:'octavos', nextId:100, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    
+    // ── CUARTOS DE FINAL
+    { id:97, phase:'cuartos', nextId:101, slot:'home', home:'Ganador M89', homeFlag:'⚽', away:'Ganador M90', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
+    { id:98, phase:'cuartos', nextId:101, slot:'away', home:'Ganador M91', homeFlag:'⚽', away:'Ganador M92', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'10 Jul' },
+    { id:99, phase:'cuartos', nextId:102, slot:'home', home:'Ganador M93', homeFlag:'⚽', away:'Ganador M94', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
+    { id:100, phase:'cuartos', nextId:102, slot:'away', home:'Ganador M95', homeFlag:'⚽', away:'Ganador M96', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
+    
     // ── SEMIFINALES
-    { id:101, phase:'semis', group:null, home:'Ganador Boston 9 Jul', homeFlag:'⚽', away:'Ganador Los Ángeles 10 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'14 Jul', time:'18:00', venue:'Estadio Dallas', status:'scheduled' },
-    { id:102, phase:'semis', group:null, home:'Ganador Miami 11 Jul', homeFlag:'⚽', away:'Ganador Kansas City 11 Jul', awayFlag:'⚽', homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
-    // ── TERCER PUESTO
-    { id:103, phase:'semis', group:null, home:'Perdedor Semifinal 1', homeFlag:'🥉', away:'Perdedor Semifinal 2', awayFlag:'🥉', homeScore:null, awayScore:null, date:'18 Jul', time:'13:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
-    // ── GRAN FINAL
-    { id:104, phase:'final', group:null, home:'Campeon Semifinal 1', homeFlag:'🌎', away:'Campeon Semifinal 2', awayFlag:'🌎', homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
+    { id:101, phase:'semis', nextId:104, slot:'home', home:'Ganador Semis 1', homeFlag:'⚽', away:'Ganador Semis 2', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'14 Jul' },
+    { id:102, phase:'semis', nextId:104, slot:'away', home:'Ganador Semis 3', homeFlag:'⚽', away:'Ganador Semis 4', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'15 Jul' },
+    
+    // ── TERCER LUGAR Y GRAN FINAL
+    { id:103, phase:'tercer-lugar', nextId:null, slot:null, home:'Perdedor Semi 1', homeFlag:'🥉', away:'Perdedor Semi 2', awayFlag:'🥉', homeScore:null, awayScore:null, status:'scheduled', date:'18 Jul' },
+    { id:104, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
   ],
 
   standings: {
@@ -2577,6 +2710,31 @@ function renderGDL() {
 }
 
 // ══════════════════════════════════════════════════════════
+// AQUÍ PEGAS TODO EL BLOQUE DEL PASO 5
+// ═════════════════════════════════════════════════════════
+function renderBracket() {
+  const container = document.getElementById('bracket-render-container');
+  // ... (resto del código de renderBracket)
+}
+
+function advanceTeam(matchId, side) {
+  // ... (código de advanceTeam)
+}
+
+function manualZoomAdjust(val) {
+  // ... (código de manualZoomAdjust)
+}
+
+function resetUserQuiniela() {
+  // ... (código de resetUserQuiniela)
+}
+
+// Vincula el listener táctil de paneo
+setTimeout(() => {
+  const frameContainer = document.getElementById('canvas-container-scroll');
+  // ... (resto del código del setTimeout táctil)
+}, 400);
+// ══════════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════════
 function init() {
@@ -2586,8 +2744,7 @@ function init() {
   updateResultsSubtitle();
   renderMatches();
   renderStandings();
-  renderBracket();
-  renderStats();
+  renderBracket(); //  renderStats();
   renderNoticias();
   renderGDL();
 }
