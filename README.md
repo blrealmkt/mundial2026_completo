@@ -1321,12 +1321,11 @@ body {
 
 <nav class="main-nav">
   <div class="nav-inner">
-    <button class="nav-btn active" onclick="showView('resultados')">Resultados</button>
-    <button class="nav-btn" onclick="showView('posiciones')">Posiciones</button>
-    <button class="nav-btn" onclick="showView('estadisticas')">Stats</button>
-    <button class="nav-btn" onclick="showView('noticias')">Noticias</button>
-    <button class="nav-btn" onclick="showView('gdl')">Guadalajara</button>
-    <button class="nav-btn nav-btn-quiniela" onclick="showView('quiniela')">Quiniela <span class="nav-quiniela-pulse"></span></button>
+    <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
+    <button class="nav-btn" onclick="showView('bracket', event)">Quiniela</button> <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
+    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
+    <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
+    <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
   </div>
 </nav>
 
@@ -2740,213 +2739,220 @@ init();
 // ══════════════════════════════════════════════════════════
 (function() {
   const SIMULATOR_DATA = [
-    { id:74, phase:'dieciseisavos', nextId:90, slot:'home', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:0, awayScore:1, status:'done', locked:true, date:'29 Jun' },
-    { id:77, phase:'dieciseisavos', nextId:90, slot:'away', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
-    { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'28 Jun' },
-    { id:75, phase:'dieciseisavos', nextId:89, slot:'away', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:2, penalties:{home:2, away:3}, status:'done', locked:true, date:'29 Jun' },
-    { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
-    { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
-    { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
-    { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
-    { id:76, phase:'dieciseisavos', nextId:91, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },
-    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', locked:true, date:'30 Jun' },
-    { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
-    { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
-    { id:86, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
-    { id:88, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
-    { id:85, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
-    { id:87, phase:'dieciseisavos', nextId:96, slot:'away', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
-
-   // ── Octavos (todos arrancan vacíos, se llenan al avanzar dieciseisavos) ──
-     { id:89, phase:'octavos', nextId:97, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
-     { id:90, phase:'octavos', nextId:97, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
-     { id:91, phase:'octavos', nextId:98, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
-     { id:92, phase:'octavos', nextId:98, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
-     { id:93, phase:'octavos', nextId:99, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
-     { id:94, phase:'octavos', nextId:99, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
-     { id:95, phase:'octavos', nextId:100, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
-     { id:96, phase:'octavos', nextId:100, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
-
-     // ── Cuartos ──
-     { id:97, phase:'cuartos', nextId:101, slot:'home', home:'Ganador M89', homeFlag:'⚽', away:'Ganador M90', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
-     { id:98, phase:'cuartos', nextId:101, slot:'away', home:'Ganador M91', homeFlag:'⚽', away:'Ganador M92', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'10 Jul' },
-     { id:99, phase:'cuartos', nextId:102, slot:'home', home:'Ganador M93', homeFlag:'⚽', away:'Ganador M94', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
-     { id:100, phase:'cuartos', nextId:102, slot:'away', home:'Ganador M95', homeFlag:'⚽', away:'Ganador M96', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
-
-      // ── Semis ──
-     { id:101, phase:'semis', nextId:104, slot:'home', home:'Ganador Semis 1', homeFlag:'⚽', away:'Ganador Semis 2', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'14 Jul' },
-     { id:102, phase:'semis', nextId:104, slot:'away', home:'Ganador Semis 3', homeFlag:'⚽', away:'Ganador Semis 4', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'15 Jul' },
-
-     // ── Tercer lugar y final ──
-     { id:103, phase:'tercer-lugar', nextId:null, slot:null, home:'Perdedor Semi 1', homeFlag:'🥉', away:'Perdedor Semi 2', awayFlag:'🥉', homeScore:null, awayScore:null, status:'scheduled', date:'18 Jul' },
-     { id:104, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
+    // ── DIECISEISAVOS (M1 A M16) ──
+    { id:73, logicalId:1, phase:'dieciseisavos', nextId:89, slot:'home', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:74, logicalId:2, phase:'dieciseisavos', nextId:89, slot:'away', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:75, logicalId:3, phase:'dieciseisavos', nextId:90, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'28 Jun' },
+    { id:76, logicalId:4, phase:'dieciseisavos', nextId:90, slot:'away', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:77, logicalId:5, phase:'dieciseisavos', nextId:91, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:78, logicalId:6, phase:'dieciseisavos', nextId:91, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:79, logicalId:7, phase:'dieciseisavos', nextId:92, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:80, logicalId:8, phase:'dieciseisavos', nextId:92, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:81, logicalId:9, phase:'dieciseisavos', nextId:93, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:82, logicalId:10, phase:'dieciseisavos', nextId:93, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:83, logicalId:11, phase:'dieciseisavos', nextId:94, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:85, logicalId:13, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    { id:86, logicalId:14, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:88, logicalId:16, phase:'dieciseisavos', nextId:96, slot:'away', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
+    
+    // ── OCTAVOS (M17 A M24) ──
+    { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
+    { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
+    { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    
+    // ── CUARTOS (M25 A M28) ──
+    { id:97, logicalId:25, phase:'cuartos', nextId:101, slot:'home', home:'Ganador M17', homeFlag:'⚽', away:'Ganador M18', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
+    { id:98, logicalId:26, phase:'cuartos', nextId:101, slot:'away', home:'Ganador M19', homeFlag:'⚽', away:'Ganador M20', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'10 Jul' },
+    { id:99, logicalId:27, phase:'cuartos', nextId:102, slot:'home', home:'Ganador M21', homeFlag:'⚽', away:'Ganador M22', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
+    { id:100, logicalId:28, phase:'cuartos', nextId:102, slot:'away', home:'Ganador M23', homeFlag:'⚽', away:'Ganador M24', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
+    
+    // ── SEMIFINALES (M29 Y M30) ──
+    { id:101, logicalId:29, phase:'semis', nextId:104, slot:'home', home:'Ganador M25', homeFlag:'⚽', away:'Ganador M26', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'14 Jul' },
+    { id:102, logicalId:30, phase:'semis', nextId:104, slot:'away', home:'Ganador M27', homeFlag:'⚽', away:'Ganador M28', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'15 Jul' },
+    
+    // ── TERCER LUGAR (M31) Y FINAL (M32) ──
+    { id:103, logicalId:31, phase:'tercer-lugar', nextId:null, slot:null, home:'Perdedor M29', homeFlag:'🥉', away:'Perdedor M30', awayFlag:'🥉', homeScore:null, awayScore:null, status:'scheduled', date:'18 Jul' },
+    { id:104, logicalId:32, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
   ];
-  
-  // Siembra los resultados de los partidos ya jugados (locked) en sus casillas de octavos
-function seedLockedResults() {
-  SIMULATOR_DATA.forEach(m => {
-    if (!m.locked || !m.nextId) return;
-    const isHomeWin = m.homeScore > m.awayScore || (m.penalties && m.penalties.home > m.penalties.away);
-    const winnerName = isHomeWin ? m.home : m.away;
-    const winnerFlag = isHomeWin ? m.homeFlag : m.awayFlag;
-    const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
-    if (next) {
-      if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
-      else { next.away = winnerName; next.awayFlag = winnerFlag; }
-    }
-  });
-}
 
-  let scale = 0.65;
-  let started = false;
-
-  function closeOnboarding() {
-    const el = document.getElementById('qn-onboarding-screen');
-    if (el) el.classList.add('qn-hidden');
-  }
-  window.qnCloseOnboarding = closeOnboarding;
-
-  function renderBracket() {
-  const container = document.getElementById('qn-render-viewport-area');
-  if (!container) return;
-  const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
-  let html = '';
-  phases.forEach(p => {
-    let list = SIMULATOR_DATA
-      .filter(m => m.phase === p)
-      .sort((a, b) => a.id - b.id);
-    let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
-    html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
-    list.forEach(m => {
-      const isDone = m.status === 'done';
-      const isLocked = !!m.locked;
-      const isHomeWin = isDone && m.homeScore > m.awayScore;
-      const isAwayWin = isDone && m.awayScore > m.homeScore;
-      const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
-      const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
-      const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
-      const homeClick = isLocked ? '' : `onclick="qnAdvanceTeam(${m.id}, 'home')"`;
-      const awayClick = isLocked ? '' : `onclick="qnAdvanceTeam(${m.id}, 'away')"`;
-      const lockIcon = isLocked ? `<span class="qn-locked-icon">🔒</span>` : '';
-
-      html += `
-        <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''} ${isLocked ? 'qn-locked-node' : ''}">
-          <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date} ${lockIcon}</span></div>
-          <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" ${homeClick}>
-            <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
-            <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
-          </div>
-          <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" ${awayClick}>
-            <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
-            <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
-          </div>
-        </div>`;
-    });
-    html += `</div>`;
-  });
-  container.innerHTML = html;
-  container.style.transform = `scale(${scale})`;
-}
-  
-window.qnAdvanceTeam = function(matchId, side) {
-  const m = SIMULATOR_DATA.find(x => x.id === matchId);
-  if (!m || m.locked) return; // ← bloquea cualquier partido marcado como locked
-  if (m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista')) return;
-
-  m.status = 'done';
-  m.homeScore = side === 'home' ? 1 : 0;
-  m.awayScore = side === 'home' ? 0 : 1;
-
-  const winnerName = side === 'home' ? m.home : m.away;
-  const winnerFlag = side === 'home' ? m.homeFlag : m.awayFlag;
-  const loserName = side === 'home' ? m.away : m.home;
-  const loserFlag = side === 'home' ? m.awayFlag : m.homeFlag;
-
-  if (m.phase === 'semis') {
-    const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
-    const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
-    if (m.id === 101) {
-      finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
-      thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
-    } else {
-      finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
-      thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
-    }
-  } else if (m.nextId) {
-    const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
-    if (next) {
-      if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
-      else { next.away = winnerName; next.awayFlag = winnerFlag; }
-    }
-  }
-  renderBracket();
-};
-
-  window.qnManualZoomAdjust = function(val) {
-    scale = parseFloat(val);
-    renderBracket();
+  window.qnAdvanceTeam = function(matchId, side) {
+    const m = SIMULATOR_DATA.find(x => x.id === matchId);
+    if(!m || m.locked) return;
+    
+    m.status = 'done';
+    m.homeScore = side === 'home' ? 1 : 0;
+    m.awayScore = side === 'home' ? 0 : 1;
+    
+    propagateWinner(m);
+    window.renderBracket();
   };
 
-  window.qnResetUserQuiniela = function() {
-  SIMULATOR_DATA.forEach(m => {
-    if (!m.locked) {
-      m.homeScore = null;
-      m.awayScore = null;
-      m.status = 'scheduled';
-      if (m.id >= 89) {
-        m.home = m.id === 89 ? 'Canadá' : (m.phase === 'octavos' ? 'Por definir' : 'Ganador M');
-        m.homeFlag = m.id === 89 ? '🇨🇦' : '⭐';
-        m.away = m.phase === 'octavos' ? 'Por definir' : 'Ganador M';
-        m.awayFlag = '⭐';
+  function propagateWinner(m) {
+    const winnerName = m.homeScore > m.awayScore ? m.home : m.away;
+    const winnerFlag = m.homeScore > m.awayScore ? m.homeFlag : m.awayFlag;
+    const loserName = m.homeScore > m.awayScore ? m.away : m.home;
+    const loserFlag = m.homeScore > m.awayScore ? m.awayFlag : m.homeFlag;
+
+    if (m.phase === 'semis') {
+      const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
+      const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
+      if(m.id === 101) {
+        finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
+        thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
+      } else {
+        finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
+        thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
+      }
+    } else if(m.nextId) {
+      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
+      if(next) {
+        if(m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
+        else { next.away = winnerName; next.awayFlag = winnerFlag; }
       }
     }
-  });
-  renderBracket();
-};
+  }
 
-  // Paneo táctil — listeners adjuntados solo una vez, al primer init
-  function attachPan() {
-    const frameContainer = document.getElementById('qn-canvas-container-scroll');
-    if (!frameContainer || frameContainer.dataset.qnPanReady) return;
-    frameContainer.dataset.qnPanReady = '1';
+  window.seedLockedResults = function() {
+    SIMULATOR_DATA.forEach(m => {
+      if (!m.locked || !m.nextId) return;
+      const isHomeWin = m.homeScore > m.awayScore || (m.penalties && m.penalties.home > m.penalties.away);
+      const wName = isHomeWin ? m.home : m.away;
+      const wFlag = isHomeWin ? m.homeFlag : m.awayFlag;
+      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
+      if (next) {
+        if (m.slot === 'home') { next.home = wName; next.homeFlag = wFlag; }
+        else { next.away = wName; next.awayFlag = wFlag; }
+      }
+    });
+  };
 
-    let isDragging = false, sx, sy, sLeft, sTop;
+  let globalScaleSetting = 0.55; // Ajuste visual de arranque para ver más partidos
+  window.manualZoomAdjust = function(val) {
+    globalScaleSetting = parseFloat(val);
+    window.renderBracket();
+  };
+
+  window.resetUserQuiniela = function() {
+    SIMULATOR_DATA.forEach(m => {
+      if(!m.locked) {
+        m.homeScore = null; m.awayScore = null; m.status = 'scheduled';
+        if(m.id >= 89) {
+          m.home = m.phase === 'octavos' ? 'Por definir' : m.home.includes('Semis') ? m.home : 'Ganador M'; 
+          m.homeFlag = '⭐';
+          m.away = m.phase === 'octavos' ? 'Por definir' : m.away.includes('Semis') ? m.away : 'Ganador M'; 
+          m.awayFlag = '⭐';
+        }
+      }
+    });
+    window.seedLockedResults();
+    window.renderBracket();
+  };
+
+  window.renderBracket = function() {
+    const container = document.getElementById('bracket-render-container');
+    if(!container) return;
+    const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
+    let html = '';
+    phases.forEach(p => {
+      let list = SIMULATOR_DATA.filter(m => m.phase === p).sort((a, b) => a.id - b.id);
+      let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
+      html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
+      list.forEach(m => {
+        const isDone = m.status === 'done';
+        const isLocked = !!m.locked;
+        const isHomeWin = isDone && m.homeScore > m.awayScore;
+        const isAwayWin = isDone && m.awayScore > m.homeScore;
+        const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
+        const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
+        const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
+        const homeClick = isLocked ? '' : `onclick="window.qnAdvanceTeam(${m.id}, 'home')"`;
+        const awayClick = isLocked ? '' : `onclick="window.qnAdvanceTeam(${m.id}, 'away')"`;
+
+        html += `
+          <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''} ${isLocked ? 'qn-locked-node' : ''}">
+            <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.logicalId}</span><span>${m.date}</span></div>
+            <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" ${homeClick}>
+              <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
+              <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
+            </div>
+            <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" ${awayClick}>
+              <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
+              <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
+            </div>
+          </div>`;
+      });
+      html += `</div>`;
+    });
+    container.innerHTML = html;
+    container.style.transform = `scale(${globalScaleSetting})`;
+  }
+
+  // Activa el arrastre fluido táctil y auto-centrado
+  setTimeout(() => {
+    const frame = document.getElementById('canvas-container-scroll');
+    if(!frame) return;
+    let isDragging = false; let sx, sy, sLeft, sTop;
     const startPan = (e) => {
       isDragging = true;
       const x = e.pageX || e.touches[0].pageX;
       const y = e.pageY || e.touches[0].pageY;
-      sx = x - frameContainer.offsetLeft;
-      sy = y - frameContainer.offsetTop;
-      sLeft = frameContainer.scrollLeft; sTop = frameContainer.scrollTop;
+      sx = x - frame.offsetLeft; sy = y - frame.offsetTop;
+      sLeft = frame.scrollLeft; sTop = frame.scrollTop;
     };
-    frameContainer.addEventListener('mousedown', startPan);
-    frameContainer.addEventListener('touchstart', startPan);
-
+    frame.addEventListener('mousedown', startPan);
+    frame.addEventListener('touchstart', startPan);
     const movePan = (e) => {
-      if (!isDragging) return;
+      if(!isDragging) return;
       const x = e.pageX || e.touches[0].pageX;
       const y = e.pageY || e.touches[0].pageY;
-      frameContainer.scrollLeft = sLeft - (x - frameContainer.offsetLeft - sx) * 1.4;
-      frameContainer.scrollTop = sTop - (y - frameContainer.offsetTop - sy) * 1.4;
+      frame.scrollLeft = sLeft - (x - frame.offsetLeft - sx) * 1.5;
+      frame.scrollTop = sTop - (y - frame.offsetTop - sy) * 1.5;
     };
-    frameContainer.addEventListener('mousemove', movePan);
-    frameContainer.addEventListener('touchmove', movePan);
-
+    frame.addEventListener('mousemove', movePan);
+    frame.addEventListener('touchmove', movePan);
     window.addEventListener('mouseup', () => isDragging = false);
-    frameContainer.addEventListener('touchend', () => isDragging = false);
-  }
+    frame.addEventListener('touchend', () => isDragging = false);
+    
+    // Auto-centrado dinámico en el lienzo (Calcula la mitad del desbordamiento)
+    requestAnimationFrame(() => {
+      if(frame.scrollHeight > frame.clientHeight) {
+        frame.scrollTop = (frame.scrollHeight - frame.clientHeight) / 2;
+      }
+      if(frame.scrollWidth > frame.clientWidth) {
+        frame.scrollLeft = (frame.scrollWidth - frame.clientWidth) / 2 - 100; // Un ligero offset a la izquierda
+      }
+    });
+  }, 400);
 
-  // Render lazy: se ejecuta la primera vez que se abre la vista Quiniela
- window.qnInit = function() {
-    attachPan();
-    seedLockedResults();
-    renderBracket();
-    if (!started) {
-      started = true;
-      setTimeout(closeOnboarding, 2600);
-    }
-  };
+  window.seedLockedResults();
 })();
+
+function init() {
+  renderPhasePills();
+  renderGroupSelector();
+  selectPhase('semana');
+  renderStandings();
+  renderStats();
+  renderNoticias();
+  renderGDL();
+  if (window.renderBracket) window.renderBracket();
+}
+
+init();
+
+// Sistema Onboarding Fade Out
+function qnCloseOnboarding() {
+  const overlay = document.getElementById('qn-onboarding-screen');
+  if(overlay) overlay.classList.add('hidden');
+}
+setTimeout(qnCloseOnboarding, 2800);
 </script>
 </body>
 </html>
