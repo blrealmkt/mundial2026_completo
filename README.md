@@ -1265,6 +1265,21 @@ body {
 .qn-unresolved-node { opacity: 0.55; border-style: dashed; box-shadow: none; }
 .qn-unresolved-node .qn-team-selectable-row { color: var(--ink3); font-weight: 500; }
 
+.qn-locked-node {
+  border-color: var(--green);
+  box-shadow: 4px 4px 0 var(--green);
+}
+.qn-locked-node .qn-team-selectable-row {
+  cursor: default;
+}
+.qn-locked-node .qn-team-selectable-row:hover {
+  background: transparent;
+  border-color: transparent;
+}
+.qn-locked-icon {
+  font-size: 9px;
+}
+
 .qn-bracket-controls-panel {
   display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center;
   background: var(--bg3); padding: 12px; border: 3px solid var(--ink);
@@ -1681,7 +1696,7 @@ const DATA = {
     // ── DIECISEISAVOS DE FINAL
     { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:74, phase:'dieciseisavos', nextId:89, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:1, awayScore:1, penalties:{home:3, away:4}, status:'done', date:'29 Jun', time:'14:30', venue:'Estadio Boston' },
-    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, status:'live', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
+    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
@@ -2724,15 +2739,15 @@ init();
 // ══════════════════════════════════════════════════════════
 (function() {
   const SIMULATOR_DATA = [
-    { id:74, phase:'dieciseisavos', nextId:90, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:0, awayScore:1, status:'done', date:'29 Jun' },
+    { id:74, phase:'dieciseisavos', nextId:90, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:0, awayScore:1, status:'done', locked:true, date:'29 Jun' },
     { id:77, phase:'dieciseisavos', nextId:90, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
-    { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', date:'28 Jun' },
-    { id:75, phase:'dieciseisavos', nextId:89, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'29 Jun' },
+    { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'28 Jun' },
+    { id:75, phase:'dieciseisavos', nextId:89, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', locked:true, date:'29 Jun' },
     { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
     { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
     { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
     { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
-    { id:76, phase:'dieciseisavos', nextId:91, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', date:'29 Jun' },
+    { id:76, phase:'dieciseisavos', nextId:91, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },      
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
     { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
     { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
@@ -2775,24 +2790,29 @@ init();
   phases.forEach(p => {
     let list = SIMULATOR_DATA
       .filter(m => m.phase === p)
-      .sort((a, b) => a.id - b.id); // ← orden estable por id, no por inserción
+      .sort((a, b) => a.id - b.id);
     let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
     html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
     list.forEach(m => {
       const isDone = m.status === 'done';
+      const isLocked = !!m.locked;
       const isHomeWin = isDone && m.homeScore > m.awayScore;
       const isAwayWin = isDone && m.awayScore > m.homeScore;
       const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
       const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
       const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
+      const homeClick = isLocked ? '' : `onclick="qnAdvanceTeam(${m.id}, 'home')"`;
+      const awayClick = isLocked ? '' : `onclick="qnAdvanceTeam(${m.id}, 'away')"`;
+      const lockIcon = isLocked ? `<span class="qn-locked-icon">🔒</span>` : '';
+
       html += `
-        <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''}">
-          <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date}</span></div>
-          <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'home')">
+        <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''} ${isLocked ? 'qn-locked-node' : ''}">
+          <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date} ${lockIcon}</span></div>
+          <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" ${homeClick}>
             <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
             <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
           </div>
-          <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'away')">
+          <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" ${awayClick}>
             <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
             <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
           </div>
@@ -2803,40 +2823,40 @@ init();
   container.innerHTML = html;
   container.style.transform = `scale(${scale})`;
 }
+  
+window.qnAdvanceTeam = function(matchId, side) {
+  const m = SIMULATOR_DATA.find(x => x.id === matchId);
+  if (!m || m.locked) return; // ← bloquea cualquier partido marcado como locked
+  if (m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista')) return;
 
-  window.qnAdvanceTeam = function(matchId, side) {
-    if (matchId === 73) return;
-    const m = SIMULATOR_DATA.find(x => x.id === matchId);
-    if (!m || m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista')) return;
+  m.status = 'done';
+  m.homeScore = side === 'home' ? 1 : 0;
+  m.awayScore = side === 'home' ? 0 : 1;
 
-    m.status = 'done';
-    m.homeScore = side === 'home' ? 1 : 0;
-    m.awayScore = side === 'home' ? 0 : 1;
+  const winnerName = side === 'home' ? m.home : m.away;
+  const winnerFlag = side === 'home' ? m.homeFlag : m.awayFlag;
+  const loserName = side === 'home' ? m.away : m.home;
+  const loserFlag = side === 'home' ? m.awayFlag : m.homeFlag;
 
-    const winnerName = side === 'home' ? m.home : m.away;
-    const winnerFlag = side === 'home' ? m.homeFlag : m.awayFlag;
-    const loserName = side === 'home' ? m.away : m.home;
-    const loserFlag = side === 'home' ? m.awayFlag : m.homeFlag;
-
-    if (m.phase === 'semis') {
-      const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
-      const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
-      if (m.id === 101) {
-        finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
-        thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
-      } else {
-        finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
-        thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
-      }
-    } else if (m.nextId) {
-      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
-      if (next) {
-        if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
-        else { next.away = winnerName; next.awayFlag = winnerFlag; }
-      }
+  if (m.phase === 'semis') {
+    const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
+    const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
+    if (m.id === 101) {
+      finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
+      thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
+    } else {
+      finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
+      thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
     }
-    renderBracket();
-  };
+  } else if (m.nextId) {
+    const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
+    if (next) {
+      if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
+      else { next.away = winnerName; next.awayFlag = winnerFlag; }
+    }
+  }
+  renderBracket();
+};
 
   window.qnManualZoomAdjust = function(val) {
     scale = parseFloat(val);
@@ -2844,21 +2864,21 @@ init();
   };
 
   window.qnResetUserQuiniela = function() {
-    SIMULATOR_DATA.forEach(m => {
-      if (m.id !== 73) {
-        m.homeScore = null;
-        m.awayScore = null;
-        m.status = 'scheduled';
-        if (m.id >= 89) {
-          m.home = m.id === 89 ? 'Canadá' : (m.phase === 'octavos' ? 'Por definir' : 'Ganador M');
-          m.homeFlag = m.id === 89 ? '🇨🇦' : '⭐';
-          m.away = m.phase === 'octavos' ? 'Por definir' : 'Ganador M';
-          m.awayFlag = '⭐';
-        }
+  SIMULATOR_DATA.forEach(m => {
+    if (!m.locked) {
+      m.homeScore = null;
+      m.awayScore = null;
+      m.status = 'scheduled';
+      if (m.id >= 89) {
+        m.home = m.id === 89 ? 'Canadá' : (m.phase === 'octavos' ? 'Por definir' : 'Ganador M');
+        m.homeFlag = m.id === 89 ? '🇨🇦' : '⭐';
+        m.away = m.phase === 'octavos' ? 'Por definir' : 'Ganador M';
+        m.awayFlag = '⭐';
       }
-    });
-    renderBracket();
-  };
+    }
+  });
+  renderBracket();
+};
 
   // Paneo táctil — listeners adjuntados solo una vez, al primer init
   function attachPan() {
