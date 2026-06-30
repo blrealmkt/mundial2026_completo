@@ -1699,7 +1699,7 @@ const DATA = {
     { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
-    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
+    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
     { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'19:00', venue:'Estadio Ciudad de México' },
     { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'10:00', venue:'Estadio Atlanta' },
     { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'18:00', venue:'Estadio Bahía de San Francisco' },
@@ -1843,9 +1843,10 @@ const DATA = {
   scorers: [
     // ── 6 goles
     { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:6, highlight:true },
+    // ── 5 goles
+    { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:5, highlight:true },
     // ── 4 goles
     { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
-    { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:4, highlight:true },
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
     // ── 3 goles
@@ -2744,7 +2745,7 @@ init();
     { id:75, phase:'dieciseisavos', nextId:89, slot:'away', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', locked:true, date:'29 Jun' },
     { id:76, phase:'dieciseisavos', nextId:91, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },
     { id:77, phase:'dieciseisavos', nextId:90, slot:'away', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
-    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', locked:true, date:'30 Jun' },
     { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
     { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
     { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
@@ -2781,6 +2782,21 @@ init();
      { id:104, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
   ];
   
+  // Siembra los resultados de los partidos ya jugados (locked) en sus casillas de octavos
+function seedLockedResults() {
+  SIMULATOR_DATA.forEach(m => {
+    if (!m.locked || !m.nextId) return;
+    const isHomeWin = m.homeScore > m.awayScore || (m.penalties && m.penalties.home > m.penalties.away);
+    const winnerName = isHomeWin ? m.home : m.away;
+    const winnerFlag = isHomeWin ? m.homeFlag : m.awayFlag;
+    const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
+    if (next) {
+      if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
+      else { next.away = winnerName; next.awayFlag = winnerFlag; }
+    }
+  });
+}
+
   let scale = 0.65;
   let started = false;
 
@@ -2921,8 +2937,9 @@ window.qnAdvanceTeam = function(matchId, side) {
   }
 
   // Render lazy: se ejecuta la primera vez que se abre la vista Quiniela
-  window.qnInit = function() {
+ window.qnInit = function() {
     attachPan();
+    seedLockedResults();
     renderBracket();
     if (!started) {
       started = true;
