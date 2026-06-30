@@ -1322,8 +1322,7 @@ body {
 <nav class="main-nav">
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
-    <button class="nav-btn" onclick="showView('quiniela', event)">Quiniela</button>     <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
-    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
+    <button class="nav-btn" onclick="showView('quiniela', event)">Quiniela</button>    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
     <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
   </div>
@@ -1697,7 +1696,7 @@ const DATA = {
     { id:74, phase:'dieciseisavos', nextId:89, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:1, awayScore:1, penalties:{home:3, away:4}, status:'done', date:'29 Jun', time:'14:30', venue:'Estadio Boston' },
     { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
-    { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
+    { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:2, awayScore:0, status:'live', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
     { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'19:00', venue:'Estadio Ciudad de México' },
     { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'10:00', venue:'Estadio Atlanta' },
@@ -2265,25 +2264,23 @@ let currentGroup = 'A';
 // NAVIGATION
 // ══════════════════════════════════════════════════════════
 function showView(id, e) {
-  // Ocultar todas las vistas
+  // 1. Ocultar todas las vistas y apagar todos los botones
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  // Quitar la clase active de todos los botones
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   
-  // Mostrar la vista seleccionada
+  // 2. Mostrar la vista solicitada
   const targetView = document.getElementById('view-' + id);
   if(targetView) targetView.classList.add('active');
   
-  // Resaltar el botón clickeado
+  // 3. Encender el botón clickeado
   if (e && e.target) {
-    // Si se hizo clic en un elemento dentro del botón, busca el botón contenedor
     const btn = e.target.closest('.nav-btn') || e.target;
-    btn.classList.add('active');
+    if(btn.classList) btn.classList.add('active');
   }
 
-  // Renderizar la quiniela si es la pestaña seleccionada
+  // 4. Si entramos a la quiniela, forzamos su renderizado
   if (id === 'quiniela' && window.renderBracket) {
-      window.renderBracket();
+    window.renderBracket();
   }
 }
 
@@ -2965,8 +2962,9 @@ init();
 // Sistema Onboarding Fade Out
 function qnCloseOnboarding() {
   const overlay = document.getElementById('qn-onboarding-screen');
-  if(overlay) overlay.classList.add('hidden');
+  if(overlay) overlay.classList.add('qn-hidden'); // 👈 El error estaba aquí, faltaba el "qn-"
 }
+// Forzamos a que desaparezca a los 2.8 segundos automáticamente
 setTimeout(qnCloseOnboarding, 2800);
 </script>
 </body>
