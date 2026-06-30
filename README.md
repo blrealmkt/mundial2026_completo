@@ -478,6 +478,40 @@ body {
   white-space: nowrap;
 }
 
+/* ── PENALES (definición de partido en tanda) ── */
+.penalty-strip {
+  background: var(--ink);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1.5px dashed rgba(255,255,255,0.2);
+}
+.penalty-icon { font-size: 13px; flex-shrink: 0; }
+.penalty-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+}
+.penalty-text strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: .02em;
+}
+.penalty-score {
+  background: var(--fire);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-left: 4px;
+}
+
 /* ── STANDINGS TABLE ── */
 .groups-grid {
   display: grid;
@@ -1647,7 +1681,7 @@ const DATA = {
     // ── DIECISEISAVOS DE FINAL
     { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:74, phase:'dieciseisavos', nextId:89, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:1, awayScore:1, penalties:{home:3, away:4}, status:'done', date:'29 Jun', time:'14:30', venue:'Estadio Boston' },
-    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, status:'live', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
+    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
@@ -2170,7 +2204,7 @@ const DATA = {
     { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'24 Jun', time:'19:00', status:'done' },
-    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, date:'29 Jun', time:'19:00', status:'live' },
+    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, date:'29 Jun', time:'19:00', status:'done' },
   ],
 
   eventos: [
@@ -2283,21 +2317,42 @@ function buildMatchCard(m, extraClass) {
   const isLive = m.status === 'live';
   const hasScore = m.homeScore !== null && m.awayScore !== null;
   const isMexico = MEXICO_VENUES.some(v => m.venue && m.venue.includes(v));
+
   const scoreHTML = hasScore
     ? `<div class="score-block"><div class="score-box home ${isLive?'fire':''}">${m.homeScore}</div><div class="score-sep"><span>-</span></div><div class="score-box away ${isLive?'fire':''}">${m.awayScore}</div></div>`
     : `<div class="score-pending">${m.time} hrs</div>`;
+
   const statusLabel = isLive
     ? `<span class="match-status live-status">● En vivo</span>`
     : isDone ? `<span class="match-status done">✓ Finalizado</span>`
     : `<span class="match-status">${m.date}</span>`;
   const mexicoBadge = isMexico ? `<span class="mexico-badge">🇲🇽 México</span>` : '';
+
+  // ── NUEVO: franja de penales ──
+  let penaltiesHTML = '';
+  if (m.penalties) {
+    const homeWonPens = m.penalties.home > m.penalties.away;
+    const winnerName = homeWonPens ? m.home : m.away;
+    const winnerFlag = homeWonPens ? m.homeFlag : m.awayFlag;
+    penaltiesHTML = `
+      <div class="penalty-strip">
+        <span class="penalty-icon">🥅</span>
+        <span class="penalty-text">
+          Definido en penales · <strong>${winnerFlag} ${winnerName}</strong> gana
+          <span class="penalty-score">${m.penalties.home}-${m.penalties.away}</span>
+        </span>
+      </div>`;
+  }
+
   return `<div class="match-card ${isLive?'live':''} ${isMexico?'mexico-venue':''} ${extraClass}">
     <div class="match-label-bar"><span class="match-label">${m.venue||''}${mexicoBadge}</span>${statusLabel}</div>
     <div class="match-inner">
       <div class="team-home"><span class="team-flag">${m.homeFlag}</span><div><div class="team-name">${m.home}</div><div class="team-abbr">${m.home.substring(0,3).toUpperCase()}</div></div></div>
       ${scoreHTML}
       <div class="team-away"><span class="team-flag">${m.awayFlag}</span><div><div class="team-name">${m.away}</div><div class="team-abbr">${m.away.substring(0,3).toUpperCase()}</div></div></div>
-    </div></div>`;
+    </div>
+    ${penaltiesHTML}
+  </div>`;
 }
 
 function renderMatches() {
