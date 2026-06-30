@@ -1681,7 +1681,7 @@ const DATA = {
     // ── DIECISEISAVOS DE FINAL
     { id:73, phase:'dieciseisavos', nextId:89, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', date:'28 Jun', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:74, phase:'dieciseisavos', nextId:89, slot:'away', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:1, awayScore:1, penalties:{home:3, away:4}, status:'done', date:'29 Jun', time:'14:30', venue:'Estadio Boston' },
-    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, status:'done', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
+    { id:75, phase:'dieciseisavos', nextId:90, slot:'home', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, status:'live', date:'29 Jun', time:'19:00', venue:'Estadio Monterrey' },
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
@@ -2204,7 +2204,7 @@ const DATA = {
     { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'24 Jun', time:'19:00', status:'done' },
-    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, date:'29 Jun', time:'19:00', status:'done' },
+    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, date:'29 Jun', time:'19:00', status:'live' },
   ],
 
   eventos: [
@@ -2768,39 +2768,41 @@ init();
   window.qnCloseOnboarding = closeOnboarding;
 
   function renderBracket() {
-    const container = document.getElementById('qn-render-viewport-area');
-    if (!container) return;
-    const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
-    let html = '';
-    phases.forEach(p => {
-      let list = SIMULATOR_DATA.filter(m => m.phase === p);
-      let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
-      html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
-      list.forEach(m => {
-        const isDone = m.status === 'done';
-        const isHomeWin = isDone && m.homeScore > m.awayScore;
-        const isAwayWin = isDone && m.awayScore > m.homeScore;
-        const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
-        const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
-        const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
-        html += `
-          <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''}">
-            <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date}</span></div>
-            <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'home')">
-              <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
-              <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
-            </div>
-            <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'away')">
-              <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
-              <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
-            </div>
-          </div>`;
-      });
-      html += `</div>`;
+  const container = document.getElementById('qn-render-viewport-area');
+  if (!container) return;
+  const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
+  let html = '';
+  phases.forEach(p => {
+    let list = SIMULATOR_DATA
+      .filter(m => m.phase === p)
+      .sort((a, b) => a.id - b.id); // ← orden estable por id, no por inserción
+    let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
+    html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
+    list.forEach(m => {
+      const isDone = m.status === 'done';
+      const isHomeWin = isDone && m.homeScore > m.awayScore;
+      const isAwayWin = isDone && m.awayScore > m.homeScore;
+      const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
+      const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
+      const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
+      html += `
+        <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''}">
+          <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date}</span></div>
+          <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'home')">
+            <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
+            <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
+          </div>
+          <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'away')">
+            <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
+            <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
+          </div>
+        </div>`;
     });
-    container.innerHTML = html;
-    container.style.transform = `scale(${scale})`;
-  }
+    html += `</div>`;
+  });
+  container.innerHTML = html;
+  container.style.transform = `scale(${scale})`;
+}
 
   window.qnAdvanceTeam = function(matchId, side) {
     if (matchId === 73) return;
