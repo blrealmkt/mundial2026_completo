@@ -1545,7 +1545,7 @@ function dateOnlyKey(dateStr) {
 
 const DATA = {
   // Rango de la semana activa (lunes a domingo). Actualizar cada semana.
-  currentWeek: { startDate: '22 Jun', endDate: '28 Jun', label: 'Semana del 22 al 28 de junio' },
+  currentWeek: { startDate: '29 Jun', endDate: '05 Jul', label: 'Semana del 29 de junio al 05 de julio' },
 
   phases: [
     { id: 'semana',        label: 'Esta Semana' },
