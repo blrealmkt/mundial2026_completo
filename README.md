@@ -1322,7 +1322,8 @@ body {
 <nav class="main-nav">
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
-    <button class="nav-btn" onclick="showView('quiniela', event)">Quiniela</button>    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
+    <button class="nav-btn nav-btn-quiniela" onclick="showView('quiniela', event)">Quiniela <span class="nav-quiniela-pulse"></span></button>
+    <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
     <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
   </div>
@@ -1841,10 +1842,10 @@ const DATA = {
   scorers: [
     // ── 6 goles
     { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:6, highlight:true },
+    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:6, highlight:true },
     // ── 5 goles
     { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:5, highlight:true },
     // ── 4 goles
-    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
     // ── 3 goles
@@ -1860,8 +1861,10 @@ const DATA = {
     { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:2 },
     { name:'Yasin Ayari', team:'Suecia', flag:'🇸🇪', goals:2 },
+    { name:'Bradley Barcola', team:'Francia', flag:'🇫🇷', goals:2 },
     { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:2 },
     { name:'Daniel Muñoz', team:'Colombia', flag:'🇨🇴', goals:2 },
+    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:2 },
     { name:'Elijah Just', team:'Nueva Zelanda', flag:'🇳🇿', goals:2 },
     { name:'Cyle Larin', team:'Canadá', flag:'🇨🇦', goals:2 },
     { name:'Cody Gakpo', team:'Países Bajos', flag:'🇳🇱', goals:2 },
@@ -1870,7 +1873,6 @@ const DATA = {
     { name:'Jude Bellingham', team:'Inglaterra · Min. 47\'', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:2 },
     { name:'Ruben Vargas', team:'Suiza', flag:'🇨🇭', goals:2 },
     { name:'Maximiliano Araújo', team:'Uruguay', flag:'🇺🇾', goals:2 },
-    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:2 },
     { name:'Anthony Elanga', team:'Suecia', flag:'🇸🇪', goals:2 },
     { name:'Ermin Mahmic', team:'Bosnia y Herzegovina', flag:'🇧🇦', goals:2 },
     { name:'Marko Arnautović', team:'Austria', flag:'🇦🇹', goals:2 },
@@ -1906,7 +1908,6 @@ const DATA = {
     { name:'Omar Rekik', team:'Túnez · Min. 42\'', flag:'🇹🇳', goals:1 },
     { name:'Romano Schmid', team:'Austria · Min. 21\'', flag:'🇦🇹', goals:1 },
     { name:'Ali Iyad Olwan', team:'Jordania · Min. 50\'', flag:'🇯🇴', goals:1 },
-    { name:'Bradley Barcola', team:'Francia · Min. 82\'', flag:'🇫🇷', goals:1 },
     { name:'Ibrahim Mbaye', team:'Senegal · Min. 90+5\'', flag:'🇸🇳', goals:1 },
     { name:'Aymen Hussein', team:'Irak · Min. 38\'', flag:'🇮🇶', goals:1 },
     { name:'Leo Østigård', team:'Noruega · Min. 75\'', flag:'🇳🇴', goals:1 },
@@ -2218,7 +2219,7 @@ const DATA = {
     { id:32, sede:'mty',  grupo:'Grupo F', home:'Suecia',        homeFlag:'🇸🇪', away:'Túnez',       awayFlag:'🇹🇳', homeScore:5, awayScore:1, date:'14 Jun', time:'20:00', status:'done' },
     { id:34, sede:'mty',  grupo:'Grupo F', home:'Túnez',         homeFlag:'🇹🇳', away:'Japón',       awayFlag:'🇯🇵', homeScore:0, awayScore:4, date:'20 Jun', time:'20:00', status:'done' },
     { id:6,  sede:'mty',  grupo:'Grupo A', home:'Sudáfrica',     homeFlag:'🇿🇦', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'24 Jun', time:'19:00', status:'done' },
-    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, date:'29 Jun', time:'19:00', status:'live' },
+    { id:71, sede:'mty',  grupo:'dieciseisavos', home:'Países Bajos', homeFlag:'🇳🇱', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:1, penalties:{home:2, away:3}, date:'29 Jun', time:'19:00', status:'done' },
   ],
 
   eventos: [
@@ -2851,7 +2852,7 @@ init();
     window.renderBracket();
   };
 
-  window.resetUserQuiniela = function() {
+  window.qnResetUserQuiniela = function() {
     SIMULATOR_DATA.forEach(m => {
       if(!m.locked) {
         m.homeScore = null; m.awayScore = null; m.status = 'scheduled';
@@ -2868,7 +2869,7 @@ init();
   };
 
   window.renderBracket = function() {
-    const container = document.getElementById('bracket-render-container');
+    const container = document.getElementById('qn-render-viewport-area');
     if(!container) return;
     const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
     let html = '';
@@ -2908,7 +2909,7 @@ init();
 
   // Activa el arrastre fluido táctil y auto-centrado
   setTimeout(() => {
-    const frame = document.getElementById('canvas-container-scroll');
+    const frame = document.getElementById('qn-canvas-container-scroll');
     if(!frame) return;
     let isDragging = false; let sx, sy, sLeft, sTop;
     const startPan = (e) => {
@@ -2945,19 +2946,6 @@ init();
 
   window.seedLockedResults();
 })();
-
-function init() {
-  renderPhasePills();
-  renderGroupSelector();
-  selectPhase('semana');
-  renderStandings();
-  renderStats();
-  renderNoticias();
-  renderGDL();
-  if (window.renderBracket) window.renderBracket();
-}
-
-init();
 
 // Sistema Onboarding Fade Out
 function qnCloseOnboarding() {
