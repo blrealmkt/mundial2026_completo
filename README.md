@@ -2208,7 +2208,7 @@ const DATA = {
     { id:1,  sede:'cdmx', grupo:'Grupo A', home:'México',       homeFlag:'🇲🇽', away:'Sudáfrica',    awayFlag:'🇿🇦', homeScore:2,    awayScore:0,    date:'11 Jun', time:'13:00', status:'done' },
     { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',     homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
     { id:5,  sede:'cdmx', grupo:'Grupo A', home:'Rep. Checa',   homeFlag:'🇨🇿', away:'México',       awayFlag:'🇲🇽', homeScore:0, awayScore:3, date:'24 Jun', time:'19:00', status:'done' },
-    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México',       homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, date:'30 Jun', time:'19:00', status:'scheduled' },
+    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México',       homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, date:'30 Jun', time:'20:00', status:'scheduled' },
     { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
