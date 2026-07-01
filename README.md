@@ -1699,7 +1699,7 @@ const DATA = {
     { id:76, phase:'dieciseisavos', nextId:90, slot:'away', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:2, awayScore:1, status:'done', date:'29 Jun', time:'11:00', venue:'Estadio Houston' },
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:3, awayScore:0, status:'done', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
-    { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun', time:'20:00', venue:'Estadio Ciudad de México' },
+    { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:2, awayScore:0, status:'done', date:'30 Jun', time:'20:00', venue:'Estadio Ciudad de México' },
     { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'10:00', venue:'Estadio Atlanta' },
     { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'18:00', venue:'Estadio Bahía de San Francisco' },
     { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'14:00', venue:'Estadio Seattle' },
@@ -1852,6 +1852,7 @@ const DATA = {
     { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:3 },
     { name:'Matheus Cunha', team:'Brasil', flag:'🇧🇷', goals:3 },
+    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:3 },
     { name:'Johan Manzambi', team:'Suiza', flag:'🇨🇭', goals:3 },
     { name:'Ismael Saibari', team:'Marruecos', flag:'🇲🇦', goals:3 },
     { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:3 },
@@ -1859,7 +1860,7 @@ const DATA = {
     { name:'Deniz Undav', team:'Alemania', flag:'🇩🇪', goals:3 },
     // ── 2 goles
     { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:2 },
-    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:2 },
+    { name:'Raúl Jiménez', team:'México', flag:'🇲🇽', goals:2 },
     { name:'Yasin Ayari', team:'Suecia', flag:'🇸🇪', goals:2 },
     { name:'Bradley Barcola', team:'Francia', flag:'🇫🇷', goals:2 },
     { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:2 },
@@ -1885,7 +1886,6 @@ const DATA = {
     { name:'Daichi Kamada', team:'Japón', flag:'🇯🇵', goals:2 },
 
     // ── 1 gol
-    { name:'Raúl Jiménez', team:'México', flag:'🇲🇽', goals:1 },
     { name:'Luis Romo', team:'México', flag:'🇲🇽', goals:1 },
     { name:'Hwang In-beom', team:'Corea del Sur', flag:'🇰🇷', goals:1 },
     { name:'Ladislav Krejčí', team:'Chequia · Min. 32\'', flag:'🇨🇿', goals:1 },
@@ -2208,7 +2208,7 @@ const DATA = {
     { id:1,  sede:'cdmx', grupo:'Grupo A', home:'México',       homeFlag:'🇲🇽', away:'Sudáfrica',    awayFlag:'🇿🇦', homeScore:2,    awayScore:0,    date:'11 Jun', time:'13:00', status:'done' },
     { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',     homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
     { id:5,  sede:'cdmx', grupo:'Grupo A', home:'Rep. Checa',   homeFlag:'🇨🇿', away:'México',       awayFlag:'🇲🇽', homeScore:0, awayScore:3, date:'24 Jun', time:'19:00', status:'done' },
-    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México',       homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, date:'30 Jun', time:'20:00', status:'scheduled' },
+    { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México',       homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:2, awayScore:0, date:'30 Jun', time:'20:00', status:'done' },
     { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
@@ -2763,7 +2763,7 @@ init();
     { id:80, logicalId:8, phase:'dieciseisavos', nextId:92, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
     { id:81, logicalId:9, phase:'dieciseisavos', nextId:93, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },
     { id:82, logicalId:10, phase:'dieciseisavos', nextId:93, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:0, awayScore:1, status:'done', locked:true, date:'30 Jun' },
-    { id:83, logicalId:11, phase:'dieciseisavos', nextId:94, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:null, awayScore:null, status:'scheduled', date:'30 Jun' },
+    { id:83, logicalId:11, phase:'dieciseisavos', nextId:94, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:1, awayScore:0, status:'done', locked:true, date:'30 Jun' },
     { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
     { id:85, logicalId:13, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     { id:86, logicalId:14, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
