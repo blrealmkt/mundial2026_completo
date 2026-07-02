@@ -3031,7 +3031,7 @@ init();
     { id:76, logicalId:4, phase:'dieciseisavos', nextId:90, slot:'away', home:'Países Bajos', homeFlag:'🇳🇱', fav:'50%', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'29 Jun' },
     { id:77, logicalId:5, phase:'dieciseisavos', nextId:91, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
     { id:78, logicalId:6, phase:'dieciseisavos', nextId:91, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
-    { id:79, logicalId:7, phase:'dieciseisavos', nextId:92, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:79, logicalId:7, phase:'dieciseisavos', nextId:92, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:80, logicalId:8, phase:'dieciseisavos', nextId:92, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:81, logicalId:9, phase:'dieciseisavos', nextId:93, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },
     { id:82, logicalId:10, phase:'dieciseisavos', nextId:93, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:0, awayScore:1, status:'done', locked:true, date:'30 Jun' },
