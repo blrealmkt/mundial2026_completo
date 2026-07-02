@@ -1167,6 +1167,182 @@ body {
   white-space: nowrap;
 }
 /* ══════════════════════════════════════════════════════════
+   POSICIONES COMPACTAS — panel embebido en Resultados
+   ══════════════════════════════════════════════════════════ */
+.standings-panel {
+  background: var(--bg2);
+  border: 1.5px solid var(--border2);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.standings-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1.5px solid var(--border2);
+  cursor: pointer;
+  user-select: none;
+  gap: 10px;
+}
+.standings-panel-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.standings-panel-title .sp-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  background: var(--ink);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.standings-panel-toggle {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  padding: 3px 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.standings-panel-toggle:hover { background: var(--white); }
+
+.standings-panel-body {
+  display: none;
+  padding: 12px 14px 14px;
+}
+.standings-panel-body.open { display: block; }
+
+/* Scroll horizontal de grupos de 2 en 2 */
+.groups-scroll-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+  padding-bottom: 6px;
+}
+.groups-scroll-track::-webkit-scrollbar { height: 4px; }
+.groups-scroll-track::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+.groups-scroll-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+/* Grupos compactos dentro del panel */
+.group-card-mini {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 0;
+}
+.group-card-mini-header {
+  background: var(--ink);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.group-card-mini-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.standings-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.standings-mini-table td {
+  padding: 5px 6px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink2);
+}
+.standings-mini-table tr:last-child td { border-bottom: none; }
+.standings-mini-table td:first-child { padding-left: 8px; }
+.mini-team-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.mini-pos-bar {
+  width: 3px;
+  height: 20px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.mini-flag { font-size: 14px; line-height: 1; flex-shrink: 0; }
+.mini-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+.mini-pts {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* Paginación de grupos */
+.groups-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.gp-btn {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .04em;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--ink3);
+  transition: all .12s;
+}
+.gp-btn:hover { background: var(--white); color: var(--ink); }
+.gp-btn.gp-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.gp-btn:disabled { opacity: .35; cursor: default; }
+
+/* ══════════════════════════════════════════════════════════
    QUINIELA — nav destacado
    ══════════════════════════════════════════════════════════ */
 .nav-btn-quiniela {
@@ -1265,21 +1441,6 @@ body {
 .qn-unresolved-node { opacity: 0.55; border-style: dashed; box-shadow: none; }
 .qn-unresolved-node .qn-team-selectable-row { color: var(--ink3); font-weight: 500; }
 
-.qn-locked-node {
-  border-color: var(--green);
-  box-shadow: 4px 4px 0 var(--green);
-}
-.qn-locked-node .qn-team-selectable-row {
-  cursor: default;
-}
-.qn-locked-node .qn-team-selectable-row:hover {
-  background: transparent;
-  border-color: transparent;
-}
-.qn-locked-icon {
-  font-size: 9px;
-}
-
 .qn-bracket-controls-panel {
   display: grid; grid-template-columns: 1fr auto; gap: 15px; align-items: center;
   background: var(--bg3); padding: 12px; border: 3px solid var(--ink);
@@ -1323,7 +1484,7 @@ body {
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showView('resultados', event)">Resultados</button>
     <button class="nav-btn nav-btn-quiniela" onclick="showView('quiniela', event)">Quiniela <span class="nav-quiniela-pulse"></span></button>
-    <button class="nav-btn" onclick="showView('posiciones', event)">Posiciones</button>
+    <button class="nav-btn" onclick="showView('estadisticas', event)">Stats</button>
     <button class="nav-btn" onclick="showView('noticias', event)">Noticias</button>
     <button class="nav-btn" onclick="showView('gdl', event)">Guadalajara</button>
   </div>
@@ -1337,6 +1498,35 @@ body {
     <div>
       <div class="section-title">Resultados y <span>Próximos Juegos</span></div>
       <div class="section-sub" id="results-subtitle">72 partidos fase de grupos · 48 selecciones · 3 países sede</div>
+    </div>
+  </div>
+
+  <!-- ── PANEL COMPACTO DE POSICIONES ── -->
+  <div class="standings-panel" id="standings-panel">
+    <div class="standings-panel-header" onclick="toggleStandingsPanel()">
+      <div class="standings-panel-title">
+        Tabla de Posiciones
+        <span class="sp-badge">Fase de Grupos</span>
+      </div>
+      <button class="standings-panel-toggle" id="sp-toggle-btn">Ver ↓</button>
+    </div>
+    <div class="standings-panel-body" id="standings-panel-body">
+      <div class="groups-scroll-track" id="groups-scroll-track"></div>
+      <div class="groups-page-nav" id="groups-page-nav"></div>
+      <div style="margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:5px;">
+          <span style="display:inline-block;width:3px;height:14px;border-radius:1px;background:var(--green);"></span>
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">Clasifica</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <span style="display:inline-block;width:3px;height:14px;border-radius:1px;background:var(--gold);"></span>
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">Mejor 3ro</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <span style="display:inline-block;width:3px;height:14px;border-radius:1px;border:1px solid var(--border2);"></span>
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">Eliminado</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1700,9 +1890,9 @@ const DATA = {
     { id:77, phase:'dieciseisavos', nextId:91, slot:'home', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:3, awayScore:0, status:'done', date:'30 Jun', time:'15:00', venue:'Estadio Nueva York' },
     { id:78, phase:'dieciseisavos', nextId:91, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:1, awayScore:2, status:'done', date:'30 Jun', time:'11:00', venue:'Estadio Dallas' },
     { id:79, phase:'dieciseisavos', nextId:92, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:2, awayScore:0, status:'done', date:'30 Jun', time:'20:00', venue:'Estadio Ciudad de México' },
-    { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'10:00', venue:'Estadio Atlanta' },
+    { id:80, phase:'dieciseisavos', nextId:92, slot:'away', home:'Inglaterra', homeFlag:'🏴\u200d󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:2, awayScore:1, status:'done', date:'01 Jul', time:'10:00', venue:'Estadio Atlanta' },
     { id:81, phase:'dieciseisavos', nextId:93, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'18:00', venue:'Estadio Bahía de San Francisco' },
-    { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul', time:'14:00', venue:'Estadio Seattle' },
+    { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:2, status:'done', date:'01 Jul', time:'14:00', venue:'Estadio Seattle' },
     { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul', time:'17:00', venue:'Estadio Toronto' },
     { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver' },
@@ -1763,6 +1953,7 @@ const DATA = {
       home:'Campeón Semifinal 1', homeFlag:'🌎', away:'Campeón Semifinal 2', awayFlag:'🌎',
       homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
   ],
+
 
   standings: {
     A: [
@@ -1845,12 +2036,12 @@ const DATA = {
     { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:6, highlight:true },
     // ── 5 goles
     { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:5, highlight:true },
-    // ── 4 goles
+    { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:3 },
+   // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
     // ── 3 goles
     { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
-    { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:3 },
     { name:'Matheus Cunha', team:'Brasil', flag:'🇧🇷', goals:3 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:3 },
     { name:'Johan Manzambi', team:'Suiza', flag:'🇨🇭', goals:3 },
@@ -2108,7 +2299,6 @@ const DATA = {
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
   ],
 
-
   noticias: [
     {
       accentColor: 'gold',
@@ -2209,7 +2399,7 @@ const DATA = {
     { id:62, sede:'cdmx', grupo:'Grupo K', home:'Colombia',     homeFlag:'🇨🇴', away:'Uzbekistán',   awayFlag:'🇺🇿', homeScore:3, awayScore:1, date:'17 Jun', time:'20:00', status:'done' },
     { id:5,  sede:'cdmx', grupo:'Grupo A', home:'Rep. Checa',   homeFlag:'🇨🇿', away:'México',       awayFlag:'🇲🇽', homeScore:0, awayScore:3, date:'24 Jun', time:'19:00', status:'done' },
     { id:79, sede:'cdmx', grupo:'Dieciseisavos', home:'México',       homeFlag:'🇲🇽', away:'Ecuador', awayFlag:'🇪🇨', homeScore:2, awayScore:0, date:'30 Jun', time:'20:00', status:'done' },
-    { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'Por definir', homeFlag:'⚽', away:'Por definir', awayFlag:'⚽', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
+    { id:92, sede:'cdmx', grupo:'Cuartos de Final', home:'México',       homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', status:'scheduled' },
     // ── Guadalajara
     { id:2,  sede:'gdl',  grupo:'Grupo A', home:'Rep. de Corea', homeFlag:'🇰🇷', away:'Rep. Checa',  awayFlag:'🇨🇿', homeScore:2,    awayScore:1,    date:'11 Jun', time:'20:00', status:'done' },
     { id:4,  sede:'gdl',  grupo:'Grupo A', home:'México',        homeFlag:'🇲🇽', away:'Rep. de Corea',awayFlag:'🇰🇷', homeScore:1, awayScore:0, date:'18 Jun', time:'19:00', status:'done' },
@@ -2265,24 +2455,16 @@ let currentGroup = 'A';
 // NAVIGATION
 // ══════════════════════════════════════════════════════════
 function showView(id, e) {
-  // 1. Ocultar todas las vistas y apagar todos los botones
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  
-  // 2. Mostrar la vista solicitada
   const targetView = document.getElementById('view-' + id);
-  if(targetView) targetView.classList.add('active');
-  
-  // 3. Encender el botón clickeado
-  if (e && e.target) {
-    const btn = e.target.closest('.nav-btn') || e.target;
-    if(btn.classList) btn.classList.add('active');
+  if (targetView) targetView.classList.add('active');
+  const ev = e || event;
+  if (ev && ev.target) {
+    const btn = ev.target.closest('.nav-btn') || ev.target;
+    if (btn && btn.classList) btn.classList.add('active');
   }
-
-  // 4. Si entramos a la quiniela, forzamos su renderizado
-  if (id === 'quiniela' && window.renderBracket) {
-    window.renderBracket();
-  }
+  if (id === 'quiniela' && window.renderBracket) window.renderBracket();
 }
 
 // ══════════════════════════════════════════════════════════
@@ -2345,42 +2527,21 @@ function buildMatchCard(m, extraClass) {
   const isLive = m.status === 'live';
   const hasScore = m.homeScore !== null && m.awayScore !== null;
   const isMexico = MEXICO_VENUES.some(v => m.venue && m.venue.includes(v));
-
   const scoreHTML = hasScore
     ? `<div class="score-block"><div class="score-box home ${isLive?'fire':''}">${m.homeScore}</div><div class="score-sep"><span>-</span></div><div class="score-box away ${isLive?'fire':''}">${m.awayScore}</div></div>`
     : `<div class="score-pending">${m.time} hrs</div>`;
-
   const statusLabel = isLive
     ? `<span class="match-status live-status">● En vivo</span>`
     : isDone ? `<span class="match-status done">✓ Finalizado</span>`
     : `<span class="match-status">${m.date}</span>`;
   const mexicoBadge = isMexico ? `<span class="mexico-badge">🇲🇽 México</span>` : '';
-
-  // ── NUEVO: franja de penales ──
-  let penaltiesHTML = '';
-  if (m.penalties) {
-    const homeWonPens = m.penalties.home > m.penalties.away;
-    const winnerName = homeWonPens ? m.home : m.away;
-    const winnerFlag = homeWonPens ? m.homeFlag : m.awayFlag;
-    penaltiesHTML = `
-      <div class="penalty-strip">
-        <span class="penalty-icon">🥅</span>
-        <span class="penalty-text">
-          Definido en penales · <strong>${winnerFlag} ${winnerName}</strong> gana
-          <span class="penalty-score">${m.penalties.home}-${m.penalties.away}</span>
-        </span>
-      </div>`;
-  }
-
   return `<div class="match-card ${isLive?'live':''} ${isMexico?'mexico-venue':''} ${extraClass}">
     <div class="match-label-bar"><span class="match-label">${m.venue||''}${mexicoBadge}</span>${statusLabel}</div>
     <div class="match-inner">
       <div class="team-home"><span class="team-flag">${m.homeFlag}</span><div><div class="team-name">${m.home}</div><div class="team-abbr">${m.home.substring(0,3).toUpperCase()}</div></div></div>
       ${scoreHTML}
       <div class="team-away"><span class="team-flag">${m.awayFlag}</span><div><div class="team-name">${m.away}</div><div class="team-abbr">${m.away.substring(0,3).toUpperCase()}</div></div></div>
-    </div>
-    ${penaltiesHTML}
-  </div>`;
+    </div></div>`;
 }
 
 function renderMatches() {
@@ -2731,6 +2892,118 @@ function renderGDL() {
 }
 
 // ══════════════════════════════════════════════════════════
+// PANEL COMPACTO DE POSICIONES (dentro de Resultados)
+// ══════════════════════════════════════════════════════════
+let standingsPanelOpen = false;
+let currentGroupPage = 0;
+const GROUPS_PER_PAGE = 2;
+const GROUP_KEYS = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+const TOTAL_PAGES = Math.ceil(GROUP_KEYS.length / GROUPS_PER_PAGE);
+
+function toggleStandingsPanel() {
+  standingsPanelOpen = !standingsPanelOpen;
+  const body = document.getElementById('standings-panel-body');
+  const btn = document.getElementById('sp-toggle-btn');
+  if (standingsPanelOpen) {
+    body.classList.add('open');
+    btn.textContent = 'Cerrar ↑';
+    renderCompactStandings();
+  } else {
+    body.classList.remove('open');
+    btn.textContent = 'Ver ↓';
+  }
+}
+
+function renderCompactStandings() {
+  const track = document.getElementById('groups-scroll-track');
+  const nav = document.getElementById('groups-page-nav');
+  if (!track) return;
+
+  // Construir páginas de 2 grupos cada una
+  let pagesHTML = '';
+  for (let p = 0; p < TOTAL_PAGES; p++) {
+    const pageGroups = GROUP_KEYS.slice(p * GROUPS_PER_PAGE, p * GROUPS_PER_PAGE + GROUPS_PER_PAGE);
+    pagesHTML += `<div class="groups-scroll-page" id="gpage-${p}">`;
+    pageGroups.forEach(g => {
+      const teams = [...DATA.standings[g]].sort((a, b) => b.pts - a.pts || (b.gf - b.gc) - (a.gf - a.gc));
+      const rows = teams.map((t, i) => {
+        const barColor = i < 2 ? 'var(--green)' : i === 2 ? 'var(--gold)' : 'transparent';
+        const barBorder = i >= 3 ? '1px solid var(--border2)' : 'none';
+        return `<tr>
+          <td>
+            <div class="mini-team-cell">
+              <div class="mini-pos-bar" style="background:${barColor};border:${barBorder};"></div>
+              <span class="mini-flag">${t.flag}</span>
+              <span class="mini-name">${t.team}</span>
+            </div>
+          </td>
+          <td style="text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--ink3);">${t.pj}</td>
+          <td class="mini-pts">${t.pts}</td>
+        </tr>`;
+      }).join('');
+
+      pagesHTML += `
+        <div class="group-card-mini">
+          <div class="group-card-mini-header">
+            <span class="group-card-mini-title">Grupo ${g}</span>
+          </div>
+          <table class="standings-mini-table">
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+    });
+    pagesHTML += `</div>`;
+  }
+  track.innerHTML = pagesHTML;
+
+  // Paginación
+  let navHTML = '<button class="gp-btn" id="gp-prev" onclick="scrollGroupPage(-1)">◀</button>';
+  for (let p = 0; p < TOTAL_PAGES; p++) {
+    const labels = GROUP_KEYS.slice(p * GROUPS_PER_PAGE, p * GROUPS_PER_PAGE + GROUPS_PER_PAGE).join('-');
+    navHTML += `<button class="gp-btn ${p === currentGroupPage ? 'gp-active' : ''}" onclick="goToGroupPage(${p})">${labels}</button>`;
+  }
+  navHTML += '<button class="gp-btn" id="gp-next" onclick="scrollGroupPage(1)">▶</button>';
+  nav.innerHTML = navHTML;
+
+  goToGroupPage(currentGroupPage, false);
+}
+
+function goToGroupPage(p, animate) {
+  currentGroupPage = Math.max(0, Math.min(TOTAL_PAGES - 1, p));
+  const track = document.getElementById('groups-scroll-track');
+  if (!track) return;
+  const page = document.getElementById(`gpage-${currentGroupPage}`);
+  if (page) {
+    track.scrollTo({ left: page.offsetLeft, behavior: animate === false ? 'auto' : 'smooth' });
+  }
+  // Actualizar botones de navegación
+  document.querySelectorAll('.gp-btn').forEach((btn, i) => {
+    btn.classList.remove('gp-active');
+  });
+  const navBtns = document.querySelectorAll('#groups-page-nav .gp-btn');
+  if (navBtns[currentGroupPage + 1]) navBtns[currentGroupPage + 1].classList.add('gp-active');
+  // Desactivar prev/next en extremos
+  if (navBtns[0]) navBtns[0].disabled = currentGroupPage === 0;
+  if (navBtns[navBtns.length - 1]) navBtns[navBtns.length - 1].disabled = currentGroupPage === TOTAL_PAGES - 1;
+}
+
+function scrollGroupPage(dir) {
+  goToGroupPage(currentGroupPage + dir);
+}
+
+// ══════════════════════════════════════════════════════════
+// FIX ZOOM QUINIELA — compensa layout para scroll correcto
+// ══════════════════════════════════════════════════════════
+function applyBracketZoom(container, scale) {
+  container.style.transform = `scale(${scale})`;
+  container.style.transformOrigin = 'top left';
+  // Compensar: el div escalado "colapsa" en el layout, así que forzamos
+  // el tamaño lógico para que el scroll externo lo vea correctamente
+  container.style.width = `${Math.round(10000 / scale) / 100}%`;
+  container.style.height = `${Math.round(10000 / scale) / 100}%`;
+}
+
+// ══════════════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════════════
 function init() {
@@ -2752,7 +3025,6 @@ init();
 // ══════════════════════════════════════════════════════════
 (function() {
   const SIMULATOR_DATA = [
-    // ── DIECISEISAVOS (M1 A M16) ──
     { id:73, logicalId:1, phase:'dieciseisavos', nextId:89, slot:'home', home:'Alemania', homeFlag:'🇩🇪', fav:'75%', away:'Paraguay', awayFlag:'🇵🇾', homeScore:0, awayScore:1, status:'done', locked:true, date:'29 Jun' },
     { id:74, logicalId:2, phase:'dieciseisavos', nextId:89, slot:'away', home:'Francia', homeFlag:'🇫🇷', fav:'80%', away:'Suecia', awayFlag:'🇸🇪', homeScore:1, awayScore:0, status:'done', locked:true, date:'30 Jun' },
     { id:75, logicalId:3, phase:'dieciseisavos', nextId:90, slot:'home', home:'Sudáfrica', homeFlag:'🇿🇦', away:'Canadá', awayFlag:'🇨🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'28 Jun' },
@@ -2760,11 +3032,11 @@ init();
     { id:77, logicalId:5, phase:'dieciseisavos', nextId:91, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
     { id:78, logicalId:6, phase:'dieciseisavos', nextId:91, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
     { id:79, logicalId:7, phase:'dieciseisavos', nextId:92, slot:'home', home:'Estados Unidos', homeFlag:'🇺🇸', fav:'70%', away:'Bosnia', awayFlag:'🇧🇦', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
-    { id:80, logicalId:8, phase:'dieciseisavos', nextId:92, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:80, logicalId:8, phase:'dieciseisavos', nextId:92, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:81, logicalId:9, phase:'dieciseisavos', nextId:93, slot:'home', home:'Brasil', homeFlag:'🇧🇷', fav:'65%', away:'Japón', awayFlag:'🇯🇵', homeScore:1, awayScore:0, status:'done', locked:true, date:'29 Jun' },
     { id:82, logicalId:10, phase:'dieciseisavos', nextId:93, slot:'away', home:'Costa de Marfil', homeFlag:'🇨🇮', away:'Noruega', awayFlag:'🇳🇴', favAway:'56%', homeScore:0, awayScore:1, status:'done', locked:true, date:'30 Jun' },
     { id:83, logicalId:11, phase:'dieciseisavos', nextId:94, slot:'home', home:'México', homeFlag:'🇲🇽', fav:'51%', away:'Ecuador', awayFlag:'🇪🇨', homeScore:1, awayScore:0, status:'done', locked:true, date:'30 Jun' },
-    { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:null, awayScore:null, status:'scheduled', date:'01 Jul' },
+    { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:85, logicalId:13, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     { id:86, logicalId:14, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
@@ -2795,107 +3067,39 @@ init();
     { id:104, logicalId:32, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
   ];
 
-  window.qnAdvanceTeam = function(matchId, side) {
-    const m = SIMULATOR_DATA.find(x => x.id === matchId);
-    if(!m || m.locked) return;
-    
-    m.status = 'done';
-    m.homeScore = side === 'home' ? 1 : 0;
-    m.awayScore = side === 'home' ? 0 : 1;
-    
-    propagateWinner(m);
-    window.renderBracket();
-  };
+  let scale = 0.65;
+  let started = false;
 
-  function propagateWinner(m) {
-    const winnerName = m.homeScore > m.awayScore ? m.home : m.away;
-    const winnerFlag = m.homeScore > m.awayScore ? m.homeFlag : m.awayFlag;
-    const loserName = m.homeScore > m.awayScore ? m.away : m.home;
-    const loserFlag = m.homeScore > m.awayScore ? m.awayFlag : m.homeFlag;
-
-    if (m.phase === 'semis') {
-      const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
-      const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
-      if(m.id === 101) {
-        finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
-        thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
-      } else {
-        finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
-        thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
-      }
-    } else if(m.nextId) {
-      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
-      if(next) {
-        if(m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
-        else { next.away = winnerName; next.awayFlag = winnerFlag; }
-      }
-    }
+  function closeOnboarding() {
+    const el = document.getElementById('qn-onboarding-screen');
+    if (el) el.classList.add('qn-hidden');
   }
+  window.qnCloseOnboarding = closeOnboarding;
 
-  window.seedLockedResults = function() {
-    SIMULATOR_DATA.forEach(m => {
-      if (!m.locked || !m.nextId) return;
-      const isHomeWin = m.homeScore > m.awayScore || (m.penalties && m.penalties.home > m.penalties.away);
-      const wName = isHomeWin ? m.home : m.away;
-      const wFlag = isHomeWin ? m.homeFlag : m.awayFlag;
-      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
-      if (next) {
-        if (m.slot === 'home') { next.home = wName; next.homeFlag = wFlag; }
-        else { next.away = wName; next.awayFlag = wFlag; }
-      }
-    });
-  };
-
-  let globalScaleSetting = 0.55; // Ajuste visual de arranque para ver más partidos
-  window.manualZoomAdjust = function(val) {
-    globalScaleSetting = parseFloat(val);
-    window.renderBracket();
-  };
-
-  window.qnResetUserQuiniela = function() {
-    SIMULATOR_DATA.forEach(m => {
-      if(!m.locked) {
-        m.homeScore = null; m.awayScore = null; m.status = 'scheduled';
-        if(m.id >= 89) {
-          m.home = m.phase === 'octavos' ? 'Por definir' : m.home.includes('Semis') ? m.home : 'Ganador M'; 
-          m.homeFlag = '⭐';
-          m.away = m.phase === 'octavos' ? 'Por definir' : m.away.includes('Semis') ? m.away : 'Ganador M'; 
-          m.awayFlag = '⭐';
-        }
-      }
-    });
-    window.seedLockedResults();
-    window.renderBracket();
-  };
-
-  window.renderBracket = function() {
+  function renderBracket() {
     const container = document.getElementById('qn-render-viewport-area');
-    if(!container) return;
+    if (!container) return;
     const phases = ['dieciseisavos', 'octavos', 'cuartos', 'semis', 'tercer-lugar', 'final'];
     let html = '';
     phases.forEach(p => {
-      let list = SIMULATOR_DATA.filter(m => m.phase === p).sort((a, b) => a.id - b.id);
+      let list = SIMULATOR_DATA.filter(m => m.phase === p);
       let title = p === 'tercer-lugar' ? 'Tercer Lugar' : p === 'semis' ? 'Semifinal' : p;
       html += `<div class="qn-bracket-column"><div class="qn-bracket-column-title">${title}</div>`;
       list.forEach(m => {
         const isDone = m.status === 'done';
-        const isLocked = !!m.locked;
         const isHomeWin = isDone && m.homeScore > m.awayScore;
         const isAwayWin = isDone && m.awayScore > m.homeScore;
         const isPlaceholder = m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista') || m.home.includes('Perdedor');
         const homeFavTag = (m.fav && !isDone) ? `<span class="qn-fav-badge">${m.fav}</span>` : '';
         const awayFavTag = (m.favAway && !isDone) ? `<span class="qn-fav-badge">${m.favAway}</span>` : '';
-        const homeClick = isLocked ? '' : `onclick="window.qnAdvanceTeam(${m.id}, 'home')"`;
-        const awayClick = isLocked ? '' : `onclick="window.qnAdvanceTeam(${m.id}, 'away')"`;
-
         html += `
-          <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''} ${isLocked ? 'qn-locked-node' : ''}">
-            <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.logicalId}</span><span>${m.date}</span></div>
-            <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" ${homeClick}>
+          <div class="qn-match-node-block ${isPlaceholder ? 'qn-unresolved-node' : ''}">
+            <div class="qn-node-info-row"><span class="qn-node-match-id">M${m.id}</span><span>${m.date}</span></div>
+            <div class="qn-team-selectable-row ${isHomeWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'home')">
               <span>${m.homeFlag || '⭐'} ${m.home} ${homeFavTag}</span>
               <span class="qn-score-box-display">${m.homeScore !== null ? m.homeScore : '—'}</span>
             </div>
-            <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" ${awayClick}>
+            <div class="qn-team-selectable-row ${isAwayWin ? 'qn-selected-winner' : ''}" onclick="qnAdvanceTeam(${m.id}, 'away')">
               <span>${m.awayFlag || '⭐'} ${m.away} ${awayFavTag}</span>
               <span class="qn-score-box-display">${m.awayScore !== null ? m.awayScore : '—'}</span>
             </div>
@@ -2904,56 +3108,113 @@ init();
       html += `</div>`;
     });
     container.innerHTML = html;
-    container.style.transform = `scale(${globalScaleSetting})`;
+    container.style.transform = `scale(${scale})`;
+    container.style.transformOrigin = 'top left';
+    container.style.width = `${Math.round(100 / scale)}%`;
+    container.style.height = `${Math.round(100 / scale)}%`;
   }
 
-  // Activa el arrastre fluido táctil y auto-centrado
-  setTimeout(() => {
-    const frame = document.getElementById('qn-canvas-container-scroll');
-    if(!frame) return;
-    let isDragging = false; let sx, sy, sLeft, sTop;
+  window.qnAdvanceTeam = function(matchId, side) {
+    if (matchId === 73) return;
+    const m = SIMULATOR_DATA.find(x => x.id === matchId);
+    if (!m || m.home.includes('Por definir') || m.home.includes('Ganador') || m.home.includes('Finalista')) return;
+
+    m.status = 'done';
+    m.homeScore = side === 'home' ? 1 : 0;
+    m.awayScore = side === 'home' ? 0 : 1;
+
+    const winnerName = side === 'home' ? m.home : m.away;
+    const winnerFlag = side === 'home' ? m.homeFlag : m.awayFlag;
+    const loserName = side === 'home' ? m.away : m.home;
+    const loserFlag = side === 'home' ? m.awayFlag : m.homeFlag;
+
+    if (m.phase === 'semis') {
+      const finalMatch = SIMULATOR_DATA.find(x => x.phase === 'final');
+      const thirdMatch = SIMULATOR_DATA.find(x => x.phase === 'tercer-lugar');
+      if (m.id === 101) {
+        finalMatch.home = winnerName; finalMatch.homeFlag = winnerFlag;
+        thirdMatch.home = loserName; thirdMatch.homeFlag = loserFlag;
+      } else {
+        finalMatch.away = winnerName; finalMatch.awayFlag = winnerFlag;
+        thirdMatch.away = loserName; thirdMatch.awayFlag = loserFlag;
+      }
+    } else if (m.nextId) {
+      const next = SIMULATOR_DATA.find(x => x.id === m.nextId);
+      if (next) {
+        if (m.slot === 'home') { next.home = winnerName; next.homeFlag = winnerFlag; }
+        else { next.away = winnerName; next.awayFlag = winnerFlag; }
+      }
+    }
+    renderBracket();
+  };
+
+  window.qnManualZoomAdjust = function(val) {
+    scale = parseFloat(val);
+    renderBracket();
+  };
+
+  window.qnResetUserQuiniela = function() {
+    SIMULATOR_DATA.forEach(m => {
+      if (m.id !== 73) {
+        m.homeScore = null;
+        m.awayScore = null;
+        m.status = 'scheduled';
+        if (m.id >= 89) {
+          m.home = m.id === 89 ? 'Canadá' : (m.phase === 'octavos' ? 'Por definir' : 'Ganador M');
+          m.homeFlag = m.id === 89 ? '🇨🇦' : '⭐';
+          m.away = m.phase === 'octavos' ? 'Por definir' : 'Ganador M';
+          m.awayFlag = '⭐';
+        }
+      }
+    });
+    renderBracket();
+  };
+
+  // Paneo táctil — listeners adjuntados solo una vez, al primer init
+  function attachPan() {
+    const frameContainer = document.getElementById('qn-canvas-container-scroll');
+    if (!frameContainer || frameContainer.dataset.qnPanReady) return;
+    frameContainer.dataset.qnPanReady = '1';
+
+    let isDragging = false, sx, sy, sLeft, sTop;
     const startPan = (e) => {
       isDragging = true;
       const x = e.pageX || e.touches[0].pageX;
       const y = e.pageY || e.touches[0].pageY;
-      sx = x - frame.offsetLeft; sy = y - frame.offsetTop;
-      sLeft = frame.scrollLeft; sTop = frame.scrollTop;
+      sx = x - frameContainer.offsetLeft;
+      sy = y - frameContainer.offsetTop;
+      sLeft = frameContainer.scrollLeft; sTop = frameContainer.scrollTop;
     };
-    frame.addEventListener('mousedown', startPan);
-    frame.addEventListener('touchstart', startPan);
+    frameContainer.addEventListener('mousedown', startPan);
+    frameContainer.addEventListener('touchstart', startPan);
+
     const movePan = (e) => {
-      if(!isDragging) return;
+      if (!isDragging) return;
       const x = e.pageX || e.touches[0].pageX;
       const y = e.pageY || e.touches[0].pageY;
-      frame.scrollLeft = sLeft - (x - frame.offsetLeft - sx) * 1.5;
-      frame.scrollTop = sTop - (y - frame.offsetTop - sy) * 1.5;
+      frameContainer.scrollLeft = sLeft - (x - frameContainer.offsetLeft - sx) * 1.4;
+      frameContainer.scrollTop = sTop - (y - frameContainer.offsetTop - sy) * 1.4;
     };
-    frame.addEventListener('mousemove', movePan);
-    frame.addEventListener('touchmove', movePan);
+    frameContainer.addEventListener('mousemove', movePan);
+    frameContainer.addEventListener('touchmove', movePan);
+
     window.addEventListener('mouseup', () => isDragging = false);
-    frame.addEventListener('touchend', () => isDragging = false);
-    
-    // Auto-centrado dinámico en el lienzo (Calcula la mitad del desbordamiento)
-    requestAnimationFrame(() => {
-      if(frame.scrollHeight > frame.clientHeight) {
-        frame.scrollTop = (frame.scrollHeight - frame.clientHeight) / 2;
-      }
-      if(frame.scrollWidth > frame.clientWidth) {
-        frame.scrollLeft = (frame.scrollWidth - frame.clientWidth) / 2 - 100; // Un ligero offset a la izquierda
-      }
-    });
-  }, 400);
+    frameContainer.addEventListener('touchend', () => isDragging = false);
+  }
 
-  window.seedLockedResults();
+  // Exponer renderBracket globalmente para que showView lo pueda invocar
+  window.renderBracket = renderBracket;
+
+  // Render lazy: se ejecuta la primera vez que se abre la vista Quiniela
+  window.qnInit = function() {
+    attachPan();
+    renderBracket();
+    if (!started) {
+      started = true;
+      setTimeout(closeOnboarding, 2600);
+    }
+  };
 })();
-
-// Sistema Onboarding Fade Out
-function qnCloseOnboarding() {
-  const overlay = document.getElementById('qn-onboarding-screen');
-  if(overlay) overlay.classList.add('qn-hidden'); // 👈 El error estaba aquí, faltaba el "qn-"
-}
-// Forzamos a que desaparezca a los 2.8 segundos automáticamente
-setTimeout(qnCloseOnboarding, 2800);
 </script>
 </body>
 </html>
