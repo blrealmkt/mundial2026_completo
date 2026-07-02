@@ -1910,7 +1910,7 @@ const DATA = {
       home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴',
       homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
     { id:92, phase:'octavos', group:null,
-      home:'México', homeFlag:'🇲🇽', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+      home:'México', homeFlag:'🇲🇽', away:'pendiente', awayFlag:'🏆',
       homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:93, phase:'octavos', group:null,
       home:'pendiente', homeFlag:'🥈', away:'pendiente', awayFlag:'🏆',
@@ -3172,36 +3172,49 @@ init();
 
   // Paneo táctil — listeners adjuntados solo una vez, al primer init
   function attachPan() {
-    const frameContainer = document.getElementById('qn-canvas-container-scroll');
-    if (!frameContainer || frameContainer.dataset.qnPanReady) return;
-    frameContainer.dataset.qnPanReady = '1';
+    const frame = document.getElementById('qn-canvas-container-scroll');
+    if (!frame || frame.dataset.qnPanReady) return;
+    frame.dataset.qnPanReady = '1';
 
-    let isDragging = false, sx, sy, sLeft, sTop;
-    const startPan = (e) => {
-      isDragging = true;
-      const x = e.pageX || e.touches[0].pageX;
-      const y = e.pageY || e.touches[0].pageY;
-      sx = x - frameContainer.offsetLeft;
-      sy = y - frameContainer.offsetTop;
-      sLeft = frameContainer.scrollLeft; sTop = frameContainer.scrollTop;
-    };
-    frameContainer.addEventListener('mousedown', startPan);
-    frameContainer.addEventListener('touchstart', startPan);
+    let active = false, startX, startY, scrollL, scrollT;
 
-    const movePan = (e) => {
-      if (!isDragging) return;
-      const x = e.pageX || e.touches[0].pageX;
-      const y = e.pageY || e.touches[0].pageY;
-      frameContainer.scrollLeft = sLeft - (x - frameContainer.offsetLeft - sx) * 1.4;
-      frameContainer.scrollTop = sTop - (y - frameContainer.offsetTop - sy) * 1.4;
-    };
-    frameContainer.addEventListener('mousemove', movePan);
-    frameContainer.addEventListener('touchmove', movePan);
+    function getXY(e) {
+      return e.touches ? [e.touches[0].clientX, e.touches[0].clientY]
+                       : [e.clientX, e.clientY];
+    }
 
-    window.addEventListener('mouseup', () => isDragging = false);
-    frameContainer.addEventListener('touchend', () => isDragging = false);
+    function onStart(e) {
+      active = true;
+      [startX, startY] = getXY(e);
+      scrollL = frame.scrollLeft;
+      scrollT = frame.scrollTop;
+      frame.style.cursor = 'grabbing';
+    }
+
+    function onMove(e) {
+      if (!active) return;
+      e.preventDefault();
+      const [cx, cy] = getXY(e);
+      frame.scrollLeft = scrollL - (cx - startX);
+      frame.scrollTop  = scrollT - (cy - startY);
+    }
+
+    function onEnd() {
+      active = false;
+      frame.style.cursor = 'grab';
+    }
+
+    frame.addEventListener('mousedown',  onStart);
+    frame.addEventListener('mousemove',  onMove);
+    frame.addEventListener('mouseup',    onEnd);
+    frame.addEventListener('mouseleave', onEnd);
+
+    frame.addEventListener('touchstart', onStart, { passive: true });
+    frame.addEventListener('touchmove',  onMove,  { passive: false });
+    frame.addEventListener('touchend',   onEnd);
+    frame.addEventListener('touchcancel',onEnd);
   }
-
+ 
   // Exponer renderBracket globalmente para que showView lo pueda invocar
   window.renderBracket = renderBracket;
 
