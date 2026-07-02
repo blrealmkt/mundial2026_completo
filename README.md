@@ -1910,7 +1910,7 @@ const DATA = {
       home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴',
       homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
     { id:92, phase:'octavos', group:null,
-      home:'México', homeFlag:'🇲🇽', away:'pendiente', awayFlag:'🏆',
+      home:'México', homeFlag:'🇲🇽', away:'Inglaterra',awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
       homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:93, phase:'octavos', group:null,
       home:'pendiente', homeFlag:'🥈', away:'pendiente', awayFlag:'🏆',
