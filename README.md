@@ -1398,14 +1398,9 @@ body {
 }
 .qn-canvas-frame-container:active { cursor: grabbing; }
 .qn-viewport-scaler-area {
-  padding: 40px;
-  transform-origin: top left;
-  display: grid;
-  grid-template-columns: repeat(6, 265px);
-  gap: 35px;
-  width: 1950px;
-  min-height: 800px;
-  flex-shrink: 0;
+  padding: 40px; transform-origin: top left; display: grid;
+  grid-template-columns: repeat(6, 265px); gap: 35px;
+  width: max-content; min-height: 100%;
 }
 .qn-bracket-column { display: flex; flex-direction: column; justify-content: space-around; position: relative; }
 .qn-bracket-column-title {
@@ -3000,14 +2995,13 @@ function scrollGroupPage(dir) {
 // FIX ZOOM QUINIELA — compensa layout para scroll correcto
 // ══════════════════════════════════════════════════════════
 function applyBracketZoom(container, scale) {
-container.style.transform = `scale(${scale})`;
-container.style.transformOrigin = 'top left';
-// El scroll externo necesita ver el tamaño visual real post-escala
-// Lo comunicamos via un wrapper fantasma que ocupa el espacio lógico
-const W = Math.round(1950 * scale);
-const H = Math.round(800 * scale);
-container.parentElement.style.minWidth  = W + 'px';
-container.parentElement.style.minHeight = H + 'px';
+  container.style.transform = `scale(${scale})`;
+  container.style.transformOrigin = 'top left';
+  // Compensar: el div escalado "colapsa" en el layout, así que forzamos
+  // el tamaño lógico para que el scroll externo lo vea correctamente
+  container.style.width = `${Math.round(10000 / scale) / 100}%`;
+  container.style.height = `${Math.round(10000 / scale) / 100}%`;
+}
 
 // ══════════════════════════════════════════════════════════
 // INIT
@@ -3045,7 +3039,7 @@ init();
     { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:85, logicalId:13, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     { id:86, logicalId:14, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
-    { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul' },
+    { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:2, awayScore:0, status:'done', date:'02 Jul' },
     { id:88, logicalId:16, phase:'dieciseisavos', nextId:96, slot:'away', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     
     // ── OCTAVOS (M17 A M24) ──
