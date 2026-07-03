@@ -1895,7 +1895,7 @@ const DATA = {
     { id:82, phase:'dieciseisavos', nextId:93, slot:'away', home:'Bélgica', homeFlag:'🇧🇪', fav:'45%', away:'Senegal', awayFlag:'🇸🇳', homeScore:3, awayScore:2, status:'done', date:'01 Jul', time:'14:00', venue:'Estadio Seattle' },
     { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:2, awayScore:1, status:'done', date:'02 Jul', time:'17:00', venue:'Estadio Toronto' },
     { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:3, awayScore:0, status:'done', date:'02 Jul', time:'13:00', venue:'Estadio Los Ángeles' },
-    { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:null, awayScore:null, status:'scheduled', date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver' },
+    { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:2, awayScore:0, status:'done', date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver' },
     { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'16:00', venue:'Estadio Miami' },
     { id:87, phase:'dieciseisavos', nextId:96, slot:'home', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'19:30', venue:'Estadio Kansas City' },
     { id:88, phase:'dieciseisavos', nextId:96, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'12:00', venue:'Estadio Dallas' },
@@ -2039,13 +2039,12 @@ const DATA = {
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:5, highlight:true },
    // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
-    { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },   
-    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4, highlight:true },
+    { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
     // ── 3 goles
-    { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6  )', flag:'🇵🇹', goals:3 },
-    { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
+    { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:3 },
     { name:'Matheus Cunha', team:'Brasil', flag:'🇧🇷', goals:3 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:3 },
+    { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
     { name:'Johan Manzambi', team:'Suiza', flag:'🇨🇭', goals:3 },
     { name:'Ismael Saibari', team:'Marruecos', flag:'🇲🇦', goals:3 },
     { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:3 },
@@ -2057,6 +2056,7 @@ const DATA = {
     { name:'Bradley Barcola', team:'Francia', flag:'🇫🇷', goals:2 },
     { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:2 },
     { name:'Daniel Muñoz', team:'Colombia', flag:'🇨🇴', goals:2 },
+    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:2 },
     { name:'Elijah Just', team:'Nueva Zelanda', flag:'🇳🇿', goals:2 },
     { name:'Cyle Larin', team:'Canadá', flag:'🇨🇦', goals:2 },
     { name:'Cody Gakpo', team:'Países Bajos', flag:'🇳🇱', goals:2 },
@@ -3039,7 +3039,7 @@ init();
     { id:84, logicalId:12, phase:'dieciseisavos', nextId:94, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', fav:'80%', away:'RD Congo', awayFlag:'🇨🇩', homeScore:1, awayScore:0, status:'done', locked:true, date:'01 Jul' },
     { id:85, logicalId:13, phase:'dieciseisavos', nextId:95, slot:'home', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     { id:86, logicalId:14, phase:'dieciseisavos', nextId:95, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
-    { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:2, awayScore:0, status:'done', date:'02 Jul' },
+    { id:87, logicalId:15, phase:'dieciseisavos', nextId:96, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:1, awayScore:0, status:'done', locked:true, date:'02 Jul' },
     { id:88, logicalId:16, phase:'dieciseisavos', nextId:96, slot:'away', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul' },
     
     // ── OCTAVOS (M17 A M24) ──
