@@ -2042,8 +2042,8 @@ const DATA = {
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },   
     { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4, highlight:true },
     // ── 3 goles
-    { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
     { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6  )', flag:'🇵🇹', goals:3 },
+    { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
     { name:'Matheus Cunha', team:'Brasil', flag:'🇧🇷', goals:3 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:3 },
     { name:'Johan Manzambi', team:'Suiza', flag:'🇨🇭', goals:3 },
