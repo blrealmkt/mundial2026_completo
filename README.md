@@ -1394,7 +1394,7 @@ body {
   width: 100%; height: 72vh; overflow: auto;
   border: 4px solid var(--ink); background: var(--bg2);
   box-shadow: 6px 6px 0 var(--ink); position: relative;
-  cursor: grab; border-radius: 4px; touch-action: none;
+  cursor: grab; border-radius: 4px; touch-action: pan-x pan-y;
 }
 .qn-canvas-frame-container:active { cursor: grabbing; }
 .qn-viewport-scaler-area {
@@ -2997,10 +2997,10 @@ function scrollGroupPage(dir) {
 function applyBracketZoom(container, scale) {
   container.style.transform = `scale(${scale})`;
   container.style.transformOrigin = 'top left';
-  // Compensar: el div escalado "colapsa" en el layout, así que forzamos
-  // el tamaño lógico para que el scroll externo lo vea correctamente
-  container.style.width = `${Math.round(10000 / scale) / 100}%`;
-  container.style.height = `${Math.round(10000 / scale) / 100}%`;
+  // Dimensiones fijas en px reales del contenido (6 cols × 265 + gaps + padding)
+  // El frame ve el tamaño correcto y el scroll funciona en toda la extensión
+  container.style.width  = '1950px';
+  container.style.height = '2200px';
 }
 
 // ══════════════════════════════════════════════════════════
@@ -3045,12 +3045,12 @@ init();
     // ── OCTAVOS (M17 A M24) ──
     { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
     { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
-    { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
+    { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
     { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
     { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
-    { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
     
     // ── CUARTOS (M25 A M28) ──
     { id:97, logicalId:25, phase:'cuartos', nextId:101, slot:'home', home:'Ganador M17', homeFlag:'⚽', away:'Ganador M18', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
