@@ -1398,9 +1398,14 @@ body {
 }
 .qn-canvas-frame-container:active { cursor: grabbing; }
 .qn-viewport-scaler-area {
-  padding: 40px; transform-origin: top left; display: grid;
-  grid-template-columns: repeat(6, 265px); gap: 35px;
-  width: max-content; min-height: 100%;
+  padding: 40px;
+  transform-origin: top left;
+  display: grid;
+  grid-template-columns: repeat(6, 265px);
+  gap: 35px;
+  width: 1950px;
+  min-height: 800px;
+  flex-shrink: 0;
 }
 .qn-bracket-column { display: flex; flex-direction: column; justify-content: space-around; position: relative; }
 .qn-bracket-column-title {
@@ -2995,13 +3000,14 @@ function scrollGroupPage(dir) {
 // FIX ZOOM QUINIELA — compensa layout para scroll correcto
 // ══════════════════════════════════════════════════════════
 function applyBracketZoom(container, scale) {
-  container.style.transform = `scale(${scale})`;
-  container.style.transformOrigin = 'top left';
-  // Compensar: el div escalado "colapsa" en el layout, así que forzamos
-  // el tamaño lógico para que el scroll externo lo vea correctamente
-  container.style.width = `${Math.round(10000 / scale) / 100}%`;
-  container.style.height = `${Math.round(10000 / scale) / 100}%`;
-}
+container.style.transform = `scale(${scale})`;
+container.style.transformOrigin = 'top left';
+// El scroll externo necesita ver el tamaño visual real post-escala
+// Lo comunicamos via un wrapper fantasma que ocupa el espacio lógico
+const W = Math.round(1950 * scale);
+const H = Math.round(800 * scale);
+container.parentElement.style.minWidth  = W + 'px';
+container.parentElement.style.minHeight = H + 'px';
 
 // ══════════════════════════════════════════════════════════
 // INIT
