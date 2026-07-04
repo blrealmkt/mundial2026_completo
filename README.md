@@ -1896,7 +1896,7 @@ const DATA = {
     { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:2, awayScore:1, status:'done', date:'02 Jul', time:'17:00', venue:'Estadio Toronto' },
     { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:3, awayScore:0, status:'done', date:'02 Jul', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:2, awayScore:0, status:'done', date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver' },
-    { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:2, awayScore:1, status:'live', date:'03 Jul', time:'16:00', venue:'Estadio Miami' },
+    { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:3, awayScore:2, status:'done', date:'03 Jul', time:'16:00', venue:'Estadio Miami' },
     { id:87, phase:'dieciseisavos', nextId:96, slot:'home', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'19:30', venue:'Estadio Kansas City' },
     { id:88, phase:'dieciseisavos', nextId:96, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%',  homeScore:1, awayScore:1, penalties:{home:2, away:4}, status:'done', date:'03 Jul', time:'12:00', venue:'Estadio Dallas' },
     // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
@@ -2527,21 +2527,42 @@ function buildMatchCard(m, extraClass) {
   const isLive = m.status === 'live';
   const hasScore = m.homeScore !== null && m.awayScore !== null;
   const isMexico = MEXICO_VENUES.some(v => m.venue && m.venue.includes(v));
+
   const scoreHTML = hasScore
     ? `<div class="score-block"><div class="score-box home ${isLive?'fire':''}">${m.homeScore}</div><div class="score-sep"><span>-</span></div><div class="score-box away ${isLive?'fire':''}">${m.awayScore}</div></div>`
     : `<div class="score-pending">${m.time} hrs</div>`;
+
   const statusLabel = isLive
     ? `<span class="match-status live-status">● En vivo</span>`
     : isDone ? `<span class="match-status done">✓ Finalizado</span>`
     : `<span class="match-status">${m.date}</span>`;
+
   const mexicoBadge = isMexico ? `<span class="mexico-badge">🇲🇽 México</span>` : '';
+
+  let penaltiesHTML = '';
+  if (m.penalties) {
+    const homeWonPens = m.penalties.home > m.penalties.away;
+    const winnerName = homeWonPens ? m.home : m.away;
+    const winnerFlag = homeWonPens ? m.homeFlag : m.awayFlag;
+    penaltiesHTML = `
+      <div class="penalty-strip">
+        <span class="penalty-icon">🥅</span>
+        <span class="penalty-text">
+          Definido en penales · <strong>${winnerFlag} ${winnerName}</strong> gana
+          <span class="penalty-score">${m.penalties.home}-${m.penalties.away}</span>
+        </span>
+      </div>`;
+  }
+
   return `<div class="match-card ${isLive?'live':''} ${isMexico?'mexico-venue':''} ${extraClass}">
     <div class="match-label-bar"><span class="match-label">${m.venue||''}${mexicoBadge}</span>${statusLabel}</div>
     <div class="match-inner">
       <div class="team-home"><span class="team-flag">${m.homeFlag}</span><div><div class="team-name">${m.home}</div><div class="team-abbr">${m.home.substring(0,3).toUpperCase()}</div></div></div>
       ${scoreHTML}
       <div class="team-away"><span class="team-flag">${m.awayFlag}</span><div><div class="team-name">${m.away}</div><div class="team-abbr">${m.away.substring(0,3).toUpperCase()}</div></div></div>
-    </div></div>`;
+    </div>
+    ${penaltiesHTML}
+  </div>`;
 }
 
 function renderMatches() {
