@@ -1905,7 +1905,7 @@ const DATA = {
       homeScore:0, awayScore:3, date:'04 Jul', time:'11:00', venue:'Estadio Filadelfia', status:'scheduled' },
     { id:90, phase:'octavos', group:null,
       home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷',
-      homeScore:0, awayScore:0, date:'04 Jul', time:'15:00', venue:'Estadio Houston', status:'live' },
+      homeScore:0, awayScore:1, date:'04 Jul', time:'15:00', venue:'Estadio Houston', status:'live' },
     { id:91, phase:'octavos', group:null,
       home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴',
       homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
@@ -2031,9 +2031,9 @@ const DATA = {
   },
 
   scorers: [
-    // ── 6 goles
-    { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:6, highlight:true },
-    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:6, highlight:true },
+    // ── 7 goles
+    { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:7, highlight:true },
+    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:7, highlight:true },
     // ── 5 goles
     { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:5, highlight:true },
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:5, highlight:true },
