@@ -1902,7 +1902,7 @@ const DATA = {
     // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
     { id:89, phase:'octavos', group:null,
       home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦',
-      homeScore:null, awayScore:null, date:'04 Jul', time:'11:00', venue:'Estadio Filadelfia', status:'scheduled' },
+      homeScore:0, awayScore:3, date:'04 Jul', time:'11:00', venue:'Estadio Filadelfia', status:'scheduled' },
     { id:90, phase:'octavos', group:null,
       home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷',
       homeScore:null, awayScore:null, date:'04 Jul', time:'15:00', venue:'Estadio Houston', status:'scheduled' },
@@ -3065,7 +3065,7 @@ init();
     
     // ── OCTAVOS (M17 A M24) ──
     { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
-    { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
     { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
