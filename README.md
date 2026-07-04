@@ -3064,7 +3064,7 @@ init();
     { id:88, logicalId:16, phase:'dieciseisavos', nextId:96, slot:'away', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:1, awayScore:0, status:'done', locked:true, date:'03 Jul' },
     
     // ── OCTAVOS (M17 A M24) ──
-    { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷', homeScore:null, awayScore:null, status:'scheduled', date:'04 Jul' },
+    { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
     { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
     { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
