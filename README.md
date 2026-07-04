@@ -1896,9 +1896,9 @@ const DATA = {
     { id:83, phase:'dieciseisavos', nextId:94, slot:'home', home:'Portugal', homeFlag:'🇵🇹', fav:'60%', away:'Croacia', awayFlag:'🇭🇷', homeScore:2, awayScore:1, status:'done', date:'02 Jul', time:'17:00', venue:'Estadio Toronto' },
     { id:84, phase:'dieciseisavos', nextId:94, slot:'away', home:'España', homeFlag:'🇪🇸', fav:'80%', away:'Austria', awayFlag:'🇦🇹', homeScore:3, awayScore:0, status:'done', date:'02 Jul', time:'13:00', venue:'Estadio Los Ángeles' },
     { id:85, phase:'dieciseisavos', nextId:95, slot:'home', home:'Suiza', homeFlag:'🇨🇭', fav:'55%', away:'Argelia', awayFlag:'🇩🇿', homeScore:2, awayScore:0, status:'done', date:'02 Jul', time:'21:00', venue:'Estadio BC Place Vancouver' },
-    { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'16:00', venue:'Estadio Miami' },
+    { id:86, phase:'dieciseisavos', nextId:95, slot:'away', home:'Argentina', homeFlag:'🇦🇷', fav:'90%', away:'Cabo Verde', awayFlag:'🇨🇻', homeScore:2, awayScore:1, status:'live', date:'03 Jul', time:'16:00', venue:'Estadio Miami' },
     { id:87, phase:'dieciseisavos', nextId:96, slot:'home', home:'Colombia', homeFlag:'🇨🇴', fav:'70%', away:'Ghana', awayFlag:'🇬🇭', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'19:30', venue:'Estadio Kansas City' },
-    { id:88, phase:'dieciseisavos', nextId:96, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%', homeScore:null, awayScore:null, status:'scheduled', date:'03 Jul', time:'12:00', venue:'Estadio Dallas' },
+    { id:88, phase:'dieciseisavos', nextId:96, slot:'away', home:'Australia', homeFlag:'🇦🇺', away:'Egipto', awayFlag:'🇪🇬', favAway:'45%',  homeScore:1, awayScore:1, penalties:{home:2, away:4}, status:'done', date:'03 Jul', time:'12:00', venue:'Estadio Dallas' },
     // ── OCTAVOS DE FINAL (8 partidos · 4-7 julio)
     { id:89, phase:'octavos', group:null,
       home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦',
