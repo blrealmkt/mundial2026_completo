@@ -3066,10 +3066,10 @@ init();
     // ── OCTAVOS (M17 A M24) ──
     { id:89, logicalId:17, phase:'octavos', nextId:97, slot:'home', home:'Paraguay', homeFlag:'🇵🇾', away:'Francia', awayFlag:'🇫🇷', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
     { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
-    { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
-    { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
-    { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:0, awayScore:1, status:'done', locked:true, date:'06 Jul' },
-    { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:0, awayScore:1, status:'done', locked:true, date:'05 Jul' },
+    { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Argentina', homeFlag:'🇦🇷', away:'Egipto', awayFlag:'🇪🇬', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
     { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
     
