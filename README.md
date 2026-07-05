@@ -1908,7 +1908,7 @@ const DATA = {
       homeScore:0, awayScore:1, date:'04 Jul', time:'15:00', venue:'Estadio Houston', status:'done' },
     { id:91, phase:'octavos', group:null,
       home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴',
-      homeScore:null, awayScore:null, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'scheduled' },
+      homeScore:1, awayScore:2, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'done' },
     { id:92, phase:'octavos', group:null,
       home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
       homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
@@ -2033,9 +2033,9 @@ const DATA = {
   scorers: [
     // ── 7 goles
     { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:7, highlight:true },
+    { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:7, highlight:true },
     { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:7, highlight:true },
     // ── 5 goles
-    { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:5, highlight:true },
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:5, highlight:true },
    // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
@@ -3068,9 +3068,9 @@ init();
     { id:90, logicalId:18, phase:'octavos', nextId:97, slot:'away', home:'Canadá', homeFlag:'🇨🇦', away:'Marruecos', awayFlag:'🇲🇦', homeScore:0, awayScore:1, status:'done', locked:true, date:'04 Jul' },
     { id:91, logicalId:19, phase:'octavos', nextId:98, slot:'home', home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
     { id:92, logicalId:20, phase:'octavos', nextId:98, slot:'away', home:'Estados Unidos', homeFlag:'🇺🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'05 Jul' },
-    { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
+    { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:0, awayScore:1, status:'done', locked:true, date:'06 Jul' },
     { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'06 Jul' },
-    { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Por definir', homeFlag:'⭐', away:'Por definir', awayFlag:'⭐', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Argentina', homeFlag:'🇦🇷', away:'Egipto', awayFlag:'🇪🇬', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
     { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
     
     // ── CUARTOS (M25 A M28) ──
