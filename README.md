@@ -2293,7 +2293,7 @@ const DATA = {
   ],
 
   crazyNumbers: [
-    { num:'137', label:'Goles en los primeros 46 partidos del torneo', sub:'3.0 por partido — Ronaldo ya marcó en 6 Mundiales distintos' },
+    { num:'223', label:'Goles en los primeros 70 partidos del torneo', sub:'3.0 por partido — Ronaldo ya marcó en 6 Mundiales distintos' },
     { num:'40%', label:'De los partidos han tenido gol antes del minuto 15', sub:'El torneo arranca caliente — casi 1 de cada 2 juegos tiene gol tempranero' },
     { num:'1°', label:'Gol de Julián Quiñones para México', sub:'El primer gol oficial del Mundial 2026 · Min. 11\'' },
     { num:'28', label:'Tarjetas amarillas acumuladas en lo que va del torneo', sub:'Costa de Marfil acumula 3 en un solo partido' },
