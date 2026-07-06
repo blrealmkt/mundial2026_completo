@@ -1911,7 +1911,7 @@ const DATA = {
       homeScore:1, awayScore:2, date:'05 Jul', time:'14:00', venue:'Estadio Nueva York', status:'done' },
     { id:92, phase:'octavos', group:null,
       home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-      homeScore:null, awayScore:null, date:'05 Jul', time:'18:00', venue:'Estadio Ciudad de México', status:'scheduled' },
+      homeScore:null, awayScore:null, date:'05 Jul', time:'19:00', venue:'Estadio Ciudad de México', status:'scheduled' },
     { id:93, phase:'octavos', group:null,
       home:'Portugal', homeFlag:'🇵🇹', away:'España', awayFlag:'🇪🇸',
       homeScore:null, awayScore:null, date:'06 Jul', time:'13:00', venue:'Estadio Dallas', status:'scheduled' },
