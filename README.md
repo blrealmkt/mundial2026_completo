@@ -1920,7 +1920,7 @@ const DATA = {
       homeScore:1, awayScore:4, date:'06 Jul', time:'18:00', venue:'Estadio Seattle', status:'done' },
     { id:95, phase:'octavos', group:null,
       home:'Argentina', homeFlag:'🇦🇷', away:'Egipto', awayFlag:'🇪🇬',
-      homeScore:0, awayScore:0, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'live' },
+      homeScore:0, awayScore:1, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'live' },
     { id:96, phase:'octavos', group:null,
       home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴',
       homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
