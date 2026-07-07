@@ -1923,7 +1923,7 @@ const DATA = {
       homeScore:3, awayScore:2, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'done' },
     { id:96, phase:'octavos', group:null,
       home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴',
-      homeScore:0, awayScore:0, penalties:{home:3, away:4}, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'done' },
+      homeScore:0, awayScore:0, penalties:{home:4, away:3}, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'done' },
     // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
     { id:97,  phase:'cuartos', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦',
