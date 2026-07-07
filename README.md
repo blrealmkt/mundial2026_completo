@@ -1923,7 +1923,7 @@ const DATA = {
       homeScore:3, awayScore:2, date:'07 Jul', time:'10:00', venue:'Estadio Atlanta', status:'done' },
     { id:96, phase:'octavos', group:null,
       home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴',
-      homeScore:null, awayScore:null, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'scheduled' },
+      homeScore:0, awayScore:0, penalties:{home:3, away:4}, date:'07 Jul', time:'14:00', venue:'Estadio BC Place Vancouver', status:'done' },
     // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
     { id:97,  phase:'cuartos', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦',
@@ -1935,7 +1935,7 @@ const DATA = {
       home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Noruega', awayFlag:'🇳🇴',
       homeScore:null, awayScore:null, date:'11 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
     { id:100, phase:'cuartos', group:null,
-      home:'Argentina', homeFlag:'🇦🇷', away:'🇨🇭 VS 🇨🇴 Ganador', awayFlag:'⚽',
+      home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭',
       homeScore:null, awayScore:null, date:'11 Jul', time:'19:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
     // ── SEMIFINALES
     { id:101, phase:'semis', group:null,
@@ -3071,13 +3071,13 @@ init();
     { id:93, logicalId:21, phase:'octavos', nextId:99, slot:'home', home:'Brasil', homeFlag:'🇧🇷', away:'Noruega', awayFlag:'🇳🇴', homeScore:0, awayScore:1, status:'done', locked:true, date:'05 Jul' },
     { id:94, logicalId:22, phase:'octavos', nextId:99, slot:'away', home:'México', homeFlag:'🇲🇽', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:0, awayScore:1, status:'done', locked:true, date:'05 Jul' },
     { id:95, logicalId:23, phase:'octavos', nextId:100, slot:'home', home:'Argentina', homeFlag:'🇦🇷', away:'Egipto', awayFlag:'🇪🇬', homeScore:1, awayScore:0, status:'done', locked:true, date:'07 Jul' },
-    { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:null, awayScore:null, status:'scheduled', date:'07 Jul' },
+    { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:1, awayScore:0, status:'scheduled', date:'07 Jul' },
     
     // ── CUARTOS (M25 A M28) ──
     { id:97, logicalId:25, phase:'cuartos', nextId:101, slot:'home', home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
     { id:98, logicalId:26, phase:'cuartos', nextId:101, slot:'away', home:'España', homeFlag:'🇪🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'10 Jul' },
     { id:99, logicalId:27, phase:'cuartos', nextId:102, slot:'home', home:'Noruega', homeFlag:'🇳🇴', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
-    { id:100, logicalId:28, phase:'cuartos', nextId:102, slot:'away', home:'Argentina', homeFlag:'🇦🇷', away:'Ganador M24', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
+    { id:100, logicalId:28, phase:'cuartos', nextId:102, slot:'away', home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
     
     // ── SEMIFINALES (M29 Y M30) ──
     { id:101, logicalId:29, phase:'semis', nextId:104, slot:'home', home:'Ganador M25', homeFlag:'⚽', away:'Ganador M26', awayFlag:'⚽', homeScore:null, awayScore:null, status:'scheduled', date:'14 Jul' },
