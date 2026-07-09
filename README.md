@@ -1927,7 +1927,7 @@ const DATA = {
     // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
     { id:97,  phase:'cuartos', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦',
-      homeScore:null, awayScore:null, date:'09 Jul', time:'14:00', venue:'Gillette Stadium, Boston', status:'scheduled' },
+      homeScore:1, awayScore:1, date:'09 Jul', time:'14:00', venue:'Gillette Stadium, Boston', status:'live' },
     { id:98,  phase:'cuartos', group:null,
       home:'España', homeFlag:'🇪🇸', away:'Bélgica', awayFlag:'🇧🇪',
       homeScore:null, awayScore:null, date:'10 Jul', time:'13:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
@@ -2031,21 +2031,24 @@ const DATA = {
   },
 
   scorers: [
+    // ── 8 goles
+    { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:8, highlight:true },
+    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:8, highlight:true },
     // ── 7 goles
-    { name:'Lionel Messi', team:'Argentina', flag:'🇦🇷', goals:7, highlight:true },
     { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:7, highlight:true },
-    { name:'Kylian Mbappé', team:'Francia', flag:'🇫🇷', goals:7, highlight:true },
+    // ── 6 goles
+    { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:6, highlight:true },
     // ── 5 goles
-    { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:5, highlight:true },
+    { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:5 },
    // ── 4 goles
-    { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4, highlight:true },
-    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4, highlight:true },
-    { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:4, highlight:true },
+    { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4 },
+    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4 },
     { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:4, highlight:true },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:4, highlight:true },
     { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:4, highlight:true },
     // ── 3 goles
     { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:3 },
+    { name:'Romelu Lukaku', team:'Bélgica', flag:'🇧🇪', goals:3 },
     { name:'Matheus Cunha', team:'Brasil', flag:'🇧🇷', goals:3 },
     { name:'Jonathan David', team:'Canadá', flag:'🇨🇦', goals:3 },
     { name:'Folarin Balogun', team:'Estados Unidos', flag:'🇺🇸', goals:3 },
