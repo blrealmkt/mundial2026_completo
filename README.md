@@ -1927,7 +1927,7 @@ const DATA = {
     // ── CUARTOS DE FINAL (4 partidos · 9-11 julio)
     { id:97,  phase:'cuartos', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦',
-      homeScore:1, awayScore:1, date:'09 Jul', time:'14:00', venue:'Gillette Stadium, Boston', status:'live' },
+      homeScore:2, awayScore:0, date:'09 Jul', time:'14:00', venue:'Gillette Stadium, Boston', status:'done' },
     { id:98,  phase:'cuartos', group:null,
       home:'España', homeFlag:'🇪🇸', away:'Bélgica', awayFlag:'🇧🇪',
       homeScore:null, awayScore:null, date:'10 Jul', time:'13:00', venue:'SoFi Stadium, Los Ángeles', status:'scheduled' },
@@ -3077,7 +3077,7 @@ init();
     { id:96, logicalId:24, phase:'octavos', nextId:100, slot:'away', home:'Suiza', homeFlag:'🇨🇭', away:'Colombia', awayFlag:'🇨🇴', homeScore:1, awayScore:0, status:'scheduled', date:'07 Jul' },
     
     // ── CUARTOS (M25 A M28) ──
-    { id:97, logicalId:25, phase:'cuartos', nextId:101, slot:'home', home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦', homeScore:null, awayScore:null, status:'scheduled', date:'09 Jul' },
+    { id:97, logicalId:25, phase:'cuartos', nextId:101, slot:'home', home:'Francia', homeFlag:'🇫🇷', away:'Marruecos', awayFlag:'🇲🇦', homeScore:1, awayScore:0, status:'done', date:'09 Jul' },
     { id:98, logicalId:26, phase:'cuartos', nextId:101, slot:'away', home:'España', homeFlag:'🇪🇸', away:'Bélgica', awayFlag:'🇧🇪', homeScore:null, awayScore:null, status:'scheduled', date:'10 Jul' },
     { id:99, logicalId:27, phase:'cuartos', nextId:102, slot:'home', home:'Noruega', homeFlag:'🇳🇴', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
     { id:100, logicalId:28, phase:'cuartos', nextId:102, slot:'away', home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭', homeScore:null, awayScore:null, status:'scheduled', date:'11 Jul' },
