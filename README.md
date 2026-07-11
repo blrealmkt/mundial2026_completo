@@ -2043,9 +2043,9 @@ const DATA = {
    // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4 },
     { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4 },
-    { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:4, highlight:true },
-    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:4, highlight:true },
-    { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:4, highlight:true },
+    { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:4 },
+    { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:4 },
+    { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:4 },
     // ── 3 goles
     { name:'Cristiano Ronaldo', team:'Portugal · (1er jugador en marcar en 6 Mundiales)', flag:'🇵🇹', goals:3 },
     { name:'Romelu Lukaku', team:'Bélgica', flag:'🇧🇪', goals:3 },
