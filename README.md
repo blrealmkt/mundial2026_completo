@@ -1933,7 +1933,7 @@ const DATA = {
       homeScore:2, awayScore:1, date:'10 Jul', time:'13:00', venue:'SoFi Stadium, Los Ángeles', status:'done' },
     { id:99,  phase:'cuartos', group:null,
       home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Noruega', awayFlag:'🇳🇴',
-      homeScore:null, awayScore:null, date:'11 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
+      homeScore:0, awayScore:1, date:'11 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'live' },
     { id:100, phase:'cuartos', group:null,
       home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭',
       homeScore:null, awayScore:null, date:'11 Jul', time:'19:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
