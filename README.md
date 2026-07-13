@@ -1936,13 +1936,13 @@ const DATA = {
       homeScore:1, awayScore:1, date:'11 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'live' },
     { id:100, phase:'cuartos', group:null,
       home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭',
-      homeScore:null, awayScore:null, date:'11 Jul', time:'19:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
+      homeScore:3, awayScore:1, date:'11 Jul', time:'19:00', venue:'Arrowhead Stadium, Kansas City', status:'scheduled' },
     // ── SEMIFINALES
     { id:101, phase:'semis', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'España', awayFlag:'🇪🇸',
       homeScore:null, awayScore:null, date:'14 Jul', time:'13:00', venue:'Estadio Dallas', status:'scheduled' },
     { id:102, phase:'semis', group:null,
-      home:'Ganador Miami 11 Jul', homeFlag:'⚽', away:'Ganador Kansas City 11 Jul', awayFlag:'⚽',
+      home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Argentina', awayFlag:'🇦🇷',
       homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
     // ── TERCER PUESTO
     { id:103, phase:'semis', group:null,
@@ -2038,12 +2038,12 @@ const DATA = {
     { name:'Erling Haaland', team:'Noruega', flag:'🇳🇴', goals:7, highlight:true },
     // ── 6 goles
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:6, highlight:true },
-    // ── 5 goles
+    { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:6, highlight:true },
+        // ── 5 goles
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:5 },
    // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4 },
     { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4 },
-    { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:4 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:4 },
     { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:4 },
     // ── 3 goles
