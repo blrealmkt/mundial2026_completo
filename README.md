@@ -1940,17 +1940,17 @@ const DATA = {
     // ── SEMIFINALES
     { id:101, phase:'semis', group:null,
       home:'Francia', homeFlag:'🇫🇷', away:'España', awayFlag:'🇪🇸',
-      homeScore:null, awayScore:null, date:'14 Jul', time:'13:00', venue:'Estadio Dallas', status:'scheduled' },
+      homeScore:0, awayScore:2, date:'14 Jul', time:'13:00', venue:'Estadio Dallas', status:'done' },
     { id:102, phase:'semis', group:null,
       home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Argentina', awayFlag:'🇦🇷',
       homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
     // ── TERCER PUESTO
     { id:103, phase:'semis', group:null,
-      home:'Perdedor Semifinal 1', homeFlag:'🥉', away:'Perdedor Semifinal 2', awayFlag:'🥉',
+      home:'Francia', homeFlag:'🇫🇷', away:'Perdedor Semifinal 2', awayFlag:'🥉',
       homeScore:null, awayScore:null, date:'18 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
     // ── GRAN FINAL
     { id:104, phase:'final', group:null,
-      home:'Campeón Semifinal 1', homeFlag:'🌎', away:'Campeón Semifinal 2', awayFlag:'🌎',
+      home:'España', homeFlag:'🇪🇸', away:'Campeón Semifinal 2', awayFlag:'🌎',
       homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
   ],
 
@@ -2040,10 +2040,10 @@ const DATA = {
     { name:'Harry Kane', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:6, highlight:true },
     { name:'Jude Bellingham', team:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', goals:6, highlight:true },
         // ── 5 goles
+    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:5 },
     { name:'Ousmane Dembélé', team:'Francia', flag:'🇫🇷', goals:5 },
    // ── 4 goles
     { name:'Vinícius Júnior', team:'Brasil', flag:'🇧🇷', goals:4 },
-    { name:'Mikel Oyarzabal', team:'España', flag:'🇪🇸', goals:4 },
     { name:'Julián Quiñones', team:'México (Primer gol del Mundial)', flag:'🇲🇽', goals:4 },
     { name:'Ismaïla Sarr', team:'Senegal', flag:'🇸🇳', goals:4 },
     // ── 3 goles
@@ -3083,12 +3083,12 @@ init();
     { id:100, logicalId:28, phase:'cuartos', nextId:102, slot:'away', home:'Argentina', homeFlag:'🇦🇷', away:'Suiza', awayFlag:'🇨🇭', homeScore:1, awayScore:0, status:'done', locked:true, date:'11 Jul' },
     
     // ── SEMIFINALES (M29 Y M30) ──
-    { id:101, logicalId:29, phase:'semis', nextId:104, slot:'home', home:'Francia', homeFlag:'🇫🇷', away:'España', awayFlag:'🇪🇸', homeScore:null, awayScore:null, status:'scheduled', date:'14 Jul' },
+    { id:101, logicalId:29, phase:'semis', nextId:104, slot:'home', home:'Francia', homeFlag:'🇫🇷', away:'España', awayFlag:'🇪🇸', homeScore:0, awayScore:1, status:'done', locked:true, date:'14 Jul' },
     { id:102, logicalId:30, phase:'semis', nextId:104, slot:'away', home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Argentina', awayFlag:'🇦🇷', homeScore:null, awayScore:null, status:'scheduled', date:'15 Jul' },
     
     // ── TERCER LUGAR (M31) Y FINAL (M32) ──
-    { id:103, logicalId:31, phase:'tercer-lugar', nextId:null, slot:null, home:'Perdedor M29', homeFlag:'🥉', away:'Perdedor M30', awayFlag:'🥉', homeScore:null, awayScore:null, status:'scheduled', date:'18 Jul' },
-    { id:104, logicalId:32, phase:'final', nextId:null, slot:null, home:'Finalista 1', homeFlag:'🌍', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
+    { id:103, logicalId:31, phase:'tercer-lugar', nextId:null, slot:null, home:'Francia', homeFlag:'🇫🇷', away:'Perdedor M30', awayFlag:'🥉', homeScore:null, awayScore:null, status:'scheduled', date:'18 Jul' },
+    { id:104, logicalId:32, phase:'final', nextId:null, slot:null, home:'España', homeFlag:'🇪🇸', away:'Finalista 2', awayFlag:'🌍', homeScore:null, awayScore:null, status:'scheduled', date:'19 Jul' }
   ];
 
   let scale = 0.65;
