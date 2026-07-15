@@ -1943,14 +1943,14 @@ const DATA = {
       homeScore:0, awayScore:2, date:'14 Jul', time:'13:00', venue:'Estadio Dallas', status:'done' },
     { id:102, phase:'semis', group:null,
       home:'Inglaterra', homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'Argentina', awayFlag:'🇦🇷',
-      homeScore:null, awayScore:null, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'scheduled' },
+      homeScore:1, awayScore:2, date:'15 Jul', time:'13:00', venue:'Estadio Atlanta', status:'done' },
     // ── TERCER PUESTO
     { id:103, phase:'semis', group:null,
-      home:'Francia', homeFlag:'🇫🇷', away:'Perdedor Semifinal 2', awayFlag:'🥉',
+      home:'Francia', homeFlag:'🇫🇷', away:'Inglaterra', awayFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',
       homeScore:null, awayScore:null, date:'18 Jul', time:'15:00', venue:'Hard Rock Stadium, Miami', status:'scheduled' },
     // ── GRAN FINAL
     { id:104, phase:'final', group:null,
-      home:'España', homeFlag:'🇪🇸', away:'Campeón Semifinal 2', awayFlag:'🌎',
+      home:'España', homeFlag:'🇪🇸', away:'Argentina', awayFlag:'🇦🇷',
       homeScore:null, awayScore:null, date:'19 Jul', time:'13:00', venue:'Estadio Nueva York', status:'scheduled' },
   ],
 
